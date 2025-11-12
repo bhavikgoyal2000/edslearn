@@ -5,35 +5,12 @@
   margin: 2rem auto;
   width: 25%;
   max-width: 380px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.1);
-  color: #333;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
   overflow: hidden;
   font-family: "Adobe Clean","Helvetica Neue",Arial,sans-serif;
 }
 
-/* ———————————————————— */
-/*  FORCE TEXT & LAYOUT  */
-/* ———————————————————— */
-.block.calendar *,
-.block.calendar .fc * {
-  color: #333 !important;
-  font-family: inherit !important;
-}
-
-/* Remove background: transparent – it was killing cells */
-.block.calendar .fc,
-.block.calendar .fc table,
-.block.calendar .fc td,
-.block.calendar .fc th,
-.block.calendar .fc-daygrid-day,
-.block.calendar .fc-col-header-cell {
-  background: #fff !important;
-  border: 1px solid #e0e0e0 !important;
-}
-
-/* ———————————————————— */
-/*  TOOLBAR             */
-/* ———————————————————— */
+/* Toolbar */
 .block.calendar .fc-toolbar {
   display: flex;
   align-items: center;
@@ -66,37 +43,24 @@
   background: #e6e6e6 !important;
 }
 
-/* ———————————————————— */
-/*  HEADER (Sun, Mon...) */
-/* ———————————————————— */
+/* Header */
 .block.calendar .fc-col-header-cell {
   background: #f9f9f9 !important;
   font-weight: 600 !important;
   color: #555 !important;
-  text-align: center;
   border: 1px solid #e0e0e0 !important;
 }
 
-/* ———————————————————— */
-/*  DAY CELLS           */
-/* ———————————————————— */
+/* Day cells */
 .block.calendar .fc-daygrid-day {
-  background: #fff !important;
   border: 1px solid #e0e0e0 !important;
-  position: relative;
-}
-
-.block.calendar .fc-daygrid-day-frame {
-  min-height: 100% !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 4px;
+  background: #fff !important;
 }
 
 .block.calendar .fc-daygrid-day-top {
   display: flex;
   justify-content: center;
+  padding: 4px 0;
 }
 
 .block.calendar .fc-daygrid-day-number {
@@ -105,6 +69,7 @@
   font-size: 0.95rem;
 }
 
+/* Today */
 .block.calendar .fc-day-today {
   background: #fdf8f5 !important;
   border: 2px solid #7e6d5f !important;
@@ -116,16 +81,13 @@
   font-weight: 600 !important;
 }
 
+/* Hide events */
 .block.calendar .fc-daygrid-event-harness,
 .block.calendar .fc-daygrid-day-events,
-.block.calendar .fc-event,
-.block.calendar .fc-daygrid-event {
+.block.calendar .fc-event {
   display: none !important;
-  height: 0 !important;
-  overflow: hidden !important;
 }
 
 .block.calendar .calendar-full {
   display: block;
-  height: auto;
 }
