@@ -1,20 +1,18 @@
 .block.calendar {
-  background-color: #fff !important;
+  background: #fff !important;
   border-radius: 16px;
   padding: 1.5rem;
   max-width: 380px;
   margin: 2rem auto;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   color: #333;
-  position: relative;
-  isolation: isolate;
   overflow: hidden;
 }
 
 .block.calendar *,
 .block.calendar .fc * {
   color: #333 !important;
-  background-color: transparent !important;
+  background: transparent !important;
   font-family: "Adobe Clean", "Helvetica Neue", Arial, sans-serif !important;
 }
 
@@ -22,21 +20,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 0;
-  font-size: 0.9rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
 }
 
-.block.calendar .fc-toolbar .fc-toolbar-chunk:last-child,
-.block.calendar .fc .fc-button-group {
+.block.calendar .fc-toolbar .fc-toolbar-chunk:last-child {
   display: none !important;
 }
 
 .block.calendar .fc-today-button {
   background: #f0f0f0 !important;
-  border-radius: 6px !important;
-  padding: 0.2rem 0.6rem !important;
-  font-size: 0.8rem !important;
   border: none !important;
+  border-radius: 6px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.85rem !important;
   color: #444 !important;
 }
 
@@ -60,13 +57,10 @@
 }
 
 .block.calendar .fc,
-.block.calendar .fc .fc-scrollgrid,
-.block.calendar .fc .fc-scrollgrid table,
-.block.calendar .fc .fc-scrollgrid td,
-.block.calendar .fc .fc-scrollgrid th,
-.block.calendar .fc-daygrid-day,
-.block.calendar .fc-daygrid-day-top {
-  background-color: #fff !important;
+.block.calendar .fc table,
+.block.calendar .fc td,
+.block.calendar .fc th {
+  background: #fff !important;
   border-color: #eee !important;
 }
 
@@ -76,7 +70,7 @@
 }
 
 .block.calendar .fc-day-today {
-  background-color: #f2f2f2 !important;
+  background: #f2f2f2 !important;
   border: 1px solid #bbb !important;
   border-radius: 8px !important;
 }
@@ -93,24 +87,5 @@
 }
 
 .block.calendar .calendar-full {
-  height: 100%;
-  min-height: 340px;
-  display: flex;
-  flex-direction: column;
-}
-
-.block.calendar .fc {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.block.calendar .fc .fc-scrollgrid {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.block.calendar .fc .fc-scrollgrid table {
-  height: 100%;
+  display: block;
 }
