@@ -5,7 +5,7 @@
   margin: 2rem auto;
   width: 25%;
   max-width: 380px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
   color: #333;
   overflow: hidden;
 }
@@ -25,12 +25,6 @@
   justify-content: space-between;
   padding: .5rem 0;
   font-size: .95rem;
-}
-
-/* Hide any extra toolbar chunks (today button, view switcher) */
-.block.calendar .fc-toolbar .fc-toolbar-chunk:not(:first-child):not(:last-child),
-.block.calendar .fc .fc-button-group {
-  display: none !important;
 }
 
 /* Nav arrows */
