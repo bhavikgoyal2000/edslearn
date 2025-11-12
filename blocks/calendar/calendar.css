@@ -78,8 +78,8 @@
 }
 
 .block.calendar .fc-day-today .fc-daygrid-day-number {
-  color: #333 !important;
-  font-weight: 600 !important;
+  color: #f2f2f2 !important;
+  background-color: #7e6d5f;
 }
 
 /* Hover on arrows */
@@ -100,4 +100,9 @@
 
 .block.calendar .fc-daygrid-day-frame {
   min-height: 100% !important;
+}
+
+.block.calendar .fc .fc-daygrid-day-top {
+    text-align: center;
+    padding: 20% 0 20% 0;
 }
