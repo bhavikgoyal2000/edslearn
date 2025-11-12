@@ -35,6 +35,9 @@ export default async function decorate(block) {
     height: 'auto',
     selectable: true,
     editable: false,
+    dayCellContent: function (info) {
+      return { html: info.dayNumberText };
+    },
     dateClick(info) {
       console.log(`Selected date: ${info.dateStr}`);
       document.dispatchEvent(

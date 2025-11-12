@@ -5,17 +5,16 @@
   margin: 2rem auto;
   width: 25%;
   max-width: 380px;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+  box-shadow: 0 4px 16px rgba(0,0,0,.1);
   color: #333;
   overflow: hidden;
 }
 
-/* Force every inner element to be dark text on white */
+/* Force dark text on every element */
 .block.calendar *,
 .block.calendar .fc * {
   color: #333 !important;
-  background: transparent !important;
-  font-family: "Adobe Clean", "Helvetica Neue", Arial, sans-serif !important;
+  font-family: "Adobe Clean","Helvetica Neue",Arial,sans-serif !important;
 }
 
 /* Toolbar */
@@ -48,12 +47,13 @@
   color: #222 !important;
 }
 
-/* Grid – white cells, visible borders */
+/* Grid – white background everywhere */
 .block.calendar .fc,
 .block.calendar .fc table,
 .block.calendar .fc td,
 .block.calendar .fc th,
-.block.calendar .fc-daygrid-day {
+.block.calendar .fc-daygrid-day,
+.block.calendar .fc-col-header-cell {
   background: #fff !important;
   border-color: #eee !important;
 }
@@ -72,8 +72,8 @@
 }
 
 .block.calendar .fc-day-today .fc-daygrid-day-number {
-  color: #f2f2f2 !important;
-  background-color: #7e6d5f;
+  color: #333 !important;
+  font-weight: 600 !important;
 }
 
 /* Hover on arrows */
@@ -82,21 +82,73 @@
   background: #e6e6e6 !important;
 }
 
-/* FullCalendar container – natural block flow */
+/* FullCalendar container – normal block flow */
 .block.calendar .calendar-full {
   display: block;
 }
 
+.block.calendar .fc-daygrid-event-harness,
 .block.calendar .fc-daygrid-day-events,
-.block.calendar .fc-event {
+.block.calendar .fc-event,
+.block.calendar .fc-daygrid-event {
   display: none !important;
 }
 
+/* Ensure day cells keep their height */
 .block.calendar .fc-daygrid-day-frame {
   min-height: 100% !important;
+  position: relative;
 }
 
-.block.calendar .fc .fc-daygrid-day-top {
-    text-align: center;
-    padding: 20% 0 20% 0;
+/* Center day numbers */
+.block.calendar .fc-daygrid-day-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.block.calendar .fc-daygrid-day {
+  border: 1px solid #e0e0e0 !important;
+  background: #fff !important;
+}
+
+/* Header (Sun, Mon, ...) */
+.block.calendar .fc-col-header-cell {
+  border: 1px solid #e0e0e0 !important;
+  background: #f9f9f9 !important;
+  font-weight: 600 !important;
+  color: #555 !important;
+}
+
+/* Remove double borders (top/left) to avoid thick lines */
+.block.calendar .fc-daygrid-day.fc-daygrid-day-top {
+  border-top: 1px solid #e0e0e0 !important;
+}
+.block.calendar .fc-daygrid-day:first-child {
+  border-left: 1px solid #e0e0e0 !important;
+}
+
+/* Today cell – slightly darker border */
+.block.calendar .fc-day-today {
+  border: 2px solid #7e6d5f !important;
+  background: #fdf8f5 !important;
+  border-radius: 8px !important;
+}
+
+.block.calendar .fc-daygrid-day {
+  border: 1px solid #e0e0e0 !important;
+  background: #fff !important;
+}
+
+.block.calendar .fc-col-header-cell {
+  border: 1px solid #e0e0e0 !important;
+  background: #f9f9f9 !important;
+  font-weight: 600 !important;
+  color: #555 !important;
+}
+
+.block.calendar .fc-day-today {
+  border: 2px solid #7e6d5f !important;
+  background: #fdf8f5 !important;
+  border-radius: 8px !important;
 }
