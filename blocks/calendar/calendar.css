@@ -1,5 +1,5 @@
 .block.calendar {
-  background-color: #ffffff;
+  background-color: #fff; /* white card background */
   border-radius: 16px;
   padding: 1.5rem;
   max-width: 380px;
@@ -8,14 +8,16 @@
   color: #333;
 }
 
+/* Reset inherited colors and fonts from parent */
 .block.calendar * {
   color: #333 !important;
   background: transparent;
   font-family: "Adobe Clean", "Helvetica Neue", Arial, sans-serif;
 }
 
+/* FullCalendar toolbar tweaks */
 .block.calendar .fc {
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 12px;
 }
 
@@ -53,6 +55,7 @@
   border-radius: 8px;
 }
 
+/* Prevent red bleed-through from page background */
 .block.calendar .fc-scrollgrid {
-  background-color: #ffffff !important;
+  background-color: #fff !important;
 }
