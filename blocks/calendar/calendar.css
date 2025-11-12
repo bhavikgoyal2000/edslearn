@@ -92,3 +92,12 @@
 .block.calendar .calendar-full {
   display: block;
 }
+
+.block.calendar .fc-daygrid-day-events,
+.block.calendar .fc-event {
+  display: none !important;
+}
+
+.block.calendar .fc-daygrid-day-frame {
+  min-height: 100% !important;
+}
