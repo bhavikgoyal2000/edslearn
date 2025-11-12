@@ -57,15 +57,15 @@ export default async function decorate(block) {
 
   calendar.render();
   setTimeout(() => {
-  const style = document.createElement('style');
-  style.textContent = `
-    .block.calendar .fc table *,
-    .block.calendar .fc td,
-    .block.calendar .fc th {
-      background: #fff !important;
-      color: #333 !important;
-    }
-  `;
-  document.head.appendChild(style);
-}, 100);
+    const style = document.createElement('style');
+    style.textContent = `
+      .block.calendar .fc table *,
+      .block.calendar .fc td,
+      .block.calendar .fc th {
+        background: #fff !important;
+        color: #333 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }, 100);
 }
