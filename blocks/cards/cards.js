@@ -1,17 +1,63 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+/* eslint-disable no-console */
+export default async function decorate(block) {
+  /**
+   * Loads FullCalendar from CDN if not already present.
+   */
+  async function loadFullCalendar() {
+    if (window.FullCalendar) return Promise.resolve();
 
-export default function decorate(block) {
-  /* change to ul, li */
-  const ul = document.createElement('ul');
-  [...block.children].forEach((row) => {
-    const li = document.createElement('li');
-    while (row.firstElementChild) li.append(row.firstElementChild);
-    [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
+    document.head.appendChild(css);
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
+    document.head.appendChild(script);
+
+    return new Promise((resolve) => {
+      script.addEventListener('load', () => resolve());
     });
-    ul.append(li);
+  }
+
+  // Wait until the library is loaded before continuing
+  await loadFullCalendar();
+
+  // Build the DOM container for FullCalendar
+  const calendarEl = document.createElement('div');
+  calendarEl.classList.add('calendar-full');
+  block.textContent = ''; // clear placeholder content
+  block.appendChild(calendarEl);
+
+  // Initialize the FullCalendar instance
+  const calendar = new window.FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay',
+    },
+    selectable: true,
+    editable: false,
+
+    // Called when a date is clicked
+    dateClick: (info) => {
+      console.log(`Selected date: ${info.dateStr}`);
+
+      // Dispatch a custom event instead of using alert()
+      const event = new CustomEvent('calendar:dateSelected', {
+        detail: { date: info.dateStr },
+      });
+      document.dispatchEvent(event);
+    },
+
+    events: [
+      {
+        title: 'Team Meeting',
+        start: new Date().toISOString().split('T')[0],
+      },
+    ],
   });
-  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
-  block.replaceChildren(ul);
+
+  calendar.render();
 }
