@@ -31,9 +31,9 @@ export default async function decorate(block) {
   const calendar = new window.FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     headerToolbar: {
-      left:  'prev,next today',
+      left: 'prev,next today',
       center: 'title',
-      right:  '' 
+      right: '',
     },
     selectable: true,
     editable: false,
@@ -41,7 +41,7 @@ export default async function decorate(block) {
       console.log(`Selected date: ${info.dateStr}`);
 
       document.dispatchEvent(
-        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } })
+        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
       );
     },
     events: [
