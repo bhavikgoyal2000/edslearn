@@ -4,11 +4,13 @@
   padding: 1.5rem;
   margin: 2rem auto;
   width: 25%;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
+  max-width: 380px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
   color: #333;
   overflow: hidden;
 }
 
+/* Force every inner element to be dark text on white */
 .block.calendar *,
 .block.calendar .fc * {
   color: #333 !important;
@@ -16,27 +18,22 @@
   font-family: "Adobe Clean", "Helvetica Neue", Arial, sans-serif !important;
 }
 
+/* Toolbar */
 .block.calendar .fc-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 0;
-  font-size: 0.95rem;
+  padding: .5rem 0;
+  font-size: .95rem;
 }
 
-.block.calendar .fc-toolbar .fc-toolbar-chunk:last-child {
+/* Hide any extra toolbar chunks (today button, view switcher) */
+.block.calendar .fc-toolbar .fc-toolbar-chunk:not(:first-child):not(:last-child),
+.block.calendar .fc .fc-button-group {
   display: none !important;
 }
 
-.block.calendar .fc-today-button {
-  background: #f0f0f0 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  padding: 0.25rem 0.75rem !important;
-  font-size: 0.85rem !important;
-  color: #444 !important;
-}
-
+/* Nav arrows */
 .block.calendar .fc-prev-button,
 .block.calendar .fc-next-button {
   background: transparent !important;
@@ -50,25 +47,30 @@
   justify-content: center;
 }
 
+/* Title */
 .block.calendar .fc-toolbar-title {
   font-weight: 600 !important;
   font-size: 1.15rem !important;
   color: #222 !important;
 }
 
+/* Grid – white cells, visible borders */
 .block.calendar .fc,
 .block.calendar .fc table,
 .block.calendar .fc td,
-.block.calendar .fc th {
+.block.calendar .fc th,
+.block.calendar .fc-daygrid-day {
   background: #fff !important;
   border-color: #eee !important;
 }
 
+/* Day numbers */
 .block.calendar .fc-daygrid-day-number {
   color: #333 !important;
   font-weight: 500 !important;
 }
 
+/* Today highlight */
 .block.calendar .fc-day-today {
   background: #f2f2f2 !important;
   border: 1px solid #bbb !important;
@@ -80,12 +82,13 @@
   font-weight: 600 !important;
 }
 
+/* Hover on arrows */
 .block.calendar .fc-prev-button:hover,
-.block.calendar .fc-next-button:hover,
-.block.calendar .fc-today-button:hover {
+.block.calendar .fc-next-button:hover {
   background: #e6e6e6 !important;
 }
 
+/* FullCalendar container – natural block flow */
 .block.calendar .calendar-full {
   display: block;
 }
