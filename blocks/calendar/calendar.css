@@ -1,61 +1,85 @@
 .block.calendar {
-  background-color: #fff; /* white card background */
+  background-color: #fff !important;
   border-radius: 16px;
   padding: 1.5rem;
   max-width: 380px;
   margin: 2rem auto;
   box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
   color: #333;
+  position: relative;
+  isolation: isolate; /* Prevents background bleed */
+  overflow: hidden;
 }
 
-/* Reset inherited colors and fonts from parent */
-.block.calendar * {
+/* CRITICAL: Force ALL text and backgrounds */
+.block.calendar *,
+.block.calendar .fc * {
   color: #333 !important;
-  background: transparent;
-  font-family: "Adobe Clean", "Helvetica Neue", Arial, sans-serif;
+  background-color: transparent !important;
+  font-family: "Adobe Clean", "Helvetica Neue", Arial, sans-serif !important;
 }
 
-/* FullCalendar toolbar tweaks */
-.block.calendar .fc {
-  background-color: #fff;
-  border-radius: 12px;
+/* Force calendar container and all inner grids */
+.block.calendar .fc,
+.block.calendar .fc .fc-scrollgrid,
+.block.calendar .fc .fc-scrollgrid table,
+.block.calendar .fc .fc-scrollgrid td,
+.block.calendar .fc .fc-scrollgrid th,
+.block.calendar .fc-daygrid-day,
+.block.calendar .fc-daygrid-day-top {
+  background-color: #fff !important;
+  border-color: #eee !important;
 }
 
-.block.calendar .fc-toolbar-title {
-  color: #444 !important;
-  font-weight: 600;
+/* Day numbers - highest specificity */
+.block.calendar .fc-daygrid-day-number {
+  color: #333 !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
 }
 
+/* Today highlight */
+.block.calendar .fc-day-today {
+  background-color: #f2f2f2 !important;
+  border: 1px solid #bbb !important;
+  border-radius: 8px !important;
+}
+
+.block.calendar .fc-day-today .fc-daygrid-day-number {
+  color: #333 !important;
+  font-weight: 600 !important;
+}
+
+/* Buttons */
 .block.calendar .fc-button {
   background: #e0e0e0 !important;
   border: none !important;
   color: #444 !important;
   border-radius: 8px !important;
-  transition: background 0.2s ease;
 }
 
-.block.calendar .fc-button:hover {
+.block.calendar .fc-button:hover,
+.block.calendar .fc-button:focus {
   background: #d6d6d6 !important;
 }
 
-/* Calendar grid styling */
-.block.calendar .fc-daygrid-day {
-  background-color: #fff;
-  border: 1px solid #eee;
+.block.calendar .fc-button.fc-button-active {
+  background: #cccccc !important;
 }
 
-.block.calendar .fc-daygrid-day-number {
-  color: #333;
-  font-weight: 500;
+/* Toolbar title */
+.block.calendar .fc-toolbar-title {
+  color: #444 !important;
+  font-weight: 600 !important;
 }
 
-.block.calendar .fc-day-today {
-  background-color: #f2f2f2 !important;
-  border: 1px solid #bbb !important;
-  border-radius: 8px;
+/* Month/Week/Day switcher buttons */
+.block.calendar .fc-toolbar .fc-button-group .fc-button {
+  background: #f0f0f0 !important;
+  color: #555 !important;
 }
 
-/* Prevent red bleed-through from page background */
-.block.calendar .fc-scrollgrid {
-  background-color: #fff !important;
+.block.calendar .fc-toolbar .fc-button-group .fc-button.fc-button-active {
+  background: #e0e0e0 !important;
+  font-weight: 600;
 }
