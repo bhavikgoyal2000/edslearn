@@ -30,7 +30,7 @@ export default async function decorate(block) {
     headerToolbar: {
       left: 'prev',
       center: 'title',
-      right: 'next'
+      right: 'next',
     },
     height: 'auto',
     selectable: true,
