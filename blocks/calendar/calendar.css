@@ -1,0 +1,36 @@
+.block.calendar {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.block.calendar .fc {
+  font-family: 'Adobe Clean', sans-serif;
+  color: #333;
+}
+
+.block.calendar .fc-toolbar-title {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.block.calendar .fc-button {
+  background: #1976d2;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  transition: background 0.2s ease;
+}
+
+.block.calendar .fc-button:hover {
+  background: #1565c0;
+}
+
+.block.calendar .fc-daygrid-day:hover {
+  background: #e3f2fd;
+}
