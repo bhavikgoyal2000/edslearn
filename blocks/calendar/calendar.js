@@ -44,12 +44,12 @@ export default async function decorate(block) {
     selectable: true,
     editable: false,
     dateClick(info) {
-      document.querySelectorAll('.fc-daygrid-day.fc-day-selected')
-              .forEach(el => el.classList.remove('fc-day-selected'));
+      document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach(el => el.classList.remove('fc-day-selected'));
 
       info.dayEl.classList.add('fc-day-selected');
 
       console.log(`Selected date: ${info.dateStr}`);
+      alert(`Selected date: ${info.dateStr}`);
       document.dispatchEvent(
         new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
       );
