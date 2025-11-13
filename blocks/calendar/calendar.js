@@ -42,19 +42,37 @@ export default async function decorate(block) {
     },
     height: 'auto',
     selectable: true,
-    editable: false,
+    selectMirror: true,
+    unselectAuto: false,
     dateClick(info) {
-      document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => el.classList.remove('fc-day-selected'));
-      document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
+      // document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => el.classList.remove('fc-day-selected'));
+      // document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
 
-      info.dayEl.classList.add('fc-day-selected');
+      // info.dayEl.classList.add('fc-day-selected');
+
+      // console.log(`Selected date: ${info.dateStr}`);
+      // window.alert(`Selected date: ${info.dateStr}`);
+      // document.dispatchEvent(
+      //   new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
+      // );
+
+      calendar.select(info.date); // This handles selection visually
 
       console.log(`Selected date: ${info.dateStr}`);
       window.alert(`Selected date: ${info.dateStr}`);
+
       document.dispatchEvent(
-        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
+        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } })
       );
     },
+    viewDidMount() {
+      // Reset today highlight if no selection
+      const selected = calendar.getEvents().some(e => e.display === 'background');
+      if (!selected) {
+        const todayEl = calendarEl.querySelector('.fc-day-today');
+        if (todayEl) todayEl.classList.add('fc-day-today');
+      }
+    }
   });
 
   calendar.render();
