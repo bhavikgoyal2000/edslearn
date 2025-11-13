@@ -60,6 +60,7 @@
 }
 
 .block.calendar .fc-col-header-cell a:hover {
+  color: unset !important;
   text-decoration: none !important;
 }
 
@@ -96,7 +97,6 @@
 }
 
 .block.calendar .fc-daygrid-day-top a:hover {
-  color: unset !important;
   text-decoration: none !important;
 }
 
