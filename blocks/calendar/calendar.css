@@ -1,4 +1,4 @@
-/* ──────────────────────── Calendar Card ──────────────────────── */
+/* ───────────────────── Calendar Card ───────────────────── */
 .block.calendar {
   background:#fff !important;
   border-radius:16px;
@@ -11,13 +11,12 @@
   font-family:"Adobe Clean","Helvetica Neue",Arial,sans-serif;
 }
 
-/* ───── Toolbar ───── */
+/* Toolbar */
 .block.calendar .fc .fc-toolbar {
   display:flex;
   align-items:center;
   justify-content:space-between;
   padding:.5rem 0;
-  font-size:.95rem;
 }
 
 .block.calendar .fc-toolbar-title{
@@ -43,7 +42,7 @@
   border-radius:50%;
 }
 
-/* ───── Header (Sun-Mon…) ───── */
+/* Header */
 .block.calendar .fc-col-header-cell{
   background:#f9f9f9 !important;
   font-weight:600 !important;
@@ -52,7 +51,7 @@
   text-align:center;
 }
 
-/* ───── Day cells ───── */
+/* Day cells – clean 1px border */
 .block.calendar .fc-daygrid-day{
   border:1px solid #e0e0e0 !important;
   background:#fff !important;
@@ -70,7 +69,7 @@
   font-size:.95rem;
 }
 
-/* ───── Today ───── */
+/* Today */
 .block.calendar .fc-day-today{
   background:#fdf8f5 !important;
   border:2px solid #7e6d5f !important;
@@ -82,7 +81,7 @@
   font-weight:600 !important;
 }
 
-/* ───── Selected (clicked) date ───── */
+/* SELECTED DATE – BROWN BG */
 .block.calendar .fc-daygrid-day.fc-day-selected{
   background:#7e6d5f !important;
 }
@@ -92,12 +91,11 @@
   font-weight:600 !important;
 }
 
-/* ───── Hide events ───── */
+/* Hide events */
 .block.calendar .fc-daygrid-event-harness,
 .block.calendar .fc-daygrid-day-events,
 .block.calendar .fc-event{
   display:none !important;
 }
 
-/* ───── Force inner container visible ───── */
 .block.calendar .calendar-full{display:block;}
