@@ -59,9 +59,14 @@
   font-size: 1.2rem;
 }
 
+.block.calendar .fc-col-header-cell a:hover {
+    color: unset !important;
+    text-decoration: none !important;
+}
+
 /* Day cells – clean 1px border */
 .block.calendar .fc-daygrid-day{
-  border:1px solid #e0e0e0 !important;
+  border:1px solid #d0c4b6 !important;
   background:#fff !important;
 }
 
