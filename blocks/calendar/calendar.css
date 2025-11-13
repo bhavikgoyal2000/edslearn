@@ -56,6 +56,15 @@
   background:#fff !important;
 }
 
+.block.calendar .fc-day-today{
+  background:#7e6d5f !important;
+}
+
+.block.calendar .fc-day-today .fc-daygrid-day-number{
+  color:#fff !important;
+  font-weight:100 !important;
+}
+
 .fc table {
   border-collapse: separate !important;
   border-spacing: 1px;
