@@ -102,6 +102,11 @@
 
 .block.calendar .fc-daygrid-day.fc-day-selected{
   background:#7e6d5f !important;
+  background-color: #7e6d5f !important;
+}
+
+.block.calendar .fc-daygrid-day.fc-day-selected[style] {
+  background-color: #7e6d5f !important;
 }
 
 .block.calendar .fc-daygrid-day.fc-day-selected .fc-daygrid-day-number{
