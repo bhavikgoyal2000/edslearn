@@ -20,6 +20,12 @@
   border-right: inherit;
 }
 
+.block.calendar  .fc .fc-scrollgrid-section-sticky > * {
+  background: var(--fc-page-bg-color);
+  position: sticky;
+  z-index: 1;
+}
+
 /* Toolbar */
 .block.calendar .fc .fc-toolbar {
   display:flex;
