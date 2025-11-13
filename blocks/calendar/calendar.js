@@ -45,6 +45,7 @@ export default async function decorate(block) {
     editable: false,
     dateClick(info) {
       document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => el.classList.remove('fc-day-selected'));
+      document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
 
       info.dayEl.classList.add('fc-day-selected');
 

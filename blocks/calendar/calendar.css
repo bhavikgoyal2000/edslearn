@@ -1,14 +1,23 @@
 /* ───────────────────── Calendar Card ───────────────────── */
 .block.calendar {
   background:#fff !important;
-  border-radius:16px;
   padding:1.5rem;
   margin:2rem auto;
   width:25%;
   max-width:380px;
-  box-shadow:0 4px 16px rgb(0 0 0 / 10%);
   overflow:hidden;
   font-family:"Adobe Clean","Helvetica Neue",Arial,sans-serif;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border: none !important;
+}
+
+.block.calendar .fc .fc-scrollgrid-section > * {
+  border-left-width: 0px;
+  border-top-width: 0px;
+  border-bottom: 0px;
+  border-right: 0px;
 }
 
 /* Toolbar */
