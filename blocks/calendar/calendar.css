@@ -73,18 +73,6 @@
   font-size:.95rem;
 }
 
-/* Today */
-.block.calendar .fc-day-today{
-  background:#fdf8f5 !important;
-  border:2px solid #7e6d5f !important;
-  border-radius:8px !important;
-}
-
-.block.calendar .fc-day-today .fc-daygrid-day-number{
-  color:#7e6d5f !important;
-  font-weight:600 !important;
-}
-
 /* SELECTED DATE – BROWN BG */
 .block.calendar .fc-daygrid-day.fc-day-selected{
   background:#7e6d5f !important;
