@@ -26,6 +26,7 @@ async function loadFullCalendar() {
 }
 
 export default async function decorate(block) {
+  debugger;
   await loadFullCalendar();
 
   const calendarEl = document.createElement('div');
@@ -55,12 +56,6 @@ export default async function decorate(block) {
       document.dispatchEvent(
         new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
       );
-    },
-    viewDidMount() {
-      calendarEl.style.display = 'none';
-      // eslint‑disable‑next‑line no-void
-      void calendarEl.offsetHeight;   // <-- explicit void, satisfies linter
-      calendarEl.style.display = '';
     },
   });
 
