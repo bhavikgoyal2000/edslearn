@@ -58,7 +58,8 @@ export default async function decorate(block) {
     },
     viewDidMount() {
       calendarEl.style.display = 'none';
-      void calendarEl.offsetHeight;
+      // eslint‑disable‑next‑line no-void
+      void calendarEl.offsetHeight;   // <-- explicit void, satisfies linter
       calendarEl.style.display = '';
     },
   });
