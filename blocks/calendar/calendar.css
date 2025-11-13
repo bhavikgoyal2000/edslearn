@@ -60,6 +60,12 @@
   background:#7e6d5f !important;
 }
 
+.block.calendar .fc-daygrid-day-number{
+  color:#333 !important;
+  font-weight:500 !important;
+  font-size:.95rem;
+}
+
 .block.calendar .fc-day-today .fc-daygrid-day-number{
   color:#fff !important;
   font-weight:100 !important;
@@ -74,12 +80,6 @@
   display:flex;
   justify-content:center;
   padding:4px 0;
-}
-
-.block.calendar .fc-daygrid-day-number{
-  color:#333 !important;
-  font-weight:500 !important;
-  font-size:.95rem;
 }
 
 /* SELECTED DATE – BROWN BG */
