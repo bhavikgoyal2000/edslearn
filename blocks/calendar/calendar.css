@@ -1,93 +1,96 @@
+/* ──────────────────────── Calendar Card ──────────────────────── */
 .block.calendar {
-  background: #fff !important;
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin: 2rem auto;
-  width: 25%;
-  max-width: 380px;
-  box-shadow: 0 4px 16px rgb(0 0 0 / 10%);
-  overflow: hidden;
-  font-family: "Adobe Clean","Helvetica Neue",Arial,sans-serif;
+  background:#fff !important;
+  border-radius:16px;
+  padding:1.5rem;
+  margin:2rem auto;
+  width:25%;
+  max-width:380px;
+  box-shadow:0 4px 16px rgb(0 0 0 / 10%);
+  overflow:hidden;
+  font-family:"Adobe Clean","Helvetica Neue",Arial,sans-serif;
 }
 
-/* Toolbar */
-.block.calendar .fc-toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .5rem 0;
-  font-size: .95rem;
+/* ───── Toolbar ───── */
+.block.calendar .fc .fc-toolbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:.5rem 0;
+  font-size:.95rem;
 }
-
+.block.calendar .fc-toolbar-title{
+  font-weight:600 !important;
+  font-size:1.15rem !important;
+  color:#222 !important;
+}
 .block.calendar .fc-prev-button,
-.block.calendar .fc-next-button {
-  background: transparent !important;
-  border: none !important;
-  color: #555 !important;
-  font-size: 1.2rem !important;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.block.calendar .fc-next-button{
+  background:transparent !important;
+  border:none !important;
+  color:#555 !important;
+  font-size:1.2rem !important;
+  width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
 }
-
-.block.calendar .fc-toolbar-title {
-  font-weight: 600 !important;
-  font-size: 1.15rem !important;
-  color: #222 !important;
-}
-
 .block.calendar .fc-prev-button:hover,
-.block.calendar .fc-next-button:hover {
-  background: #e6e6e6 !important;
+.block.calendar .fc-next-button:hover{
+  background:#e6e6e6 !important;
+  border-radius:50%;
 }
 
-/* Header */
-.block.calendar .fc-col-header-cell {
-  background: #f9f9f9 !important;
-  font-weight: 600 !important;
-  color: #555 !important;
-  border: 1px solid #e0e0e0 !important;
+/* ───── Header (Sun-Mon…) ───── */
+.block.calendar .fc-col-header-cell{
+  background:#f9f9f9 !important;
+  font-weight:600 !important;
+  color:#555 !important;
+  border:1px solid #e0e0e0 !important;
+  text-align:center;
 }
 
-/* Day cells */
-.block.calendar .fc-daygrid-day {
-  border: 1px solid #e0e0e0 !important;
-  background: #fff !important;
+/* ───── Day cells ───── */
+.block.calendar .fc-daygrid-day{
+  border:1px solid #e0e0e0 !important;
+  background:#fff !important;
+}
+.block.calendar .fc-daygrid-day-top{
+  display:flex;
+  justify-content:center;
+  padding:4px 0;
+}
+.block.calendar .fc-daygrid-day-number{
+  color:#333 !important;
+  font-weight:500 !important;
+  font-size:.95rem;
 }
 
-.block.calendar .fc-daygrid-day-top {
-  display: flex;
-  justify-content: center;
-  padding: 4px 0;
+/* ───── Today ───── */
+.block.calendar .fc-day-today{
+  background:#fdf8f5 !important;
+  border:2px solid #7e6d5f !important;
+  border-radius:8px !important;
+}
+.block.calendar .fc-day-today .fc-daygrid-day-number{
+  color:#7e6d5f !important;
+  font-weight:600 !important;
 }
 
-.block.calendar .fc-daygrid-day-number {
-  color: #333 !important;
-  font-weight: 500 !important;
-  font-size: 0.95rem;
+/* ───── Selected (clicked) date ───── */
+.block.calendar .fc-daygrid-day.fc-day-selected{
+  background:#7e6d5f !important;
+}
+.block.calendar .fc-daygrid-day.fc-day-selected .fc-daygrid-day-number{
+  color:#fff !important;
+  font-weight:600 !important;
 }
 
-/* Today */
-.block.calendar .fc-day-today {
-  background: #fdf8f5 !important;
-  border: 2px solid #7e6d5f !important;
-  border-radius: 8px !important;
-}
-
-.block.calendar .fc-day-today .fc-daygrid-day-number {
-  color: #7e6d5f !important;
-  font-weight: 600 !important;
-}
-
-/* Hide events */
+/* ───── Hide events ───── */
 .block.calendar .fc-daygrid-event-harness,
 .block.calendar .fc-daygrid-day-events,
-.block.calendar .fc-event {
-  display: none !important;
+.block.calendar .fc-event{
+  display:none !important;
 }
 
-.block.calendar .calendar-full {
-  display: block;
-}
+/* ───── Force inner container visible ───── */
+.block.calendar .calendar-full{display:block;}
