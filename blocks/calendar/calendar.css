@@ -90,6 +90,10 @@
   border-spacing: 1px;
 }
 
+.block.calendar .fc .fc-highlight {
+  background: #7e6d5f !important;
+}
+
 .block.calendar .fc-daygrid-day-top{
   display:flex;
   justify-content:center;
@@ -102,10 +106,6 @@
 
 .block.calendar .fc-daygrid-day.fc-day-selected{
   background:#7e6d5f !important;
-  background-color: #7e6d5f !important;
-}
-
-.block.calendar .fc-daygrid-day.fc-day-selected[style] {
   background-color: #7e6d5f !important;
 }
 
