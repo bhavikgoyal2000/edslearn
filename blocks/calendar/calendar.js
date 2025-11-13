@@ -49,7 +49,7 @@ export default async function decorate(block) {
       info.dayEl.classList.add('fc-day-selected');
 
       console.log(`Selected date: ${info.dateStr}`);
-      alert(`Selected date: ${info.dateStr}`);
+      window.alert(`Selected date: ${info.dateStr}`);
       document.dispatchEvent(
         new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
       );
