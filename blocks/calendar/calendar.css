@@ -58,7 +58,7 @@
 
 .fc table {
   border-collapse: separate !important;
-  border-spacing: 0px;
+  border-spacing: 1px;
 }
 
 .block.calendar .fc-daygrid-day-top{
