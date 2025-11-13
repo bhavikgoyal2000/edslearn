@@ -45,8 +45,10 @@ export default async function decorate(block) {
     selectMirror: true,
     unselectAuto: false,
     dateClick(info) {
-      // document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => el.classList.remove('fc-day-selected'));
-      // document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
+      // document.querySelectorAll('.fc-daygrid-day.fc-day-selected')
+      // .forEach((el) => el.classList.remove('fc-day-selected'));
+      // document.querySelectorAll('.fc-day-today')
+      // .forEach((el) => el.classList.remove('fc-day-today'));
 
       // info.dayEl.classList.add('fc-day-selected');
 
@@ -62,17 +64,17 @@ export default async function decorate(block) {
       window.alert(`Selected date: ${info.dateStr}`);
 
       document.dispatchEvent(
-        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } })
+        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }), 
       );
     },
     viewDidMount() {
       // Reset today highlight if no selection
-      const selected = calendar.getEvents().some(e => e.display === 'background');
+      const selected = calendar.getEvents().some((e) => e.display === 'background');
       if (!selected) {
         const todayEl = calendarEl.querySelector('.fc-day-today');
         if (todayEl) todayEl.classList.add('fc-day-today');
       }
-    }
+    },
   });
 
   calendar.render();
