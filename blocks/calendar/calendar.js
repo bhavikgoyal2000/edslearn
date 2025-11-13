@@ -56,6 +56,11 @@ export default async function decorate(block) {
         new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
       );
     },
+    viewDidMount() {
+      calendarEl.style.display = 'none';
+      void calendarEl.offsetHeight;
+      calendarEl.style.display = '';
+    },
   });
 
   calendar.render();
