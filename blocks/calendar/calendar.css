@@ -60,8 +60,7 @@
 }
 
 .block.calendar .fc-col-header-cell a:hover {
-    color: unset !important;
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 /* Day cells – clean 1px border */
@@ -96,6 +95,11 @@
   padding:4px 0;
 }
 
+.block.calendar .fc-daygrid-day-top a:hover {
+  color: unset !important;
+  text-decoration: none !important;
+}
+
 /* SELECTED DATE – BROWN BG */
 .block.calendar .fc-daygrid-day.fc-day-selected{
   background:#7e6d5f !important;
@@ -103,7 +107,6 @@
 
 .block.calendar .fc-daygrid-day.fc-day-selected .fc-daygrid-day-number{
   color:#fff !important;
-  font-weight:600 !important;
 }
 
 /* Hide events */
