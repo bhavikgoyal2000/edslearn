@@ -14,10 +14,10 @@
 }
 
 .block.calendar .fc .fc-scrollgrid-section > * {
-  border-left-width: 0px;
-  border-top-width: 0px;
-  border-bottom: 0px;
-  border-right: 0px;
+  border-left-width: inherit;
+  border-top-width: inherit;
+  border-bottom: inherit;
+  border-right: inherit;
 }
 
 /* Toolbar */
