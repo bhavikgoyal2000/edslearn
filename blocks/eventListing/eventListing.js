@@ -1,8 +1,8 @@
 export default function decorate(block) {
-    debugger;
+  debugger;
   const wrapper = document.createElement('div');
   wrapper.classList.add('eventlisting-wrapper');
-block.textContent = '';
+  block.textContent = '';
   wrapper.innerHTML = `
     <!-- Header -->
     <div class="eventlisting-header">
@@ -93,6 +93,6 @@ block.textContent = '';
     firstRow.parentElement.classList.toggle('open', isOpen);
     firstArrow.textContent = isOpen ? '▼' : '▶';
   });
-debugger;
+  debugger;
   block.appendChild(wrapper);
 }
