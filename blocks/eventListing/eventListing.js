@@ -1,13 +1,8 @@
-// blocks/eventlisting/eventlisting.js
-
 export default function decorate(block) {
-  // THIS LINE FIXES THE EMPTY DIV PROBLEM
-  block.textContent = '';
-
+    debugger;
   const wrapper = document.createElement('div');
-  wrapper.className = 'eventlisting';
-
-  // =================== FULLY HARDCODED CONTENT ===================
+  wrapper.classList.add('eventlisting-wrapper');
+block.textContent = '';
   wrapper.innerHTML = `
     <!-- Header -->
     <div class="eventlisting-header">
@@ -98,6 +93,6 @@ export default function decorate(block) {
     firstRow.parentElement.classList.toggle('open', isOpen);
     firstArrow.textContent = isOpen ? '▼' : '▶';
   });
-
+debugger;
   block.appendChild(wrapper);
 }
