@@ -26,7 +26,6 @@ async function loadFullCalendar() {
 }
 
 export default async function decorate(block) {
-  debugger;
   await loadFullCalendar();
 
   const calendarEl = document.createElement('div');

@@ -1,10 +1,5 @@
-// eventListing.js
-
 export default async function decorate(block) {
-
-  // ---------------------------------------
-  // 1. HARDCODED JSON (replace later with fetch)
-  // ---------------------------------------
+debugger
   const data = {
     "title": "Tuesday, November 18, 2025",
     "navigation": {
