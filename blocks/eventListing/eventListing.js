@@ -1,5 +1,4 @@
 export default function decorate(block) {
-  debugger;
   const wrapper = document.createElement('div');
   wrapper.classList.add('eventlisting-wrapper');
   block.textContent = '';
@@ -93,6 +92,5 @@ export default function decorate(block) {
     firstRow.parentElement.classList.toggle('open', isOpen);
     firstArrow.textContent = isOpen ? '▼' : '▶';
   });
-  debugger;
   block.appendChild(wrapper);
 }
