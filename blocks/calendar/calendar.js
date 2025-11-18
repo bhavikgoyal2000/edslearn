@@ -31,7 +31,7 @@ export default async function decorate(block) {
   const calendarEl = document.createElement('div');
   calendarEl.classList.add('calendar-full');
   block.textContent = '';
-  block.appendChild(calendarEl);
+  // block.appendChild(calendarEl);
 
   const calendar = new window.FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
@@ -59,4 +59,5 @@ export default async function decorate(block) {
   });
 
   calendar.render();
+  block.appendChild(calendarEl);
 }
