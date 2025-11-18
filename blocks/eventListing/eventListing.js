@@ -1,8 +1,10 @@
 // blocks/eventlisting/eventlisting.js
+export default function decorate(block) {
+  // CLEAR THE DEFAULT EMPTY DIVS — THIS IS THE KEY LINE!
+  block.textContent = '';
 
-export default async function decorate(block) {
-  // Full real data matching your screenshot exactly
-  const calendarData = {
+  // Hardcoded data exactly matching your screenshot (November 18, 2025)
+  const data = {
     displayDate: "Tuesday, November 18, 2025",
     events: [
       {
@@ -11,7 +13,7 @@ export default async function decorate(block) {
         location: "MGSC TBL1 Lobby Information Table 1",
         description: "Thank you card making with aulalac",
         host: "Residence Hall Association (HRL)",
-        moreInfo: true
+        hasExtra: true
       },
       {
         time: "4:00 PM – 6:30 PM",
@@ -38,60 +40,52 @@ export default async function decorate(block) {
     ]
   };
 
-  // Clear the default empty divs
-  block.textContent = '';
-
   const wrapper = document.createElement('div');
-  wrapper.className = 'eventlisting-wrapper';
+  wrapper.className = 'eventlisting';
 
-  // Header
   wrapper.innerHTML = `
     <div class="eventlisting-header">
-      <h2 class="eventlisting-title">${calendarData.displayDate}</h2>
+      <h2>${data.displayDate}</h2>
       <div class="eventlisting-nav">
-        <button type="button">PREVIOUS DAY</button>
-        <button type="button">NEXT DAY</button>
+        <button>PREVIOUS DAY</button>
+        <button>NEXT DAY</button>
       </div>
     </div>
   `;
 
-  // Today's events
-  calendarData.events.forEach(event => {
-    const hasExtra = event.description || event.host || event.moreInfo;
+  data.events.forEach(event => {
     const item = document.createElement('div');
     item.className = 'eventlisting-item';
 
     item.innerHTML = `
-      <div class="eventlisting-header-row ${hasExtra ? 'clickable' : ''}">
-        ${hasExtra ? '<span class="eventlisting-toggle">›</span>' : '<span class="eventlisting-toggle no-toggle"></span>'}
-        <div class="eventlisting-time">${event.time}</div>
-        <div class="eventlisting-info">
+      <div class="eventlisting-row ${event.hasExtra ? 'expandable' : ''}">
+        ${event.hasExtra ? '<span class="arrow">▶</span>' : '<span class="arrow no-arrow"></span>'}
+        <div class="time">${event.time}</div>
+        <div class="details">
           <h3>${event.title}</h3>
-          <div class="eventlisting-location">${event.location}</div>
+          <p class="location">${event.location}</p>
         </div>
       </div>
-      ${hasExtra ? `
-        <div class="eventlisting-details">
-          ${event.description ? `<p>${event.description}</p>` : ''}
-          ${event.host ? `<p><strong>Host:</strong> ${event.host}</p>` : ''}
-          <div class="eventlisting-actions">
-            <a href="javascript:void(0)">Export to Calendar</a>
-            <a href="javascript:void(0)">Email this item</a>
-          </div>
+      ${event.hasExtra ? `
+      <div class="extra">
+        <p>${event.description}</p>
+        <p><strong>Host:</strong> ${event.host}</p>
+        <div class="actions">
+          <a href="#">Export to Calendar</a>
+          <a href="#">Email this item</a>
         </div>
-      ` : ''}
+      </div>` : ''}
     `;
 
-    if (hasExtra) {
-      const headerRow = item.querySelector('.eventlisting-header-row');
-      const details = item.querySelector('.eventlisting-details');
-      const toggle = item.querySelector('.eventlisting-toggle');
+    if (event.hasExtra) {
+      const row = item.querySelector('.eventlisting-row');
+      const extra = item.querySelector('.extra');
+      const arrow = item.querySelector('.arrow');
 
-      headerRow.addEventListener('click', () => {
-        const isOpen = details.classList.contains('open');
-        details.classList.toggle('open', !isOpen);
-        item.classList.toggle('open', !isOpen);
-        toggle.textContent = isOpen ? '›' : '↓';
+      row.addEventListener('click', () => {
+        const open = extra.classList.toggle('open');
+        item.classList.toggle('open', open);
+        arrow.textContent = open ? '▼' : '▶';
       });
     }
 
@@ -99,21 +93,19 @@ export default async function decorate(block) {
   });
 
   // Upcoming section
-  if (calendarData.upcoming.length > 0) {
-    const upcoming = document.createElement('div');
-    upcoming.className = 'eventlisting-upcoming';
-    upcoming.innerHTML = `<h3>After November 18, 2025</h3>`;
-    calendarData.upcoming.forEach(ev => {
-      upcoming.innerHTML += `
-        <div class="eventlisting-upcoming-item">
-          <span class="eventlisting-toggle no-toggle"></span>
-          <div class="eventlisting-upcoming-date">${ev.day}</div>
-          <div><strong>${ev.title}</strong><br>${ev.location}</div>
-        </div>
-      `;
-    });
-    wrapper.appendChild(upcoming);
-  }
+  const upcoming = document.createElement('div');
+  upcoming.className = 'eventlisting-upcoming';
+  upcoming.innerHTML = `<h3>After November 18, 2025</h3>`;
+  data.upcoming.forEach(u => {
+    upcoming.innerHTML += `
+      <div class="upcoming-item">
+        <span class="arrow no-arrow"></span>
+        <div class="upcoming-day">${u.day}</div>
+        <div><strong>${u.title}</strong><br>${u.location}</div>
+      </div>
+    `;
+  });
+  wrapper.appendChild(upcoming);
 
   block.appendChild(wrapper);
 }
