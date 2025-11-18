@@ -1,149 +1,127 @@
-.eventcalendar {
-  font-family: Arial, Helvetica, sans-serif;
-  max-width: 900px;
+.eventlisting-wrapper {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 960px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
-.eventcalendar-header {
+.eventlisting-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-.eventcalendar-title {
+.eventlisting-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
   margin: 0;
+  color: #222;
 }
 
-.eventcalendar-nav {
-  display: flex;
-  gap: 1rem;
-}
-
-.eventcalendar-nav button {
-  background: #f0f0f0;
-  border: 1px solid #ccc;
+.eventlisting-nav button {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
   padding: 0.5rem 1rem;
-  cursor: pointer;
   border-radius: 4px;
-}
-
-.eventcalendar-nav button:hover {
-  background: #e0e0e0;
-}
-
-.event-item {
-  border-bottom: 1px solid #ddd;
-  transition: background 0.2s;
-}
-
-.event-item.closed {
   cursor: pointer;
 }
 
-.event-item.closed:hover {
-  background: #f9f9f9;
+.eventlisting-item {
+  border-bottom: 1px solid #eee;
 }
 
-.event-header {
+.eventlisting-header-row {
   display: flex;
   align-items: flex-start;
   padding: 1rem 0;
   gap: 1rem;
-  position: relative;
+  cursor: default;
 }
 
-.event-time {
+.eventlisting-header-row.clickable {
+  cursor: pointer;
+}
+
+.eventlisting-header-row.clickable:hover {
+  background: #f9f9f9;
+}
+
+.eventlisting-toggle {
+  font-size: 1.4rem;
+  width: 24px;
+  text-align: center;
+  color: #0066cc;
+  transition: transform .2s;
+}
+
+.eventlisting-time {
   min-width: 140px;
   font-weight: bold;
-  color: #0056b3;
+  color: #0066cc;
   font-size: 0.95rem;
 }
 
-.event-toggle {
-  color: #0056b3;
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  transition: transform 0.2s;
-}
-
-.event-toggle.closed::before {
-  content: "❯";
-}
-
-.event-toggle.opened::before {
-  content: "❮";
-  transform: rotate(90deg);
-}
-
-.event-details h3 {
-  margin: 0 0 0.35rem 0;
+.eventlisting-info h3 {
+  margin: 0 0 0.35rem;
   font-size: 1.1rem;
-  color: #333;
+  color: #222;
 }
 
-.event-location {
+.eventlisting-location {
   font-size: 0.9rem;
   color: #555;
-  margin: 0.25rem 0;
 }
 
-.event-extra {
-  padding: 1rem 0 1rem 160px;
+.eventlisting-details {
+  padding: 0 0 1rem 164px;
   background: #f8f9fa;
   border-top: 1px solid #eee;
   display: none;
 }
 
-.event-extra.open {
+.eventlisting-details.open {
   display: block;
 }
 
-.event-extra p {
-  margin: 0.5rem 0;
-  color: #444;
+.eventlisting-item.open .eventlisting-toggle {
+  transform: rotate(90deg);
 }
 
-.event-actions {
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.event-actions a {
-  color: #0056b3;
+.eventlisting-actions a {
+  color: #0066cc;
   text-decoration: none;
+  margin-right: 1.5rem;
   font-size: 0.9rem;
 }
 
-.event-actions a:hover {
+.eventlisting-actions a:hover {
   text-decoration: underline;
 }
 
-.upcoming-section {
+.eventlisting-upcoming {
   margin-top: 3rem;
 }
 
-.upcoming-title {
-  font-size: 1.5rem;
-  color: #333;
-  border-bottom: 2px solid #0056b3;
+.eventlisting-upcoming h3 {
+  font-size: 1.6rem;
+  border-bottom: 2px solid #0066cc;
   padding-bottom: 0.5rem;
+  color: #222;
 }
 
-.upcoming-item {
+.eventlisting-upcoming-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1rem 0;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #ddd;
 }
 
-.upcoming-date {
+.eventlisting-upcoming-date {
   font-weight: bold;
-  color: #0056b3;
+  color: #0066cc;
+  min-width: 120px;
 }

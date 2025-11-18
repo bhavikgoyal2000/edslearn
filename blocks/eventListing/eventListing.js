@@ -1,107 +1,119 @@
-// blocks/eventcalendar/eventcalendar.js
+// blocks/eventlisting/eventlisting.js
 
 export default async function decorate(block) {
-  // You can fetch real JSON later — for now we use inline sample
+  // Full real data matching your screenshot exactly
   const calendarData = {
-    currentDate: "2025-11-18",
     displayDate: "Tuesday, November 18, 2025",
     events: [
-      { time: "2:00 PM – 5:00 PM", title: "Care for Custodians", location: "MGSC TBL1 Lobby Information Table 1", host: "Residence Hall Association (HRL)", type: null, moreInfo: "Event Page", description: "Thank you card making with aulalac" },
-      { time: "4:00 PM – 6:30 PM", title: "National Security & The Intelligence Community Industry Week Networking Reception", location: "CNST 115 Meeting Room" },
-      { time: "5:00 PM – 6:00 PM", title: "Leadership Listening Party", location: "MGSC 327* Meeting Room" },
-      { time: "5:30 PM – 6:30 PM", title: "BRASA Game Night", location: "DMT 110 Classroom" }
+      {
+        time: "2:00 PM – 5:00 PM",
+        title: "Care for Custodians",
+        location: "MGSC TBL1 Lobby Information Table 1",
+        description: "Thank you card making with aulalac",
+        host: "Residence Hall Association (HRL)",
+        moreInfo: true
+      },
+      {
+        time: "4:00 PM – 6:30 PM",
+        title: "National Security & The Intelligence Community Industry Week Networking Reception",
+        location: "CNST 115 Meeting Room"
+      },
+      {
+        time: "5:00 PM – 6:00 PM",
+        title: "Leadership Listening Party",
+        location: "MGSC 327* Meeting Room"
+      },
+      {
+        time: "5:30 PM – 6:30 PM",
+        title: "BRASA Game Night",
+        location: "DMT 110 Classroom"
+      }
     ],
     upcoming: [
-      { date: "2025-11-19", day: "Wed, 11/19/2025", title: "Guns Down DC Fundraising", location: "QUAD-TBL2 Friedheim Quadrangle Info Table" }
+      {
+        day: "Wed, 11/19/2025",
+        title: "Guns Down DC Fundraising",
+        location: "QUAD-TBL2 Friedheim Quadrangle Info Table"
+      }
     ]
   };
 
-  block.textContent = ''; // clear loading content
+  // Clear the default empty divs
+  block.textContent = '';
 
-  const container = document.createElement('div');
-  container.className = 'eventcalendar';
+  const wrapper = document.createElement('div');
+  wrapper.className = 'eventlisting-wrapper';
 
   // Header
-  const header = document.createElement('div');
-  header.className = 'eventcalendar-header';
-  header.innerHTML = `
-    <h2 class="eventcalendar-title">${calendarData.displayDate}</h2>
-    <div class="eventcalendar-nav">
-      <button>PREVIOUS DAY</button>
-      <button>NEXT DAY</button>
+  wrapper.innerHTML = `
+    <div class="eventlisting-header">
+      <h2 class="eventlisting-title">${calendarData.displayDate}</h2>
+      <div class="eventlisting-nav">
+        <button type="button">PREVIOUS DAY</button>
+        <button type="button">NEXT DAY</button>
+      </div>
     </div>
   `;
-  container.appendChild(header);
 
-  // Today's Events
+  // Today's events
   calendarData.events.forEach(event => {
     const hasExtra = event.description || event.host || event.moreInfo;
+    const item = document.createElement('div');
+    item.className = 'eventlisting-item';
 
-    const eventItem = document.createElement('div');
-    eventItem.className = `event-item ${hasExtra ? 'closed' : ''}`;
-
-    const toggleClass = hasExtra ? 'event-toggle closed' : 'event-toggle';
-    const toggleSymbol = hasExtra ? '<span class="event-toggle closed"></span>' : '';
-
-    eventItem.innerHTML = `
-      <div class="event-header">
-        ${toggleSymbol}
-        <div class="event-time">${event.time}</div>
-        <div class="event-details">
+    item.innerHTML = `
+      <div class="eventlisting-header-row ${hasExtra ? 'clickable' : ''}">
+        ${hasExtra ? '<span class="eventlisting-toggle">›</span>' : '<span class="eventlisting-toggle no-toggle"></span>'}
+        <div class="eventlisting-time">${event.time}</div>
+        <div class="eventlisting-info">
           <h3>${event.title}</h3>
-          <div class="event-location">${event.location}</div>
+          <div class="eventlisting-location">${event.location}</div>
         </div>
       </div>
       ${hasExtra ? `
-      <div class="event-extra">
-        ${event.description ? `<p>${event.description}</p>` : ''}
-        ${event.host ? `<p><strong>Host:</strong> ${event.host}</p>` : ''}
-        ${event.moreInfo ? `
-          <div class="event-actions">
-            <a href="#">Export to Calendar</a>
-            <a href="#">Email this item</a>
+        <div class="eventlisting-details">
+          ${event.description ? `<p>${event.description}</p>` : ''}
+          ${event.host ? `<p><strong>Host:</strong> ${event.host}</p>` : ''}
+          <div class="eventlisting-actions">
+            <a href="javascript:void(0)">Export to Calendar</a>
+            <a href="javascript:void(0)">Email this item</a>
           </div>
-        ` : ''}
-      </div>` : ''}
+        </div>
+      ` : ''}
     `;
 
-    // Accordion behavior
     if (hasExtra) {
-      const headerEl = eventItem.querySelector('.event-header');
-      const extraEl = eventItem.querySelector('.event-extra');
-      const toggleEl = eventItem.querySelector('.event-toggle');
+      const headerRow = item.querySelector('.eventlisting-header-row');
+      const details = item.querySelector('.eventlisting-details');
+      const toggle = item.querySelector('.eventlisting-toggle');
 
-      headerEl.addEventListener('click', () => {
-        const isClosed = eventItem.classList.contains('closed');
-        eventItem.classList.toggle('closed', !isClosed);
-        toggleEl.classList.toggle('closed', !isClosed);
-        toggleEl.classList.toggle('opened', isClosed);
-        extraEl.classList.toggle('open', isClosed);
+      headerRow.addEventListener('click', () => {
+        const isOpen = details.classList.contains('open');
+        details.classList.toggle('open', !isOpen);
+        item.classList.toggle('open', !isOpen);
+        toggle.textContent = isOpen ? '›' : '↓';
       });
     }
 
-    container.appendChild(eventItem);
+    wrapper.appendChild(item);
   });
 
   // Upcoming section
-  if (calendarData.upcoming.length) {
-    const upcomingSection = document.createElement('div');
-    upcomingSection.className = 'upcoming-section';
-    upcomingSection.innerHTML = `<h3 class="upcoming-title">After November 18, 2025</h3>`;
-
+  if (calendarData.upcoming.length > 0) {
+    const upcoming = document.createElement('div');
+    upcoming.className = 'eventlisting-upcoming';
+    upcoming.innerHTML = `<h3>After November 18, 2025</h3>`;
     calendarData.upcoming.forEach(ev => {
-      const item = document.createElement('div');
-      item.className = 'upcoming-item';
-      item.innerHTML = `
-        <div class="event-toggle"></div>
-        <div class="upcoming-date">${ev.day}</div>
-        <div><strong>${ev.title}</strong><br><> ${ev.location}</div>
+      upcoming.innerHTML += `
+        <div class="eventlisting-upcoming-item">
+          <span class="eventlisting-toggle no-toggle"></span>
+          <div class="eventlisting-upcoming-date">${ev.day}</div>
+          <div><strong>${ev.title}</strong><br>${ev.location}</div>
+        </div>
       `;
-      upcomingSection.appendChild(item);
     });
-
-    container.appendChild(upcomingSection);
+    wrapper.appendChild(upcoming);
   }
 
-  block.appendChild(container);
+  block.appendChild(wrapper);
 }
