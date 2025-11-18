@@ -1,7 +1,7 @@
 .eventlisting {
   max-width: 900px;
   margin: 2rem auto;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .eventlisting-header {
@@ -13,11 +13,7 @@
   margin-bottom: 2rem;
 }
 
-.eventlisting-header h2 {
-  margin: 0;
-  font-size: 2rem;
-  font-weight: bold;
-}
+.eventlisting-header h2 { margin: 0; font-size: 2rem; font-weight: bold; }
 
 .eventlisting-nav button {
   padding: 0.5rem 1rem;
@@ -27,16 +23,13 @@
   cursor: pointer;
 }
 
-.eventlisting-item {
-  border-bottom: 1px solid #eee;
-}
+.eventlisting-item { border-bottom: 1px solid #eee; }
 
 .eventlisting-row {
   display: flex;
   align-items: flex-start;
   padding: 1rem 0;
   gap: 1rem;
-  cursor: default;
 }
 
 .eventlisting-row.expandable {
@@ -60,16 +53,8 @@
   color: #0066cc;
 }
 
-.details h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.1rem;
-}
-
-.location {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #555;
-}
+.details h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+.location { margin: 0; font-size: 0.95rem; color: #555; }
 
 .extra {
   padding: 0 0 1rem 174px;
@@ -78,9 +63,7 @@
   display: none;
 }
 
-.extra.open {
-  display: block;
-}
+.extra.open { display: block; }
 
 .actions a {
   color: #0066cc;
@@ -89,18 +72,11 @@
   font-size: 0.9rem;
 }
 
-.actions a:hover {
-  text-decoration: underline;
-}
+.actions a:hover { text-decoration: underline; }
 
-.eventlisting-item.open .arrow {
-  transform: rotate(90deg);
-}
+.eventlisting-item.open .arrow { transform: rotate(90deg); }
 
-.eventlisting-upcoming {
-  margin-top: 3rem;
-}
-
+.eventlisting-upcoming { margin-top: 3rem; }
 .eventlisting-upcoming h3 {
   font-size: 1.6rem;
   border-bottom: 2px solid #0066cc;
