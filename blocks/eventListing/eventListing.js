@@ -1,6 +1,13 @@
 export default async function decorate(block) {
   // ---------------------------------------
-  // 1. HARD-CODED JSON (API later)
+  // The Franklin rule: every block MUST contain ONE inner div
+  // This is where we inject all content
+  // ---------------------------------------
+  const container = block.querySelector(':scope > div');
+  if (!container) return;
+
+  // ---------------------------------------
+  // 1. HARD-CODED JSON DATA (later replace via fetch)
   // ---------------------------------------
   const data = {
     title: 'Tuesday, November 18, 2025',
@@ -66,10 +73,10 @@ export default async function decorate(block) {
   };
 
   // ---------------------------------------
-  // 2. CLEAN BLOCK
+  // 2. CLEAR INNER CONTAINER
   // ---------------------------------------
-  block.innerHTML = '';
-  block.classList.add('eventListing');
+  container.innerHTML = '';
+  container.classList.add('eventListing');
 
   // ---------------------------------------
   // 3. HEADER
@@ -83,29 +90,32 @@ export default async function decorate(block) {
       <button>${data.navigation.nextLabel}</button>
     </div>
   `;
-  block.append(header);
+  container.append(header);
 
   // ---------------------------------------
-  // 4. EVENT LIST
+  // 4. EVENT LIST WRAPPER
   // ---------------------------------------
   const list = document.createElement('div');
   list.className = 'eventListing-list';
 
   data.events.forEach((evt) => {
+    // -------------------------------------
+    // ROW / ITEM
+    // -------------------------------------
     const row = document.createElement('div');
     row.className = 'eventListing-item';
 
-    // Toggle
+    // TOGGLE (CHEVRON)
     const toggle = document.createElement('button');
     toggle.className = 'eventListing-toggle';
     toggle.innerHTML = '<span class="eventListing-chevron">▾</span>';
 
-    // Time
+    // TIME
     const timeCol = document.createElement('div');
     timeCol.className = 'eventListing-time';
     timeCol.textContent = evt.timeDisplay;
 
-    // Title
+    // TITLE + DESCRIPTION
     const titleCol = document.createElement('div');
     titleCol.className = 'eventListing-titleCol';
     titleCol.innerHTML = `
@@ -113,16 +123,17 @@ export default async function decorate(block) {
       ${evt.description ? `<small>${evt.description}</small>` : ''}
     `;
 
-    // Location
+    // LOCATION
     const locCol = document.createElement('div');
     locCol.className = 'eventListing-location';
     locCol.textContent = evt.location;
 
+    // ADD MAIN CELLS
     row.append(toggle, timeCol, titleCol, locCol);
 
-    // ---------------------------------------
-    // DETAILS
-    // ---------------------------------------
+    // -------------------------------------
+    // DETAILS PANEL (ACCORDION CONTENT)
+    // -------------------------------------
     const details = document.createElement('div');
     details.className = 'eventListing-details';
     details.innerHTML = `
@@ -139,14 +150,16 @@ export default async function decorate(block) {
 
     row.append(details);
 
-    // Toggle function
+    // -------------------------------------
+    // TOGGLE LOGIC
+    // -------------------------------------
     toggle.addEventListener('click', () => {
       const expanded = details.classList.toggle('expanded');
       const chevron = toggle.querySelector('.eventListing-chevron');
       chevron.style.transform = expanded ? 'rotate(180deg)' : 'rotate(0deg)';
     });
 
-    // Initial expanded state
+    // DEFAULT OPEN?
     if (evt.expanded) {
       details.classList.add('expanded');
       toggle.querySelector('.eventListing-chevron').style.transform = 'rotate(180deg)';
@@ -155,5 +168,5 @@ export default async function decorate(block) {
     list.append(row);
   });
 
-  block.append(list);
+  container.append(list);
 }
