@@ -1,4 +1,5 @@
 .au-calendar {
+  padding: 15px;
   max-width: 100%;
   background:#fff !important;
   margin: 2rem auto;
@@ -111,11 +112,11 @@
 }
 
 .au-announcement {
-  border: 1px solid #a6d8ff;
+  border: 1px solid #0672b9;
   background: #edf7ff;
-  padding: 1rem 1.5rem 1rem 3.2rem;
-  border-radius: 4px;
-  margin-bottom: 2rem;
+  padding: 10px;
+  border-radius: 0;
+  margin-bottom: 10px;
   position: relative;
 }
 
