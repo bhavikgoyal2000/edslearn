@@ -119,8 +119,15 @@
   border-radius: 0;
   background: #fff;
   border-color: #d2d2d2;
-  color: #0672B9;
+  color: #0672b9;
   cursor: pointer;
+}
+
+.au-nav button:hover {
+  background: 0 0;
+  border-color: #0672b9;
+  color: #0672b9;
+  text-decoration: underline !important;
 }
 
 .au-announcement {
