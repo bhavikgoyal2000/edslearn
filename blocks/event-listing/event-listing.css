@@ -119,10 +119,8 @@
   border-radius: 0;
   background: #fff;
   border-color: #d2d2d2;
-  transition: #fff .33s 
-ease, color .33s 
-ease, border-color .33s 
-ease;
+  color: #0672B9;
+  cursor: pointer;
 }
 
 .au-announcement {
