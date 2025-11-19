@@ -1,96 +1,204 @@
-.eventlisting {
+.eventcalendar {
   background:#fff !important;
   max-width: 100%;
   margin: 2rem auto;
-  font-family: system-ui, -apple-system, sans-serif;
+  color: #333;
 }
 
-.eventlisting-header {
+.search-bar {
+  margin-bottom: 2rem;
+  text-align: right;
+}
+
+.search-bar input {
+  padding: 0.75rem 1rem;
+  width: 300px;
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  padding: 0.75rem 1rem;
+  background: #003E6F;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.date-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
 }
 
-.eventlisting-nav button {
-  padding: 0.5rem 1rem;
+.date-header h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  color: #003E6F;
+}
+
+.nav-buttons button {
+  padding: 0.6rem 1.2rem;
   background: #f5f5f5;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 500;
 }
 
-.eventlisting-item { border-bottom: 1px solid #eee; }
-
-.eventlisting-row {
+.announcement {
+  background: #E6F0FA;
+  border-left: 5px solid #0077C8;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  line-height: 1.5;
   display: flex;
-  align-items: flex-start;
-  padding: 1rem 0;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
 }
 
-.eventlisting-row.expandable {
-  cursor: pointer;
-}
-
-.eventlisting-row.expandable:hover {
-  background: #f9f9f9;
-}
-
-.arrow {
-  font-size: 1.4rem;
-  width: 24px;
-  text-align: center;
-  color: #06c;
-}
-
-.time {
-  min-width: 150px;
+.announcement .icon {
   font-weight: bold;
-  color: #06c;
-
+  color: #0077C8;
+  font-size: 1.3rem;
 }
 
-.extra {
-  padding: 0 0 1rem 174px;
-  background: #f8f9fa;
-  border-top: 1px solid #eee;
-  display: none;
+.tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
 }
 
-.extra.open { display: block; }
+.tag.red { background: #C81E2B; }
+.tag.blue { background: #003E6F; }
 
-.actions a {
-  color: #06c;
-  text-decoration: none;
-  margin-right: 1.5rem;
-  font-size: 0.9rem;
+.events {
+  margin-top: 1rem;
 }
 
-.actions a:hover { text-decoration: underline; }
-
-.eventlisting-item.open .arrow { transform: rotate(90deg); }
-
-.eventlisting-upcoming { margin-top: 3rem; }
-
-.eventlisting-upcoming h3 {
-  font-size: 1.6rem;
-  border-bottom: 2px solid #06c;
-  padding-bottom: 0.5rem;
-}
-
-.upcoming-item {
+.event {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1rem 0;
-  border-bottom: 1px dashed #ccc;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s;
 }
 
-.upcoming-day {
+.event:hover {
+  background: #f9f9f9;
+}
+
+.event.expandable {
+  cursor: pointer;
+}
+
+.event.expandable::before {
+  content: "▼";
+  color: #003E6F;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+.event.open::before {
+  content: "▶";
+}
+
+.event-time {
+  min-width: 140px;
   font-weight: bold;
-  color: #06c;
-  min-width: 130px;
+  color: #003E6F;
+  font-size: 1rem;
+}
+
+.event-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.3rem 0;
+}
+
+.event-location {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Popup Modal */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-overlay.visible {
+  display: flex;
+}
+
+.popup {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.popup h2 {
+  background: #003E6F;
+  color: white;
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.popup-content {
+  padding: 1.5rem;
+}
+
+.popup-item {
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-item:last-child {
+  border-bottom: none;
+}
+
+.popup-item strong {
+  color: #003E6F;
+  font-size: 1.1rem;
 }

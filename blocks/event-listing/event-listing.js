@@ -1,103 +1,98 @@
-// blocks/eventlisting/eventlisting.js
-
 export default function decorate(block) {
-  // THIS LINE FIXES THE EMPTY DIV PROBLEM
   block.textContent = '';
 
-  const wrapper = document.createElement('div');
-  wrapper.className = 'eventlisting';
+  block.innerHTML = `
+    <div class="eventcalendar">
 
-  // =================== FULLY HARDCODED CONTENT ===================
-  wrapper.innerHTML = `
-    <!-- Header -->
-    <div class="eventlisting-header">
-      <h2>Tuesday, November 18, 2025</h2>
-      <div class="eventlisting-nav">
-        <button>PREVIOUS DAY</button>
-        <button>NEXT DAY</button>
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search University Calendar" />
+        <button>🔍</button>
       </div>
-    </div>
 
-    <!-- Event 1 - Care for Custodians (expandable) -->
-    <div class="eventlisting-item">
-      <div class="eventlisting-row expandable">
-        <span class="arrow">▶</span>
-        <div class="time">2:00 PM – 5:00 PM</div>
-        <div class="details">
-          <h3>Care for Custodians</h3>
-          <p class="location">MGSC TBL1 Lobby Information Table 1</p>
+      <!-- Date Header -->
+      <div class="date-header">
+        <h1>Monday, November 3, 2025</h1>
+        <div class="nav-buttons">
+          <button>PREVIOUS DAY</button>
+          <button>NEXT DAY</button>
         </div>
       </div>
-      <div class="extra">
-        <p>Thank you card making with aulalac</p>
-        <p><strong>Host:</strong> Residence Hall Association (HRL)</p>
-        <div class="actions">
-          <a href="#">Export to Calendar</a>
-          <a href="#">Email this item</a>
-        </div>
-      </div>
-    </div>
 
-    <!-- Event 2 -->
-    <div class="eventlisting-item">
-      <div class="eventlisting-row">
-        <span class="arrow no-arrow"></span>
-        <div class="time">4:00 PM – 6:30 PM</div>
-        <div class="details">
-          <h3>National Security & The Intelligence Community Industry Week Networking Reception</h3>
-          <p class="location">CNST 115 Meeting Room</p>
-        </div>
+      <!-- Announcement Banner -->
+      <div class="announcement">
+        <span class="icon">ℹ</span>
+        Fall B last day to withdraw with 25% refund (no refunds after this date)
+        <span class="tag red" data-popup="fallb">Fall B</span>
+        <span class="tag blue" data-popup="colcas">COL, CAS, SOC, SPA & SPEXS</span>
       </div>
-    </div>
 
-    <!-- Event 3 -->
-    <div class="eventlisting-item">
-      <div class="eventlisting-row">
-        <span class="arrow no-arrow"></span>
-        <div class="time">5:00 PM – 6:00 PM</div>
-        <div class="details">
-          <h3>Leadership Listening Party</h3>
-          <p class="location">MGSC 327* Meeting Room</p>
-        </div>
-      </div>
-    </div>
+      <!-- Events List -->
+      <div class="events">
 
-    <!-- Event 4 -->
-    <div class="eventlisting-item">
-      <div class="eventlisting-row">
-        <span class="arrow no-arrow"></span>
-        <div class="time">5:30 PM – 6:30 PM</div>
-        <div class="details">
-          <h3>BRASA Game Night</h3>
-          <p class="location">DMT 110 Classroom</p>
+        <div class="event expandable">
+          <div class="event-time">6:00 PM – 7:00 PM</div>
+          <div class="event-title">ACLU at AU General Body Meeting</div>
+          <div class="event-location">SIS 300 Mueller Family Meeting Room</div>
         </div>
-      </div>
-    </div>
 
-    <!-- Upcoming Section -->
-    <div class="eventlisting-upcoming">
-      <h3>After November 18, 2025</h3>
-      <div class="upcoming-item">
-        <span class="arrow no-arrow"></span>
-        <div class="upcoming-day">Wed, 11/19/2025</div>
-        <div>
-          <strong>Guns Down DC Fundraising</strong><br>
-          QUAD-TBL2 Friedheim Quadrangle Info Table
+        <div class="event">
+          <div class="event-time">7:00 PM – 9:00 PM</div>
+          <div class="event-title">Printmaking Workshop</div>
+          <div class="event-location">BTLR 600 Butler Boardroom</div>
+        </div>
+
+      </div>
+
+      <!-- Popup Modal (hidden by default) -->
+      <div class="popup-overlay" id="popup">
+        <div class="popup">
+          <button class="close-btn">×</button>
+          <h2>Academic Calendar Explanations</h2>
+          <div class="popup-content">
+            <div class="popup-item" id="fallb">
+              <strong>Fall B</strong><br>
+              Fall B last day to withdraw with 25% refund (no refunds after this date)
+            </div>
+            <div class="popup-item" id="colcas">
+              <strong>COL, CAS, SOC, SPA & SPEXS</strong><br>
+              Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   `;
 
-  // =================== ACCORDION LOGIC (only first event) ===================
-  const firstRow = wrapper.querySelector('.expandable');
-  const firstExtra = firstRow.nextElementSibling;
-  const firstArrow = firstRow.querySelector('.arrow');
+  // Accordion for events (only first one expandable in your example)
+  const expandable = block.querySelector('.event.expandable');
+  if (expandable) {
+    expandable.addEventListener('click', () => {
+      expandable.classList.toggle('open');
+    });
+  }
 
-  firstRow.addEventListener('click', () => {
-    const isOpen = firstExtra.classList.toggle('open');
-    firstRow.parentElement.classList.toggle('open', isOpen);
-    firstArrow.textContent = isOpen ? '▼' : '▶';
+  // Tags open popup
+  block.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const popupId = tag.getAttribute('data-popup');
+      document.getElementById('popup').classList.add('visible');
+      document.querySelectorAll('.popup-item').forEach(item => {
+        item.style.display = 'block';
+      });
+    });
   });
 
-  block.appendChild(wrapper);
+  // Close popup
+  block.querySelector('.close-btn').addEventListener('click', () => {
+    document.getElementById('popup').classList.remove('visible');
+  });
+
+  block.querySelector('.popup-overlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      document.getElementById('popup').classList.remove('visible');
+    }
+  });
 }
