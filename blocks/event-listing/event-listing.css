@@ -11,7 +11,6 @@
   position: relative;
   margin: 0 0 2.5rem auto;   /* right-aligned like real AU */
 }
-
 .au-input-wrapper {
   position: relative;
   width: 95%;
@@ -34,25 +33,28 @@
   position: absolute;
   left: 20px;
   top: 18px;
-  color: #999;
   font-size: 1.1rem;
+  color: #999;
   pointer-events: none;
+  background: white;
   transition: all 0.2s ease;
+  padding: 0 4px;
 }
 
-.au-input-wrapper input:focus + label,
-.au-input-wrapper input:not(:placeholder-shown) + label {
+/* FLOAT ON FOCUS */
+.au-input-wrapper input:focus + label {
   top: -10px;
   left: 12px;
-  background: white;
-  padding: 0 4px;
   font-size: 0.75rem;
   color: #003366;
 }
 
-.au-search input::placeholder {
-  color: #999;
-  font-style: italic;
+/* FLOAT WHEN TYPED */
+.au-input-wrapper input:not(:focus):valid + label {
+  top: -10px;
+  left: 12px;
+  font-size: 0.75rem;
+  color: #003366;
 }
 
 .au-search button {
