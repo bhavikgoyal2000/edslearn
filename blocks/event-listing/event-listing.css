@@ -120,6 +120,9 @@
 }
 
 .info-icon.main-icon {
+  font-size: 2rem;
+  font-family: Ionicons;
+  font-weight: 700;
   position: absolute;
   top: 12px;
   left: 10px;
@@ -130,8 +133,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
-  font-weight: bold;
 }
 
 #calendar-announcements-list {
