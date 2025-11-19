@@ -109,7 +109,7 @@
 
 .au-nav button {
   font-size: 1.5rem;
-  font-family: "GT Walsheim", Arial, sans-serif;
+  font-family: "GT Walsheim", Arial, sans-serif !important;
   line-height: 50px;
   width: auto;
   height: 50px;
