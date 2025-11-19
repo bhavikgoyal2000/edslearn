@@ -111,8 +111,13 @@
 }
 
 .au-announcement {
+  border: 1px solid #a6d8ff;
+  background: #edf7ff;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
   position: relative;
-  padding-left: 40px;   /* space for icon */
+  padding-left: 40px;
 }
 
 .info-icon.main-icon {
