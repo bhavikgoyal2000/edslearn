@@ -1,13 +1,25 @@
 export default function decorate(block) {
   block.textContent = '';
 
+  if (!document.querySelector('script[src*="ionicons"]')) {
+    const ioniconsScript = document.createElement('script');
+    ioniconsScript.type = 'module';
+    ioniconsScript.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js';
+    document.head.appendChild(ioniconsScript);
+
+    const ioniconsNomodule = document.createElement('script');
+    ioniconsNomodule.noModule = true;
+    ioniconsNomodule.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js';
+    document.head.appendChild(ioniconsNomodule);
+  }
+
   block.innerHTML = `
     <div class="au-calendar">
 
       <!-- Search -->
       <div class="au-search">
-        <input type="text" placeholder="Search University Calendar" />
-        <span class="ion-search"></span>
+        <input type="text" placeholder="Search University Calendar">
+        <button type="button"><ion-icon name="search"></ion-icon></button>
       </div>
 
       <!-- Header -->
