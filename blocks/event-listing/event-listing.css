@@ -113,40 +113,41 @@
 .au-announcement {
   border: 1px solid #a6d8ff;
   background: #edf7ff;
-  padding: 1rem;
+  padding: 1rem 1.5rem 1rem 3.2rem;
   border-radius: 4px;
   margin-bottom: 2rem;
   position: relative;
-  padding-left: 40px;
 }
 
 .info-icon.main-icon {
   position: absolute;
-  top: 14px;
-  left: 12px;
-
-  width: 22px;
-  height: 22px;
+  top: 12px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
   background: #0077cc;
-  color: white;
-
-  border-radius: 0px;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
-
-.announce-item {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.6rem;
-  font-size: 1rem;
+#calendar-announcements-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
+.event-announcement {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.4rem;
+  padding: 0.3rem 0;
+  white-space: nowrap;
+}
 
 .announce-item:last-child { margin-bottom: 0; }
 
