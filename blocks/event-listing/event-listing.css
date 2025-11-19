@@ -23,13 +23,13 @@
   padding: 0 70px 0 20px;
   border: 2px solid #66afe9;
   background: white;
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   color: #333;
   outline: none;
   box-sizing: border-box;
 }
 
-.au-input-wrapper label {
+/* .au-input-wrapper label {
   position: absolute;
   left: 20px;
   top: 18px;
@@ -39,7 +39,7 @@
   background: white;
   transition: all 0.2s ease;
   padding: 0 4px;
-}
+} */
 
 /* FLOAT ON FOCUS */
 .au-input-wrapper input:focus + label {
