@@ -12,6 +12,11 @@
   margin: 0 0 2.5rem auto;   /* right-aligned like real AU */
 }
 
+.au-input-wrapper {
+  position: relative;
+  width: 95%;
+}
+
 .au-input-wrapper input {
   margin: 12px 0;
   width: 95%;
