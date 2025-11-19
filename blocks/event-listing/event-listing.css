@@ -1,0 +1,95 @@
+.eventlisting {
+  max-width: 900px;
+  margin: 2rem auto;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.eventlisting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.eventlisting-nav button {
+  padding: 0.5rem 1rem;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.eventlisting-item { border-bottom: 1px solid #eee; }
+
+.eventlisting-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem 0;
+  gap: 2rem;
+}
+
+.eventlisting-row.expandable {
+  cursor: pointer;
+}
+
+.eventlisting-row.expandable:hover {
+  background: #f9f9f9;
+}
+
+.arrow {
+  font-size: 1.4rem;
+  width: 24px;
+  text-align: center;
+  color: #06c;
+}
+
+.time {
+  min-width: 150px;
+  font-weight: bold;
+  color: #06c;
+
+}
+
+.extra {
+  padding: 0 0 1rem 174px;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+  display: none;
+}
+
+.extra.open { display: block; }
+
+.actions a {
+  color: #06c;
+  text-decoration: none;
+  margin-right: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.actions a:hover { text-decoration: underline; }
+
+.eventlisting-item.open .arrow { transform: rotate(90deg); }
+
+.eventlisting-upcoming { margin-top: 3rem; }
+
+.eventlisting-upcoming h3 {
+  font-size: 1.6rem;
+  border-bottom: 2px solid #06c;
+  padding-bottom: 0.5rem;
+}
+
+.upcoming-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.upcoming-day {
+  font-weight: bold;
+  color: #06c;
+  min-width: 130px;
+}
