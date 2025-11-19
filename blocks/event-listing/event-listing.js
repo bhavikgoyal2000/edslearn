@@ -7,7 +7,7 @@ export default function decorate(block) {
       <!-- Search -->
       <div class="au-search">
         <input type="text" placeholder="Search University Calendar">
-        <button>🔍</button>
+        <span class="ion-search"></span>
       </div>
 
       <!-- Header -->
