@@ -104,7 +104,7 @@ export default function decorate(block) {
   `;
 
   // Accordion
-  block.querySelectorAll('.au-event.expandable').forEach(event => {
+  block.querySelectorAll('.au-event.expandable').forEach((event) => {
     const header = event.querySelector('.au-event-header');
     const details = event.querySelector('.au-details');
     const arrow = event.querySelector('.au-arrow');
@@ -117,7 +117,7 @@ export default function decorate(block) {
   });
 
   // Tags open popup
-  block.querySelectorAll('.tag').forEach(tag => {
+  block.querySelectorAll('.tag').forEach((tag) => {
     tag.addEventListener('click', (e) => {
       e.stopPropagation();
       document.getElementById('au-popup').classList.add('visible');
