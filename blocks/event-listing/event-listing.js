@@ -1,6 +1,10 @@
 export default function decorate(block) {
   block.textContent = '';
 
+//   fetchComponentData('Calendar-GraphQL', path)
+//   .then(data => renderCalendarFromApi(block, data))
+//   .catch(() => block.textContent = 'Failed to load calendar.');
+
   if (!document.querySelector('script[src*="ionicons"]')) {
     const ioniconsScript = document.createElement('script');
     ioniconsScript.type = 'module';
@@ -154,6 +158,163 @@ export default function decorate(block) {
   block.querySelector('.au-popup-overlay').addEventListener('click', (e) => {
     if (e.target === e.currentTarget) {
       document.getElementById('au-popup').classList.remove('visible');
+    }
+  });
+}
+
+export function renderCalendarFromApi(block, data) {
+  block.textContent = '';
+
+  const html = `
+    <div class="au-calendar">
+
+      <!-- Search -->
+      <div class="au-search">
+        <div class="au-input-wrapper">
+            <input type="text" id="searchInput" required>
+            <label for="searchInput">Search University Calendar</label>
+        </div>
+        <button type="button" aria-label="Search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+      </div>
+
+      <!-- Header -->
+      ${buildHeader(data)}
+
+      <!-- Announcement Box -->
+      ${buildAnnouncements(data)}
+
+      <!-- Events -->
+      ${buildEvents(data)}
+
+      <!-- Popup -->
+      ${buildPopup(data)}
+
+    </div>
+  `;
+
+  block.innerHTML = html;
+
+  attachAccordion(block);
+  attachPopup(block);
+}
+
+function buildHeader(data) {
+  return `
+    <div class="au-header">
+      <h1>${data.dateFormatted || 'Date not provided'}</h1>
+      <div class="au-nav">
+        <button>PREVIOUS DAY</button>
+        <button>NEXT DAY</button>
+      </div>
+    </div>
+  `;
+}
+
+function buildAnnouncements(data) {
+  if (!data.announcements || data.announcements.length === 0) return '';
+
+  const items = data.announcements.map(a => `
+    <li class="event-announcement">
+      ${a.text}
+      <span class="tag ${a.color || 'red'}" data-popup="${a.popupKey || ''}">
+        ${a.tagLabel || ''}
+      </span>
+    </li>
+  `).join('');
+
+  return `
+    <div class="au-announcement">
+      <span class="info-icon main-icon">i</span>
+      <ul id="calendar-announcements-list">${items}</ul>
+    </div>
+  `;
+}
+
+function buildEvents(data) {
+  if (!data.events || data.events.length === 0) return '';
+
+  return `
+    <div class="au-events">
+      ${data.events.map(event => `
+        <div class="au-event ${event.expandable ? 'expandable' : ''}">
+          <div class="au-event-header">
+            ${event.expandable ? '<span class="au-arrow">▶</span>' : ''}
+            <div class="au-time">${event.time}</div>
+            <div class="au-title">${event.title}</div>
+            <div class="au-location">${event.location}</div>
+          </div>
+
+          ${event.expandable ? `
+            <div class="au-details">
+              ${event.description ? `<p>${event.description}</p>` : ''}
+              ${event.host ? `<p><strong>Host</strong> ${event.host}</p>` : ''}
+              ${event.type ? `<p><strong>Type</strong> ${event.type}</p>` : ''}
+              ${event.moreInfo ? `<p><strong>More Info</strong> <a href="${event.moreInfo}">Event Page</a></p>` : ''}
+              <div class="au-actions">
+                <a href="#">Export to Calendar</a>
+                <a href="#">Email this item</a>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function buildPopup(data) {
+  // This can later be mapped from API
+  return `
+    <div class="au-popup-overlay" id="au-popup">
+      <div class="au-popup">
+        <div class="au-popup-header">
+          <h2>Academic Calendar Explanations</h2>
+          <button class="au-close">×</button>
+        </div>
+        <div class="au-popup-body">
+          ${(data.popupItems || []).map(item => `
+            <div class="au-popup-row">
+              <span class="au-tag ${item.color}">${item.label}</span>
+              <div>${item.description}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function attachAccordion(block) {
+  block.querySelectorAll('.au-event.expandable').forEach(event => {
+    const header = event.querySelector('.au-event-header');
+    const details = event.querySelector('.au-details');
+    const arrow = event.querySelector('.au-arrow');
+
+    header.addEventListener('click', () => {
+      const isOpen = event.classList.toggle('open');
+      arrow.textContent = isOpen ? '▼' : '▶';
+      details.style.display = isOpen ? 'block' : 'none';
+    });
+  });
+}
+
+function attachPopup(block) {
+  block.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.stopPropagation();
+      block.querySelector('#au-popup').classList.add('visible');
+    });
+  });
+
+  block.querySelector('.au-close')?.addEventListener('click', () => {
+    block.querySelector('#au-popup').classList.remove('visible');
+  });
+
+  block.querySelector('.au-popup-overlay')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      block.querySelector('#au-popup').classList.remove('visible');
     }
   });
 }
