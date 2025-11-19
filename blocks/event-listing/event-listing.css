@@ -14,7 +14,7 @@
 
 .au-search input {
   margin: 12px 0;
-  width: 92%;
+  width: 95%;
   height: 56px;
   padding: 0 70px 0 20px;
   border: 2px solid #66afe9;
@@ -28,11 +28,6 @@
 .au-search input::placeholder {
   color: #999;
   font-style: italic;
-}
-
-.au-search input:focus {
-  border-color: #003366;
-  box-shadow: 0 0 0 4px rgba(0, 51, 102, 0.15);
 }
 
 .au-search button {
