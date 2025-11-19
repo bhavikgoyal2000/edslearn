@@ -147,23 +147,6 @@
   white-space: nowrap;
 }
 
-/* .info-icon {
-  background: #0077cc;
-  color: white;
-  width: 22px;
-  height: 22px;
-  border-radius: 0px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  line-height: 22px;
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-
 .tag {
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
