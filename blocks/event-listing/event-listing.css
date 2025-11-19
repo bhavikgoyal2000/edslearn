@@ -8,16 +8,15 @@
 
 .au-search {
   position: relative;
-  max-width: 600px;
   margin: 0 0 2.5rem auto;   /* right-aligned like real AU */
 }
 
 .au-search input {
-  width: 100%;
+  margin: 12px 0;
+  width: 92%;
   height: 56px;
   padding: 0 70px 0 20px;
-  border: 2px solid #bcd8f1;
-  border-radius: 6px;
+  border: 2px solid #66afe9;
   background: white;
   font-size: 1.1rem;
   color: #333;
@@ -37,13 +36,10 @@
 
 .au-search button {
   position: absolute;
-  right: 4px;
-  top: 4px;
-  width: 48px;
-  height: 48px;
+  height: 56px;
   background: #003366;
   border: none;
-  border-radius: 4px;
+  border-radius: 0px;
   cursor: pointer;
   display: flex;
   align-items: center;
