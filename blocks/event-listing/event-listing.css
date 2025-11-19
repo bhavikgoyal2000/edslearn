@@ -111,12 +111,28 @@
 }
 
 .au-announcement {
-  border: 1px solid #a6d8ff;
-  background: #edf7ff;
-  padding: 1rem;
-  border-radius: 4px;
-  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 40px;   /* space for icon */
 }
+
+.info-icon.main-icon {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+
+  width: 22px;
+  height: 22px;
+  background: #0077cc;
+  color: white;
+
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 
 .announce-item {
   display: flex;

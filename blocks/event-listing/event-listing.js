@@ -38,13 +38,12 @@ export default function decorate(block) {
 
       <!-- Announcement Box -->
       <div class="au-announcement">
+        <span class="info-icon main-icon">i</span>
         <div class="announce-item">
-          <span class="info-icon">i</span>
           Fall B last day to withdraw with 25% refund (no refunds after this date)
           <span class="tag red">@AU</span>
         </div>
         <div class="announce-item">
-          <span class="info-icon">i</span>
           Fall B last day to withdraw with 25% refund (no refunds after this date)
           <span class="tag navy" data-popup="olcas">OL: CAS, SOC, SPA & SPEXS</span>
         </div>
