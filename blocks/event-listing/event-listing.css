@@ -12,7 +12,7 @@
   margin: 0 0 2.5rem auto;   /* right-aligned like real AU */
 }
 
-.au-search input {
+.au-input-wrapper input {
   margin: 12px 0;
   width: 95%;
   height: 56px;
@@ -23,6 +23,26 @@
   color: #333;
   outline: none;
   box-sizing: border-box;
+}
+
+.au-input-wrapper label {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  color: #999;
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.au-input-wrapper input:focus + label,
+.au-input-wrapper input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 12px;
+  background: white;
+  padding: 0 4px;
+  font-size: 0.75rem;
+  color: #003366;
 }
 
 .au-search input::placeholder {

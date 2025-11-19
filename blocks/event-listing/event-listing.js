@@ -18,7 +18,10 @@ export default function decorate(block) {
 
       <!-- Search -->
       <div class="au-search">
-        <input type="text" placeholder="Search University Calendar" aria-label="Search University Calendar">
+        <div class="au-input-wrapper">
+            <input type="text" id="searchInput" required>
+            <label for="searchInput">Search University Calendar</label>
+        </div>
         <button type="button" aria-label="Search">
           <ion-icon name="search-outline"></ion-icon>
         </button>
