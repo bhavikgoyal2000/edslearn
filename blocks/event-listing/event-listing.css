@@ -149,7 +149,7 @@
   white-space: nowrap;
 }
 
-.info-icon {
+/* .info-icon {
   background: #0077cc;
   color: white;
   width: 22px;
@@ -163,7 +163,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 
 .tag {
