@@ -43,20 +43,23 @@
 
 /* FLOAT ON FOCUS */
 .au-input-wrapper input:focus + label {
+  padding: 0 10px;
+  font-weight: 700;
   border-color: #66afe9;
   text-transform: uppercase;
-  top: -10px;
-  left: 12px;
+  top: -1px;
+  left: 15px;
   font-size: 1.2rem;
   color: #6d6d6d;
 }
 
 /* FLOAT WHEN TYPED */
 .au-input-wrapper input:not(:focus):valid + label {
+  padding: 0 10px;
   border-color: #66afe9;
   text-transform: uppercase;
-  top: -10px;
-  left: 12px;
+  top: -1px;
+  left: 15px;
   font-size: 1.2rem;
   color: #6d6d6d;
 }
