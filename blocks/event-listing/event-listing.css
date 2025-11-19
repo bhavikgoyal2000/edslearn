@@ -53,10 +53,12 @@
 
 /* FLOAT WHEN TYPED */
 .au-input-wrapper input:not(:focus):valid + label {
+  border-color: #66afe9;
+  text-transform: uppercase;
   top: -10px;
   left: 12px;
-  font-size: 0.75rem;
-  color: #003366;
+  font-size: 1.2rem;
+  color: #6d6d6d;
 }
 
 .au-search button {
