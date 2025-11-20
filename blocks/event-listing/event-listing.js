@@ -35,8 +35,8 @@ export default function decorate(block) {
       <div class="au-header">
         <h1>Monday, November 3, 2025</h1>
         <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
-            <a href="${prevDate}" class="nav-button previous">Previous Day</a>
-            <a href="${nextDate}" class="nav-button next">Next Day</a>
+            <a href="#" class="nav-button previous">Previous Day</a>
+            <a href="#" class="nav-button next">Next Day</a>
         </div>
       </div>
 
