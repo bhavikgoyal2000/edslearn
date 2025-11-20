@@ -268,6 +268,21 @@
   align-items: center;
 }
 
+.au-popup .au-tag {
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+  min-width: 200px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
 .au-popup-overlay.visible { display: flex; }
 
 .au-popup {
@@ -308,13 +323,9 @@
 }
 
 .au-popup-row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   align-items: flex-start;
 }
-
-.au-popup-row:last-child { margin-bottom: 0; }
 
 .au-tag {
   padding: 0.4rem 0.8rem;
@@ -324,6 +335,11 @@
   font-size: 0.85rem;
   min-width: 140px;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.au-popup .au-tag ion-icon {
+  font-size: 1.6rem;
   flex-shrink: 0;
 }
 

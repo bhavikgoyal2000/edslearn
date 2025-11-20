@@ -98,34 +98,60 @@ export default function decorate(block) {
       <!-- REAL AU POPUP -->
       <div class="au-popup-overlay" id="au-popup">
         <div class="au-popup">
-          <div class="au-popup-header">
+            <div class="au-popup-header">
             <h2>Academic Calendar Explanations</h2>
             <button class="au-close">×</button>
-          </div>
-          <div class="au-popup-body">
-            <div class="au-popup-row">
-              <span class="au-tag red">Semester Calendar</span>
-              <div>AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year.</div>
             </div>
+            <div class="au-popup-body">
+
+            <!-- Semester Calendar -->
             <div class="au-popup-row">
-              <span class="au-tag gray">Four Term Calendar</span>
-              <div>AU's Four Term academic calendar consisting of January – March Term 1, April – June Term 2, July – September Term 3, & October – December Term 4. This calendar is used by Online programs in Kogod School of Business and some courses in Washington College of Law</div>
+                <span class="au-tag red">
+                <ion-icon name="calendar-outline"></ion-icon>
+                Semester Calendar
+                </span>
+                <div>AU's standard academic calendar consisting of the Fall &amp; Spring Semesters and the Summer Sessions each year.</div>
             </div>
+
+            <!-- Four Term Calendar -->
             <div class="au-popup-row">
-              <span class="au-tag navy">OL: CAS, SOC, SPA & SPEXS</span>
-              <div>Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS</div>
+                <span class="au-tag gray">
+                <ion-icon name="calendar-outline"></ion-icon>
+                Four Term Calendar
+                </span>
+                <div>AU's Four Term academic calendar consisting of January – March Term 1, April – June Term 2, July – September Term 3, &amp; October – December Term 4. This calendar is used by Online programs in Kogod School of Business and some courses in Washington College of Law</div>
             </div>
+
+            <!-- OL: CAS, SOC, SPA & SPEXS -->
             <div class="au-popup-row">
-              <span class="au-tag green">OL: SIS</span>
-              <div>Academic Calendar for Online Programs in School of International Service</div>
+                <span class="au-tag navy">
+                <ion-icon name="calendar-outline"></ion-icon>
+                OL: CAS, SOC, SPA & SPEXS
+                </span>
+                <div>Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS</div>
             </div>
+
+            <!-- OL: SIS -->
             <div class="au-popup-row">
-              <span class="au-tag green">OL: SOE</span>
-              <div>Academic Calendar for Online Programs in School of Education</div>
+                <span class="au-tag green">
+                <ion-icon name="calendar-outline"></ion-icon>
+                OL: SIS
+                </span>
+                <div>Academic Calendar for Online Programs in School of International Service</div>
             </div>
-          </div>
+
+            <!-- OL: SOE -->
+            <div class="au-popup-row">
+                <span class="au-tag green">
+                <ion-icon name="calendar-outline"></ion-icon>
+                OL: SOE
+                </span>
+                <div>Academic Calendar for Online Programs in School of Education</div>
+            </div>
+
+            </div>
+            </div>
         </div>
-      </div>
 
     </div>
   `;
