@@ -34,9 +34,9 @@ export default function decorate(block) {
       <!-- Header -->
       <div class="au-header">
         <h1>Monday, November 3, 2025</h1>
-        <div class="au-nav">
-          <button>PREVIOUS DAY</button>
-          <button>NEXT DAY</button>
+        <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
+            <a href="${prevDate}" class="nav-button previous">Previous Day</a>
+            <a href="${nextDate}" class="nav-button next">Next Day</a>
         </div>
       </div>
 
@@ -201,12 +201,15 @@ export function renderCalendarFromApi(block, data) {
 }
 
 function buildHeader(data) {
+  const prevDate = '...';
+  const nextDate = '...';
+
   return `
     <div class="au-header">
       <h1>${data.dateFormatted || 'Date not provided'}</h1>
-      <div class="au-nav">
-        <button>PREVIOUS DAY</button>
-        <button>NEXT DAY</button>
+      <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
+        <a href="${prevDate}" class="nav-button previous">Previous Day</a>
+        <a href="${nextDate}" class="nav-button next">Next Day</a>
       </div>
     </div>
   `;
