@@ -188,7 +188,10 @@
 }
 
 .tag {
-  padding: 0.2rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 12px;
   color: white;
   font-weight: bold;

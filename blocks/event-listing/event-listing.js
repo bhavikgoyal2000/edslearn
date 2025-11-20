@@ -47,8 +47,11 @@ export default function decorate(block) {
         <ul id="calendar-announcements-list">
 
             <li class="event-announcement">
-            Fall B last day to withdraw with 25% refund (no refunds after this date)
-            <span class="tag red">@AU</span>
+                <span class="tag red">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                </span>
+                Fall B last day to withdraw with 25% refund (no refunds after this date)
+                <span class="tag red">AU</span>
             </li>
 
             <li class="event-announcement">
