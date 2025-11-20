@@ -218,10 +218,8 @@ export default async function decorate(block) {
         is_olcas_soc_spa_spexs:  { label: 'OL: CAS, SOC, SPA & SPEXS',       color: 'navy',  popupKey: 'olcas' },
         is_olsoe:                { label: 'OL: SOE',                         color: 'green', popupKey: 'olsoe' },
         is_four_term:            { label: 'Four Term Calendar',             color: 'gray',  popupKey: 'fourterm' },
-        // Add more as you discover real collection keys
       };
 
-      // Transform every announcement (no date filtering)
       const announcements = rawItems.map(item => {
         const matchedKey = Object.keys(collectionMap).find(key =>
           item.announcementCollections?.includes(key)
