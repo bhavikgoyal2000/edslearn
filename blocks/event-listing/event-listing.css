@@ -119,14 +119,12 @@
   background: #fff;
   color: #005099;
   text-decoration: none;
-  font-family: "GT Walsheim", Arial, sans-serif;
-  font-weight: 700;
+  font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: 1.5rem;
   text-transform: uppercase;
-  padding: 0 30px;
+  padding: 0 20px;
   height: 50px;
   line-height: 50px;
-  transition: all 0.2s;
 }
 
 .au-nav.day-by-day-navigation .previous {
