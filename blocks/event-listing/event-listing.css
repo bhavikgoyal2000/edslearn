@@ -107,16 +107,15 @@
   margin: 0 0 2.5rem;
 }
 
-/* Previous / Next Day Navigation - EXACT AU BEHAVIOR */
 .au-nav.day-by-day-navigation {
   display: inline-flex;
-  border: 2px solid #d2d2d2;
   overflow: hidden;
   margin-bottom: 2.5rem;
 }
 
 .au-nav.day-by-day-navigation .nav-button {
   position: relative;
+  border: 2px solid #d2d2d2;
   background: #fff;
   color: #005099;
   text-decoration: none;
@@ -126,6 +125,10 @@
   padding: 0 20px;
   height: 50px;
   line-height: 50px;
+}
+
+.au-nav.day-by-day-navigation .previous {
+  border-right: 2px solid #d2d2d2;
 }
 
 .au-nav.day-by-day-navigation .previous::after {
@@ -138,7 +141,7 @@
 }
 
 .au-nav.day-by-day-navigation .nav-button:hover {
-  border: 3px solid #0672b9;
+  border: 2px solid #0672b9;
   color: #0672b9;
   text-decoration: underline;
 }
