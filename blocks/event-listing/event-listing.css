@@ -135,7 +135,7 @@
     color: #0672b9;
 }
 
-.au-nav.day-by-day-navigation:hover {
+.au-nav.day-by-day-navigation .nav-button :hover {
   border-color: #0672b9;
   text-decoration: underline #0672b9 !important;
 }
