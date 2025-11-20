@@ -123,48 +123,26 @@
   font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: 1.5rem;
   text-transform: uppercase;
-  padding: 0 30px;
+  padding: 0 20px;
   height: 50px;
   line-height: 50px;
-  transition: all 0.2s ease;
-  z-index: 1;
 }
 
-/* Vertical divider (only visible when neither is hovered) */
 .au-nav.day-by-day-navigation .previous::after {
   content: '';
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translateY(-50%);
-  height: 70%;
   width: 2px;
   background: #d2d2d2;
-  z-index: 2;
 }
 
-/* HOVER STATES - This is the real AU behavior */
 .au-nav.day-by-day-navigation .nav-button:hover {
   border: 3px solid #0672b9;
   color: #0672b9;
   text-decoration: underline;
-  margin: -1px;                    /* compensates for the thicker border so size stays same */
-  z-index: 3;
 }
 
-/* When Previous is hovered → its right border becomes blue and covers the divider */
-.au-nav.day-by-day-navigation .previous:hover {
-  padding-right: calc(30px - 1px);
-  margin-right: -1px;
-}
-
-/* When Next is hovered → its left border becomes blue and covers the divider */
-.au-nav.day-by-day-navigation .next:hover {
-  padding-left: calc(30px - 1px);
-  margin-left: -1px;
-}
-
-/* Optional: slightly better underline color match */
 .au-nav.day-by-day-navigation .nav-button:hover {
   text-decoration-color: #0672b9;
 }
