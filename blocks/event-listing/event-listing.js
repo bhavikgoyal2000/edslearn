@@ -1,10 +1,193 @@
-export default function decorate(block) {
+// export default function decorate(block) {
+//   block.textContent = '';
+
+//   if (!document.querySelector('script[src*="ionicons"]')) {
+//     const ioniconsScript = document.createElement('script');
+//     ioniconsScript.type = 'module';
+//     ioniconsScript.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js';
+//     document.head.appendChild(ioniconsScript);
+
+//     const ioniconsNomodule = document.createElement('script');
+//     ioniconsNomodule.noModule = true;
+//     ioniconsNomodule.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js';
+//     document.head.appendChild(ioniconsNomodule);
+//   }
+
+//   block.innerHTML = `
+//     <div class="au-calendar">
+
+//       <!-- Search -->
+//       <div class="au-search">
+//         <div class="au-input-wrapper">
+//             <input type="text" id="searchInput" required>
+//             <label for="searchInput">Search University Calendar</label>
+//         </div>
+//         <button type="button" aria-label="Search">
+//           <ion-icon name="search-outline"></ion-icon>
+//         </button>
+//       </div>
+
+//       <!-- Header -->
+//       <div class="au-header">
+//         <h1>Monday, November 3, 2025</h1>
+//         <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
+//             <a href="#" class="nav-button previous">Previous Day</a>
+//             <a href="#" class="nav-button next">Next Day</a>
+//         </div>
+//       </div>
+
+//         <!-- Announcement Box -->
+//         <div class="au-announcement">
+//         <span class="info-icon main-icon">i</span>
+
+//         <ul id="calendar-announcements-list">
+
+//             <li class="event-announcement">
+//                 Fall B last day to withdraw with 25% refund (no refunds after this date)
+//                 <span class="tag red"><ion-icon name="ion-university"></ion-icon>AU</span>
+//             </li>
+
+//             <li class="event-announcement">
+//             Fall B last day to withdraw with 25% refund (no refunds after this date)
+//             <span class="tag navy" data-popup="olcas">OL: CAS, SOC, SPA & SPEXS</span>
+//             </li>
+
+//         </ul>
+//         </div>
+
+
+//       <!-- Events -->
+//       <div class="au-events">
+
+//         <!-- Event 1 - Expandable -->
+//         <div class="au-event expandable">
+//           <div class="au-event-header">
+//             <span class="au-arrow">▶</span>
+//             <div class="au-time">6:00 PM – 7:00 PM</div>
+//             <div class="au-title">ACLU at AU General Body Meeting</div>
+//             <div class="au-location">SIS 300 Mueller Family Meeting Room</div>
+//           </div>
+//           <div class="au-details">
+//             <p>ACLU at AU will be hosting another GBM to introduce our new freshman fellows and bring in ACLU of DC staff to discuss current events and opportunities.</p>
+//             <p><strong>Host</strong> American Civil Liberties Union of DC at AU</p>
+//             <p><strong>Type</strong> (none)</p>
+//             <p><strong>More Info</strong> <a href="#">Event Page</a></p>
+//             <div class="au-actions">
+//               <a href="#">Export to Calendar</a>
+//               <a href="#">Email this item</a>
+//             </div>
+//           </div>
+//         </div>
+
+//         <!-- Event 2 -->
+//         <div class="au-event">
+//           <div class="au-event-header">
+//             <span class="au-arrow">▶</span>
+//             <div class="au-time">7:00 PM – 9:00 PM</div>
+//             <div class="au-title">Printmaking Workshop</div>
+//             <div class="au-location">BTLR 600 Butler Boardroom</div>
+//           </div>
+//         </div>
+
+//       </div>
+
+//       <!-- REAL AU POPUP -->
+//       <div class="au-popup-overlay" id="au-popup">
+//         <div class="au-popup">
+//             <div class="au-popup-header">
+//             <h2>Academic Calendar Explanations</h2>
+//             <button class="au-close">×</button>
+//             </div>
+//             <div class="au-popup-body">
+
+//             <!-- Semester Calendar -->
+//             <div class="au-popup-row">
+//                 <span class="au-tag red">
+//                 <ion-icon name="calendar-outline"></ion-icon>
+//                 Semester Calendar
+//                 </span>
+//                 <div>AU's standard academic calendar consisting of the Fall &amp; Spring Semesters and the Summer Sessions each year.</div>
+//             </div>
+
+//             <!-- Four Term Calendar -->
+//             <div class="au-popup-row">
+//                 <span class="au-tag gray">
+//                 <ion-icon name="calendar-outline"></ion-icon>
+//                 Four Term Calendar
+//                 </span>
+//                 <div>AU's Four Term academic calendar consisting of January – March Term 1, April – June Term 2, July – September Term 3, &amp; October – December Term 4. This calendar is used by Online programs in Kogod School of Business and some courses in Washington College of Law</div>
+//             </div>
+
+//             <!-- OL: CAS, SOC, SPA & SPEXS -->
+//             <div class="au-popup-row">
+//                 <span class="au-tag navy">
+//                 <ion-icon name="calendar-outline"></ion-icon>
+//                 OL: CAS, SOC, SPA & SPEXS
+//                 </span>
+//                 <div>Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS</div>
+//             </div>
+
+//             <!-- OL: SIS -->
+//             <div class="au-popup-row">
+//                 <span class="au-tag green">
+//                 <ion-icon name="calendar-outline"></ion-icon>
+//                 OL: SIS
+//                 </span>
+//                 <div>Academic Calendar for Online Programs in School of International Service</div>
+//             </div>
+
+//             <!-- OL: SOE -->
+//             <div class="au-popup-row">
+//                 <span class="au-tag green">
+//                 <ion-icon name="calendar-outline"></ion-icon>
+//                 OL: SOE
+//                 </span>
+//                 <div>Academic Calendar for Online Programs in School of Education</div>
+//             </div>
+
+//             </div>
+//             </div>
+//         </div>
+
+//     </div>
+//   `;
+
+//   // Accordion
+//   block.querySelectorAll('.au-event.expandable').forEach((event) => {
+//     const header = event.querySelector('.au-event-header');
+//     const details = event.querySelector('.au-details');
+//     const arrow = event.querySelector('.au-arrow');
+
+//     header.addEventListener('click', () => {
+//       const isOpen = event.classList.toggle('open');
+//       arrow.textContent = isOpen ? '▼' : '▶';
+//       details.style.display = isOpen ? 'block' : 'none';
+//     });
+//   });
+
+//   // Tags open popup
+//   block.querySelectorAll('.tag').forEach((tag) => {
+//     tag.addEventListener('click', (e) => {
+//       e.stopPropagation();
+//       document.getElementById('au-popup').classList.add('visible');
+//     });
+//   });
+
+//   // Close popup
+//   block.querySelector('.au-close').addEventListener('click', () => {
+//     document.getElementById('au-popup').classList.remove('visible');
+//   });
+//   block.querySelector('.au-popup-overlay').addEventListener('click', (e) => {
+//     if (e.target === e.currentTarget) {
+//       document.getElementById('au-popup').classList.remove('visible');
+//     }
+//   });
+// }
+
+export default async function decorate(block) {
   block.textContent = '';
 
-//   fetchComponentData('Calendar-GraphQL', path)
-//   .then(data => renderCalendarFromApi(block, data))
-//   .catch(() => block.textContent = 'Failed to load calendar.');
-
+  // Load Ionicons only once
   if (!document.querySelector('script[src*="ionicons"]')) {
     const ioniconsScript = document.createElement('script');
     ioniconsScript.type = 'module';
@@ -17,178 +200,64 @@ export default function decorate(block) {
     document.head.appendChild(ioniconsNomodule);
   }
 
-  block.innerHTML = `
-    <div class="au-calendar">
+  try {
+    const response = await fetch(
+      'https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/getAnnouncementLists%3Bpath%3D%20?bhhhg=9789'
+    );
 
-      <!-- Search -->
-      <div class="au-search">
-        <div class="au-input-wrapper">
-            <input type="text" id="searchInput" required>
-            <label for="searchInput">Search University Calendar</label>
-        </div>
-        <button type="button" aria-label="Search">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-      </div>
+    if (!response.ok) throw new Error('Failed to fetch announcements');
 
-      <!-- Header -->
-      <div class="au-header">
-        <h1>Monday, November 3, 2025</h1>
-        <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
-            <a href="#" class="nav-button previous">Previous Day</a>
-            <a href="#" class="nav-button next">Next Day</a>
-        </div>
-      </div>
+    const json = await response.json();
+    const rawItems = json.data.announcementList.items;
 
-        <!-- Announcement Box -->
-        <div class="au-announcement">
-        <span class="info-icon main-icon">i</span>
+      // Mapping: announcementCollections key → UI tag (label, color, popupKey)
+      const collectionMap = {
+        is_holiday:              { label: 'AU',                              color: 'red',   popupKey: '' },
+        is_academic_calendar:    { label: 'AU',                              color: 'red',   popupKey: '' },
+        is_olsis:                { label: 'OL: SIS',                         color: 'green', popupKey: 'olsis' },
+        is_olcas_soc_spa_spexs:  { label: 'OL: CAS, SOC, SPA & SPEXS',       color: 'navy',  popupKey: 'olcas' },
+        is_olsoe:                { label: 'OL: SOE',                         color: 'green', popupKey: 'olsoe' },
+        is_four_term:            { label: 'Four Term Calendar',             color: 'gray',  popupKey: 'fourterm' },
+        // Add more as you discover real collection keys
+      };
 
-        <ul id="calendar-announcements-list">
+      // Transform every announcement (no date filtering)
+      const announcements = rawItems.map(item => {
+        const matchedKey = Object.keys(collectionMap).find(key =>
+          item.announcementCollections?.includes(key)
+        );
 
-            <li class="event-announcement">
-                <span class="tag red">
-                    <ion-icon name="calendar-outline"></ion-icon>
-                </span>
-                Fall B last day to withdraw with 25% refund (no refunds after this date)
-                <span class="tag red">AU</span>
-            </li>
+        const tag = matchedKey ? collectionMap[matchedKey] : null;
 
-            <li class="event-announcement">
-            Fall B last day to withdraw with 25% refund (no refunds after this date)
-            <span class="tag navy" data-popup="olcas">OL: CAS, SOC, SPA & SPEXS</span>
-            </li>
+        return {
+          text: item.announcement_text || '(No text)',
+          tagLabel: tag 
+            ? `<ion-icon name="calendar-outline"></ion-icon>${tag.label}` 
+            : '',
+          color: tag?.color || 'gray',
+          popupKey: tag?.popupKey || '',
+        };
+      });
 
-        </ul>
-        </div>
-
-
-      <!-- Events -->
-      <div class="au-events">
-
-        <!-- Event 1 - Expandable -->
-        <div class="au-event expandable">
-          <div class="au-event-header">
-            <span class="au-arrow">▶</span>
-            <div class="au-time">6:00 PM – 7:00 PM</div>
-            <div class="au-title">ACLU at AU General Body Meeting</div>
-            <div class="au-location">SIS 300 Mueller Family Meeting Room</div>
-          </div>
-          <div class="au-details">
-            <p>ACLU at AU will be hosting another GBM to introduce our new freshman fellows and bring in ACLU of DC staff to discuss current events and opportunities.</p>
-            <p><strong>Host</strong> American Civil Liberties Union of DC at AU</p>
-            <p><strong>Type</strong> (none)</p>
-            <p><strong>More Info</strong> <a href="#">Event Page</a></p>
-            <div class="au-actions">
-              <a href="#">Export to Calendar</a>
-              <a href="#">Email this item</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event 2 -->
-        <div class="au-event">
-          <div class="au-event-header">
-            <span class="au-arrow">▶</span>
-            <div class="au-time">7:00 PM – 9:00 PM</div>
-            <div class="au-title">Printmaking Workshop</div>
-            <div class="au-location">BTLR 600 Butler Boardroom</div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- REAL AU POPUP -->
-      <div class="au-popup-overlay" id="au-popup">
-        <div class="au-popup">
-            <div class="au-popup-header">
-            <h2>Academic Calendar Explanations</h2>
-            <button class="au-close">×</button>
-            </div>
-            <div class="au-popup-body">
-
-            <!-- Semester Calendar -->
-            <div class="au-popup-row">
-                <span class="au-tag red">
-                <ion-icon name="calendar-outline"></ion-icon>
-                Semester Calendar
-                </span>
-                <div>AU's standard academic calendar consisting of the Fall &amp; Spring Semesters and the Summer Sessions each year.</div>
-            </div>
-
-            <!-- Four Term Calendar -->
-            <div class="au-popup-row">
-                <span class="au-tag gray">
-                <ion-icon name="calendar-outline"></ion-icon>
-                Four Term Calendar
-                </span>
-                <div>AU's Four Term academic calendar consisting of January – March Term 1, April – June Term 2, July – September Term 3, &amp; October – December Term 4. This calendar is used by Online programs in Kogod School of Business and some courses in Washington College of Law</div>
-            </div>
-
-            <!-- OL: CAS, SOC, SPA & SPEXS -->
-            <div class="au-popup-row">
-                <span class="au-tag navy">
-                <ion-icon name="calendar-outline"></ion-icon>
-                OL: CAS, SOC, SPA & SPEXS
-                </span>
-                <div>Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS</div>
-            </div>
-
-            <!-- OL: SIS -->
-            <div class="au-popup-row">
-                <span class="au-tag green">
-                <ion-icon name="calendar-outline"></ion-icon>
-                OL: SIS
-                </span>
-                <div>Academic Calendar for Online Programs in School of International Service</div>
-            </div>
-
-            <!-- OL: SOE -->
-            <div class="au-popup-row">
-                <span class="au-tag green">
-                <ion-icon name="calendar-outline"></ion-icon>
-                OL: SOE
-                </span>
-                <div>Academic Calendar for Online Programs in School of Education</div>
-            </div>
-
-            </div>
-            </div>
-        </div>
-
-    </div>
-  `;
-
-  // Accordion
-  block.querySelectorAll('.au-event.expandable').forEach((event) => {
-    const header = event.querySelector('.au-event-header');
-    const details = event.querySelector('.au-details');
-    const arrow = event.querySelector('.au-arrow');
-
-    header.addEventListener('click', () => {
-      const isOpen = event.classList.toggle('open');
-      arrow.textContent = isOpen ? '▼' : '▶';
-      details.style.display = isOpen ? 'block' : 'none';
-    });
-  });
-
-  // Tags open popup
-  block.querySelectorAll('.tag').forEach((tag) => {
-    tag.addEventListener('click', (e) => {
-      e.stopPropagation();
-      document.getElementById('au-popup').classList.add('visible');
-    });
-  });
-
-  // Close popup
-  block.querySelector('.au-close').addEventListener('click', () => {
-    document.getElementById('au-popup').classList.remove('visible');
-  });
-  block.querySelector('.au-popup-overlay').addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-      document.getElementById('au-popup').classList.remove('visible');
+      // Build data object for your existing render functions
+      const data = {
+        dateFormatted: 'University Calendar Announcements', // or keep dynamic if you want
+        announcements,
+        events: [],
+        popupItems: [
+          { color: 'red',   label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
+          { color: 'gray',  label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
+          { color: 'navy',  label: '<ion-icon name="calendar-outline"></ion-icon>OL: CAS, SOC, SPA & SPEXS', description: 'Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS' },
+          { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SIS', description: 'Academic Calendar for Online Programs in School of International Service' },
+          { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
+        ],
+      };
+      renderCalendarFromApi(block, data);
+    }catch(err) {
+      console.error('Announcements load failed:', err);
+      block.textContent = 'Failed to load announcements.';
+      block.style.color = 'red';
     }
-  });
 }
 
 export function renderCalendarFromApi(block, data) {
