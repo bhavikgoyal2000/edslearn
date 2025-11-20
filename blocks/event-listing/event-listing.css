@@ -108,7 +108,7 @@
 }
 
 .au-nav.day-by-day-navigation {
-  border: 2px solid #005099;
+  border: 2px solid #d2d2d2;
   display: inline-flex;
   overflow: hidden;
   margin-bottom: 2.5rem;
@@ -128,10 +128,10 @@
 }
 
 .au-nav.day-by-day-navigation .previous {
-  border-right: 2px solid #005099;
+  border-right: 2px solid #d2d2d2;
 }
 
-.au-nav.day-by-day-navigation .nav-button:hover {
+.au-nav.day-by-day-navigation:hover {
   background: 0 0;
   border-color: #0672b9;
   color: #0672b9;
