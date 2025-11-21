@@ -1,8 +1,4 @@
 async function loadAnnouncementsForDate(dateStr, block) {
-  // const block = document.querySelector('.au-calendar')?.closest('.block') || document.querySelector('.block'); // adjust selector if needed
-  // if (!block) return;
-
-  // block.textContent = 'Loading announcements...';
 
   try {
     const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}`;
@@ -55,7 +51,13 @@ async function loadAnnouncementsForDate(dateStr, block) {
       dateFormatted,
       announcements,
       events: [],
-      popupItems: [ /* your popup items */ ]
+      popupItems: [
+          { color: 'red',   label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
+          { color: 'gray',  label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
+          { color: 'navy',  label: '<ion-icon name="calendar-outline"></ion-icon>OL: CAS, SOC, SPA & SPEXS', description: 'Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS' },
+          { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SIS', description: 'Academic Calendar for Online Programs in School of International Service' },
+          { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
+        ]
     };
 
     renderCalendarFromApi(block, data); // your existing render function
