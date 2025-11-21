@@ -9,11 +9,6 @@ async function loadAnnouncementsForDate(dateStr, block) {
     const json = await response.json();
     let rawItems = json.data?.announcementList?.items || [];
 
-    rawItems = rawItems.filter(item => 
-      item.visibility_requested === "2" && 
-      item.visibility_approved === true
-    );
-
     // Your existing mapping logic
     const collectionMap = {
       is_holiday:              { label: 'AU',                              color: 'red',   popupKey: '' },
