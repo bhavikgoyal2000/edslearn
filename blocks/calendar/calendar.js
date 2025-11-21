@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 async function loadFullCalendar() {
   if (window.FullCalendar) return;
 
@@ -26,12 +24,13 @@ async function loadFullCalendar() {
 }
 
 export default async function decorate(block) {
+  debugger;
   await loadFullCalendar();
 
   const calendarEl = document.createElement('div');
   calendarEl.classList.add('calendar-full');
   block.textContent = '';
-  // block.appendChild(calendarEl);
+  block.appendChild(calendarEl);
 
   const calendar = new window.FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
@@ -45,19 +44,24 @@ export default async function decorate(block) {
     selectMirror: true,
     unselectAuto: false,
     dateClick(info) {
-      document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => el.classList.remove('fc-day-selected'));
-      document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
+      const selectedDate = info.dateStr;
 
+      document.querySelectorAll('.fc-daygrid-day').forEach((el) => 
+        el.classList.remove('fc-day-selected')
+      );
       info.dayEl.classList.add('fc-day-selected');
 
       console.log(`Selected date: ${info.dateStr}`);
       window.alert(`Selected date: ${info.dateStr}`);
-      document.dispatchEvent(
-        new CustomEvent('calendar:dateSelected', { detail: { date: info.dateStr } }),
-      );
+      document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
+        detail: { date: selectedDate }
+      }));
     },
   });
 
   calendar.render();
-  block.appendChild(calendarEl);
+  const today = new Date().toISOString().split('T')[0];
+  document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
+    detail: { date: today }
+  }));
 }
