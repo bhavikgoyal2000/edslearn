@@ -17,9 +17,9 @@ export default async function decorate(block) {
   const today = new Date().toISOString().split('T')[0];
 
   try {
-    const response = await fetch(
-      'https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D2025-01-31'
-    );
+
+    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${today}`;
+    const response = await fetch(url);
 
     if (!response.ok) throw new Error('Failed to fetch announcements');
 
