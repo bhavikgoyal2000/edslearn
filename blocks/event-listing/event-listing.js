@@ -1,189 +1,3 @@
-// export default function decorate(block) {
-//   block.textContent = '';
-
-//   if (!document.querySelector('script[src*="ionicons"]')) {
-//     const ioniconsScript = document.createElement('script');
-//     ioniconsScript.type = 'module';
-//     ioniconsScript.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js';
-//     document.head.appendChild(ioniconsScript);
-
-//     const ioniconsNomodule = document.createElement('script');
-//     ioniconsNomodule.noModule = true;
-//     ioniconsNomodule.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js';
-//     document.head.appendChild(ioniconsNomodule);
-//   }
-
-//   block.innerHTML = `
-//     <div class="au-calendar">
-
-//       <!-- Search -->
-//       <div class="au-search">
-//         <div class="au-input-wrapper">
-//             <input type="text" id="searchInput" required>
-//             <label for="searchInput">Search University Calendar</label>
-//         </div>
-//         <button type="button" aria-label="Search">
-//           <ion-icon name="search-outline"></ion-icon>
-//         </button>
-//       </div>
-
-//       <!-- Header -->
-//       <div class="au-header">
-//         <h1>Monday, November 3, 2025</h1>
-//         <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
-//             <a href="#" class="nav-button previous">Previous Day</a>
-//             <a href="#" class="nav-button next">Next Day</a>
-//         </div>
-//       </div>
-
-//         <!-- Announcement Box -->
-//         <div class="au-announcement">
-//         <span class="info-icon main-icon">i</span>
-
-//         <ul id="calendar-announcements-list">
-
-//             <li class="event-announcement">
-//                 Fall B last day to withdraw with 25% refund (no refunds after this date)
-//                 <span class="tag red"><ion-icon name="ion-university"></ion-icon>AU</span>
-//             </li>
-
-//             <li class="event-announcement">
-//             Fall B last day to withdraw with 25% refund (no refunds after this date)
-//             <span class="tag navy" data-popup="olcas">OL: CAS, SOC, SPA & SPEXS</span>
-//             </li>
-
-//         </ul>
-//         </div>
-
-
-//       <!-- Events -->
-//       <div class="au-events">
-
-//         <!-- Event 1 - Expandable -->
-//         <div class="au-event expandable">
-//           <div class="au-event-header">
-//             <span class="au-arrow">▶</span>
-//             <div class="au-time">6:00 PM – 7:00 PM</div>
-//             <div class="au-title">ACLU at AU General Body Meeting</div>
-//             <div class="au-location">SIS 300 Mueller Family Meeting Room</div>
-//           </div>
-//           <div class="au-details">
-//             <p>ACLU at AU will be hosting another GBM to introduce our new freshman fellows and bring in ACLU of DC staff to discuss current events and opportunities.</p>
-//             <p><strong>Host</strong> American Civil Liberties Union of DC at AU</p>
-//             <p><strong>Type</strong> (none)</p>
-//             <p><strong>More Info</strong> <a href="#">Event Page</a></p>
-//             <div class="au-actions">
-//               <a href="#">Export to Calendar</a>
-//               <a href="#">Email this item</a>
-//             </div>
-//           </div>
-//         </div>
-
-//         <!-- Event 2 -->
-//         <div class="au-event">
-//           <div class="au-event-header">
-//             <span class="au-arrow">▶</span>
-//             <div class="au-time">7:00 PM – 9:00 PM</div>
-//             <div class="au-title">Printmaking Workshop</div>
-//             <div class="au-location">BTLR 600 Butler Boardroom</div>
-//           </div>
-//         </div>
-
-//       </div>
-
-//       <!-- REAL AU POPUP -->
-//       <div class="au-popup-overlay" id="au-popup">
-//         <div class="au-popup">
-//             <div class="au-popup-header">
-//             <h2>Academic Calendar Explanations</h2>
-//             <button class="au-close">×</button>
-//             </div>
-//             <div class="au-popup-body">
-
-//             <!-- Semester Calendar -->
-//             <div class="au-popup-row">
-//                 <span class="au-tag red">
-//                 <ion-icon name="calendar-outline"></ion-icon>
-//                 Semester Calendar
-//                 </span>
-//                 <div>AU's standard academic calendar consisting of the Fall &amp; Spring Semesters and the Summer Sessions each year.</div>
-//             </div>
-
-//             <!-- Four Term Calendar -->
-//             <div class="au-popup-row">
-//                 <span class="au-tag gray">
-//                 <ion-icon name="calendar-outline"></ion-icon>
-//                 Four Term Calendar
-//                 </span>
-//                 <div>AU's Four Term academic calendar consisting of January – March Term 1, April – June Term 2, July – September Term 3, &amp; October – December Term 4. This calendar is used by Online programs in Kogod School of Business and some courses in Washington College of Law</div>
-//             </div>
-
-//             <!-- OL: CAS, SOC, SPA & SPEXS -->
-//             <div class="au-popup-row">
-//                 <span class="au-tag navy">
-//                 <ion-icon name="calendar-outline"></ion-icon>
-//                 OL: CAS, SOC, SPA & SPEXS
-//                 </span>
-//                 <div>Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS</div>
-//             </div>
-
-//             <!-- OL: SIS -->
-//             <div class="au-popup-row">
-//                 <span class="au-tag green">
-//                 <ion-icon name="calendar-outline"></ion-icon>
-//                 OL: SIS
-//                 </span>
-//                 <div>Academic Calendar for Online Programs in School of International Service</div>
-//             </div>
-
-//             <!-- OL: SOE -->
-//             <div class="au-popup-row">
-//                 <span class="au-tag green">
-//                 <ion-icon name="calendar-outline"></ion-icon>
-//                 OL: SOE
-//                 </span>
-//                 <div>Academic Calendar for Online Programs in School of Education</div>
-//             </div>
-
-//             </div>
-//             </div>
-//         </div>
-
-//     </div>
-//   `;
-
-//   // Accordion
-//   block.querySelectorAll('.au-event.expandable').forEach((event) => {
-//     const header = event.querySelector('.au-event-header');
-//     const details = event.querySelector('.au-details');
-//     const arrow = event.querySelector('.au-arrow');
-
-//     header.addEventListener('click', () => {
-//       const isOpen = event.classList.toggle('open');
-//       arrow.textContent = isOpen ? '▼' : '▶';
-//       details.style.display = isOpen ? 'block' : 'none';
-//     });
-//   });
-
-//   // Tags open popup
-//   block.querySelectorAll('.tag').forEach((tag) => {
-//     tag.addEventListener('click', (e) => {
-//       e.stopPropagation();
-//       document.getElementById('au-popup').classList.add('visible');
-//     });
-//   });
-
-//   // Close popup
-//   block.querySelector('.au-close').addEventListener('click', () => {
-//     document.getElementById('au-popup').classList.remove('visible');
-//   });
-//   block.querySelector('.au-popup-overlay').addEventListener('click', (e) => {
-//     if (e.target === e.currentTarget) {
-//       document.getElementById('au-popup').classList.remove('visible');
-//     }
-//   });
-// }
-
 export default async function decorate(block) {
   block.textContent = 'Loading Announcements...';
 
@@ -199,6 +13,8 @@ export default async function decorate(block) {
     ioniconsNomodule.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js';
     document.head.appendChild(ioniconsNomodule);
   }
+
+  const today = new Date().toISOString().split('T')[0];
 
   try {
     const response = await fetch(
@@ -237,9 +53,16 @@ export default async function decorate(block) {
         };
       });
 
+      const dateFormatted = new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      });
+
       // Build data object for your existing render functions
       const data = {
-        dateFormatted: 'University Calendar Announcements', // or keep dynamic if you want
+        dateFormatted,
         announcements,
         events: [],
         popupItems: [
@@ -257,7 +80,7 @@ export default async function decorate(block) {
       block.style.color = 'red';
     }
 
-  // fetchComponentData('getAnnouncementLists', '')
+  // fetchComponentData('searchAnnouncementsByDate', date=${today})
   //   .then((json) => {
   //     if (!json?.data?.announcementList?.items) {
   //       throw new Error('No announcement data received');
@@ -290,9 +113,16 @@ export default async function decorate(block) {
   //       };
   //     });
 
+  // const dateFormatted = new Date().toLocaleDateString('en-US', {
+  //       weekday: 'long',
+  //       month: 'long',
+  //       day: 'numeric',
+  //       year: 'numeric'
+  //     });
+
   //     // Build data object for your existing render functions
   //     const data = {
-  //       dateFormatted: 'University Calendar Announcements', // or keep dynamic if you want
+  //       dateFormatted,
   //       announcements,
   //       events: [], // you can populate later
   //       popupItems: [
