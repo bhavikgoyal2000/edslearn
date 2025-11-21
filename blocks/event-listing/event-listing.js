@@ -11,7 +11,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
     if (!response.ok) throw new Error('Network error');
 
     const json = await response.json();
-    const rawItems = json.data?.announcementList?.items || [];
+    let rawItems = json.data?.announcementList?.items || [];
 
     rawItems = rawItems.filter(item => 
       item.visibility_requested === "2" && 
