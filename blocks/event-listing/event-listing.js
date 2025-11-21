@@ -74,11 +74,11 @@ export default async function decorate(block) {
         ],
       };
       renderCalendarFromApi(block, data);
-    }catch(err) {
-      console.error('Announcements load failed:', err);
-      block.textContent = 'Failed to load announcements.';
-      block.style.color = 'red';
-    }
+  }catch(err) {
+    console.error('Announcements load failed:', err);
+    block.textContent = 'Failed to load announcements.';
+    block.style.color = 'red';
+  }
 
   // fetchComponentData('searchAnnouncementsByDate', date=${today})
   //   .then((json) => {
