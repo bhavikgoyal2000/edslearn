@@ -24,7 +24,6 @@ async function loadFullCalendar() {
 }
 
 export default async function decorate(block) {
-  debugger;
   await loadFullCalendar();
 
   const calendarEl = document.createElement('div');
@@ -46,13 +45,11 @@ export default async function decorate(block) {
     dateClick(info) {
       const selectedDate = info.dateStr;
 
-      document.querySelectorAll('.fc-daygrid-day').forEach((el) => 
-        el.classList.remove('fc-day-selected')
-      );
+      document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => el.classList.remove('fc-day-selected'));
+      document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
       info.dayEl.classList.add('fc-day-selected');
 
       console.log(`Selected date: ${info.dateStr}`);
-      window.alert(`Selected date: ${info.dateStr}`);
       document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
         detail: { date: selectedDate }
       }));

@@ -1,8 +1,8 @@
-async function loadAnnouncementsForDate(dateStr) {
-  const block = document.querySelector('.au-calendar')?.closest('.block') || document.querySelector('.block'); // adjust selector if needed
-  if (!block) return;
+async function loadAnnouncementsForDate(dateStr, block) {
+  // const block = document.querySelector('.au-calendar')?.closest('.block') || document.querySelector('.block'); // adjust selector if needed
+  // if (!block) return;
 
-  block.textContent = 'Loading announcements...';
+  // block.textContent = 'Loading announcements...';
 
   try {
     const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}`;
@@ -128,12 +128,12 @@ export default async function decorate(block) {
   block.textContent = 'Loading Announcements...';
 
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today);
+  await loadAnnouncementsForDate(today, block);
 
   // Listen for date selection from calendar
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate);
+    loadAnnouncementsForDate(selectedDate, block);
   });
 
   // Load Ionicons only once
