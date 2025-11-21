@@ -1,7 +1,7 @@
 async function loadAnnouncementsForDate(dateStr, block) {
 
   try {
-    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}`;
+    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}?hbv=${dateStr}`;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error('Network error');
