@@ -185,7 +185,7 @@
 // }
 
 export default async function decorate(block) {
-  block.textContent = '';
+  block.textContent = 'Loading Announcements...';
 
   // Load Ionicons only once
   if (!document.querySelector('script[src*="ionicons"]')) {
@@ -202,7 +202,7 @@ export default async function decorate(block) {
 
   try {
     const response = await fetch(
-      'https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/getAnnouncementLists%3Bpath%3D%20?bhhhg=9789'
+      'https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D2025-01-31'
     );
 
     if (!response.ok) throw new Error('Failed to fetch announcements');
@@ -256,6 +256,61 @@ export default async function decorate(block) {
       block.textContent = 'Failed to load announcements.';
       block.style.color = 'red';
     }
+
+  // fetchComponentData('getAnnouncementLists', '')
+  //   .then((json) => {
+  //     if (!json?.data?.announcementList?.items) {
+  //       throw new Error('No announcement data received');
+  //     }
+
+  //     const rawItems = json.data.announcementList.items;
+  //     const collectionMap = {
+  //       is_holiday:              { label: 'AU',                              color: 'red',   popupKey: '' },
+  //       is_academic_calendar:    { label: 'AU',                              color: 'red',   popupKey: '' },
+  //       is_olsis:                { label: 'OL: SIS',                         color: 'green', popupKey: 'olsis' },
+  //       is_olcas_soc_spa_spexs:  { label: 'OL: CAS, SOC, SPA & SPEXS',       color: 'navy',  popupKey: 'olcas' },
+  //       is_olsoe:                { label: 'OL: SOE',                         color: 'green', popupKey: 'olsoe' },
+  //       is_four_term:            { label: 'Four Term Calendar',             color: 'gray',  popupKey: 'fourterm' },
+  //     };
+
+  //     const announcements = rawItems.map(item => {
+  //       const matchedKey = Object.keys(collectionMap).find(key =>
+  //         item.announcementCollections?.includes(key)
+  //       );
+
+  //       const tag = matchedKey ? collectionMap[matchedKey] : null;
+
+  //       return {
+  //         text: item.announcement_text || '(No text)',
+  //         tagLabel: tag 
+  //           ? `<ion-icon name="calendar-outline"></ion-icon>${tag.label}` 
+  //           : '',
+  //         color: tag?.color || 'gray',
+  //         popupKey: tag?.popupKey || '',
+  //       };
+  //     });
+
+  //     // Build data object for your existing render functions
+  //     const data = {
+  //       dateFormatted: 'University Calendar Announcements', // or keep dynamic if you want
+  //       announcements,
+  //       events: [], // you can populate later
+  //       popupItems: [
+  //         { color: 'red',   label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
+  //         { color: 'gray',  label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
+  //         { color: 'navy',  label: '<ion-icon name="calendar-outline"></ion-icon>OL: CAS, SOC, SPA & SPEXS', description: 'Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS' },
+  //         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SIS', description: 'Academic Calendar for Online Programs in School of International Service' },
+  //         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
+  //       ],
+  //     };
+
+  //     renderCalendarFromApi(block, data);
+  // })
+  // .catch((err) => {
+  //   console.error('Announcements load failed:', err);
+  //   block.textContent = 'Failed to load announcements.';
+  //   block.style.color = 'red';
+  // });
 }
 
 export function renderCalendarFromApi(block, data) {
