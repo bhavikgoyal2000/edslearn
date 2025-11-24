@@ -1,15 +1,22 @@
 import { fetchCalendarAnnouncementData } from '../../scripts/graphql-api.js';
 
-function buildHeader(data) {
-  const prevDate = '...';
-  const nextDate = '...';
+function buildHeader(data, currentDateStr) {
+  const currentDate = new Date(currentDateStr);
+  const prevDate = new Date(currentDate);
+  const nextDate = new Date(currentDate);
+
+  prevDate.setDate(currentDate.getDate() - 1);
+  nextDate.setDate(currentDate.getDate() + 1);
+
+  const prevDateStr = prevDate.toISOString().split('T')[0];
+  const nextDateStr = nextDate.toISOString().split('T')[0];
 
   return `
     <div class="au-header">
       <h1>${data.dateFormatted || 'Date not provided'}</h1>
       <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
-        <a href="${prevDate}" class="nav-button previous">Previous Day</a>
-        <a href="${nextDate}" class="nav-button next">Next Day</a>
+        <button type="button" class="nav-button previous" data-date="${prevDateStr}">Previous Day</button>
+        <button type="button" class="nav-button next" data-date="${nextDateStr}">Next Day</button>
       </div>
     </div>
   `;
@@ -122,7 +129,7 @@ function attachPopup(block) {
   });
 }
 
-export function renderCalendarFromApi(block, data) {
+export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0]) {
   block.textContent = '';
 
   const html = `
@@ -140,7 +147,7 @@ export function renderCalendarFromApi(block, data) {
       </div>
 
       <!-- Header -->
-      ${buildHeader(data)}
+      ${buildHeader(data, currentDateStr)}
 
       <!-- Announcement Box -->
       ${buildAnnouncements(data)}
@@ -158,6 +165,7 @@ export function renderCalendarFromApi(block, data) {
 
   attachAccordion(block);
   attachPopup(block);
+  attachNavButtons(block);
 }
 
 async function loadAnnouncementsForDate(dateStr, block) {
@@ -217,11 +225,25 @@ async function loadAnnouncementsForDate(dateStr, block) {
       ],
     };
 
-    renderCalendarFromApi(block, data);
+    renderCalendarFromApi(block, data, dateStr);
   } catch (err) {
     console.error(err);
     block.textContent = 'Failed to load announcements for this date.';
   }
+}
+
+function attachNavButtons(block) {
+  block.querySelectorAll('.nav-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const targetDate = e.currentTarget.getAttribute('data-date');
+      if (targetDate) {
+        // Dispatch the same custom event your calendar listens to
+        document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
+          detail: { date: targetDate }
+        }));
+      }
+    });
+  });
 }
 
 // async function loadAnnouncementsForDate(dateStr, block) {
@@ -275,7 +297,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
 //         ],
 //       };
 
-//       renderCalendarFromApi(block, data);
+//       renderCalendarFromApi(block, data, dateStr);
 //     })
 //     .catch(() => {
 //       block.textContent = 'Failed to load announcements.';
