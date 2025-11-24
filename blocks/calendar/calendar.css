@@ -116,7 +116,7 @@
   text-decoration: none !important;
 }
 
-.block.calendar .fc-daygrid-day-top:hover {
+.block.calendar .fc-scrollgrid-sync-inner:hover {
   background: #eee !important;
 }
 
