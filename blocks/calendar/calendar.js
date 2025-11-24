@@ -26,11 +26,23 @@
 async function loadFullCalendar() {
   if (window.FullCalendar) return;
 
-  return new Promise((resolve) => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js';
+  // Load CSS properly with onload
+  await new Promise((resolve, reject) => {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
+    css.onload = resolve;
+    css.onerror = reject;
+    document.head.appendChild(css);
+  });
+
+  // Now load JS
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
+
+  await new Promise((resolve, reject) => {
     script.onload = resolve;
-    script.onerror = () => console.error('Failed to load FullCalendar');
+    script.onerror = reject;
     document.head.appendChild(script);
   });
 }
