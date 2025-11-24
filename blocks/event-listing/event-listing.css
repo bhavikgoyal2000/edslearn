@@ -128,6 +128,7 @@
   outline: none;
   white-space: nowrap;
   border-radius: unset;
+  margin: 0;
 }
 
 .au-nav.day-by-day-navigation .previous {
