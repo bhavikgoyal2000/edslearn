@@ -170,17 +170,17 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
 async function loadAnnouncementsForDate(dateStr, block) {
 
-  // try {
-  //   const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}%3BvisbleRequested%3D2%3BvisibleApproved%3Dtrue?_cb=1763881094443?hbv=${dateStr}`;
+  try {
+    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}%3BvisbleRequested%3D2%3BvisibleApproved%3Dtrue?_cb=1763881094443?hbv=${dateStr}`;
 
-  //   const response = await fetch(url);
-  //   // if (!response.ok) throw new Error('Network error');
+    const response = await fetch(url);
+    // if (!response.ok) throw new Error('Network error');
 
-  //   const json = await response.json();
-  //   let rawItems = [];
-  //   if (json && json.announcementList && json.announcementList.items) {
-  //     rawItems = json.announcementList.items;
-  //   }
+    const json = await response.json();
+    let rawItems = [];
+    if (json && json.announcementList && json.announcementList.items) {
+      rawItems = json.announcementList.items;
+    }
 
     const collectionMap = {
       is_holiday: { label: 'AU', color: 'red', popupKey: '' },
@@ -224,12 +224,13 @@ async function loadAnnouncementsForDate(dateStr, block) {
         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
       ],
     };
-  // } catch (err) {
-  //   console.error(err);
-  //   block.textContent = 'Failed to load announcements for this date.';
-  // }
 
-  renderCalendarFromApi(block, data, dateStr);
+    renderCalendarFromApi(block, data, dateStr);
+  } catch (err) {
+    // console.error(err);
+    renderCalendarFromApi(block, data, dateStr);
+    // block.textContent = 'Failed to load announcements for this date.';
+  }
 }
 
 function attachNavButtons(block) {
