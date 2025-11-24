@@ -56,6 +56,28 @@ export default async function decorate(block) {
   });
 
   calendar.render();
+
+  let currentSelectedDate = null;
+
+  function highlightDateInFullCalendar(dateStr) {
+    if (currentSelectedDate === dateStr) return;
+
+    document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach(el => {
+      el.classList.remove('fc-day-selected');
+    });
+
+    const dayEl = document.querySelector(`.fc-daygrid-day[data-date="${dateStr}"]`);
+    if (dayEl) {
+      dayEl.classList.add('fc-day-selected');
+    }
+
+    currentSelectedDate = dateStr;
+  }
+
+  document.addEventListener('calendar:dateSelected', (e) => {
+    highlightDateInFullCalendar(e.detail.date);
+  });
+
   const today = new Date().toISOString().split('T')[0];
   document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
     detail: { date: today },
