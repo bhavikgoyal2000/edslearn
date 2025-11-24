@@ -122,12 +122,12 @@
   line-height: 46px;
   font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: 1.5rem;
-  font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
   white-space: nowrap;
+  border-radius: unset;
 }
 
 .au-nav.day-by-day-navigation .previous {
