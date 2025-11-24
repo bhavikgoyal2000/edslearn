@@ -1,4 +1,4 @@
-import { fetchCalendarAnnouncementData } from '../../scripts/graphql-api.js';
+// import { fetchCalendarAnnouncementData } from '../../scripts/graphql-api.js';
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
