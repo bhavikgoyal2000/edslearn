@@ -72,6 +72,10 @@
 	text-decoration: none !important;
 }
 
+.block.calendar .fc-scrollgrid-sync-table{
+  width: 100% !important;
+}
+
 .block.calendar .fc-daygrid-day {
 	border: 1px solid #d0c4b6 !important;
 	background: #fff !important;
