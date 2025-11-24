@@ -1,25 +1,37 @@
+// async function loadFullCalendar() {
+//   if (window.FullCalendar) return;
+
+//   const css = document.createElement('link');
+//   css.rel = 'stylesheet';
+//   css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
+//   document.head.appendChild(css);
+
+//   const script = document.createElement('script');
+//   script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
+//   document.head.appendChild(script);
+
+//   await new Promise((resolve) => {
+//     const check = () => {
+//       if (script.readyState === 'complete' || script.readyState === 'loaded') {
+//         resolve();
+//       } else {
+//         setTimeout(check, 50);
+//       }
+//     };
+//     script.addEventListener('load', resolve);
+//     check();
+//   });
+// }
+
 async function loadFullCalendar() {
   if (window.FullCalendar) return;
 
-  const css = document.createElement('link');
-  css.rel = 'stylesheet';
-  css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
-  document.head.appendChild(css);
-
-  const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
-  document.head.appendChild(script);
-
-  await new Promise((resolve) => {
-    const check = () => {
-      if (script.readyState === 'complete' || script.readyState === 'loaded') {
-        resolve();
-      } else {
-        setTimeout(check, 50);
-      }
-    };
-    script.addEventListener('load', resolve);
-    check();
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js';
+    script.onload = resolve;
+    script.onerror = () => console.error('Failed to load FullCalendar');
+    document.head.appendChild(script);
   });
 }
 
