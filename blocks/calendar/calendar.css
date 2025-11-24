@@ -56,6 +56,10 @@
 	border-radius: 50%;
 }
 
+.block.calendar .fc-col-header{
+  width:100% !important;
+}
+
 .block.calendar .fc-col-header-cell {
 	font-weight: 100 !important;
 	border: none !important;
