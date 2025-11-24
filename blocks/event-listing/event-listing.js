@@ -224,10 +224,22 @@ async function loadAnnouncementsForDate(dateStr, block) {
         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
       ],
     };
-
+debugger
     renderCalendarFromApi(block, data, dateStr);
   } catch (err) {
     // console.error(err);
+        const data = {
+      dateFormatted,
+      announcements,
+      events: [],
+      popupItems: [
+        { color: 'red', label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
+        { color: 'gray', label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
+        { color: 'navy', label: '<ion-icon name="calendar-outline"></ion-icon>OL: CAS, SOC, SPA & SPEXS', description: 'Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS' },
+        { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SIS', description: 'Academic Calendar for Online Programs in School of International Service' },
+        { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
+      ],
+    };
     renderCalendarFromApi(block, data, dateStr);
     // block.textContent = 'Failed to load announcements for this date.';
   }
