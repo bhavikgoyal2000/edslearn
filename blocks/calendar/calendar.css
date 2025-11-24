@@ -67,6 +67,11 @@
 	font-size: 1.2rem;
 }
 
+.block.calendar .fc-col-header-cell a {
+  color: #4d4037 !important;
+  text-decoration: none !important;
+}
+
 .block.calendar .fc-col-header-cell a:hover {
 	color: unset !important;
 	text-decoration: none !important;
@@ -93,6 +98,7 @@
 	color: #333 !important;
 	font-weight: 500 !important;
 	font-size: .95rem;
+  text-decoration: none !important;
 }
 
 .block.calendar .fc-day-today .fc-daygrid-day-number {
