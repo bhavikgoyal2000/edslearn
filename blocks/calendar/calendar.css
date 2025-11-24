@@ -116,6 +116,10 @@
   text-decoration: none !important;
 }
 
+.block.calendar .fc-daygrid-day-top:hover {
+  background: #eee !important;
+}
+
 .block.calendar .fc-daygrid-day-top a:hover {
 	text-decoration: none !important;
 }
