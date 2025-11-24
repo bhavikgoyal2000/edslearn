@@ -106,23 +106,28 @@
 }
 
 .au-nav.day-by-day-navigation {
-  display: inline-flex;
-  overflow: hidden;
+  display: flex;
+  gap: 0;
   margin-bottom: 2.5rem;
+  flex-wrap: nowrap;
 }
 
 .au-nav.day-by-day-navigation .nav-button {
   position: relative;
-  border: 2px solid #d2d2d2;
   background: #fff;
   color: #005099;
-  text-decoration: none;
+  border: 2px solid #d2d2d2;
+  padding: 0 24px;
+  height: 50px;
+  line-height: 46px;
   font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: 1.5rem;
+  font-weight: 600;
   text-transform: uppercase;
-  padding: 0 20px;
-  height: 50px;
-  line-height: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  white-space: nowrap;
 }
 
 .au-nav.day-by-day-navigation .previous {
