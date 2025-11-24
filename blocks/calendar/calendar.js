@@ -49,9 +49,8 @@ export default async function decorate(block) {
       document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
       info.dayEl.classList.add('fc-day-selected');
 
-      console.log(`Selected date: ${info.dateStr}`);
       document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
-        detail: { date: selectedDate }
+        detail: { date: selectedDate },
       }));
     },
   });
@@ -59,6 +58,6 @@ export default async function decorate(block) {
   calendar.render();
   const today = new Date().toISOString().split('T')[0];
   document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
-    detail: { date: today }
+    detail: { date: today },
   }));
 }

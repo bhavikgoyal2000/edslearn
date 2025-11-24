@@ -10,8 +10,9 @@
 .au-search {
   display: flex;
   position: relative;
-  margin: 0 0 2.5rem auto;   /* right-aligned like real AU */
+  margin: 0 0 2.5rem auto;
 }
+
 .au-input-wrapper {
   position: relative;
   width: 95%;
@@ -42,7 +43,6 @@
   padding: 0 4px;
 }
 
-/* FLOAT ON FOCUS */
 .au-input-wrapper input:focus + label {
   padding: 0 10px;
   font-weight: 700;
@@ -54,7 +54,6 @@
   color: #6d6d6d;
 }
 
-/* FLOAT WHEN TYPED */
 .au-input-wrapper input:not(:focus):valid + label {
   font-weight: 700;
   padding: 0 10px;
@@ -70,7 +69,7 @@
   height: 56px;
   background: #005099;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -79,7 +78,7 @@
 }
 
 .au-search button:hover {
-  background: #002244;
+  background: #024;
 }
 
 .au-search ion-icon {
@@ -87,7 +86,6 @@
   font-size: 26px;
 }
 
-/* Header */
 .au-header {
   display: flex;
   justify-content: space-between;
@@ -128,7 +126,7 @@
 }
 
 .au-nav.day-by-day-navigation .previous {
-  margin: 0px -2px 0px 0px;
+  margin: 0 -2px 0 0;
 }
 
 .au-nav.day-by-day-navigation .previous::after {
@@ -144,11 +142,8 @@
   border: 2px solid #0672b9;
   color: #0672b9;
   text-decoration: underline;
-  z-index: 1;
-}
-
-.au-nav.day-by-day-navigation .nav-button:hover {
   text-decoration-color: #0672b9;
+  z-index: 1;
 }
 
 .au-announcement {
@@ -168,7 +163,7 @@
   left: 10px;
   width: 30px;
   height: 30px;
-  background: #0077cc;
+  background: #07c;
   color: #fff;
   display: flex;
   align-items: center;
@@ -176,7 +171,7 @@
 }
 
 #calendar-announcements-list {
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   padding: 0 0 0 50px;
   list-style: none;
 }
@@ -201,7 +196,7 @@
 
 .tag.red { background: #c81e2b; }
 
-.tag.navy { background: #003366; }
+.tag.navy { background: #036; }
 
 /* Events */
 .au-event {
@@ -219,7 +214,7 @@
 .au-event-header:hover { background: #f9f9f9; }
 
 .au-arrow {
-  color: #003366;
+  color: #036;
   font-size: 1.2rem;
   width: 20px;
   text-align: center;
@@ -228,7 +223,7 @@
 .au-time {
   min-width: 140px;
   font-weight: bold;
-  color: #003366;
+  color: #036;
 }
 
 .au-title {
@@ -252,7 +247,7 @@
 .au-event.open .au-details { display: block; }
 
 .au-actions a {
-  color: #003366;
+  color: #036;
   text-decoration: none;
   margin-right: 1.5rem;
   font-size: 0.9rem;
@@ -260,15 +255,24 @@
 
 .au-actions a:hover { text-decoration: underline; }
 
-/* REAL AU POPUP */
 .au-popup-overlay {
   display: none;
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgb(0 0 0 / 70%);
   z-index: 10000;
   justify-content: center;
   align-items: center;
+}
+
+.au-tag {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  min-width: 140px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .au-popup .au-tag {
@@ -277,7 +281,7 @@
   color: white;
   font-weight: bold;
   font-size: 0.95rem;
-  min-width: 200px;
+  width: fit-content;
   text-align: left;
   display: flex;
   align-items: center;
@@ -294,18 +298,16 @@
   max-width: 700px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
 }
 
 .au-popup-header {
-  background: #003366;
+  background: #036;
   color: white;
   padding: 1rem;
   position: relative;
   text-align: center;
 }
-
-.au-popup-header h2 { margin: 0; font-size: 1.3rem; }
 
 .au-close {
   position: absolute;
@@ -330,17 +332,6 @@
   align-items: flex-start;
 }
 
-.au-tag {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  color: white;
-  font-weight: bold;
-  font-size: 0.85rem;
-  min-width: 140px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
 .au-popup .au-tag ion-icon {
   font-size: 1.6rem;
   flex-shrink: 0;
@@ -350,6 +341,6 @@
 
 .au-tag.gray { background: #888; }
 
-.au-tag.navy { background: #003366; }
+.au-tag.navy { background: #036; }
 
-.au-tag.green { background: #006600; }
+.au-tag.green { background: #060; }
