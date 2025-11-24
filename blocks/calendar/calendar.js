@@ -62,7 +62,8 @@ export default async function decorate(block) {
   function highlightDateInFullCalendar(dateStr) {
     if (currentSelectedDate === dateStr) return;
 
-    document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach(el => {
+    document.querySelectorAll('.fc-day-today').forEach((el) => el.classList.remove('fc-day-today'));
+    document.querySelectorAll('.fc-daygrid-day.fc-day-selected').forEach((el) => {
       el.classList.remove('fc-day-selected');
     });
 
