@@ -171,7 +171,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 async function loadAnnouncementsForDate(dateStr, block) {
 
   try {
-    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}?hbv=${dateStr}`;
+    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}%3BvisbleRequested%3D2%3BvisibleApproved%3Dtrue?_cb=1763881094443?hbv=${dateStr}`;
 
     const response = await fetch(url);
     if (!response.ok) throw new Error('Network error');
