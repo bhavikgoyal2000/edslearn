@@ -7,18 +7,18 @@
   line-height: 1.5;
 }
 
-.au-search {
+.au-calendar .au-search {
   display: flex;
   position: relative;
   margin: 0 0 2.5rem auto;
 }
 
-.au-input-wrapper {
+.au-calendar .au-input-wrapper {
   position: relative;
   width: 95%;
 }
 
-.au-input-wrapper input {
+.au-calendar .au-input-wrapper input {
   margin: 12px 0;
   width: 100%;
   height: 56px;
@@ -31,7 +31,7 @@
   box-sizing: border-box;
 }
 
-.au-input-wrapper label {
+.au-calendar .au-input-wrapper label {
   position: absolute;
   left: 20px;
   top: 21px;
@@ -43,7 +43,7 @@
   padding: 0 4px;
 }
 
-.au-input-wrapper input:focus + label {
+.au-calendar .au-input-wrapper input:focus + label {
   padding: 0 10px;
   font-weight: 700;
   border-color: #66afe9;
@@ -54,7 +54,7 @@
   color: #6d6d6d;
 }
 
-.au-input-wrapper input:not(:focus):valid + label {
+.au-calendar .au-input-wrapper input:not(:focus):valid + label {
   font-weight: 700;
   padding: 0 10px;
   border-color: #66afe9;
@@ -65,7 +65,7 @@
   color: #6d6d6d;
 }
 
-.au-search button {
+.au-calendar .au-search button {
   height: 56px;
   background: #005099;
   border: none;
@@ -77,16 +77,16 @@
   transition: background 0.2s;
 }
 
-.au-search button:hover {
+.au-calendar .au-search button:hover {
   background: #024;
 }
 
-.au-search ion-icon {
+.au-calendar .au-search ion-icon {
   color: white;
   font-size: 26px;
 }
 
-.au-header {
+.au-calendar .au-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,7 +95,7 @@
   margin-bottom: 1.5rem;
 }
 
-.au-header h1 {
+.au-calendar .au-header h1 {
   font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: clamp(3rem, 2.1vw, 4rem);
   font-weight: 700;
@@ -105,14 +105,14 @@
   margin: 0 0 2.5rem;
 }
 
-.au-nav.day-by-day-navigation {
+.au-calendar .au-nav.day-by-day-navigation {
   display: flex;
   gap: 0;
   margin-bottom: 2.5rem;
   flex-wrap: nowrap;
 }
 
-.au-nav.day-by-day-navigation .nav-button {
+.au-calendar .au-nav.day-by-day-navigation .nav-button {
   position: relative;
   background: #fff;
   color: #005099;
@@ -131,11 +131,11 @@
   margin: 0;
 }
 
-.au-nav.day-by-day-navigation .previous {
+.au-calendar .au-nav.day-by-day-navigation .previous {
   margin: 0 -2px 0 0;
 }
 
-.au-nav.day-by-day-navigation .previous::after {
+.au-calendar .au-nav.day-by-day-navigation .previous::after {
   content: '';
   position: absolute;
   right: 0;
@@ -144,7 +144,7 @@
   background: #d2d2d2;
 }
 
-.au-nav.day-by-day-navigation .nav-button:hover {
+.au-calendar .au-nav.day-by-day-navigation .nav-button:hover {
   border: 2px solid #0672b9;
   color: #0672b9;
   text-decoration: underline;
@@ -152,7 +152,7 @@
   z-index: 1;
 }
 
-.au-announcement {
+.au-calendar .au-announcement {
   border: 1px solid #0672b9;
   padding: 10px;
   border-radius: 0;
@@ -160,7 +160,7 @@
   position: relative;
 }
 
-.info-icon.main-icon {
+.au-calendar .info-icon.main-icon {
   font-size: 2rem;
   font-family: Ionicons;
   font-weight: 700;
@@ -176,19 +176,19 @@
   justify-content: center;
 }
 
-#calendar-announcements-list {
+.au-calendar #calendar-announcements-list {
   margin: 0 0 10px;
   padding: 0 0 0 50px;
   list-style: none;
 }
 
-.event-announcement {
+.au-calendar .event-announcement {
   margin-bottom: 15px;
   font-family: "GT Walsheim", Arial, sans-serif;
   white-space: nowrap;
 }
 
-.tag {
+.au-calendar .tag {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -200,16 +200,16 @@
   cursor: pointer;
 }
 
-.tag.red { background: #c81e2b; }
+.au-calendar.tag.red { background: #c81e2b; }
 
-.tag.navy { background: #036; }
+.au-calendar .tag.navy { background: #036; }
 
 /* Events */
-.au-event {
+.au-calendar .au-event {
   border-bottom: 1px dotted #ccc;
 }
 
-.au-event-header {
+.au-calendar .au-event-header {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
@@ -217,51 +217,51 @@
   cursor: pointer;
 }
 
-.au-event-header:hover { background: #f9f9f9; }
+.au-calendar .au-event-header:hover { background: #f9f9f9; }
 
-.au-arrow {
+.au-calendar .au-arrow {
   color: #036;
   font-size: 1.2rem;
   width: 20px;
   text-align: center;
 }
 
-.au-time {
+.au-calendar .au-time {
   min-width: 140px;
   font-weight: bold;
   color: #036;
 }
 
-.au-title {
+.au-calendar .au-title {
   font-weight: 600;
   font-size: 1.1rem;
   flex: 1;
 }
 
-.au-location {
+.au-calendar .au-location {
   color: #555;
   font-size: 0.95rem;
 }
 
-.au-details {
+.au-calendar .au-details {
   background: #f5f5f5;
   padding: 1.5rem 1rem 1.5rem 180px;
   border-top: 1px solid #eee;
   display: none;
 }
 
-.au-event.open .au-details { display: block; }
+.au-calendar .au-event.open .au-details { display: block; }
 
-.au-actions a {
+.au-calendar .au-actions a {
   color: #036;
   text-decoration: none;
   margin-right: 1.5rem;
   font-size: 0.9rem;
 }
 
-.au-actions a:hover { text-decoration: underline; }
+.au-calendar .au-actions a:hover { text-decoration: underline; }
 
-.au-popup-overlay {
+.au-calendar .au-popup-overlay {
   display: none;
   position: fixed;
   background: rgb(0 0 0 / 70%);
@@ -270,7 +270,7 @@
   align-items: center;
 }
 
-.au-tag {
+.au-calendar .au-tag {
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   color: white;
@@ -281,7 +281,7 @@
   flex-shrink: 0;
 }
 
-.au-popup .au-tag {
+.au-calendar .au-popup .au-tag {
   padding: 0.6rem 1rem;
   border-radius: 30px;
   color: white;
@@ -296,9 +296,9 @@
   line-height: 1.2;
 }
 
-.au-popup-overlay.visible { display: flex; }
+.au-calendar .au-popup-overlay.visible { display: flex; }
 
-.au-popup {
+.au-calendar .au-popup {
   background: white;
   width: 90%;
   max-width: 700px;
@@ -307,7 +307,7 @@
   box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
 }
 
-.au-popup-header {
+.au-calendar .au-popup-header {
   background: #036;
   color: white;
   padding: 1rem;
@@ -315,7 +315,7 @@
   text-align: center;
 }
 
-.au-close {
+.au-calendar .au-close {
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -327,26 +327,26 @@
   cursor: pointer;
 }
 
-.au-popup-body {
+.au-calendar .au-popup-body {
   padding: 1.5rem;
   max-height: 70vh;
   overflow-y: auto;
 }
 
-.au-popup-row {
+.au-calendar .au-popup-row {
   margin-bottom: 1.5rem;
   align-items: flex-start;
 }
 
-.au-popup .au-tag ion-icon {
+.au-calendar .au-popup .au-tag ion-icon {
   font-size: 1.6rem;
   flex-shrink: 0;
 }
 
-.au-tag.red { background: #c81e2b; }
+.au-calendar .au-tag.red { background: #c81e2b; }
 
-.au-tag.gray { background: #888; }
+.au-calendar .au-tag.gray { background: #888; }
 
-.au-tag.navy { background: #036; }
+.au-calendar .au-tag.navy { background: #036; }
 
-.au-tag.green { background: #060; }
+.au-calendar .au-tag.green { background: #060; }
