@@ -1,52 +1,34 @@
-// async function loadFullCalendar() {
-//   if (window.FullCalendar) return;
-
-//   const css = document.createElement('link');
-//   css.rel = 'stylesheet';
-//   css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
-//   document.head.appendChild(css);
-
-//   const script = document.createElement('script');
-//   script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
-//   document.head.appendChild(script);
-
-//   await new Promise((resolve) => {
-//     const check = () => {
-//       if (script.readyState === 'complete' || script.readyState === 'loaded') {
-//         resolve();
-//       } else {
-//         setTimeout(check, 50);
-//       }
-//     };
-//     script.addEventListener('load', resolve);
-//     check();
-//   });
-// }
-
 async function loadFullCalendar() {
   if (window.FullCalendar) return;
 
+  const css = document.createElement('link');
+  css.rel = 'stylesheet';
+  css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
+  document.head.appendChild(css);
+
   const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'; // contains CSS too
+  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
   document.head.appendChild(script);
 
-  await new Promise(resolve => {
-    script.onload = resolve;
-    script.onerror = () => console.error('FullCalendar failed to load');
+  await new Promise((resolve) => {
+    const check = () => {
+      if (script.readyState === 'complete' || script.readyState === 'loaded') {
+        resolve();
+      } else {
+        setTimeout(check, 50);
+      }
+    };
+    script.addEventListener('load', resolve);
+    check();
   });
 }
 
 export default async function decorate(block) {
   await loadFullCalendar();
 
-  // const calendarEl = document.createElement('div');
-  // calendarEl.classList.add('calendar-full');
-  // block.appendChild(calendarEl);
-
-  block.textContent = '';
   const calendarEl = document.createElement('div');
-  calendarEl.style.width = '100%';        // important
-  // calendarEl.style.minHeight = '600px';   // optional – prevents zero height
+  calendarEl.classList.add('calendar-full');
+  block.textContent = '';
   block.appendChild(calendarEl);
 
   const calendar = new window.FullCalendar.Calendar(calendarEl, {
