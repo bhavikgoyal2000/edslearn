@@ -26,33 +26,27 @@
 async function loadFullCalendar() {
   if (window.FullCalendar) return;
 
-  // Load CSS properly with onload
-  await new Promise((resolve, reject) => {
-    const css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css';
-    css.onload = resolve;
-    css.onerror = reject;
-    document.head.appendChild(css);
-  });
-
-  // Now load JS
   const script = document.createElement('script');
-  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js';
+  script.src = 'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'; // contains CSS too
+  document.head.appendChild(script);
 
-  await new Promise((resolve, reject) => {
+  await new Promise(resolve => {
     script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
+    script.onerror = () => console.error('FullCalendar failed to load');
   });
 }
 
 export default async function decorate(block) {
   await loadFullCalendar();
 
-  const calendarEl = document.createElement('div');
-  calendarEl.classList.add('calendar-full');
+  // const calendarEl = document.createElement('div');
+  // calendarEl.classList.add('calendar-full');
+  // block.appendChild(calendarEl);
+
   block.textContent = '';
+  const calendarEl = document.createElement('div');
+  calendarEl.style.width = '100%';        // important
+  // calendarEl.style.minHeight = '600px';   // optional – prevents zero height
   block.appendChild(calendarEl);
 
   const calendar = new window.FullCalendar.Calendar(calendarEl, {
