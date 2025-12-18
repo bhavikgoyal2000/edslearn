@@ -289,7 +289,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
       };
     });
 
-    const rawEvents = eventJson?.data?.calendarEventsList?.items || [];
+    const rawEvents = eventJson?.calendarEventsList?.items || [];
     const events = rawEvents.map((item) => {
       const start = new Date(item.eventStart);
       const end = new Date(item.eventEnd);
