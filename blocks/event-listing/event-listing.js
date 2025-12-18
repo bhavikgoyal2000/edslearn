@@ -1,15 +1,22 @@
 import { fetchCalendarAnnouncementData, fetchCalendarEventsData } from '../../scripts/graphql-api.js';
 
-function buildHeader(data) {
-  const prevDate = '...';
-  const nextDate = '...';
+function buildHeader(data, currentDateStr) {
+  const currentDate = new Date(currentDateStr);
+  const prevDate = new Date(currentDate);
+  const nextDate = new Date(currentDate);
+
+  prevDate.setDate(currentDate.getDate() - 1);
+  nextDate.setDate(currentDate.getDate() + 1);
+
+  const prevDateStr = prevDate.toISOString().split('T')[0];
+  const nextDateStr = nextDate.toISOString().split('T')[0];
 
   return `
     <div class="au-header">
       <h1>${data.dateFormatted || 'Date not provided'}</h1>
       <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
-        <a href="${prevDate}" class="nav-button previous">Previous Day</a>
-        <a href="${nextDate}" class="nav-button next">Next Day</a>
+        <button type="button" class="nav-button previous" data-date="${prevDateStr}">Previous Day</button>
+        <button type="button" class="nav-button next" data-date="${nextDateStr}">Next Day</button>
       </div>
     </div>
   `;
@@ -43,12 +50,13 @@ function buildEvents(data) {
   return `
     <div class="au-events">
       ${data.events.map((event) => {
-    const expandable = event.host || event.type !== '(none)' || event.moreInfo || event.description;
+    const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.description;
+    const expandable = hasDetails;
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}">
             <div class="au-event-header">
-              ${expandable ? '<span class="au-arrow">Right Arrow</span>' : ''}
+              ${expandable ? '<span class="au-arrow">▶</span>' : ''}
               <div class="au-time">${event.time || ''}</div>
               <div class="au-title">${event.title}</div>
               <div class="au-location">${event.location || ''}</div>
@@ -102,7 +110,7 @@ function attachAccordion(block) {
 
     header.addEventListener('click', () => {
       const isOpen = event.classList.toggle('open');
-      arrow.textContent = isOpen ? 'Down Arrow' : 'Right Arrow';
+      if (arrow) arrow.textContent = isOpen ? '▼' : '▶';
       details.style.display = isOpen ? 'block' : 'none';
     });
   });
@@ -127,7 +135,21 @@ function attachPopup(block) {
   });
 }
 
-export function renderCalendarFromApi(block, data) {
+function attachNavButtons(block) {
+  block.querySelectorAll('.nav-button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const targetDate = e.currentTarget.getAttribute('data-date');
+      if (targetDate) {
+        // Dispatch the same custom event your calendar listens to
+        document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
+          detail: { date: targetDate },
+        }));
+      }
+    });
+  });
+}
+
+export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0]) {
   block.textContent = '';
 
   const html = `
@@ -145,7 +167,7 @@ export function renderCalendarFromApi(block, data) {
       </div>
 
       <!-- Header -->
-      ${buildHeader(data)}
+      ${buildHeader(data, currentDateStr)}
 
       <!-- Announcement Box -->
       ${buildAnnouncements(data)}
@@ -162,6 +184,7 @@ export function renderCalendarFromApi(block, data) {
   block.innerHTML = html;
 
   attachAccordion(block);
+  attachNavButtons(block);
   attachPopup(block);
 }
 
@@ -169,8 +192,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
   try {
     const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
 
-    const eventJson = await fetchCalendarEventsData('searchEventsByDate', dateStr);
-
+    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000Z`, `${dateStr}T23:59:59.999Z`, '2', '2');
     let rawItems = [];
     if (annJson && annJson.announcementList && annJson.announcementList.items) {
       rawItems = annJson.announcementList.items;
@@ -198,20 +220,32 @@ async function loadAnnouncementsForDate(dateStr, block) {
       };
     });
 
-    const rawEvents = eventJson?.eventList?.items || [];
+    const rawEvents = eventJson?.calendarEventsList?.items || [];
     const events = rawEvents.map((item) => {
-      const time = item.startTime && item.endTime
-        ? `${item.startTime.replace(':00', '')} – ${item.endTime.replace(':00', '')}`
-        : (item.startTime?.replace(':00', '') || '');
+      const start = new Date(item.eventStart);
+      const end = new Date(item.eventEnd);
+      const startTime = start.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      });
+      const endTime = end.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      });
+      const time = item.eventStart && item.eventEnd
+        ? `${startTime} – ${endTime}`
+        : (startTime || '');
 
       return {
         time,
-        title: item.title || 'Untitled Event',
-        location: item.location || '',
-        description: item.description || '',
-        host: item.host || '',
-        type: item.eventType || '(none)',
-        moreInfo: item.eventUrl || '',
+        title: item.eventName || 'Untitled Event',
+        location: item.roomName || '',
+        description: item.roomDescription?.markdown || '',
+        host: item.calendarContactName || '',
+        type: item.calendarEventType || '(none)',
+        moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
       };
     });
 
