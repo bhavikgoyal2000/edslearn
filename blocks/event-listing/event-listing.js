@@ -43,6 +43,8 @@ function buildAnnouncements(data) {
 }
 
 function buildEvents(data) {
+  console.log('buildEvents data:', data);
+  console.log('buildEvents data.events:', data.events);
   if (!data.events || data.events.length === 0) {
     return '<p class="no-events">No events scheduled for this day.</p>';
   }
