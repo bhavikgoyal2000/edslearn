@@ -56,22 +56,39 @@ function buildEvents(data) {
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}">
             <div class="au-event-header">
-              ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-forward-outline"></ion-icon></span>' : ''}
+              ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               <div class="au-time">${event.time || ''}</div>
               <div class="au-title">${event.title}</div>
               <div class="au-location">${event.location || ''}</div>
             </div>
             ${expandable ? `
               <div class="au-details">
-                ${event.description ? `<p>${event.description}</p>` : ''}
-                ${event.host ? `<p><strong>Host</strong> ${event.host}</p>` : ''}
-                ${event.type && event.type !== '(none)' ? `<p><strong>Type</strong> ${event.type}</p>` : ''}
-                ${event.moreInfo ? `<p><strong>More Info</strong> <a href="${event.moreInfo}" target="_blank">Event Page</a></p>` : ''}
-                <div class="au-actions">
-                  <a href="#">Export to Calendar</a>
-                  <a href="#">Email this item</a>
-                </div>
+              ${event.description ? `<div class="au-description"><p>${event.description}</p></div>` : ''}
+              <div class="au-metadata">
+                ${event.host ? `
+                  <div class="meta-row">
+                    <span class="meta-label"><strong>Host</strong></span>
+                    <span class="meta-value">${event.host}</span>
+                  </div>
+                ` : ''}
+                ${event.type && event.type !== '(none)' ? `
+                  <div class="meta-row">
+                    <span class="meta-label"><strong>Type</strong></span>
+                    <span class="meta-value">${event.type}</span>
+                  </div>
+                ` : ''}
+                ${event.moreInfo ? `
+                  <div class="meta-row">
+                    <span class="meta-label"><strong>More Info</strong></span>
+                    <span class="meta-value"><a href="${event.moreInfo}" target="_blank">Event Page</a></span>
+                  </div>
+                ` : ''}
               </div>
+              <div class="au-actions">
+                <a href="#"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
+                <a href="#"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
+              </div>
+            </div>
             ` : ''}
           </div>
         `;
@@ -111,7 +128,7 @@ function attachAccordion(block) {
     header.addEventListener('click', () => {
       const isOpen = event.classList.toggle('open');
       const icon = arrow?.querySelector('ion-icon');
-      if (icon) icon.name = isOpen ? 'chevron-down-outline' : 'chevron-forward-outline';
+      if (icon) icon.name = isOpen ? 'chevron-up-outline' : 'chevron-down-outline';
       details.style.display = isOpen ? 'block' : 'none';
     });
     event.addEventListener('mouseenter', () => event.classList.add('hovered'));
