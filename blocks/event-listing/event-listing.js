@@ -63,32 +63,36 @@ function buildEvents(data) {
             </div>
             ${expandable ? `
               <div class="au-details">
-              ${event.description ? `<div class="au-description"><p>${event.description}</p></div>` : ''}
-              <div class="au-metadata">
-                ${event.host ? `
-                  <div class="meta-row">
-                    <span class="meta-label"><strong>Host</strong></span>
-                    <span class="meta-value">${event.host}</span>
+                <div class="au-left-column">
+                  ${event.description ? `<div class="au-description"><p>${event.description}</p></div>` : ''}
+                </div>
+                <div class="au-right-column">
+                  <div class="au-metadata">
+                    ${event.host ? `
+                      <div class="meta-row">
+                        <span class="meta-label"><strong>Host</strong></span>
+                        <span class="meta-value">${event.host}</span>
+                      </div>
+                    ` : ''}
+                    ${event.type && event.type !== '(none)' ? `
+                      <div class="meta-row">
+                        <span class="meta-label"><strong>Type</strong></span>
+                        <span class="meta-value">${event.type}</span>
+                      </div>
+                    ` : ''}
+                    ${event.moreInfo ? `
+                      <div class="meta-row">
+                        <span class="meta-label"><strong>More Info</strong></span>
+                        <span class="meta-value"><a href="${event.moreInfo}" target="_blank">Event Page</a></span>
+                      </div>
+                    ` : ''}
                   </div>
-                ` : ''}
-                ${event.type && event.type !== '(none)' ? `
-                  <div class="meta-row">
-                    <span class="meta-label"><strong>Type</strong></span>
-                    <span class="meta-value">${event.type}</span>
+                  <div class="au-actions">
+                    <a href="#"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
+                    <a href="#"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
                   </div>
-                ` : ''}
-                ${event.moreInfo ? `
-                  <div class="meta-row">
-                    <span class="meta-label"><strong>More Info</strong></span>
-                    <span class="meta-value"><a href="${event.moreInfo}" target="_blank">Event Page</a></span>
-                  </div>
-                ` : ''}
+                </div>
               </div>
-              <div class="au-actions">
-                <a href="#"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
-                <a href="#"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
-              </div>
-            </div>
             ` : ''}
           </div>
         `;
