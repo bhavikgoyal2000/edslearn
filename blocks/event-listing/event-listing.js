@@ -56,7 +56,7 @@ function buildEvents(data) {
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}">
             <div class="au-event-header">
-              ${expandable ? '<span class="au-arrow">▶</span>' : ''}
+              ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-forward-outline"></ion-icon></span>' : ''}
               <div class="au-time">${event.time || ''}</div>
               <div class="au-title">${event.title}</div>
               <div class="au-location">${event.location || ''}</div>
@@ -110,9 +110,12 @@ function attachAccordion(block) {
 
     header.addEventListener('click', () => {
       const isOpen = event.classList.toggle('open');
-      if (arrow) arrow.textContent = isOpen ? '▼' : '▶';
+      const icon = arrow?.querySelector('ion-icon');
+      if (icon) icon.name = isOpen ? 'chevron-down-outline' : 'chevron-forward-outline';
       details.style.display = isOpen ? 'block' : 'none';
     });
+    event.addEventListener('mouseenter', () => event.classList.add('hovered'));
+    event.addEventListener('mouseleave', () => event.classList.remove('hovered'));
   });
 }
 
