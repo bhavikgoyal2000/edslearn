@@ -50,8 +50,8 @@ function buildEvents(data) {
   return `
     <div class="au-events>
       ${data.events.map((event) => {
-        const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.description;
-        const expandable = hasDetails;
+    const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.description;
+    const expandable = hasDetails;
 
         return `
           <div class="au-event ${expandable ? 'expandable' : ''}">
@@ -76,7 +76,7 @@ function buildEvents(data) {
             ` : ''}
           </div>
         `;
-      }).join('')}
+  }).join('')}
     </div>
   `;
 }
@@ -257,9 +257,9 @@ function attachNavButtons(block) {
 async function loadAnnouncementsForDate(dateStr, block) {
   try {
     const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
-    console.log('Date:', dateStr);
-    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', dateStr, dateStr, '2', '2');
-
+    
+    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000Z`, `${dateStr}T23:59:59.999Z`, '2', '2');
+    console.log('eventJson:', eventJson);
     let rawItems = [];
     if (annJson && annJson.announcementList && annJson.announcementList.items) {
       rawItems = annJson.announcementList.items;
