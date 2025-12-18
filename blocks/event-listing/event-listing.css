@@ -246,7 +246,7 @@
 .au-calendar .au-details {
   padding: 0;
   margin: 0.5rem 0;
-  display: flex; /* NEW: Two-column flex */
+  display: flex;
   gap: 1rem;
   align-items: flex-start;
 } 
@@ -263,8 +263,6 @@
 .au-calendar .au-right-column {
   flex: 1;
   min-width: 200px;
-  border: 1px solid #ddd;
-  border-radius: 0;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -276,9 +274,6 @@
   display: flex;
 }
 
-.au-calendar .au-description {
-  padding: 0.5rem 0 0 140px; /* Indent to align under title, matching .au-time min-width */
-}
 
 .au-calendar .au-description p {
   margin: 0;
@@ -288,10 +283,7 @@
 }
 
 .au-calendar .au-metadata {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 0;
-  margin: 0.5rem 0 0.5rem 140px; /* Indent align */
+  margin: 0 0 0 70px;
   overflow: hidden;
 }
 
@@ -308,15 +300,14 @@
 }
 
 .au-calendar .meta-label {
-  font-weight: bold;
-  color: #333;
+  font-weight: 700;
+  color: #000;
   text-align: right;
   padding-right: 0.5rem;
 }
 
 .au-calendar .meta-value {
-  color: #555;
-  word-break: break-word;
+  color: #000;
 }
 
 .au-calendar .meta-value a {

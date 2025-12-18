@@ -68,7 +68,7 @@ function buildEvents(data) {
                     ${event.description ? `<div class="au-description"><p>${event.description}</p></div>` : ''}
                     ${event.host ? `
                       <div class="meta-row">
-                        <span class="meta-label"><strong>Host</strong></span>
+                        <span class="meta-label"><p>Host</p></span>
                         <span class="meta-value">${event.host}</span>
                       </div>
                     ` : ''}
