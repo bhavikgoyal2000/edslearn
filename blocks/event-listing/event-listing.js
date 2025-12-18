@@ -56,7 +56,7 @@ function buildEvents(data) {
         return `
           <div class="au-event ${expandable ? 'expandable' : ''}">
             <div class="au-event-header">
-              ${expandable ? '<span class="au-arrow">Right Arrow</span>' : ''}
+              ${expandable ? '<span class="au-arrow">▶</span>' : ''}
               <div class="au-time">${event.time || ''}</div>
               <div class="au-title">${event.title}</div>
               <div class="au-location">${event.location || ''}</div>
@@ -111,7 +111,7 @@ function attachAccordion(block) {
 
     header.addEventListener('click', () => {
       const isOpen = event.classList.toggle('open');
-      if (arrow) arrow.textContent = isOpen ? 'Down Arrow' : 'Right Arrow';
+      if (arrow) arrow.textContent = isOpen ? '▼' : '▶';
       details.style.display = isOpen ? 'block' : 'none';
     });
   });
@@ -287,20 +287,32 @@ async function loadAnnouncementsForDate(dateStr, block) {
       };
     });
 
-    const rawEvents = eventJson?.eventList?.items || [];
+    const rawEvents = eventJson?.data?.calendarEventsList?.items || [];
     const events = rawEvents.map((item) => {
-      const time = item.startTime && item.endTime
-        ? `${item.startTime.replace(':00', '')} – ${item.endTime.replace(':00', '')}`
-        : (item.startTime?.replace(':00', '') || '');
+      const start = new Date(item.eventStart);
+      const end = new Date(item.eventEnd);
+      const startTime = start.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour12: true 
+      });
+      const endTime = end.toLocaleTimeString('en-US', { 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour12: true 
+      });
+      const time = item.eventStart && item.eventEnd
+        ? `${startTime} – ${endTime}`
+        : (startTime || '');
 
       return {
         time,
-        title: item.title || 'Untitled Event',
-        location: item.location || '',
-        description: item.description || '',
-        host: item.host || '',
-        type: item.eventType || '(none)',
-        moreInfo: item.eventUrl || '',
+        title: item.eventName || 'Untitled Event',
+        location: item.roomName || '',
+        description: item.roomDescription?.markdown || '',
+        host: item.calendarContactName || '',
+        type: item.calendarEventType || '(none)',
+        moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
       };
     });
 
