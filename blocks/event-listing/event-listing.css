@@ -251,6 +251,10 @@
   align-items: flex-start;
 } 
 
+.au-calendar .au-details:hover {
+  background: #d9dce3;
+}
+
 .au-calendar .au-left-column {
   flex: 2;
   padding-left: 140px;
