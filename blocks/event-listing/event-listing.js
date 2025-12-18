@@ -1,4 +1,4 @@
-// import { fetchCalendarAnnouncementData } from '../../scripts/graphql-api.js';
+import { fetchCalendarAnnouncementData, fetchCalendarEventsData } from '../../scripts/graphql-api.js';
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
@@ -43,33 +43,40 @@ function buildAnnouncements(data) {
 }
 
 function buildEvents(data) {
-  if (!data.events || data.events.length === 0) return '';
+  if (!data.events || data.events.length === 0) {
+    return '<p class="no-events">No events scheduled for this day.</p>';
+  }
 
   return `
-    <div class="au-events">
-      ${data.events.map((event) => `
-        <div class="au-event ${event.expandable ? 'expandable' : ''}">
-          <div class="au-event-header">
-            ${event.expandable ? '<span class="au-arrow">▶</span>' : ''}
-            <div class="au-time">${event.time}</div>
-            <div class="au-title">${event.title}</div>
-            <div class="au-location">${event.location}</div>
-          </div>
+    <div class="au-events>
+      ${data.events.map((event) => {
+        const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.description;
+        const expandable = hasDetails;
 
-          ${event.expandable ? `
-            <div class="au-details">
-              ${event.description ? `<p>${event.description}</p>` : ''}
-              ${event.host ? `<p><strong>Host</strong> ${event.host}</p>` : ''}
-              ${event.type ? `<p><strong>Type</strong> ${event.type}</p>` : ''}
-              ${event.moreInfo ? `<p><strong>More Info</strong> <a href="${event.moreInfo}">Event Page</a></p>` : ''}
-              <div class="au-actions">
-                <a href="#">Export to Calendar</a>
-                <a href="#">Email this item</a>
-              </div>
+        return `
+          <div class="au-event ${expandable ? 'expandable' : ''}">
+            <div class="au-event-header">
+              ${expandable ? '<span class="au-arrow">Right Arrow</span>' : ''}
+              <div class="au-time">${event.time || ''}</div>
+              <div class="au-title">${event.title}</div>
+              <div class="au-location">${event.location || ''}</div>
             </div>
-          ` : ''}
-        </div>
-      `).join('')}
+
+            ${expandable ? `
+              <div class="au-details">
+                ${event.description ? `<p>${event.description}</p>` : ''}
+                ${event.host ? `<p><strong>Host</strong> ${event.host}</p>` : ''}
+                ${event.type && event.type !== '(none)' ? `<p><strong>Type</strong> ${event.type}</p>` : ''}
+                ${event.moreInfo ? `<p><strong>More Info</strong> <a href="${event.moreInfo}" target="_blank">Event Page</a></p>` : ''}
+                <div class="au-actions">
+                  <a href="#">Export to Calendar</a>
+                  <a href="#">Email this item</a>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('')}
     </div>
   `;
 }
@@ -104,7 +111,7 @@ function attachAccordion(block) {
 
     header.addEventListener('click', () => {
       const isOpen = event.classList.toggle('open');
-      arrow.textContent = isOpen ? '▼' : '▶';
+      if (arrow) arrow.textContent = isOpen ? 'Down Arrow' : 'Right Arrow';
       details.style.display = isOpen ? 'block' : 'none';
     });
   });
@@ -168,18 +175,94 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachNavButtons(block);
 }
 
+// async function loadAnnouncementsForDate(dateStr, block) {
+
+//   try {
+//     const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}%3BvisbleRequested%3D2%3BvisibleApproved%3Dtrue?_cb=1763881094443?hbv=${dateStr}`;
+
+//     const response = await fetch(url);
+//     // if (!response.ok) throw new Error('Network error');
+
+//     const json = await response.json();
+//     let rawItems = [];
+//     if (json && json.announcementList && json.announcementList.items) {
+//       rawItems = json.announcementList.items;
+//     }
+
+//     const collectionMap = {
+//       is_holiday: { label: 'AU', color: 'red', popupKey: '' },
+//       is_academic_calendar: { label: 'AU', color: 'red', popupKey: '' },
+//       is_olsis: { label: 'OL: SIS', color: 'green', popupKey: 'olsis' },
+//       is_olcas_soc_spa_spexs: { label: 'OL: CAS, SOC, SPA & SPEXS', color: 'navy', popupKey: 'olcas' },
+//       is_olsoe: { label: 'OL: SOE', color: 'green', popupKey: 'olsoe' },
+//       is_four_term: { label: 'Four Term Calendar', color: 'gray', popupKey: 'fourterm' },
+//     };
+
+//     const announcements = rawItems.map((item) => {
+//       const matchedKey = Object.keys(collectionMap)
+//         .find((key) => item.announcementCollections?.includes(key));
+//       const tag = matchedKey ? collectionMap[matchedKey] : null;
+
+//       return {
+//         text: item.announcement_text || '(No announcement text)',
+//         tagLabel: tag ? `<ion-icon name="calendar-outline"></ion-icon>${tag.label}` : '',
+//         color: tag?.color || 'gray',
+//         popupKey: tag?.popupKey || '',
+//       };
+//     });
+
+//     const dateObj = new Date(dateStr);
+//     const dateFormatted = dateObj.toLocaleDateString('en-US', {
+//       weekday: 'long',
+//       month: 'long',
+//       day: 'numeric',
+//       year: 'numeric',
+//     });
+
+//     const data = {
+//       dateFormatted,
+//       announcements,
+//       events: [],
+//       popupItems: [
+//         { color: 'red', label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
+//         { color: 'gray', label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
+//         { color: 'navy', label: '<ion-icon name="calendar-outline"></ion-icon>OL: CAS, SOC, SPA & SPEXS', description: 'Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS' },
+//         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SIS', description: 'Academic Calendar for Online Programs in School of International Service' },
+//         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
+//       ],
+//     };
+// debugger
+//     renderCalendarFromApi(block, data, dateStr);
+//   } catch (err) {
+//     // console.error(err);
+//     renderCalendarFromApi(block, "", dateStr);
+//     // block.textContent = 'Failed to load announcements for this date.';
+//   }
+// }
+
+function attachNavButtons(block) {
+  block.querySelectorAll('.nav-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const targetDate = e.currentTarget.getAttribute('data-date');
+      if (targetDate) {
+        // Dispatch the same custom event your calendar listens to
+        document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
+          detail: { date: targetDate }
+        }));
+      }
+    });
+  });
+}
+
 async function loadAnnouncementsForDate(dateStr, block) {
-
   try {
-    const url = `https://publish-p153273-e1586163.adobeaemcloud.com/graphql/execute.json/au/searchAnnouncementsByDate%3Bdate%3D${dateStr}%3BvisbleRequested%3D2%3BvisibleApproved%3Dtrue?_cb=1763881094443?hbv=${dateStr}`;
+    const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
+    console.log('Date:', dateStr);
+    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', dateStr, dateStr, '2', '2');
 
-    const response = await fetch(url);
-    // if (!response.ok) throw new Error('Network error');
-
-    const json = await response.json();
     let rawItems = [];
-    if (json && json.announcementList && json.announcementList.items) {
-      rawItems = json.announcementList.items;
+    if (annJson && annJson.announcementList && annJson.announcementList.items) {
+      rawItems = annJson.announcementList.items;
     }
 
     const collectionMap = {
@@ -204,6 +287,23 @@ async function loadAnnouncementsForDate(dateStr, block) {
       };
     });
 
+    const rawEvents = eventJson?.eventList?.items || [];
+    const events = rawEvents.map((item) => {
+      const time = item.startTime && item.endTime
+        ? `${item.startTime.replace(':00', '')} – ${item.endTime.replace(':00', '')}`
+        : (item.startTime?.replace(':00', '') || '');
+
+      return {
+        time,
+        title: item.title || 'Untitled Event',
+        location: item.location || '',
+        description: item.description || '',
+        host: item.host || '',
+        type: item.eventType || '(none)',
+        moreInfo: item.eventUrl || '',
+      };
+    });
+
     const dateObj = new Date(dateStr);
     const dateFormatted = dateObj.toLocaleDateString('en-US', {
       weekday: 'long',
@@ -215,7 +315,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
     const data = {
       dateFormatted,
       announcements,
-      events: [],
+      events,
       popupItems: [
         { color: 'red', label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
         { color: 'gray', label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
@@ -224,87 +324,14 @@ async function loadAnnouncementsForDate(dateStr, block) {
         { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
       ],
     };
-debugger
+
     renderCalendarFromApi(block, data, dateStr);
   } catch (err) {
-    // console.error(err);
-    renderCalendarFromApi(block, "", dateStr);
-    // block.textContent = 'Failed to load announcements for this date.';
+    console.error('Error loading calendar data:', err);
+    block.textContent = 'Failed to load announcements and events.';
+    block.style.color = 'red';
   }
 }
-
-function attachNavButtons(block) {
-  block.querySelectorAll('.nav-button').forEach(button => {
-    button.addEventListener('click', (e) => {
-      const targetDate = e.currentTarget.getAttribute('data-date');
-      if (targetDate) {
-        // Dispatch the same custom event your calendar listens to
-        document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
-          detail: { date: targetDate }
-        }));
-      }
-    });
-  });
-}
-
-// async function loadAnnouncementsForDate(dateStr, block) {
-//   fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true')
-//     .then((json) => {
-//       let rawItems = [];
-//       if (json && json.announcementList && json.announcementList.items) {
-//         rawItems = json.announcementList.items;
-//       }
-
-//       const collectionMap = {
-//         is_holiday: { label: 'AU', color: 'red', popupKey: '' },
-//         is_academic_calendar: { label: 'AU', color: 'red', popupKey: '' },
-//         is_olsis: { label: 'OL: SIS', color: 'green', popupKey: 'olsis' },
-//         is_olcas_soc_spa_spexs: { label: 'OL: CAS, SOC, SPA & SPEXS', color: 'navy', popupKey: 'olcas' },
-//         is_olsoe: { label: 'OL: SOE', color: 'green', popupKey: 'olsoe' },
-//         is_four_term: { label: 'Four Term Calendar', color: 'gray', popupKey: 'fourterm' },
-//       };
-
-//       const announcements = rawItems.map((item) => {
-//         const matchedKey = Object.keys(collectionMap)
-//           .find((key) => item.announcementCollections?.includes(key));
-//         const tag = matchedKey ? collectionMap[matchedKey] : null;
-
-//         return {
-//           text: item.announcement_text || '(No announcement text)',
-//           tagLabel: tag ? `<ion-icon name="calendar-outline"></ion-icon>${tag.label}` : '',
-//           color: tag?.color || 'gray',
-//           popupKey: tag?.popupKey || '',
-//         };
-//       });
-
-//       const dateObj = new Date(dateStr);
-//       const dateFormatted = dateObj.toLocaleDateString('en-US', {
-//         weekday: 'long',
-//         month: 'long',
-//         day: 'numeric',
-//         year: 'numeric',
-//       });
-
-//       const data = {
-//         dateFormatted,
-//         announcements,
-//         events: [],
-//         popupItems: [
-//           { color: 'red', label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
-//           { color: 'gray', label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
-//           { color: 'navy', label: '<ion-icon name="calendar-outline"></ion-icon>OL: CAS, SOC, SPA & SPEXS', description: 'Academic Calendar for Online Programs in SOC, SPA, CAS (excluding School of Education) and SPEXS' },
-//           { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SIS', description: 'Academic Calendar for Online Programs in School of International Service' },
-//           { color: 'green', label: '<ion-icon name="calendar-outline"></ion-icon>OL: SOE', description: 'Academic Calendar for Online Programs in School of Education' },
-//         ],
-//       };
-
-//       renderCalendarFromApi(block, data, dateStr);
-//     })
-//     .catch(() => {
-//       block.textContent = 'Failed to load announcements.';
-//       block.style.color = 'red';
-//     });
-// }
 
 export default async function decorate(block) {
   block.textContent = 'Loading Announcements...';
