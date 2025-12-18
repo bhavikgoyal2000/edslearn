@@ -64,10 +64,8 @@ function buildEvents(data) {
             ${expandable ? `
               <div class="au-details">
                 <div class="au-left-column">
-                  ${event.description ? `<div class="au-description"><p>${event.description}</p></div>` : ''}
-                </div>
-                <div class="au-right-column">
                   <div class="au-metadata">
+                    ${event.description ? `<div class="au-description"><p>${event.description}</p></div>` : ''}
                     ${event.host ? `
                       <div class="meta-row">
                         <span class="meta-label"><strong>Host</strong></span>
@@ -87,6 +85,8 @@ function buildEvents(data) {
                       </div>
                     ` : ''}
                   </div>
+                </div>
+                <div class="au-right-column">
                   <div class="au-actions">
                     <a href="#"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
                     <a href="#"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
