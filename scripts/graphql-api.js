@@ -58,7 +58,7 @@ async function fetchAnnouncementsGQL(queryName, date, visbleRequested, visibleAp
 async function fetchEventsGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
-    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3BeventStartDate%3D${eventStartDate}%3BeventEndDate%3D${eventEndDate}%3BvisibilityLevel%3D${visibilityLevel}%3BvisibilityApproved%3D${visibilityApproved}?${cacheBuster}`;
+    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3BeventStart%3D${eventStartDate}%3BeventEnd%3D${eventEndDate}%3BvisibilityLevel%3D${visibilityLevel}%3BvisibilityApproved%3D${visibilityApproved}?${cacheBuster}`;
     console.log('GRAPHQL_ENDPOINT_PATH:', GRAPHQL_ENDPOINT_PATH);
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
