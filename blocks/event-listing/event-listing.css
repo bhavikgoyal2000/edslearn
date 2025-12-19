@@ -162,7 +162,7 @@
 
 .au-calendar .info-icon.main-icon {
   font-size: 2rem;
-  font-family: Ionicons;
+  font-family: Ionicons, sans-serif;
   font-weight: 700;
   position: absolute;
   top: 12px;
