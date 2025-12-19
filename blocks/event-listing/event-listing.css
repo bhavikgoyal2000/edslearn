@@ -269,7 +269,6 @@
   display: flex;
   flex-direction: column;
   height: fit-content;
-  padding-left: 140px;
 }
 
 .au-calendar .au-event.open .au-details { 
@@ -279,9 +278,11 @@
 
 .au-calendar .au-description p {
   margin: 0;
-  color: #333;
+  color: #000;
   font-size: 1rem;
   line-height: 1.4;
+  padding-left: 45px;
+
 }
 
 .au-calendar .au-metadata {
