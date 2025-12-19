@@ -336,7 +336,6 @@
 }
 
 .au-calendar .au-actions {
-  margin-top: 1rem;
   padding: 0;
   display: flex;
   flex-direction: column;
