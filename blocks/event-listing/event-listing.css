@@ -227,20 +227,22 @@
 }
 
 .au-calendar .au-time {
-  min-width: 140px;
   font-weight: bold;
   color: #036;
+  width: 20%;
 }
 
 .au-calendar .au-title {
   font-weight: 600;
   font-size: 1.1rem;
   flex: 1;
+  width: 40%;
 }
 
 .au-calendar .au-location {
-  color: #555;
+  color: #000;
   font-size: 0.95rem;
+  width: 33%;
 }
 
 .au-calendar .au-details {
