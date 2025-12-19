@@ -266,7 +266,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
         time,
         title: item.eventName || 'Untitled Event',
         location: item.roomDescription?.markdown || '',
-        eventDescription: item.statusDescription?.markdown || '',
+        eventDescription: item.eventDescription?.markdown || '',
         host: item.calendarContactName || '',
         type: item.calendarEventType || '(none)',
         moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
