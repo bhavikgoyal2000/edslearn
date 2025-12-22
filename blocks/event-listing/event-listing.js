@@ -55,9 +55,6 @@ function buildEvents(data) {
     const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeDescription = (event.eventDescription || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    console.log('group display on web: ', event.groupDisplayOnWeb);
-    console.log('group name: ', event.groupName);
-    console.log('conf: ', event.groupName && event.groupDisplayOnWeb);
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}" 
@@ -329,7 +326,6 @@ async function loadAnnouncementsForDate(dateStr, block) {
       const time = item.eventStart && item.eventEnd
         ? `${startTime} – ${endTime}`
         : (startTime || '');
-      console.log('display on web: ', item.groupDisplayOnWeb);
       return {
         time,
         eventId: item.bookingId || '',
