@@ -216,7 +216,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
   try {
     const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
 
-    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000Z`, `${dateStr}T23:59:59.999Z`, '2', '2');
+    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2');
     let rawItems = [];
     if (annJson && annJson.announcementList && annJson.announcementList.items) {
       rawItems = annJson.announcementList.items;
