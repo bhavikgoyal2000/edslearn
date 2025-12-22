@@ -50,7 +50,7 @@ function buildEvents(data) {
   return `
     <div class="au-events">
       ${data.events.map((event) => {
-    const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.eventDescription;
+    const hasDetails = true;
     const expandable = hasDetails;
     const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
@@ -74,24 +74,24 @@ function buildEvents(data) {
                 <div class="au-left-column">
                   <div class="au-metadata">
                     ${event.eventDescription ? `<div class="au-description"><p>${event.eventDescription}</p></div>` : ''}
-                    ${event.host ? `
+                    ${event.groupName && event.groupDisplayOnWeb ? `
                       <div class="meta-row">
                         <span class="meta-label"><p>Host</p></span>
-                        <span class="meta-value">${event.host}</span>
+                        <span class="meta-value">${event.groupName}</span>
                       </div>
                     ` : ''}
-                    ${event.type && event.type !== '(none)' ? `
+                    ${event.type ? `
                       <div class="meta-row">
-                        <span class="meta-label"><strong>Type</strong></span>
+                        <span class="meta-label"><p>Type</p></span>
                         <span class="meta-value">${event.type}</span>
                       </div>
                     ` : ''}
-                    ${event.moreInfo ? `
+                    ${`
                       <div class="meta-row">
-                        <span class="meta-label"><strong>More Info</strong></span>
-                        <span class="meta-value"><a href="${event.moreInfo}" target="_blank">Event Page</a></span>
+                        <span class="meta-label"><p>More Info</p></span>
+                        <span class="meta-value"><a href="/calendar?${event.eventId}" target="_blank">Event Page</a></span>
                       </div>
-                    ` : ''}
+                    `}
                   </div>
                 </div>
                 <div class="au-right-column">
@@ -329,10 +329,13 @@ async function loadAnnouncementsForDate(dateStr, block) {
 
       return {
         time,
+        eventId: item.bookingId || '',
         title: item.eventName || 'Untitled Event',
         location: item.roomDescription?.markdown || '',
         eventDescription: item.eventDescription?.markdown || '',
-        host: item.calendarContactName || '',
+        host: item.groupName || '',
+        groupDisplayOnWeb: item.groupDisplayOnWeb || false,
+        contactName: item.calendarContactName || '',
         type: item.calendarEventType || '(none)',
         moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
         fullStart: item.eventStart,
