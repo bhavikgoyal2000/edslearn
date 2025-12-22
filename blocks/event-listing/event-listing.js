@@ -252,11 +252,13 @@ async function loadAnnouncementsForDate(dateStr, block) {
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
+        timeZone: 'America/New_York',
       });
       const endTime = end.toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
+        timeZone: 'America/New_York',
       });
       const time = item.eventStart && item.eventEnd
         ? `${startTime} – ${endTime}`
