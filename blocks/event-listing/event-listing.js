@@ -335,7 +335,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
         groupName: item.groupName || '',
         groupDisplayOnWeb: item.groupDisplayOnWeb || false,
         contactName: item.calendarContactName || '',
-        type: item.calendarEventType || '(none)',
+        type: item.eventTypeName || '(none)',
         moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
         fullStart: item.eventStart,
         fullEnd: item.eventEnd,
