@@ -248,7 +248,7 @@
 .au-calendar .au-details {
   padding: 0;
   margin: 0.5rem 0;
-  display: flex;
+  display: none;
   gap: 1rem;
   align-items: flex-start;
 } 

@@ -137,11 +137,15 @@ function attachAccordion(block) {
     const details = event.querySelector('.au-details');
     const arrow = event.querySelector('.au-arrow');
 
+    event.classList.remove('open');
+    if (details) details.style.display = 'none';
+    const icon = arrow?.querySelector('ion-icon');
+    if (icon) icon.name = 'chevron-down-outline';
+
     header.addEventListener('click', () => {
       const isOpen = event.classList.toggle('open');
-      const icon = arrow?.querySelector('ion-icon');
       if (icon) icon.name = isOpen ? 'chevron-up-outline' : 'chevron-down-outline';
-      details.style.display = isOpen ? 'block' : 'none';
+      if (details) details.style.display = isOpen ? 'flex' : 'none';
     });
     event.addEventListener('mouseenter', () => event.classList.add('hovered'));
     event.addEventListener('mouseleave', () => event.classList.remove('hovered'));
