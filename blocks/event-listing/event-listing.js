@@ -336,7 +336,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
         title: item.eventName || 'Untitled Event',
         location: item.roomDescription?.markdown || '',
         eventDescription: item.eventDescription?.markdown || '',
-        host: item.groupName || '',
+        groupName: item.groupName || '',
         groupDisplayOnWeb: item.groupDisplayOnWeb || false,
         contactName: item.calendarContactName || '',
         type: item.calendarEventType || '(none)',
