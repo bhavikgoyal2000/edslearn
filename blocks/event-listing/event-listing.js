@@ -50,7 +50,7 @@ function buildEvents(data) {
   return `
     <div class="au-events">
       ${data.events.map((event) => {
-    const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.description;
+    const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.eventDescription;
     const expandable = hasDetails;
     const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
