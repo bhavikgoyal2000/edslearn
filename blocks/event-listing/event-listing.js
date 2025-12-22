@@ -52,9 +52,17 @@ function buildEvents(data) {
       ${data.events.map((event) => {
     const hasDetails = event.host || event.type !== '(none)' || event.moreInfo || event.description;
     const expandable = hasDetails;
+    const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    const safeDescription = (event.eventDescription || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
     return `
-          <div class="au-event ${expandable ? 'expandable' : ''}">
+          <div class="au-event ${expandable ? 'expandable' : ''}" 
+            data-title="${safeTitle}"
+            data-fullstart="${event.fullStart}"
+            data-fullend="${event.fullEnd}"
+            data-location="${safeLocation}"
+            data-description="${safeDescription}">
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               <div class="au-time">${event.time || ''}</div>
@@ -88,7 +96,7 @@ function buildEvents(data) {
                 </div>
                 <div class="au-right-column">
                   <div class="au-actions">
-                    <a href="#"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
+                    <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
                     <a href="#"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
                   </div>
                 </div>
@@ -173,6 +181,56 @@ function attachNavButtons(block) {
   });
 }
 
+function attachExport(block) {
+  block.querySelectorAll('.export-calendar').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const eventDiv = link.closest('.au-event');
+      const title = eventDiv.dataset.title || 'Untitled Event';
+      const start = new Date(eventDiv.dataset.fullstart);
+      const end = new Date(eventDiv.dataset.fullend);
+      const location = eventDiv.dataset.location || '';
+      let description = eventDiv.dataset.description || '';
+
+      // Convert to ICS timestamp format (UTC, Z means UTC)
+      function toICSFormat(date) {
+        return `${date.toISOString().replace(/[-:]/g, '').split('.')[0]}Z`;
+      }
+
+      // Escape newlines and other chars for ICS DESCRIPTION
+      description = description.replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
+
+      const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${Date.now()}@dynamic.event
+DTSTAMP:${toICSFormat(new Date())}
+DTSTART:${toICSFormat(start)}
+DTEND:${toICSFormat(end)}
+SUMMARY:${title.replace(/,/g, '\\,').replace(/;/g, '\\;')}
+DESCRIPTION:${description}
+LOCATION:${location.replace(/,/g, '\\,').replace(/;/g, '\\;')}
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${title.replace(/[^a-z0-9]/gi, '_')}.ics`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      URL.revokeObjectURL(url);
+    });
+  });
+}
+
 export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0]) {
   block.textContent = '';
 
@@ -209,6 +267,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
   attachAccordion(block);
   attachNavButtons(block);
+  attachExport(block);
   attachPopup(block);
 }
 
@@ -272,6 +331,8 @@ async function loadAnnouncementsForDate(dateStr, block) {
         host: item.calendarContactName || '',
         type: item.calendarEventType || '(none)',
         moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
+        fullStart: item.eventStart,
+        fullEnd: item.eventEnd,
       };
     });
 
