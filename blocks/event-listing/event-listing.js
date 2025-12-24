@@ -1,4 +1,6 @@
-import { fetchCalendarAnnouncementData, fetchCalendarEventsData } from '../../scripts/graphql-api.js';
+// eslint-disable-next-line max-len
+// import { fetchCalendarAnnouncementData, fetchCalendarEventsData } from '../../scripts/graphql-api.js';
+import { fetchCalendarData } from '../../scripts/graphql-api.js';
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
@@ -277,12 +279,15 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
 async function loadAnnouncementsForDate(dateStr, block) {
   try {
-    const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
+    // eslint-disable-next-line max-len
+    // const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
 
-    const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2');
+    // eslint-disable-next-line max-len
+    // const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2');
+    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2', dateStr, '2', 'true');
     let rawItems = [];
-    if (annJson && annJson.announcementList && annJson.announcementList.items) {
-      rawItems = annJson.announcementList.items;
+    if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {
+      rawItems = calendarJson.announcementList.items;
     }
 
     const collectionMap = {
@@ -307,7 +312,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
       };
     });
 
-    const rawEvents = eventJson?.calendarEventsList?.items || [];
+    const rawEvents = calendarJson?.calendarEventsList?.items || [];
     const events = rawEvents.map((item) => {
       const start = new Date(item.eventStart);
       const end = new Date(item.eventEnd);
