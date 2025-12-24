@@ -209,6 +209,7 @@
 /* Events */
 .au-calendar .au-events {
   background: #fff;
+  margin: 25px 0;
 }
 
 .au-calendar .au-event {
