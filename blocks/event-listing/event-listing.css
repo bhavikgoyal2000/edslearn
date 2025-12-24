@@ -272,7 +272,7 @@
   flex-shrink: 0;
   white-space: nowrap;
   text-align: left;
-  width: 200px;
+  width: 300px;
 }
 
 .au-calendar .au-left-column {
@@ -354,7 +354,7 @@
 
 .au-calendar .au-right-column {
   flex-shrink: 0;
-  width: 200px;
+  width: 300px;
   text-align: right;
   padding-top: 0.5rem;
 }
