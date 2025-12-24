@@ -29,12 +29,16 @@ async function fetchGraphQLData(queryName, path) {
 
 async function fetchAnnouncementsGQL(queryName, date, visbleRequested, visibleApproved) {
   try {
+    const username = 'admin';
+    const password = 'admin'; // example only
+    const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
     const cacheBuster = `_cb=${Date.now()}`;
     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3Bdate%3D${date}%3BvisbleRequested%3D${visbleRequested}%3BvisibleApproved%3D${visibleApproved}?${cacheBuster}`;
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: authHeader,
       },
     });
 
