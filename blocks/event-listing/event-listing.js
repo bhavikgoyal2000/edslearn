@@ -110,7 +110,7 @@ function buildEvents(data) {
                     ${`
                       <div class="meta-row">
                         <span class="meta-label"><p>More Info</p></span>
-                        <span class="meta-value"><a href="/calendar?${event.eventId}" target="_blank">Event Page</a></span>
+                        <span class="meta-value"><a href="javascript:void(0);" target="_blank">Event Page</a></span>
                       </div>
                     `}
                   </div>
