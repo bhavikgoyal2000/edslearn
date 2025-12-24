@@ -253,7 +253,7 @@
 .au-calendar .au-time {
   font-weight: bold;
   color: #005099;
-  width: 100px;
+  width: 225px;
   flex-shrink: 0;
   font-size: 0.95rem;
 }
@@ -271,13 +271,13 @@
   font-size: 0.95rem;
   flex-shrink: 0;
   white-space: nowrap;
-  text-align: right;
+  text-align: left;
   width: 200px;
 }
 
 .au-calendar .au-left-column {
   flex: 1;
-  padding-left: 120px; /* Indent to align under title (time width + gap + arrow) */
+  padding-left: 280px;
   min-width: 0;
 }
 
@@ -287,7 +287,7 @@
 
 .au-calendar .au-description p {
   margin: 0;
-  color: #555;
+  color: #343434;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -310,7 +310,7 @@
 
 .au-calendar .meta-label {
   font-weight: 700;
-  color: #999;
+  color: #343434;
   text-align: left;
   flex-shrink: 0;
   width: 60px;
@@ -343,7 +343,7 @@
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding: 0.25rem 0;
   transition: color 0.2s ease;
 }
