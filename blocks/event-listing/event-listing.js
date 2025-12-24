@@ -285,7 +285,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       <!-- Popup -->
       ${buildPopup(data)}
 
-      ${buildFooter(data)}
+      ${buildFooter(data, currentDateStr)}
 
     </div>
   `;
