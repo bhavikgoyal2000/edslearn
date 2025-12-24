@@ -208,9 +208,6 @@
   background: #fff;
   transition: background-color 0.2s ease;
   margin-bottom: 0;
-  display: table;
-  width: 100%;
-  table-layout: fixed;
 }
 
 .au-calendar .au-event:hover {
@@ -222,104 +219,103 @@
 }
 
 .au-calendar .au-event-header {
-  display: table-row;
-  cursor: pointer;
-}
-
-.au-calendar .au-time,
-.au-calendar .au-title,
-.au-calendar .au-location {
-  display: table-cell;
-  vertical-align: top;
-}
-
-.au-calendar .au-time {
-  width: 100px;
-  font-weight: bold;
-  color: #005099;
-  font-size: 0.95rem;
-  padding: 1rem 0.5rem 0.75rem 0;
-  white-space: nowrap;
-}
-
-.au-calendar .au-arrow {
-  display: inline-block;
-  color: #005099;
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-  vertical-align: top;
-}
-
-.au-calendar .au-title {
-  width: calc(100% - 300px);
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: #333;
-  padding: 1rem 1rem 0.75rem 0;
-  line-height: 1.3;
-}
-
-.au-calendar .au-location {
-  width: 200px;
-  color: #666;
-  font-size: 0.95rem;
-  text-align: right;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
   padding: 1rem 0 0.75rem;
-  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  transition: background-color 0.2s ease;
 }
 
 .au-calendar .au-details {
   display: none;
   background: transparent;
-}
+  padding: 0 0 1.25rem;
+  transition: none;
+} 
 
 .au-calendar .au-event.open .au-details { 
-  display: table-row-group;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.au-calendar .au-arrow {
+  color: #005099;
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  padding-top: 0.2rem;
+}
+
+.au-calendar .au-time {
+  font-weight: bold;
+  color: #005099;
+  width: 100px;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.au-calendar .au-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex: 1;
+  color: #333;
+  padding-right: 1rem;
+}
+
+.au-calendar .au-location {
+  color: #666;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
+  width: 200px;
+}
+
+.au-calendar .au-left-column {
+  flex: 1;
+  padding-left: 120px; /* Indent to align under title (time width + gap + arrow) */
+  min-width: 0;
 }
 
 .au-calendar .au-description {
-  display: table-row;
-}
-
-.au-calendar .au-description-cell {
-  display: table-cell;
-  width: 100px;
-  padding: 0;
+  margin-bottom: 0.75rem;
 }
 
 .au-calendar .au-description p {
-  display: table-cell;
+  margin: 0;
   color: #555;
   font-size: 1rem;
   line-height: 1.5;
-  padding: 0.5rem 1rem 0.75rem 0;
-  margin: 0;
-  width: calc(100% - 300px);
 }
 
-.au-calendar .au-details .dummy-cell {
-  display: table-cell;
-  width: 200px;
-  padding: 0;
+.au-calendar .au-metadata {
+  margin: 0;
 }
 
 .au-calendar .meta-row {
-  display: table-row;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 0;
 }
 
-.au-calendar .meta-label,
-.au-calendar .meta-value {
-  display: table-cell;
-  vertical-align: top;
+.au-calendar .meta-row:last-child {
+  border-bottom: none;
 }
 
 .au-calendar .meta-label {
-  width: 100px;
   font-weight: 700;
   color: #999;
+  text-align: left;
+  flex-shrink: 0;
+  width: 60px;
   font-size: 0.9rem;
-  padding: 0.5rem 0.5rem 0.5rem 0;
-  white-space: nowrap;
+  padding-top: 0.25rem;
 }
 
 .au-calendar .meta-label p {
@@ -327,15 +323,10 @@
 }
 
 .au-calendar .meta-value {
-  width: calc(100% - 300px);
   color: #333;
+  flex: 1;
   font-size: 0.95rem;
-  padding: 0.5rem 1rem 0.5rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-.au-calendar .meta-value:last-child {
-  border-bottom: none;
+  padding-top: 0.25rem;
 }
 
 .au-calendar .meta-value a {
@@ -345,51 +336,43 @@
 }
 
 .au-calendar .au-actions a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #005099;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
+  justify-content: flex-end;
   padding: 0.25rem 0;
   transition: color 0.2s ease;
-  white-space: nowrap;
 }
 
 .au-calendar .meta-value a:hover {
   text-decoration: underline;
 }
 
-.au-calendar .au-actions-row {
-  display: table-row;
-}
-
-.au-calendar .au-actions-cell-left,
-.au-calendar .au-actions-cell-right {
-  display: table-cell;
-  vertical-align: top;
-  width: calc(100% - 200px);
-  padding: 0;
+.au-calendar .au-right-column {
+  flex-shrink: 0;
+  width: 200px;
+  text-align: right;
+  padding-top: 0.5rem;
 }
 
 .au-calendar .au-actions {
-  display: table-cell;
-  width: 200px;
-  text-align: right;
-  vertical-align: top;
-  padding: 0.5rem 0 1.25rem;
-}
-
-.au-calendar .au-actions a ion-icon {
-  font-size: 1.1rem;
-  color: #005099;
-  margin-right: 0.5rem;
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .au-calendar .au-actions a:hover {
   color: #003d7a;
   text-decoration: underline;
+}
+
+.au-calendar .au-actions a ion-icon {
+  font-size: 1.1rem;
+  color: #005099;
 }
 
 .au-calendar .no-events {
