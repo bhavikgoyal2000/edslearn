@@ -28,72 +28,6 @@ async function fetchGraphQLData(queryName, path) {
   }
 }
 
-// async function fetchAnnouncementsGQL(queryName, date, visbleRequested, visibleApproved) {
-//   try {
-//     const username = 'admin';
-//     const password = 'admin'; // example only
-//     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-//     const cacheBuster = `_cb=${Date.now()}`;
-//     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3Bdate%3D${date}%3BvisbleRequested%3D${visbleRequested}%3BvisibleApproved%3D${visibleApproved}?${cacheBuster}`;
-//     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: authHeader,
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`Network error: ${response.statusText}`);
-//     }
-
-//     const data = await response.json();
-
-//     if (data.errors) {
-//       return { error: 'An error occurred during the request.', data: null };
-//     }
-
-//     return { data };
-//   } catch (error) {
-//     return { error: 'An unexpected error occurred.', data: null };
-//   }
-// }
-
-// // eslint-disable-next-line max-len
-// async function fetchEventsGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved) {
-//   try {
-//     const username = 'admin';
-//     const password = 'admin'; // example only
-
-//     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-//     const cacheBuster = `_cb=${Date.now()}`;
-//     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3BeventStart%3D${eventStartDate}%3BeventEnd%3D${eventEndDate}%3BvisibilityLevel%3D${visibilityLevel}%3BvisibilityApproved%3D${visibilityApproved}?${cacheBuster}`;
-//     console.log('GRAPHQL_ENDPOINT_PATH:', GRAPHQL_ENDPOINT_PATH);
-//     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: authHeader,
-//       },
-//     });
-
-//     if (!response.ok) {
-//       throw new Error(`Network error: ${response.statusText}`);
-//     }
-
-//     const data = await response.json();
-
-//     if (data.errors) {
-//       return { error: 'An error occurred during the request.', data: null };
-//     }
-
-//     return { data };
-//   } catch (error) {
-//     return { error: 'An unexpected error occurred.', data: null };
-//   }
-// }
-
-// eslint-disable-next-line max-len
 async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
   try {
     const username = 'admin';
@@ -148,25 +82,7 @@ export async function fetchComponentData(name, path) {
   return result;
 }
 
-// export async function fetchCalendarAnnouncementData(name, date, visbleRequested, visibleApproved) {
-//   const { data, error } = await fetchAnnouncementsGQL(name, date, visbleRequested, visibleApproved);
-//   if (error) return { data: null };
-//   const result = data.data || null;
-//   return result;
-// }
-
-// // eslint-disable-next-line max-len
-// export async function fetchCalendarEventsData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved) {
-//   // eslint-disable-next-line max-len
-//   const { data, error } = await fetchEventsGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved);
-//   if (error) return { data: null };
-//   const result = data.data || null;
-//   return result;
-// }
-
-// eslint-disable-next-line max-len
 export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
-  // eslint-disable-next-line max-len
   const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved);
   if (error) return { data: null };
   const result = data.data || null;

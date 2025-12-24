@@ -1,5 +1,3 @@
-// eslint-disable-next-line max-len
-// import { fetchCalendarAnnouncementData, fetchCalendarEventsData } from '../../scripts/graphql-api.js';
 import { fetchCalendarData } from '../../scripts/graphql-api.js';
 
 function buildHeader(data, currentDateStr) {
@@ -16,6 +14,27 @@ function buildHeader(data, currentDateStr) {
   return `
     <div class="au-header">
       <h1>${data.dateFormatted || 'Date not provided'}</h1>
+      <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
+        <button type="button" class="nav-button previous" data-date="${prevDateStr}">Previous Day</button>
+        <button type="button" class="nav-button next" data-date="${nextDateStr}">Next Day</button>
+      </div>
+    </div>
+  `;
+}
+
+function buildFooter(data, currentDateStr) {
+  const currentDate = new Date(currentDateStr);
+  const prevDate = new Date(currentDate);
+  const nextDate = new Date(currentDate);
+
+  prevDate.setDate(currentDate.getDate() - 1);
+  nextDate.setDate(currentDate.getDate() + 1);
+
+  const prevDateStr = prevDate.toISOString().split('T')[0];
+  const nextDateStr = nextDate.toISOString().split('T')[0];
+
+  return `
+    <div class="au-footer">
       <div class="au-nav day-by-day-navigation" role="navigation" aria-label="Day by Day Navigation">
         <button type="button" class="nav-button previous" data-date="${prevDateStr}">Previous Day</button>
         <button type="button" class="nav-button next" data-date="${nextDateStr}">Next Day</button>
@@ -266,6 +285,8 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       <!-- Popup -->
       ${buildPopup(data)}
 
+      ${buildFooter(data)}
+
     </div>
   `;
 
@@ -279,11 +300,6 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
 async function loadAnnouncementsForDate(dateStr, block) {
   try {
-    // eslint-disable-next-line max-len
-    // const annJson = await fetchCalendarAnnouncementData('searchAnnouncementsByDate', dateStr, '2', 'true');
-
-    // eslint-disable-next-line max-len
-    // const eventJson = await fetchCalendarEventsData('GetCalendarEventsBydate', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2');
     const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2', dateStr, '2', 'true');
     let rawItems = [];
     if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {

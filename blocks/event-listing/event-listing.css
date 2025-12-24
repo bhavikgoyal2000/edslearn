@@ -84,6 +84,15 @@
   margin-bottom: 1.5rem;
 }
 
+.au-calendar .au-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
 .au-calendar .au-header h1 {
   font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: clamp(3rem, 2.1vw, 4rem);
