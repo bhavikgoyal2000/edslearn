@@ -131,7 +131,6 @@ function buildEvents(data) {
 }
 
 function buildPopup(data) {
-  // This can later be mapped from API
   return `
     <div class="au-popup-overlay" id="au-popup">
       <div class="au-popup">
@@ -197,7 +196,6 @@ function attachNavButtons(block) {
     button.addEventListener('click', (e) => {
       const targetDate = e.currentTarget.getAttribute('data-date');
       if (targetDate) {
-        // Dispatch the same custom event your calendar listens to
         document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
           detail: { date: targetDate },
         }));
@@ -218,12 +216,10 @@ function attachExport(block) {
       const location = eventDiv.dataset.location || '';
       let description = eventDiv.dataset.description || '';
 
-      // Convert to ICS timestamp format (UTC, Z means UTC)
       function toICSFormat(date) {
         return `${date.toISOString().replace(/[-:]/g, '').split('.')[0]}Z`;
       }
 
-      // Escape newlines and other chars for ICS DESCRIPTION
       description = description.replace(/\n/g, '\\n').replace(/,/g, '\\,').replace(/;/g, '\\;');
 
       const icsContent = `BEGIN:VCALENDAR
@@ -388,7 +384,6 @@ async function loadAnnouncementsForDate(dateStr, block) {
 
     renderCalendarFromApi(block, data, dateStr);
   } catch (err) {
-    console.error('Error loading calendar data:', err);
     block.textContent = 'Failed to load announcements and events.';
     block.style.color = 'red';
   }

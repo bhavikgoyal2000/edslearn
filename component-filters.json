@@ -1,0 +1,736 @@
+[
+  {
+    "id": "main",
+    "components": [
+      "section",
+      "tab-panel",
+      "column-section",
+      "au-left-rail-content-section",
+      "au-right-rail-content-section",
+      "au-main-content-section",
+      "au-main-content-section-w-right-rail",
+      "au-collapsible-content-section"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table",
+      "dropForm",
+      "miniDropForm",
+      "directory-form",
+      "textSearchForm",
+      "programFinderSearch",
+      "calendar",
+      "programRankList",
+      "event-listing",
+      "service-now-article"
+    ]
+  },
+  {
+    "id": "programRankList",
+    "components": [
+      "programRankListItem"
+    ]
+  },
+  {
+    "id": "programFinderSearch",
+    "components": [
+      "addCtaButton"
+    ]
+  },
+  {
+    "id": "miniDropForm",
+    "components": [
+      "dropFormItem"
+    ]
+  },
+  {
+    "id": "textSearchForm",
+    "components": [
+      "formHiddenItem"
+    ]
+  },
+  {
+    "id": "description-list",
+    "components": [
+      "description-list-item"
+    ]
+  },
+  {
+    "id": "table",
+    "components": [
+      "table-row"
+    ]
+  },
+  {
+    "id": "table-2-columns",
+    "components": [
+      "table-col-2"
+    ]
+  },
+  {
+    "id": "table-3-columns",
+    "components": [
+      "table-col-3"
+    ]
+  },
+  {
+    "id": "table-4-columns",
+    "components": [
+      "table-col-4"
+    ]
+  },
+  {
+    "id": "table-5-columns",
+    "components": [
+      "table-col-5"
+    ]
+  },
+  {
+    "id": "description-list",
+    "components": [
+      "description-list-item"
+    ]
+  },
+  {
+    "id": "soloSpotlight",
+    "components": [
+      "soloSpotlightItem"
+    ]
+  },
+  {
+    "id": "duoSpotlight",
+    "components": [
+      "duoSpotlightItem"
+    ]
+  },
+  {
+    "id": "column-section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table",
+      "event-listing",
+      "service-now-article"
+    ]
+  },
+  {
+    "id": "au-left-rail-content-section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table",
+      "calendar"
+    ]
+  },
+  {
+    "id": "au-right-rail-content-section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table"
+    ]
+  },
+  {
+    "id": "au-main-content-section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table",
+      "event-listing",
+      "service-now-article"
+    ]
+  },
+  {
+    "id": "au-main-content-section-w-right-rail",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table",
+      "event-listing",
+      "service-now-article"
+    ]
+  },
+  {
+    "id": "au-collapsible-content-section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "customfooter",
+      "collapsibles",
+      "topnav",
+      "blockquote",
+      "sidenav",
+      "newselement",
+      "newslisting",
+      "parent-section",
+      "newsarticle",
+      "newplaceholder1",
+      "newplaceholder2",
+      "newplaceholder3",
+      "flipImageCards",
+      "social-links",
+      "newselementflex",
+      "flexfacts",
+      "flexFactsMini",
+      "flexcontainer",
+      "flexIconMini",
+      "flexPromoImage",
+      "flex3Bullets",
+      "acalogCourseList",
+      "alive-chat",
+      "datatable",
+      "flexHouseAds",
+      "highlightStrip",
+      "rankList",
+      "single-image-quote",
+      "quickFacts",
+      "flexPromoText",
+      "profile-form",
+      "profile-details",
+      "inlineVideo",
+      "inlineVideoPlaylist",
+      "profile-details",
+      "alertMessage",
+      "customTextBlock",
+      "carousel",
+      "quickLinks",
+      "iframe",
+      "policyDetail",
+      "policyList",
+      "tier2header",
+      "tier3header",
+      "soloSpotlight",
+      "justAsk",
+      "duoSpotlight",
+      "office",
+      "callout",
+      "imageWCaption",
+      "wclList",
+      "wclInfoBox",
+      "blockquotedom",
+      "description-list",
+      "table",
+      "wclCourse",
+      "wclStory",
+      "wclWidget",
+      "htmlEmbed",
+      "description-list",
+      "table",
+      "dropForm",
+      "miniDropForm",
+      "textSearchForm"
+    ]
+  },
+  {
+    "id": "carousel",
+    "components": [
+      "carouselItem"
+    ]
+  },
+  {
+    "id": "flexPromoText",
+    "components": [
+      "flexPromoTextItem"
+    ]
+  },
+  {
+    "id": "flexPromoImage",
+    "components": [
+      "flexPromoImageItem"
+    ]
+  },
+  {
+    "id": "flexcontainer",
+    "components": [
+      "flexcontainerItem"
+    ]
+  },
+  {
+    "id": "quickFacts",
+    "components": [
+      "quickFactsItem"
+    ]
+  },
+  {
+    "id": "flexfacts",
+    "components": [
+      "flexfactsItem"
+    ]
+  },
+  {
+    "id": "flexFactsMini",
+    "components": [
+      "flexFactsMiniItem"
+    ]
+  },
+  {
+    "id": "flexHouseAds",
+    "components": [
+      "flexHouseAdsItem"
+    ]
+  },
+  {
+    "id": "rankList",
+    "components": [
+      "rankListItem"
+    ]
+  },
+  {
+    "id": "flexIconMini",
+    "components": [
+      "flexIconMiniItem"
+    ]
+  },
+  {
+    "id": "flex3Bullets",
+    "components": [
+      "flex3BulletsItem"
+    ]
+  },
+  {
+    "id": "newselementflex",
+    "components": [
+      "newselementflexItem"
+    ]
+  },
+  {
+    "id": "flipImageCards",
+    "components": [
+      "flipImageCardsItem"
+    ]
+  },
+  {
+    "id": "collapsibles",
+    "components": [
+      "collapsibleItem"
+
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
+    ]
+  },
+  {
+    "id": "columns",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
+  }
+]
