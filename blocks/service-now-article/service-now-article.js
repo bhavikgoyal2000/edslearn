@@ -18,15 +18,15 @@ function extractData(block) {
   let apiResponse = '';
 
   if (apiResponseContainer) {
-    const htmlParts = [];
+    const decodedFragments = [];
 
-    [...apiResponseContainer.children].forEach((child) => {
-      if (child.tagName === 'P') {
-        htmlParts.push(child.innerHTML);
+    [...apiResponseContainer.children].forEach((p) => {
+      if (p.tagName === 'P') {
+        decodedFragments.push(decodeHtml(p.textContent));
       }
     });
 
-    apiResponse = decodeHtml(htmlParts.join(''));
+    apiResponse = decodedFragments.join('');
   }
 
   return {
