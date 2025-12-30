@@ -1,0 +1,4764 @@
+[
+  {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Title"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "keywords",
+        "multi": true,
+        "label": "Keywords"
+      }
+    ]
+  },
+  {
+    "id": "image",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Alt Text"
+      }
+    ]
+  },
+  {
+    "id": "title",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "label": "Title Type",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "button",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "linkText",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "linkTitle",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "linkType",
+        "label": "Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "name",
+        "label": "Section Name",
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "text",
+        "name": "sectionId",
+        "label": "Section Id",
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "select",
+        "name": "style",
+        "label": "Width",
+        "required": true,
+        "options": [
+          {
+          "name": "25%",
+          "value": "section-width-25"
+          },
+          {
+          "name": "33%",
+          "value": "section-width-33"
+          },
+          {
+          "name": "50%",
+          "value": "section-width-50"
+          },
+          {
+          "name": "66%",
+          "value": "section-width-66"
+          },
+          {
+          "name": "75%",
+          "value": "section-width-75"
+          },
+          {
+          "name": "100%",
+          "value": "section-width-100"
+          }
+        ]
+      },
+    {
+        "component": "container",
+        "label": "Section Background Color",
+        "name": "sectionBgColorContainer",
+        "valueType": "string",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "select",
+            "name": "bgColor",
+            "label": "Bg Color",
+            "valueType": "string",
+            "options": [
+              { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+              { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+              { "name": "District Gray", "value": "bg-district-gray-light-color" },
+              { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+              { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+              { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+              { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+              { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" },
+              { "name": "None", "value": "bg-none" }
+              ]
+          },
+          {
+            "component": "text",
+            "name": "headerTxt",
+            "label": "Header Text",
+            "description": "Header Text",
+            "valueType": "string",
+            "required": true
+          },
+          {
+            "component": "checkbox-group",
+            "label": "Has Content ? if checked then the first dropped text container will take 75% of width space and 25% will be taken by Header text",
+            "name": "sectionHasContent",
+            "valueType": "string[]",
+            "options": [
+              { "name": "Has Content ?", "value": "hasContent" }
+            ]
+          },
+          {
+            "component": "checkbox-group",
+            "label": "Use Narrow Margins ?",
+            "name": "sectionNarrowMargin",
+            "valueType": "string[]",
+            "options": [
+              { "name": "Use Narrow Margins ?", "value": "narrowMargin" }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "parent-section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "commaSeparatedIds",
+        "label": "Comma Seperated section Id",
+        "description": "The label shown for this section in the Content Tree",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "profile-details",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "aem-content-fragment",
+        "name": "profile_contentfragment",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au"
+        }
+      }
+    ]
+  },
+  {
+    "id": "column-section",
+    "fields": [
+      {
+        "component": "select",
+        "name": "style_width",
+        "label": "Colum Width",
+        "description": "The width of the column section",
+        "options": [
+          {
+            "name": "one-thirds full full",
+            "value": ["col-lg-4", "col-md-12", "col-12"]
+          },
+          {
+            "name": "two-thirds full full",
+            "value": ["col-lg-8", "col-md-12", "col-12"]
+          },
+          {
+            "name": "one-fourth one-half full",
+            "value": ["col-lg-3", "col-md-6", "col-12"]
+          },
+          {
+            "name": "one-half full full",
+            "value": ["col-lg-6", "col-md-12", "col-12"]
+          },
+          {
+            "name": "three-fourths full full",
+            "value": ["col-lg-9", "col-md-12", "col-12"]
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "style_sectiontype",
+        "value": "column",
+        "hidden": true,
+        "description": "fix marker class to identify column sections"
+      },
+      {
+        "component": "select",
+        "name": "style_bgcolor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+          { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+          { "name": "District Gray", "value": "bg-district-gray-light-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+          { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+          { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+          { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" },
+          { "name": "None", "value": "bg-none" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "au-main-content-section-w-right-rail",
+    "fields": [
+      {
+        "component": "select",
+        "name": "style_width",
+        "label": "Content Sectino Width",
+        "description": "The width of the content section",
+        "options": [
+          {
+            "name": "Main Content 66% with Right Rail",
+            "value": "main-with-right-rail"
+          },
+          {
+            "name": "Main Content 80% with Right Rail",
+            "value": "main-with-right-rail-80"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "style_sectiontype",
+        "value": "content-section",
+        "hidden": true,
+        "description": "fix marker class to identify content sections"
+      },
+      {
+        "component": "select",
+        "name": "style_bgcolor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+          { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+          { "name": "District Gray", "value": "bg-district-gray-light-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+          { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+          { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+          { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" },
+          { "name": "None", "value": "bg-none" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "au-right-rail-content-section",
+    "fields": [
+      {
+        "component": "select",
+        "name": "style_width",
+        "label": "Content Sectino Width",
+        "description": "The width of the content section",
+        "options": [
+          {
+            "name": "Right Rail 34%",
+            "value": "right-rail"
+          },
+          {
+            "name": "Right Rail 20%",
+            "value": "right-rail-20"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "style_sectiontype",
+        "value": "content-section",
+        "hidden": true,
+        "description": "fix marker class to identify content sections"
+      },
+      {
+        "component": "select",
+        "name": "style_bgcolor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+          { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+          { "name": "District Gray", "value": "bg-district-gray-light-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+          { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+          { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+          { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" },
+          { "name": "None", "value": "bg-none" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "au-main-content-section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "style_width",
+        "label": "Content Sectino Width",
+        "description": "The width of the content section",
+        "value": "main-without-right-rail",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "style_sectiontype",
+        "value": "content-section",
+        "hidden": true,
+        "description": "fix marker class to identify content sections"
+      },
+      {
+        "component": "select",
+        "name": "style_bgcolor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+          { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+          { "name": "District Gray", "value": "bg-district-gray-light-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+          { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+          { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+          { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" },
+          { "name": "None", "value": "bg-none" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "au-left-rail-content-section",
+    "fields": [
+      {
+        "component": "text",
+        "name": "style_width",
+        "label": "Content Sectino Width",
+        "description": "The width of the content section",
+        "value": "left-rail",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "style_sectiontype",
+        "value": "content-section",
+        "hidden": true,
+        "description": "fix marker class to identify content sections"
+      },
+      {
+        "component": "select",
+        "name": "style_bgcolor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+          { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+          { "name": "District Gray", "value": "bg-district-gray-light-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+          { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+          { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+          { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" },
+          { "name": "None", "value": "bg-none" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "au-collapsible-content-section",
+    "fields": [
+      {
+        "component": "select",
+        "name": "style_width",
+        "label": "Width",
+        "description": "The width of the content section",
+        "options": [
+          {
+            "name": "one-thirds full full",
+            "value": ["col-lg-4", "col-md-12", "col-12"]
+          },
+          {
+            "name": "two-thirds full full",
+            "value": ["col-lg-8", "col-md-12", "col-12"]
+          },
+          {
+            "name": "one-fourth one-half full",
+            "value": ["col-lg-3", "col-md-6", "col-12"]
+          },
+          {
+            "name": "one-half full full",
+            "value": ["col-lg-6", "col-md-12", "col-12"]
+          },
+          {
+            "name": "three-fourths full full",
+            "value": ["col-lg-9", "col-md-12", "col-12"]
+          },
+          {
+            "name": "full",
+            "value": ["col-lg-12", "col-md-12", "col-12"]
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "style_sectiontype",
+        "value": ["content-section", "collapsible-section"],
+        "hidden": true,
+        "description": "fix marker class to identify content sections"
+      },
+      {
+        "component": "select",
+        "name": "style_bgcolor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Arboretum Green",
+            "value": "bg-arboretum-green-color"
+          },
+          {
+            "name": "Embassy Blue",
+            "value": "bg-embassy-blue-color"
+          },
+          {
+            "name": "Intern Blue",
+            "value": "bg-intern-blue-color"
+          },
+          {
+            "name": "Kay Flame Yellow",
+            "value": "bg-kay-flame-yellow-color"
+          },
+          {
+            "name": "Metro Silver",
+            "value": "bg-metro-silver-color"
+          },
+          {
+            "name": "Rowhouse Red",
+            "value": "bg-rowhouse-red-color"
+          },
+          {
+            "name": "Suffragist Purple",
+            "value": "bg-suffragist-purple-color"
+          },
+          {
+            "name": "Talon Grey",
+            "value": "bg-talon-grey-color"
+          },
+          {
+            "name": "Default Ombre",
+            "value": "bg-default-ombre-color"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "reference",
+        "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "tab-panel",
+    "fields": [
+      {
+        "component": "text",
+        "name": "tab-label",
+        "label": "Label"
+      }
+    ]
+  },
+  {
+    "id": "iframe",
+    "fields": [
+      {
+        "component": "text",
+        "name": "heading",
+        "label": "Heading"
+      },
+      {
+        "component": "text",
+        "name": "subHeading",
+        "label": "SubHeading"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description"
+      },
+      {
+        "component": "text",
+        "name": "iframe_url",
+        "label": "IFrame URL"
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "iframe_height",
+        "label": "IFrame Height:"
+      }
+    ]
+  },
+  {
+    "id": "tier2header",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+            "component": "tab",
+            "label": "Header Details",
+            "name": "tab0"
+        },
+        {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "schoolName",
+        "label": "Select School",
+        "valueType": "string",
+        "options": [
+          { "name": "Select", "value": "" },
+          { "name": "CAS", "value": "College of Arts and Sciences" },
+          { "name": "KOGOD", "value": "KOGOD" },
+          { "name": "SOC", "value": "School of Communication" },
+          { "name": "SIS", "value": "School Of International Service" },
+          { "name": "SPA", "value": "School of Public Affairs" },
+          { "name": "SPEXS", "value": "SPEXS" },
+          { "name": "Admissions", "value": "Admissions" },
+          { "name": "University Life", "value": "University Life" },
+          { "name": "Financial Aid", "value": "Financial Aid" },
+          { "name": "SOE", "value": "School of Education" },
+          { "name": "WCL", "value": "Washington College of Law" }
+          ]
+        },
+        {
+            "component": "tab",
+            "label": "Asset Details",
+            "name": "tab1"
+        },
+        {
+            "component": "container",
+            "name": "assetTextDetails",
+            "label": "Asset and Text Details",
+            "collapsible": true,
+            "fields": [
+                {
+                    "component": "reference",
+                    "name": "assetTextDetails_bgImage",
+                    "label": "Background Image",
+                    "valueType": "string",
+                    "required": false
+                },
+                {
+                    "component": "text",
+                    "valueType": "string",
+                    "name": "assetTextDetails_bgImageAlt",
+                    "label": "Alt"
+                }
+            ]
+        },
+        {
+            "component": "tab",
+            "label": "CTA 1 Details",
+            "name": "tab2"
+        },
+        {
+            "component": "text",
+            "name": "subnav_cta1Text",
+            "label": "CTA1 Title",
+            "valueType": "string"
+        },
+        {
+            "component": "aem-content",
+            "name": "subnav_cta1",
+            "label": "CTA1 Link",
+            "valueType": "string",
+            "validation": {
+                "rootPath": "/content/au"
+            }
+        },
+        {
+            "component": "boolean",
+            "label": "Has Sub CTA ?",
+            "name": "hasSubCTA1",
+            "valueType": "boolean"
+        },
+
+              {
+                    "component": "text",
+                    "name": "cta1_SubCtaDetailsHeading",
+                    "label": "Sub CTA Heading",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "cta1_SubCta1DetailsTextValue",
+                    "label": "Sub CTA Title",
+                    "valueType": "string"
+                },
+                {
+                    "component": "aem-content",
+                    "name": "cta1_SubCtaDetailsLink",
+                    "label": "Sub CTA Link",
+                    "valueType": "string",
+                    "validation": {
+                        "rootPath": "/content/au"
+                    }
+                },
+                {
+                    "component": "text",
+                    "name": "cta1_SubCta2DetailsTextValue",
+                    "label": "Sub CTA Title",
+                    "valueType": "string"
+                },
+                {
+                    "component": "aem-content",
+                    "name": "cta1_SubCta2DetailsLink",
+                    "label": "Sub CTA Link",
+                    "valueType": "string",
+                    "validation": {
+                        "rootPath": "/content/au"
+                    }
+
+        },
+        {
+            "component": "tab",
+            "label": "CTA 2 Details",
+            "name": "tab3"
+        },
+        {
+            "component": "text",
+            "name": "subnav_cta2Text",
+            "label": "CTA2 Title",
+            "valueType": "string"
+        },
+        {
+            "component": "aem-content",
+            "name": "subnav_cta2",
+            "label": "CTA2 Link",
+            "valueType": "string",
+            "validation": {
+                "rootPath": "/content/au"
+            }
+        },
+        {
+            "component": "boolean",
+            "label": "Has Sub CTA ?",
+            "name": "hasSubCTA2",
+            "valueType": "boolean"
+        },
+              {
+                    "component": "text",
+                    "name": "cta2_SubCtaDetailsHeading",
+                    "label": "Sub CTA Heading",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "cta2_SubCta1DetailsTextValue",
+                    "label": "Sub CTA Title",
+                    "valueType": "string"
+                },
+                {
+                    "component": "aem-content",
+                    "name": "cta2_SubCta1DetailsLink",
+                    "label": "Sub CTA Link",
+                    "valueType": "string",
+                    "validation": {
+                        "rootPath": "/content/au"
+                    }
+                },
+                {
+                    "component": "text",
+                    "name": "cta2_SubCta2DetailsTextValue",
+                    "label": "Sub CTA Title",
+                    "valueType": "string"
+                },
+                {
+                    "component": "aem-content",
+                    "name": "cta2_SubCta2DetailsLink",
+                    "label": "Sub CTA Link",
+                    "valueType": "string",
+                    "validation": {
+                        "rootPath": "/content/au"
+                    }
+
+
+        },
+        {
+            "component": "tab",
+            "label": "CTA 3 Details",
+            "name": "tab4"
+        },
+        {
+            "component": "text",
+            "name": "subnav_cta3Text",
+            "label": "CTA3 Title",
+            "valueType": "string"
+        },
+        {
+            "component": "aem-content",
+            "name": "subnav_cta3",
+            "label": "CTA3 Link",
+            "valueType": "string",
+            "validation": {
+                "rootPath": "/content/au"
+            }
+        },
+        {
+            "component": "boolean",
+            "label": "Has Sub CTA ?",
+            "name": "hasSubCTA3",
+            "valueType": "boolean"
+        },
+        {
+
+
+                    "component": "text",
+                    "name": "cta3_SubCtaDetailsHeading",
+                    "label": "Sub CTA Heading",
+                    "valueType": "string"
+                },
+                {
+                    "component": "text",
+                    "name": "cta3_SubCta1DetailsTextValue",
+                    "label": "Sub CTA Title",
+                    "valueType": "string"
+                },
+                {
+                    "component": "aem-content",
+                    "name": "cta3_SubCta1DetailsLink",
+                    "label": "Sub CTA Link",
+                    "valueType": "string",
+                    "validation": {
+                        "rootPath": "/content/au"
+                    }
+                },
+                {
+                    "component": "text",
+                    "name": "cta3_SubCta2DetailsTextValue",
+                    "label": "Sub CTA Text",
+                    "valueType": "string"
+                },
+                {
+                    "component": "aem-content",
+                    "name": "cta3_SubCta2DetailsLink",
+                    "label": "Sub CTA Link",
+                    "valueType": "string",
+                    "validation": {
+                        "rootPath": "/content/au"
+                    }
+                }
+
+    ]
+  },
+  {
+    "id": "tier3header",
+    "fields": [
+        {
+          "component": "text",
+          "name": "isGlobal",
+          "label": "Global Flag",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+            "component": "tab",
+            "label": "Header",
+            "name": "tab1"
+        },
+        {
+            "component": "text",
+            "valueType": "string",
+            "name": "tier3headerTitleField",
+            "label": "Page Title",
+            "required": true
+        },
+        {
+            "component": "tab",
+            "label": "Marketing Landing pages",
+            "name": "tab2"
+        },
+        {
+            "component": "boolean",
+            "label": "Is it Marketing Page?",
+            "name": "isMarketingPage",
+            "valueType": "boolean"
+        },
+      {
+            "component": "boolean",
+            "label": "Show Breadcrumbs?",
+            "name": "showBreadCrumbs",
+            "valueType": "boolean"
+        },
+      {
+            "component": "tab",
+            "label": "Call-to-Action",
+            "name": "tab3"
+      },
+        {
+            "component": "text",
+            "name": "cta1Text",
+            "label": "CTA1 Title",
+            "valueType": "string"
+        },
+        {
+            "component": "aem-content",
+            "name": "cta1",
+            "label": "CTA1 Link",
+            "valueType": "string",
+            "validation": {
+                "rootPath": "/content/au"
+            }
+        },
+        {
+            "component": "text",
+            "name": "cta2Text",
+            "label": "CTA2 Title",
+            "valueType": "string"
+        },
+        {
+            "component": "aem-content",
+            "name": "cta2",
+            "label": "CTA2 Link",
+            "valueType": "string",
+            "validation": {
+                "rootPath": "/content/au"
+            }
+        },
+        {
+        "component": "select",
+        "name": "chatChannel",
+        "label": "Chat Channel",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Select",
+            "value": ""
+          },
+          {
+            "name": "CAS",
+            "value": "CAS"
+          },
+          {
+            "name": "KSB",
+            "value": "KSB"
+          },
+          {
+            "name": "SOC",
+            "value": "SOC"
+          },
+          {
+            "name": "SOE",
+            "value": "SOE"
+          },
+          {
+            "name": "SIS",
+            "value": "SIS"
+          },
+          {
+            "name": "SPExS",
+            "value": "SPExS"
+          },
+          {
+            "name": "SPA",
+            "value": "SPA"
+          },
+          {
+            "name": "Admissions",
+            "value": "Admissions"
+          },
+          {
+            "name": "UC",
+            "value": "UC"
+          },
+          {
+            "name": "CAS Advising",
+            "value": "CAS Advising"
+          },
+          {
+            "name": "IT Helpdesk",
+            "value": "IT Helpdesk"
+          },
+          {
+            "name": "Library",
+            "value": "Library"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "description-list-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "key",
+        "label": "Key",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "value",
+        "value": "",
+        "label": "Value",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Table List",
+            "children": [
+              {
+                "name": "Default",
+                "value": "list"
+              },
+              {
+                "name": "Add Description",
+                "value": "description"
+              }
+            ]
+          },
+          {
+            "name": "Background Color",
+            "children": [
+              {
+                "name": "Heading",
+                "value": "heading-bg"
+              },
+              {
+                "name": "Body",
+                "value": "body-bg"
+              },
+              {
+                "name": "Alternate Row",
+                "value": "alternate-row-bg"
+              }
+            ]
+          },
+          {
+            "name": "Border",
+            "children": [
+              {
+                "name": "Striped",
+                "value": "striped"
+              },
+              {
+                "name": "Bordered",
+                "value": "bordered"
+              }
+            ]
+          },
+          {
+            "name": "Header",
+            "children": [
+              {
+                "name": "No Header",
+                "value": "no-header"
+              },
+              {
+                "name": "Large Header",
+                "value": "large-header"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "filter",
+        "label": "Columns",
+        "valueType": "string",
+        "value": "table",
+        "options": [
+          {
+            "name": "1 Column",
+            "value": "table"
+          },
+          {
+            "name": "2 Columns",
+            "value": "table-2-columns"
+          },
+          {
+            "name": "3 Columns",
+            "value": "table-3-columns"
+          },
+          {
+            "name": "4 Columns",
+            "value": "table-4-columns"
+          },
+          {
+            "name": "5 Columns",
+            "value": "table-5-columns"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "headingBgColor",
+        "label": "Heading Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "heading-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "bodyBgColor",
+        "label": "Body Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "body-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "alternateRowBgColor",
+        "label": "Alternate Row Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "alternate-row-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "listItemHeading",
+        "label": "Table List Title",
+        "condition": {
+          "in": [
+            "list",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Table List Description",
+        "condition": {
+          "in": [
+            "description",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      }
+    ]
+  },
+  {
+    "id": "table-col-2",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      }
+    ]
+  },
+  {
+    "id": "table-col-3",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      }
+    ]
+  },
+  {
+    "id": "table-col-4",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column4_text",
+        "valueType": "string",
+        "value": "Column 4"
+      }
+    ]
+  },
+  {
+    "id": "table-col-5",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column4_text",
+        "valueType": "string",
+        "value": "Column 4"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column5_text",
+        "valueType": "string",
+        "value": "Column 5"
+      }
+    ]
+  },
+  {
+    "id": "hero",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "hero_variation",
+        "label": "Hero Variation",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Hero Partial Image",
+            "value": "var-partial-width-image"
+          },
+          {
+            "name": "Hero Full Width Image",
+            "value": "var-full-width-image"
+          },
+          {
+            "name": "Hero RFI Form",
+            "value": "var-rfi-form"
+          }
+
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "hero_image",
+        "label": "Image",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "hero_imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Title should not exceed 80 characters."
+        }
+      },
+      {
+        "component": "text",
+        "name": "surtitle",
+        "label": "Surtitle"
+      },
+      {
+        "component": "text",
+        "name": "hero_text",
+        "label": "Text"
+      },
+      {
+        "component": "select",
+        "name": "hero_textVerticalAlignment",
+        "label": "Hero Text Vertical Alignment",
+        "valueType": "string",
+        "value": "center",
+        "condition": {
+          "===": [{ "var": "hero_variation" }, "var-full-width-image"]
+        },
+        "options": [
+          {
+            "name": "Top",
+            "value": "txt-align-start"
+          },
+          {
+            "name": "Middle",
+            "value": "txt-align-center"
+          },
+          {
+            "name": "Bottom",
+            "value": "txt-align-end"
+          }
+
+        ]
+      },
+      {
+        "component": "select",
+        "name": "hero_textHorizontalAlignment",
+        "label": "Hero Text Horizontal Alignment",
+        "valueType": "string",
+        "value": "center",
+        "condition": {
+          "===": [{ "var": "hero_variation" }, "var-full-width-image"]
+        },
+        "options": [
+          {
+            "name": "Left",
+            "value": "txt-horizontal-left"
+          },
+          {
+            "name": "Right",
+            "value": "txt-horizontal-right"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "hero_colorCode",
+        "label": "Background Color",
+        "valueType": "string",
+        "value": "bg-default-ombre-color",
+        "condition": {
+          "===": [{ "var": "hero_variation" }, "var-partial-width-image"]
+        },
+        "options": [
+          { "name": "Intern Blue", "value": "bg-intern-blue-color" },
+          { "name": "District Gray", "value": "bg-default-ombre-color" }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "hero_popoutEffect",
+        "label": "Popout Effect",
+        "valueType": "string",
+        "condition": {
+          "===": [{ "var": "hero_variation" }, "var-partial-width-image"]
+        },
+        "options": [
+          {
+            "name": "No Popout Effect",
+            "value": "style-default"
+          },
+          {
+            "name": "With Popout Effect",
+            "value": "style-cross-fade"
+          }
+
+        ]
+      },
+      {
+        "component": "text",
+        "name": "hero_btnCaption",
+        "label": "CTA Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "hero_btnLink",
+        "label": "CTA Link",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      },
+      {
+        "component": "select",
+        "name": "hero_buttonVariation",
+        "label": "CTA Type",
+        "valueType": "string",
+        "value": "link",
+        "options": [
+          { "name": "Button", "value": "button" },
+          { "name": "Link", "value": "link" }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "hero_ctaBackgroundColor",
+        "label": "CTA Background Color",
+        "value": "cta-bg-indigo-purple-color",
+        "options": [
+          { "name": "Indigo Purple", "value": "cta-bg-indigo-purple-color" },
+          { "name": "Ombre", "value": "cta-bg-default-ombre-color" }
+        ],
+        "condition": {
+          "===": [{ "var": "hero_buttonVariation" }, "button"]
+        }
+      },
+      {
+          "component": "reference",
+          "valueType": "string",
+          "name": "hero_image1",
+          "label": "Image 1",
+          "required": true
+            },
+            {
+              "component": "text",
+              "name": "hero_image1Alt",
+              "label": "Image 1 Alt Text",
+              "valueType": "string",
+              "required": true
+            },
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "hero_image2",
+              "label": "Image 2"
+            },
+            {
+              "component": "text",
+              "name": "hero_image2Alt",
+              "label": "Image 2 Alt Text",
+              "valueType": "string"
+            },
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "hero_image3",
+              "label": "Image 3"
+            },
+            {
+              "component": "text",
+              "name": "hero_image3Alt",
+              "label": "Image 3 Alt Text",
+              "valueType": "string"
+            },
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "hero_image4",
+              "label": "Image 4"
+            },
+            {
+              "component": "text",
+              "name": "hero_image4Alt",
+              "label": "Image 4 Alt Text",
+              "valueType": "string"
+            },
+            {
+              "component": "reference",
+              "valueType": "string",
+              "name": "hero_image5",
+              "label": "Image 5"
+            },
+            {
+              "component": "text",
+              "name": "hero_image5Alt",
+              "label": "Image 5 Alt Text",
+              "valueType": "string"
+
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "imageLogo",
+        "label": "Logo Image",
+        "condition": {
+          "===": [{ "var": "hero_variation" }, "var-full-width-image"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "imageLogoAlt",
+        "label": "Logo Image Alt Text",
+        "valueType": "string",
+        "condition": {
+          "===": [{ "var": "hero_variation" }, "var-full-width-image"]
+        }
+      }
+    ]
+  },
+  {
+    "id": "customfooter",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "footer_image",
+        "label": "Logo Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "footer_imageAlt",
+        "label": "Alt",
+        "multi": false,
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "footer_bgcolor",
+        "valueType": "string",
+        "label": "Display Style",
+        "required": true,
+        "options": [
+          { "name": "Footer Grey", "value": "bg-footer-grey-color" },
+          { "name": "Arboretum Green", "value": "bg-arboretum-green-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-color" },
+          { "name": "Intern Blue", "value": "bg-intern-blue-color" },
+          { "name": "Kay Flame Yellow", "value": "bg-kay-flame-yellow-color" },
+          { "name": "Metro Silver", "value": "bg-metro-silver-color" },
+          { "name": "Rowhouse Red", "value": "bg-rowhouse-red-color" },
+          { "name": "Suffragist Purple", "value": "bg-suffragist-purple-color" },
+          { "name": "Talon Grey", "value": "bg-talon-grey-color" },
+          { "name": "Default Ombre", "value": "bg-default-ombre-color" },
+          { "name": "Black", "value": "bg-black-color" },
+          { "name": "White", "value": "bg-white-color" },
+          { "name": "Red", "value": "bg-red-color" },
+          { "name": "Blue", "value": "bg-blue-color" },
+          { "name": "Green", "value": "bg-green-color" },
+          { "name": "Yellow", "value": "bg-yellow-color" },
+          { "name": "Purple", "value": "bg-purple-color" },
+          { "name": "Pink", "value": "bg-pink-color" },
+          { "name": "Orange", "value": "bg-orange-color" },
+          { "name": "Grey", "value": "bg-grey-color" },
+          { "name": "Brown", "value": "bg-brown-color" },
+          { "name": "Custom", "value": "bg-custom-color" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "label": "Background color code (with '#')",
+        "name": "bg-color-text",
+        "required": true,
+        "valueType": "string",
+        "condition": {
+          "===": [{ "var": "footer_bgcolor" }, "bg-custom-color"]
+        }
+      },
+      {
+        "component": "aem-content-fragment",
+        "name": "footer_contentfragment",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "collapsibles",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "collapsibleItem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "collapsible_gradStyle",
+        "valueType": "string",
+        "label": "Display Style",
+        "required": true,
+        "options": [
+          {
+            "name": "Arboretum Green",
+            "value": "bg-arboretum-green-color"
+          },
+          {
+            "name": "Embassy Blue",
+            "value": "bg-embassy-blue-color"
+          },
+          {
+            "name": "Intern Blue",
+            "value": "bg-intern-blue-color"
+          },
+          {
+            "name": "Kay Flame Yellow",
+            "value": "bg-kay-flame-yellow-color"
+          },
+          {
+            "name": "Metro Silver",
+            "value": "bg-metro-silver-color"
+          },
+          {
+            "name": "Rowhouse Red",
+            "value": "bg-rowhouse-red-color"
+          },
+          {
+            "name": "Suffragist Purple",
+            "value": "bg-suffragist-purple-color"
+          },
+          {
+            "name": "Talon Grey",
+            "value": "bg-talon-grey-color"
+          },
+          {
+            "name": "Default Ombre",
+            "value": "bg-default-ombre-color"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "collapsible_title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string",
+        "name": "collapsible_title-type",
+        "label": "Title Type",
+        "required": true,
+        "minSize": 1,
+        "options": [
+          {
+            "name": "Heading",
+            "children": [
+              {
+                "name": "h1",
+                "value": "h1"
+              },
+              {
+                "name": "h2",
+                "value": "h2"
+              },
+              {
+                "name": "h3",
+                "value": "h3"
+              },
+              {
+                "name": "h4",
+                "value": "h4"
+              },
+              {
+                "name": "h5",
+                "value": "h5"
+              },
+              {
+                "name": "h6",
+                "value": "h6"
+              }
+            ]
+          },
+          {
+            "name": "Formatting",
+            "children":[
+              {
+                "name": "Bold",
+                "value": "strong"
+              },
+              {
+                "name": "Italic",
+                "value": "em"
+              },
+              {
+                "name": "Underline",
+                "value": "u"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "topnav",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "topnav_image",
+        "label": "Image",
+        "valueType": "string",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "topnav_imgAltTxt",
+        "label": "Image Alt Text",
+        "required": true
+      },
+      {
+        "component": "aem-content-fragment",
+        "name": "picker",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "blockquote",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "variation",
+        "label": "Quote Variation",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Ombre Style Quote",
+            "value": "ombre-style"
+          },
+          {
+            "name": "Quote with background Image",
+            "value": "bg-image"
+          },
+          {
+            "name": "CA-Style Purple",
+            "value": "ca-style-purple"
+          },
+          {
+            "name": "CA-Style Green",
+            "value": "ca-style-green"
+          },
+          {
+            "name": "Custom",
+            "value": "custom"
+          }
+        ]
+      },
+
+          {
+            "component": "richtext",
+            "name": "blockquote_text",
+            "value": "",
+            "label": "Text",
+            "valueType": "string",
+            "required": true
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "blockquote_citationName",
+            "label": "Citation Name",
+            "value": "",
+            "required": true
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "blockquote_citationTxt",
+            "label": "Citation Text",
+            "value": "",
+            "required": true
+          },
+          {
+            "component": "reference",
+            "name": "blockquote_image",
+            "label": "Headshot Image",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "blockquote_imageAlt",
+            "label": "Alt",
+            "value": ""
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "blockquote_iconQuotation",
+            "label": "Icon Quotation",
+            "multi": false,
+            "required": true,
+            "condition": { "===": [{ "var": "variation" }, "custom"] }
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "blockquote_imgAltTxt",
+            "label": "Alt",
+            "value": "",
+            "required": true,
+            "condition": { "===": [{ "var": "variation" }, "custom"] }
+          },
+          {
+            "component": "select",
+            "name": "select_colorCode",
+            "label": "Text Color",
+            "valueType": "string",
+            "required": true,
+            "condition": { "===": [{ "var": "variation" }, "custom"] },
+            "options": [
+              { "name": "Arboretum Green", "value": "txt-arboretum-green-color" },
+              { "name": "Embassy Blue", "value": "txt-embassy-blue-color" },
+              { "name": "Intern Blue", "value": "txt-intern-blue-color" },
+              { "name": "Kay Flame Yellow", "value": "txt-kay-flame-yellow-color" },
+              { "name": "Metro Silver", "value": "txt-metro-silver-color" },
+              { "name": "Rowhouse Red", "value": "txt-rowhouse-red-color" },
+              { "name": "Suffragist Purple", "value": "txt-suffragist-purple-color" },
+              { "name": "Talon Grey", "value": "txt-talon-grey-color" },
+              { "name": "Default Ombre", "value": "txt-default-ombre-color" },
+              { "name": "Others", "value": "txt-others" }
+            ]
+          },
+          {
+            "component": "text-input",
+            "label": "Text color code (with '#')",
+            "name": "txt-color-text",
+            "required": true,
+            "valueType": "string",
+            "condition": {
+              "===": [{ "var": "select_colorCode" }, "txt-others"]
+            }
+          }
+    ]
+  },
+  {
+    "id": "sidenav",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "sidenav_contentfragment",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "description-list-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "key",
+        "label": "Key",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "value",
+        "value": "",
+        "label": "Value",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "alive-chat",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "select", "name": "chatChannel", "label": "Chat Channel", "valueType": "string", "required": true, "options": [{ "name": "CAS", "value": "CAS" },{ "name": "KSB", "value": "KSB" },{ "name": "SOC", "value": "SOC" },{ "name": "SOE", "value": "SOE" },{ "name": "SIS", "value": "SIS" },{ "name": "SPExS", "value": "SPExS" },{ "name": "SPA", "value": "SPA" },{ "name": "Undergrad", "value": "Undergrad" },{ "name": "UC", "value": "UC" },{ "name": "CAS Advising", "value": "CAS-Advising" },{ "name": "IT HelpDesk", "value": "it-helpdesk" },{ "name": "Library", "value": "library" },{ "name": "SPExS", "value": "SPExS" },{ "name": "Admissions", "value": "admissions" }]},
+      { "component": "select", "name": "linkTypeValue", "label": "Link Type", "valueType": "string", "required": true, "options": [{ "name": "Button", "value": "button" },{ "name": "Tout", "value": "tout" }]},
+      { "component": "select", "name": "buttonlinkStyle", "label": "Link Style", "valueType": "string", "required": true, "condition": {"===": [{ "var": "linkTypeValue" }, "button"]}, "options": [{ "name": "School", "value": "school" },{ "name": "Primary", "value": "primary" },{ "name": "Outline", "value": "outline" },{ "name": "CTA", "value": "cta" }]},
+      { "component": "select", "name": "toutlinkStyle", "label": "Link Style", "valueType": "string", "required": true, "condition": {"===": [{ "var": "linkTypeValue" }, "tout"]}, "options": [{ "name": "Solid Warm blue", "value": "solid-warm-blue" },{ "name": "Solid teal", "value": "solid-teal" },{ "name": "Solid taupe", "value": "solid-taupe" },{ "name": "Outline warm blue", "value": "outline-warm-blue" },{ "name": "Outline teal", "value": "outline-teal" },{ "name": "Outline taupe", "value": "outline-taupe" }]},
+      { "component": "text", "valueType": "string", "name": "ctaSuffixTxt", "label": "CTA Suffix", "value": "", "required": false }
+    ]
+  },
+  {
+
+    "id": "datatable",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "tab",
+        "label": "Data From SreadSheet",
+        "name": "tab1"
+      },
+      {
+        "component": "boolean",
+        "name": "isEngagingNetwork",
+        "label": "Select this checkbox if you would like to use datatable for Engaging Network",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-content",
+        "name": "engagingnetworkURL",
+        "value": "",
+        "label": "Engaging Network URL",
+        "description": "Enter the URL for the Engaging Network.",
+        "valueType": "string",
+        "validation": {
+              "rootPath": "/content/dam/au"
+          },
+        "condition": {"===": [{ "var": "isEngagingNetwork" }, true]}
+      },
+      {
+        "component": "aem-content",
+        "name": "csvFile",
+        "value": "",
+        "label": "Choose CSV File from DAM",
+        "valueType": "string",
+        "validation": {
+              "rootPath": "/content/dam/au"
+          },
+        "condition": {"===": [{ "var": "isEngagingNetwork" }, false]}
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "description": "Enter the title of your table.",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "subtitle",
+        "label": "Sub Title",
+        "description": "Enter an optional subtitle.",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "col_headers",
+        "label": "Column Headers",
+        "description": "Enter a comma-delimited list of column headers to be included in the table, in the order you want them displayed (e.g. Rank, Make, Model, AALA, US_HQ, TDC)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "tableId",
+        "label": "Table Id",
+        "required": true,
+        "description": "You must add a specific non-duplicate ID to the table tag. In this field put that ID.",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "summary",
+        "label": "Summary",
+        "description": "Provide a short summary of the table.",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "tab",
+        "label": "Display Options",
+        "name": "tab2"
+      },
+      {
+        "component": "checkbox-group",
+        "name": "allowSearching_checkbox",
+        "valueType": "string[]",
+        "options": [
+          { "name": "Allow Searching?", "value": "allowSearching" }
+        ]
+      },
+      {
+        "component": "checkbox-group",
+        "name": "allowSorting_checkbox",
+        "valueType": "string[]",
+        "options": [
+          { "name": "Allow Sorting?", "value": "allowSorting" }
+        ]
+      },
+      {
+        "component": "checkbox-group",
+        "name": "allowPagination_checkbox",
+        "valueType": "string[]",
+        "options": [
+          { "name": "Allow Pagination?", "value": "allowPagination" }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "freezeTopRow",
+        "label": "Freeze Top Row and Show X Rows Before Scroll",
+        "description": "Freeze the top (header) row and show x rows of data before scrolling. This number should be one of the options in the Available Page Counts list. Must be smaller or equal to the current pageCounts to have an effect.",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "availablePageCounts",
+        "label": "Available Page Counts",
+        "description": "Enter a comma separated list of 2 or more numbers to populate the Items per Page dropdown list.",
+        "value": "10,25,50,100",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "initialPageCount",
+        "label": "Initial Page Count",
+        "description": "This number must appear among the list in Available Page Counts.",
+        "value": "10",
+        "required": true
+      }
+
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Table List",
+            "children": [
+              {
+                "name": "Default",
+                "value": "list"
+              },
+              {
+                "name": "Add Description",
+                "value": "description"
+              }
+            ]
+          },
+          {
+            "name": "Background Color",
+            "children": [
+              {
+                "name": "Heading",
+                "value": "heading-bg"
+              },
+              {
+                "name": "Body",
+                "value": "body-bg"
+              },
+              {
+                "name": "Alternate Row",
+                "value": "alternate-row-bg"
+              }
+            ]
+          },
+          {
+            "name": "Border",
+            "children": [
+              {
+                "name": "Striped",
+                "value": "striped"
+              },
+              {
+                "name": "Bordered",
+                "value": "bordered"
+              }
+            ]
+          },
+          {
+            "name": "Header",
+            "children": [
+              {
+                "name": "No Header",
+                "value": "no-header"
+              },
+              {
+                "name": "Large Header",
+                "value": "large-header"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "filter",
+        "label": "Columns",
+        "valueType": "string",
+        "value": "table",
+        "options": [
+          {
+            "name": "1 Column",
+            "value": "table"
+          },
+          {
+            "name": "2 Columns",
+            "value": "table-2-columns"
+          },
+          {
+            "name": "3 Columns",
+            "value": "table-3-columns"
+          },
+          {
+            "name": "4 Columns",
+            "value": "table-4-columns"
+          },
+          {
+            "name": "5 Columns",
+            "value": "table-5-columns"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "headingBgColor",
+        "label": "Heading Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "heading-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "bodyBgColor",
+        "label": "Body Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "body-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "text",
+        "name": "alternateRowBgColor",
+        "label": "Alternate Row Background Color(Hex code)",
+        "condition": {
+          "in": [
+            "alternate-row-bg",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "listItemHeading",
+        "label": "Table List Title",
+        "condition": {
+          "in": [
+            "list",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Table List Description",
+        "condition": {
+          "in": [
+            "description",
+            {
+              "var": "classes"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "table-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      }
+    ]
+  },
+  {
+    "id": "table-col-2",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      }
+    ]
+  },
+  {
+    "id": "table-col-3",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      }
+    ]
+  },
+  {
+    "id": "table-col-4",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column4_text",
+        "valueType": "string",
+        "value": "Column 4"
+      }
+    ]
+  },
+  {
+    "id": "table-col-5",
+    "fields": [
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column1_text",
+        "valueType": "string",
+        "value": "Column 1"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column2_text",
+        "valueType": "string",
+        "value": "Column 2"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column3_text",
+        "valueType": "string",
+        "value": "Column 3"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column4_text",
+        "valueType": "string",
+        "value": "Column 4"
+      },
+      {
+        "component": "richtext",
+        "label": "Text",
+        "name": "column5_text",
+        "valueType": "string",
+        "value": "Column 5"
+      }
+    ]
+  },
+  {
+    "id": "newselement",
+    "fields": [
+        {
+          "component": "text",
+          "name": "isGlobal",
+          "label": "Global Flag",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+        "component": "aem-content-fragment",
+        "name": "picker",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "newslisting",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "custommultifield",
+        "label": "Custom Multifield",
+        "name": "news_filterData",
+        "valueType": "string"
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "resultPerPage",
+        "label": "Results per page:",
+        "value": 10,
+        "validation": {
+        "numberMin": 10,
+        "numberMax": 50,
+        "customErrorMsg": "Please provide the value between 10 and 50."
+        }
+      }
+
+    ]
+  },
+  {
+    "id": "newsarticle",
+    "fields": [
+        {
+          "component": "text",
+          "name": "isGlobal",
+          "label": "Global Flag",
+          "valueType": "string",
+          "hidden": true
+        },
+        {
+        "component": "aem-content-fragment",
+        "name": "picker",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "flipImageCards",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "flipImageCards_layout",
+        "valueType": "string",
+        "label": "Layout Style",
+        "required": true,
+        "options": [
+          {
+            "name": "Layout 1",
+            "value": "layout1"
+          },
+          {
+            "name": "Layout 2",
+            "value": "layout2"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flipImageCardsItem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "flipImageCards_cardStyle",
+        "valueType": "string",
+        "label": "Image Card Style",
+        "required": true,
+        "options": [
+          {
+            "name": "Square 1x1",
+            "value": "square"
+          },
+          {
+            "name": "Square 2x2",
+            "value": "bigsquare"
+          },
+          {
+            "name": "Landscape 2x1",
+            "value": "landscape"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "flipImageCards_flipTxt",
+        "label": "Flip Image Text",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "social-links",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      { "component": "text", "valueType": "string", "name": "socialMediaOwnerName", "label": "Social Media Owner Name", "required": true },
+      { "component": "text", "valueType": "string", "name": "facebookLink", "label": "Facebook Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "twitterLink", "label": "Twitter Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "youtubeLink", "label": "YouTube Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "instagramLink", "label": "Instagram Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "linkedinLink", "label": "LinkedIn Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "pinterestLink", "label": "Pinterest Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "social-links_wordpressLink", "label": "WordPress Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "social-links_blogName", "label": "Blog Name", "required": false, "description": "Enter the blog name if you have added a WordPress URL above." },
+      { "component": "text", "valueType": "string", "name": "tumblrLink", "label": "Tumblr Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "flickrLink", "label": "Flickr Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "foursquareLink", "label": "Foursquare Link URL", "required": false },
+      { "component": "text", "valueType": "string", "name": "blueskyLink", "label": "Bluesky Link URL", "required": false }
+    ]
+  },
+  {
+    "id": "newselementflexItem",
+    "fields": [
+        {
+        "component": "aem-content-fragment",
+        "name": "picker",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "newselementflex",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "flexfacts",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "flexfactsItem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "flexFact_elementSize",
+        "label": "Element Size",
+        "valueType": "string",
+        "required": false,
+        "value": "size-standard",
+        "hidden": true,
+        "options": [
+          {
+            "name": "Standard Size",
+            "value": "size-standard"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "flexFact_textAboveFocus",
+        "label": "Text Above Focus",
+        "valueType": "string",
+        "condition": {
+          "===": [{ "var": "flexFact_elementSize" }, "size-standard"]
+        }
+      },
+      {
+        "component": "select",
+        "name": "flexFact_layoutStyle",
+        "label": "Layout Style",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Big Number",
+            "value": "ls-big-number"
+          },
+          {
+            "name": "Ranking",
+            "value": "ls-ranking"
+          },
+          {
+            "name": "Percentage",
+            "value": "ls-percentage"
+          },
+          {
+            "name": "Ratio",
+            "value": "ls-ratio"
+          },
+          {
+            "name": "Number Plus",
+            "value": "ls-number-plus"
+          },
+          {
+            "name": "Text Heavy",
+            "value": "ls-text-heavy"
+          },
+          {
+            "name": "Dollar Amount",
+            "value": "ls-dollar-amount"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "flexFact_factFocalTxt",
+        "label": "Fact Focal Text",
+        "valueType": "string",
+        "required": true,
+        "validation": {
+          "maxLength": 8,
+          "customErrorMsg": "Fact focal text should not exceed 7-8 characters."
+        },
+        "condition": {
+          "!==": [{ "var": "flexFact_layoutStyle" }, "ls-text-heavy"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "flexFact_factFocalTextHeavy",
+        "label": "Fact Focal Text",
+        "valueType": "string",
+        "required": true,
+        "condition": {
+          "===": [{ "var": "flexFact_layoutStyle" }, "ls-text-heavy"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "flexFact_textbelowFocus",
+        "label": "Text Below Focus",
+        "valueType": "string"
+      },
+      {
+        "component": "container",
+        "label": "CTA Container",
+        "name": "flexFact_btnContainer",
+        "valueType": "string",
+        "collapsible": true,
+        "condition": {
+          "===": [{ "var": "flexFact_elementSize" }, "size-standard"]
+        },
+        "fields": [
+          {
+            "component": "text",
+            "name": "flexFact_attributionTxt",
+            "label": "Attribution Txt",
+            "valueType": "string"
+          },
+          {
+            "component": "checkbox-group",
+            "label": " Attribution Text Type",
+            "name": "flexFact_attributionTextCategory",
+            "valueType": "string[]",
+            "options": [
+              { "name": "Footnote Attribution Text", "value": "footnote" },
+              { "name": "Cite Attribution Text", "value": "cite" }
+            ]
+          },
+         {
+            "component": "aem-content",
+            "name": "flexFact_attributionUrl",
+            "label": "Attribution URL",
+            "valueType": "string",
+            "validation": {
+              "rootPath": "/content/au"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flexFactsMini",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "flexFactsMiniItem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "flexFact_elementSize",
+        "label": "Element Size",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Mini w/ Background",
+            "value": "size-mini-bg"
+          },
+          {
+            "name": "Mini w/ Outline",
+            "value": "size-mini-outline"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "flexFact_layoutStyle",
+        "label": "Layout Style",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Big Number",
+            "value": "ls-big-number"
+          },
+          {
+            "name": "Ranking",
+            "value": "ls-ranking"
+          },
+          {
+            "name": "Percentage",
+            "value": "ls-percentage"
+          },
+          {
+            "name": "Ratio",
+            "value": "ls-ratio"
+          },
+          {
+            "name": "Number Plus",
+            "value": "ls-number-plus"
+          },
+          {
+            "name": "Text Heavy",
+            "value": "ls-text-heavy"
+          },
+          {
+            "name": "Dollar Amount",
+            "value": "ls-dollar-amount"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "flexFact_BackgroundColor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Arboretum Green", "value": "bg-arboretum-green-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-color" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "flexFact_factFocalTxt",
+        "label": "Fact Focal Text",
+        "valueType": "string",
+        "required": true,
+        "validation": {
+          "maxLength": 8,
+          "customErrorMsg": "Fact focal text should not exceed 7-8 characters."
+        },
+        "condition": {
+          "!==": [{ "var": "flexFact_layoutStyle" }, "ls-text-heavy"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "flexFact_factFocalTextHeavy",
+        "label": "Fact Focal Text",
+        "valueType": "string",
+        "required": true,
+        "condition": {
+          "===": [{ "var": "flexFact_layoutStyle" }, "ls-text-heavy"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "flexFact_textbelowFocus",
+        "label": "Text Below Focus",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "flexIconMini",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "flexIconMiniItem",
+    "fields": [
+      {
+        "component": "select",
+        "name": "flexIcon_elementSize",
+        "label": "Element Size",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Mini w/ Background", "value": "size-mini-bg" },
+          { "name": "Mini w/ Outline", "value": "size-mini-outline" }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "flexIcon_iconMini",
+        "label": "Icon",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Accessible", "value": "fab fa-accessible-icon" },
+          { "name": "AltText", "value": "fas fa-braille" },
+          { "name": "Announcement", "value": "fas fa-bullhorn" },
+          { "name": "AssistiveListening", "value": "fas fa-assistive-listening-systems" },
+          { "name": "Award", "value": "fas fa-trophy" },
+          { "name": "Book", "value": "fas fa-book-open" },
+          { "name": "Bookmark", "value": "fas fa-bookmark" },
+          { "name": "Calendar", "value": "fas fa-calendar-alt" },
+          { "name": "Camera", "value": "fas fa-camera" },
+          { "name": "Chat", "value": "fas fa-comments" },
+          { "name": "Comment", "value": "fas fa-comment" },
+          { "name": "Deaf", "value": "fas fa-deaf" },
+          { "name": "Donations", "value": "fas fa-gift" },
+          { "name": "Email", "value": "fas fa-envelope" },
+          { "name": "File: Audio", "value": "far fa-file-audio" },
+          { "name": "File: Excel", "value": "fas fa-file-excel" },
+          { "name": "File: Image", "value": "fas fa-file-image" },
+          { "name": "File: Misc.", "value": "fas fa-file" },
+          { "name": "File: PDF", "value": "fas fa-file-pdf" },
+          { "name": "File: Powerpoint", "value": "fas fa-file-powerpoint" },
+          { "name": "File: Video", "value": "fas fa-file-video" },
+          { "name": "File: Word", "value": "fas fa-file-word" },
+          { "name": "File: Zip", "value": "fas fa-file-archive" },
+          { "name": "Google", "value": "fab fa-google" },
+          { "name": "Graduates", "value": "fas fa-graduation-cap" },
+          { "name": "Information", "value": "fas fa-info-circle" },
+          { "name": "International", "value": "fas fa-globe" },
+          { "name": "Laptop", "value": "fas fa-laptop" },
+          { "name": "Link", "value": "fas fa-link" },
+          { "name": "Location", "value": "fas fa-map-marker-alt" },
+          { "name": "Lock", "value": "fas fa-lock" },
+          { "name": "Login", "value": "fas fa-sign-in-alt" },
+          { "name": "Map", "value": "fas fa-map" },
+          { "name": "Parking", "value": "fas fa-parking" },
+          { "name": "People", "value": "fas fa-users" },
+          { "name": "Person", "value": "fas fa-user" },
+          { "name": "Phone", "value": "fas fa-phone" },
+          { "name": "Printer", "value": "fas fa-print" },
+          { "name": "Problem", "value": "fas fa-bug" },
+          { "name": "Pub. Trans", "value": "fas fa-bus" },
+          { "name": "Question", "value": "fas fa-question-circle" },
+          { "name": "Rankings", "value": "fas fa-certificate" },
+          { "name": "Recycle", "value": "fas fa-recycle" },
+          { "name": "Register", "value": "fas fa-clipboard-check" },
+          { "name": "SignLanguage", "value": "fas fa-american-sign-language-interpreting" },
+          { "name": "Stats", "value": "fas fa-chart-bar" },
+          { "name": "Testimonial", "value": "fas fa-quote-right" },
+          { "name": "Time", "value": "fas fa-clock" },
+          { "name": "UniversalDesign", "value": "fas fa-universal-access" },
+          { "name": "Universities", "value": "fas fa-university" },
+          { "name": "Videos", "value": "fas fa-play-circle" },
+          { "name": "VisuallyImpaired", "value": "fas fa-blind" },
+          { "name": "Work", "value": "fas fa-briefcase" }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "flexIcon_BackgroundColor",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          { "name": "Arboretum Green", "value": "bg-arboretum-green-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-color" },
+          { "name": "Indigo Purple", "value": "bg-indigo-purple-color" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "flexIcon_textbelowFocus",
+        "label": "Text Below Focus",
+         "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "flexIcon_attributionUrl",
+        "label": "Attribution URL",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      }
+    ]
+  },
+  {
+    "id": "flexcontainer",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+  "id": "flexcontainerItem",
+  "fields": [
+    {
+        "component": "select",
+        "name": "flexVariation",
+        "label": "Flex Variation",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Event (Default)", "value": "flexEvent" },
+          { "name": "Event (XL Size)", "value": "event-xl" },
+          { "name": "Image Card (default size)", "value": "image-card" },
+          { "name": "Image Card (XL Size)", "value": "image-card-xl" }
+        ]
+      },
+    { "component": "text", "name": "content_title", "label": "Title", "required": true },
+    { "component": "text", "name": "content_titleType", "hidden": true },
+    { "component": "date-time", "name": "dates_startDate", "label": "Start Date Time", "displayFormat": "YYYY-MM-DD", "valueFormat": "YYYY-MM-DD" },
+    { "component": "date-time", "name": "dates_endDate", "label": "End Date Time", "displayFormat": "YYYY-MM-DD", "valueFormat": "YYYY-MM-DD" },
+    { "component": "reference", "name": "media_image", "label": "Image" },
+    { "component": "text", "name": "media_imageAlt", "label": "Image Alt Text" },
+    {
+      "component": "text",
+      "name": "ctas_link1Text",
+      "label": "Primary Link Text",
+      "condition": {
+        "or": [
+          { "===": [{ "var": "flexVariation" }, "flexEvent"] },
+          { "===": [{ "var": "flexVariation" }, "event-xl"] }
+        ]
+      }
+    },
+    {
+      "component": "aem-content",
+      "name": "ctas_link1",
+      "label": "Primary Link",
+      "validation": {"rootPath": "/content/au"},
+      "condition": {
+        "or": [
+          { "===": [{ "var": "flexVariation" }, "flexEvent"] },
+          { "===": [{ "var": "flexVariation" }, "event-xl"] }
+        ]
+      }
+    },
+    {
+      "component": "text",
+      "name": "ctas_link2Text",
+      "label": "Scondary Link Text",
+      "condition": {
+        "or": [
+          { "===": [{ "var": "flexVariation" }, "flexEvent"] },
+          { "===": [{ "var": "flexVariation" }, "event-xl"] }
+        ]
+      }
+    },
+    {
+      "component": "aem-content",
+      "name": "ctas_link2",
+      "label": "Secondary Link URL",
+      "validation": {"rootPath": "/content/au"},
+      "condition": {
+        "or": [
+          { "===": [{ "var": "flexVariation" }, "flexEvent"] },
+          { "===": [{ "var": "flexVariation" }, "event-xl"] }
+        ]
+      }
+    },
+    {
+      "component": "richtext",
+      "name": "content_richtext",
+      "label": "XL Content Text",
+      "condition": {
+        "or": [
+          { "===": [{ "var": "flexVariation" }, "event-xl"] },
+          { "===": [{ "var": "flexVariation" }, "image-card-xl"] }
+        ]
+      }
+    }
+  ]
+},
+  {
+    "id": "flexPromoImage",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "checkbox-group", "label": "This feature works only in case of Standard Variant selection under flexPromoImageItem", "name": "standardPromoImage_size", "valueType": "string[]", "options": [ { "name": "Display in XL Size", "value": "xl" } ] }
+    ]
+  },
+  {
+    "id": "flexPromoImageItem",
+    "fields": [
+      { "component": "select", "name": "flexVariation", "label": "Variation", "valueType": "string", "required": true, "options": [{ "name": "Standard", "value": "standard" },{ "name": "Legacy", "value": "legacy" }]},
+      { "component": "container", "valueType": "string", "collapsible": false, "label": "Promo Image (Standard)", "name": "standardPromoImage", "condition": { "===": [{ "var": "flexVariation" }, "standard"] }, "fields": [ { "component": "select", "name": "bgColor", "label": "Color", "valueType": "string", "options": [ { "name": "Blue", "value": "promo-blue" }, { "name": "Grey", "value": "promo-grey" }, { "name": "Ombre", "value": "promo-ombre" } ] } ] },
+      { "component": "container", "valueType": "string", "collapsible": false, "label": "Promo Image (Legacy)", "name": "legacyPromoImage", "condition": { "===": [{ "var": "flexVariation" }, "legacy"] }, "fields": [{ "component": "radio-group", "label": "CTA Style in Bullet or Button?", "name": "radio", "valueType": "string", "options": [{ "name": "Bullet", "value": "cta_bullet" }, { "name": "Button", "value": "cta_button" }] }] },
+      { "component": "text", "valueType": "string", "name": "title_name", "label": "Title", "value": "", "required": true },
+      { "component": "richtext", "name": "content", "value": "", "label": "Content", "valueType": "string", "required": false },
+      { "component": "reference", "valueType": "string", "name": "flex_image", "label": "Image", "multi": false, "required": false },
+      { "component": "text", "valueType": "string", "name": "flex_imageAlt", "label": "Image Alt Text", "value": "" },
+      { "component": "select", "name": "imageLayout", "label": "Image Layout", "valueType": "string", "required": false, "options": [{ "name": "Top", "value": "top" }, { "name": "Bottom", "value": "bottom" }] },
+      { "component": "text", "valueType": "string", "name": "cta1_text", "label": "CTA Text 1", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "CTA URL 1", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "text", "valueType": "string", "name": "cta2_text", "label": "CTA Text 2", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta2_url", "label": "CTA URL 2", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "acalogCourseList",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      { "component": "text", "valueType": "string", "name": "deptName", "label": "Department Name", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "deptCode", "label": "Department Code", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "deptFilter", "label": "Department Filter", "value": "", "required": false }
+    ]
+  },
+  {
+    "id": "flex3Bullets",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "flex3BulletsItem",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "flex3Bullets_headingTxt",
+        "label": "Header",
+        "required": true,
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "flex3Bullets_firstItem",
+        "label": "First Item",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "secondItem",
+        "label": "Second Item",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "thirdItem",
+        "label": "Third Item",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "flexHouseAds",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      }
+    ]
+  },
+  {
+    "id": "flexHouseAdsItem",
+    "fields": [
+      {
+        "component": "reference",
+        "name": "flexHouseAdsItem_image",
+        "label": "Image",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "flexHouseAdsItem_imageAlt",
+        "label": "Alt Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "name": "flexHouseAdsItem_imageUrl",
+        "label": "Image URL",
+        "valueType": "string",
+        "required": true,
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      }
+    ]
+  },
+  {
+    "id": "highlightStrip",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "aem-content",
+        "name": "highlightStrip_imageUrl",
+        "label": "Image URL",
+        "valueType": "string",
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      },
+      {
+        "component": "select",
+        "name": "highlightStrip_variation",
+        "label": "Desktop backgound Style",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "No Background",
+            "value": "style-no-bg"
+          },
+          {
+            "name": "Diagonally striped",
+            "value": "style-digonal-striped"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "name": "highlightStrip_image",
+        "label": "Desktop Image",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "highlightStrip_imageAlt",
+        "label": "Desktop Alt Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "reference",
+        "name": "highlightStrip_imageHover",
+        "label": "Hover Image",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "highlightStrip_imageHoverAlt",
+        "label": "Hover Alt Text",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "name": "highlightStrip_imageMobile",
+        "label": "Mobile Image",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "highlightStrip_imageMobileAlt",
+        "label": "Mobile Alt Text",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "rankList",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headingTxt",
+        "label": "Heading",
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "rankListItem",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "rankListItem_figureTxt",
+        "label": "Figure Text",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "rankListItem_description",
+        "label": "Description Text",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "single-image-quote",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component":"select",
+        "name": "quote_variation",
+        "label": "Variation",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          {
+            "name": "Quote",
+            "value": "var-quote"
+          },
+          {
+            "name": "Single Image",
+            "value": "var-single-image"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "name": "quote_image",
+        "label": "Background Image",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "quote_imageAlt",
+        "label": "Backgound Image Alt Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "photoCredit",
+        "label": "Photo Credit",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "quote_quoteTxt",
+        "label": "Quote Text/Title",
+        "valueType": "string",
+        "required": true,
+        "validation": {
+          "maxLength": 250,
+          "customErrorMsg": "Max characters 250"
+        }
+      },
+      {
+        "component": "text",
+        "name": "quote_quotee",
+        "label": "Quotee",
+        "valueType": "string",
+        "required": true,
+        "condition": {
+          "===": [{ "var": "quote_variation" }, "var-quote"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Sub Title",
+        "valueType": "string",
+        "condition": {
+          "===": [{ "var": "quote_variation" }, "var-single-image"]
+        }
+      },
+      {
+        "component": "text",
+        "name": "summary",
+        "label": "Summary",
+        "valueType": "string",
+        "validation": {
+          "maxLength": 250,
+          "customErrorMsg": "Max characters 250"
+        },
+        "condition": {
+          "===": [{ "var": "quote_variation" }, "var-single-image"]
+        }
+      },
+      {
+        "component": "select",
+        "name": "quote_textAlignment",
+        "label": "Alignment",
+        "valueType": "string",
+        "value": "",
+        "options": [
+          {
+            "name": "Left",
+            "value": "txt-align-left"
+          },
+          {
+            "name": "Right",
+            "value": "txt-align-right"
+          }
+        ],
+        "condition": {
+          "===": [{ "var": "quote_variation" }, "var-quote"]
+        }
+      },
+      {
+        "component": "select",
+        "name": "quote_gradientColor",
+        "label": "Gradient Color",
+        "valueType": "string",
+        "value": "",
+        "required": true,
+        "options": [
+          {
+            "name": "Purple",
+            "value": "grad-purple"
+          },
+          {
+            "name": "Green",
+            "value": "grad-green"
+          }
+        ],
+        "condition": {
+          "===": [{ "var": "quote_variation" }, "var-single-image"]
+        }
+      },
+      {
+        "component": "container",
+        "label": "CTA Container",
+        "name": "quote_btnContainer",
+        "valueType": "string",
+        "collapsible": true,
+        "fields": [
+          {
+            "component": "text",
+            "name": "quote_btnCaption",
+            "label": "CTA Text",
+            "valueType": "string"
+          },
+          {
+            "component": "aem-content",
+            "name": "quote_btnLink",
+            "label": "CTA Link",
+            "valueType": "string",
+            "validation": {
+              "rootPath": "/content/au"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quickFacts",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "quickFacts_title",
+        "label": "Title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "quickFactsItem",
+    "fields": [
+      {
+        "component": "text",
+        "name": "prefix",
+        "label": "Prefix",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "quickFactsItem_figureTxt",
+        "label": "Figure Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "postFix",
+        "label": "Postfix",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "quickFactsItem_descriptionTxt",
+        "label": "Description",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "flexPromoText",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "checkbox-group", "label": "Click on checkbox to display the flex in 600px.", "name": "promoText_size", "valueType": "string[]", "options": [ { "name": "Display in XL Size", "value": "xl" } ] }
+    ]
+  },
+  {
+    "id": "flexPromoTextItem",
+    "fields": [
+      { "component": "select", "name": "flexVariation", "label": "Variation", "valueType": "string", "required": true, "options": [{ "name": "Solid Background", "value": "solidBg" },{ "name": "Outline", "value": "outline" }]},
+      { "component": "select", "name": "flexColor", "label": "Flex Color", "valueType": "string", "options": [
+          { "name": "Arboretum Green", "value": "bg-arboretum-green-color" },
+          { "name": "District Gray", "value": "bg-district-gray-color" },
+          { "name": "Embassy Blue", "value": "bg-embassy-blue-color" },
+          { "name": "Intern Blue", "value": "bg-intern-blue-color" },
+          { "name": "Kay Flame Yellow", "value": "bg-kay-flame-yellow-color" },
+          { "name": "Rowhouse Red", "value": "bg-rowhouse-red-color" },
+          { "name": "Suffragist Purple", "value": "bg-suffragist-purple-color" }
+        ]
+      },
+      { "component": "text", "valueType": "string", "name": "title_name", "label": "Title", "value": "", "required": true },
+      { "component": "richtext", "name": "content", "value": "", "label": "Content", "valueType": "string", "required": false },
+      { "component": "radio-group", "label": "Link Type in Title Link or CTA Button?", "name": "radio", "valueType": "string", "options": [{ "name": "Title Link", "value": "title_link" }, { "name": "CTA Button", "value": "cta_button" }] },
+      { "component": "text", "valueType": "string", "name": "cta1_text", "label": "CTA Text 1", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "CTA URL 1", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "alertMessage",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "select", "name": "alert_type", "label": "Alert Type", "valueType": "string", "required":true, "options": [
+          { "name": "Danger", "value": "alert-danger" },
+          { "name": "Info", "value": "alert-info" },
+          { "name": "Success", "value": "alert-success" },
+          { "name": "Warning", "value": "alert-warning" }
+        ]
+      },
+      { "component": "richtext", "name": "content", "value": "", "label": "Message", "valueType": "string", "required": true }
+    ]
+  },
+  {
+    "id": "inlineVideo",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "videoService",
+        "label": "Video Service",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Youtube", "value": "youtube" },
+          { "name": "Vimeo", "value": "vimeo" },
+          { "name": "Vimeo Showcase (Album)", "value": "vimeoShowcase" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "videoId",
+        "label": "Video ID",
+        "valueType": "string",
+        "description": "Video ID. Example: If the video URL is 'youtube.com/watch?v=sampleID', the ID would be 'sampleID'.",
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "style",
+        "label": "Video Display Style",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Partial", "value": "partial" },
+          { "name": "Full", "value": "full" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "runtime",
+        "label": "Video Runtime",
+        "valueType": "string",
+        "required": false
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "boolean",
+        "label": "Header is for Accessibility/Mobile Only",
+        "name": "hide_title",
+        "valueType": "boolean",
+        "value": false
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string",
+        "required": false
+      },
+      {
+        "component": "text",
+        "name": "topic",
+        "label": "Topic",
+        "valueType": "string",
+        "required": false
+      },
+      { "component": "text", "valueType": "string", "name": "cta1_text", "label": "CTA Text 1", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "CTA URL 1", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "text", "valueType": "string", "name": "cta2_text", "label": "CTA Text 2", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta2_url", "label": "CTA URL 2", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "text", "valueType": "string", "name": "cta3_text", "label": "CTA Text 3", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta3_url", "label": "CTA URL 3", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "inlineVideoPlaylist",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "playlistId",
+        "label": "Playlist ID",
+        "valueType": "string",
+        "description": "Youtube Playlist ID. Example: If the video URL is 'youtube.com/watch?v=ignore&list=sampleID', the ID would be 'sampleID'.",
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "style",
+        "label": "Playlist Display Style",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Collapsible", "value": "collapsible" },
+          { "name": "Partial", "value": "partial" },
+          { "name": "Full", "value": "full" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "text",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "customTextBlock",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "textBlock_title",
+        "label": "Title",
+        "valueType": "string",
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      {
+        "component": "text",
+        "name": "subtitle",
+        "label": "Sub Title",
+        "valueType": "string",
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Content",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "textBlock_padding",
+        "label": "Padding",
+        "valueType": "string",
+        "options": [
+          { "name": "Default", "value": "padding-default" },
+          { "name": "None", "value": "padding-none" },
+          { "name": "Both", "value": "padding-both" }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "textBlock_layout",
+        "label": "Image/Quote Layout",
+        "valueType": "string",
+        "options": [
+          { "name": "Full Width", "value": "layout-full-width" },
+          { "name": "Half Left", "value": "layout-half-left" },
+          { "name": "Half Right", "value": "layout-half-right" },
+          { "name": "One Third Left", "value": "layout-one-third-left" },
+          { "name": "One Third Right", "value": "layout-one-third-right" }
+        ]
+      },
+      {
+        "component": "container",
+        "valueType": "string",
+        "collapsible": true,
+        "label": "Image Details",
+        "name": "imageDetails",
+        "fields": [
+          {
+            "component": "reference",
+            "name": "textBlock_image",
+            "label": "Image",
+            "valueType": "string"
+          },
+          {
+            "component": "text",
+            "name": "textBlock_imageAlt",
+            "label": "Alt Text",
+            "valueType": "string",
+            "required": true
+          },
+          {
+            "component": "checkbox-group",
+            "label": "Display Alt Text as Image",
+            "name": "textBlock_displayAltTextAsImage",
+            "valueType": "string[]",
+            "options": [
+              { "name": "Display Alt Text As Caption", "value": "display-caption" }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "valueType": "string",
+        "collapsible": true,
+        "label": "Quote Details",
+        "name": "quoteDetails",
+        "fields": [
+          {
+            "component": "richtext",
+            "name": "quote",
+            "label": "Quote",
+            "valueType": "string",
+            "validation": {
+              "maxLength": 255,
+              "customErrorMsg": "Max characters 255"
+            }
+          },
+          {
+            "component": "text",
+            "name": "textBlock_citation",
+            "label": "Citation",
+            "valueType": "string"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "carousel",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true }
+    ]
+  },
+  {
+    "id": "carouselItem",
+    "fields": [
+      { "component": "reference", "valueType": "string", "name": "carousel_image", "label": "Image", "multi": false, "required": true },
+      { "component": "text", "valueType": "string", "name": "carousel_imageAlt", "label": "Image Alt Text", "value": "" },
+      { "component": "text", "valueType": "string", "name": "title_name", "label": "Title", "value": "", "required": false },
+      { "component": "richtext", "name": "content", "value": "", "label": "Content", "valueType": "string", "required": false },
+      { "component": "text", "valueType": "string", "name": "cta1_text", "label": "Button", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "Button Link", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "quickLinks",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "name": "quickLinks_title",
+        "label": "Heading Text",
+        "valueType": "string",
+        "required": true
+      },
+      {
+        "component": "select",
+        "name": "quickLinks_iconMini",
+        "label": "Icon",
+        "valueType": "string",
+        "value": "",
+        "required": false,
+        "options": [
+          { "name": "None", "value": "" },
+          { "name": "List Icon", "value": "icon ion-ios-list" }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "quickLinks_listStyle",
+        "label": "List Style",
+        "required": true,
+        "options": [
+          { "name": "Extra Compact", "value": "list-extra-compact" },
+          { "name": "Compact", "value": "list-compact" },
+          { "name": "Ordered Task", "value": "list-ordered-task" },
+          { "name": "Unordered Task", "value": "list-unordered-task" }
+        ]
+      },
+      {
+        "component": "richtext",
+        "name": "quickLinks_listItem",
+        "label": "List Item",
+        "valueType": "string",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "policyDetail",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      {
+        "component": "tab",
+        "label": "AU Policy",
+        "name": "tab1"
+      },
+      { "component": "text", "valueType": "string", "name": "title_name", "label": "Title", "value": "", "required": true },
+      { "component": "aem-content", "valueType": "string", "name": "pdf_url", "label": "Policy Document", "value": "", "required": true, "validation": {"rootPath": "/content/dam/au"} },
+      { "component": "richtext", "name": "policy_description", "value": "", "label": "Abstract", "valueType": "string", "required": true },
+      { "component": "select", "name": "policyCategory", "label": "Policy Category", "valueType": "string", "required": true, "options": [
+        { "name": "Academic", "value": "Academic" },
+        { "name": "AU Community", "value": "AU Community" },
+        { "name": "Facilities", "value": "Facilities" },
+        { "name": "Finance and Business", "value": "Finance and Business" },
+        { "name": "Information Technology", "value": "Information Technology" },
+        { "name": "Marketing and Communications", "value": "Marketing and Communications" },
+        { "name": "Personnel", "value": "Personnel" },
+        { "name": "Research", "value": "Research" },
+        { "name": "Safety and Risk Management", "value": "Safety and Risk Management" },
+        { "name": "Students", "value": "Students" }
+        ]
+      },
+      { "component": "checkbox-group", "label": "Check to Hide the Policy Details.", "name": "policyInactive", "valueType": "string[]", "options": [ { "name": "Inactive", "value": "inactive" } ] },
+      { "component": "checkbox-group", "label": "Require Login feature is currently not in use. On HOLD", "name": "policyRequireLogin", "valueType": "string[]", "options": [ { "name": "Requires Login", "value": "requireLogin" } ] },
+      {
+        "component": "tab",
+        "label": "Responsibility",
+        "name": "tab2"
+      },
+      { "component": "select", "name": "responsibleOfficer", "label": "Responsible office/officer", "valueType": "string", "required": true, "options": [
+        { "name": "Board of Trustees", "value": "Board of Trustees" },
+        { "name": "Chief of Staff", "value": "Chief of Staff" },
+        { "name": "Office of the General Counsel", "value": "Office of the General Counsel" },
+        { "name": "Office of the President", "value": "Office of the President" },
+        { "name": "Office of the Provost", "value": "Office of the Provost" },
+        { "name": "Vice President: Communications & Marketing", "value": "Vice President: Communications & Marketing" },
+        { "name": "Vice President: Student Affairs", "value": "Vice President: Student Affairs" },
+        { "name": "Vice President of People and External Affairs", "value": "Vice President of People and External Affairs" },
+        { "name": "Vice President: University Advancement", "value": "Vice President: University Advancement" },
+        { "name": "Vice President & Chief Financial Officer", "value": "Vice President & Chief Financial Officer" },
+        { "name": "Vice President & Chief Information Officer", "value": "Vice President & Chief Information Officer" }
+        ]
+      },
+      { "component": "text-input", "label": "Others: Add the custom responsible officer name", "description": "If custom Responsible Officer information is provided it will take precedence over the selected value from the above dropdown.", "name": "txt-responsibleOfficer", "required": false, "valueType": "string" },
+      {
+        "component": "tab",
+        "label": "Dates",
+        "name": "tab3"
+      },
+      { "component": "date-time", "valueType": "date-time", "name": "effectiveDate", "label": "Effective Date", "displayFormat": "YYYY-MM-DD", "valueFormat": "YYYY-MM-DD", "required": false },
+      { "component": "date-time", "valueType": "date-time", "name": "lastRevisionDate", "label": "Last Revision Date", "displayFormat": "YYYY-MM-DD", "valueFormat": "YYYY-MM-DD", "required": false },
+      { "component": "select", "name": "reviewSchedule", "label": "Review Schedule", "valueType": "string", "required": false, "options": [
+        { "name": "Annually", "value": "Annually" },
+        { "name": "Biennially", "value": "Biennially" }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Related Content",
+        "name": "tab4"
+      },
+      { "component": "richtext", "name": "related_policies", "value": "", "label": "Related Policies", "valueType": "string", "required": true },
+      { "component": "richtext", "name": "procedure_guidelines", "value": "", "label": "Procedures & Guidelines", "valueType": "string", "required": false },
+      { "component": "richtext", "name": "forms_resources", "value": "", "label": "Related Forms & Resources", "valueType": "string", "required": false }
+    ]
+  },
+  {
+    "id": "policyList",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      { "component": "text", "valueType": "string", "name": "title", "label": "Title", "value": "", "required": true },
+      { "component": "text", "valueType": "string", "name": "subtitle", "label": "Sub Title", "value": "", "required": false },
+      { "component": "number", "valueType": "number", "name": "columnCount",
+        "label": "Enter the number to display the policy list items in column. This is applicable for 768px and above screen size.",
+        "value": 1, "validation": {"numberMin": 1, "numberMax": 5, "customErrorMsg": "Please provide the value between 1 and 5."}
+      },
+      { "component": "select", "name": "policyCategory", "label": "Policy Category", "valueType": "string", "required": true, "options": [
+        { "name": "Academic", "value": "Academic" },
+        { "name": "AU Community", "value": "AU Community" },
+        { "name": "Facilities", "value": "Facilities" },
+        { "name": "Finance and Business", "value": "Finance and Business" },
+        { "name": "Information Technology", "value": "Information Technology" },
+        { "name": "Marketing and Communications", "value": "Marketing and Communications" },
+        { "name": "Personnel", "value": "Personnel" },
+        { "name": "Research", "value": "Research" },
+        { "name": "Safety and Risk Management", "value": "Safety and Risk Management" },
+        { "name": "Students", "value": "Students" },
+        { "name": "All Policy", "value": "all_policy" }
+        ]
+      },
+      { "component": "select", "name": "sortBy", "label": "Sort By", "valueType": "string", "required": true, "options": [
+        { "name": "Effective Date", "value": "effectiveDate" },
+        { "name": "Last Revision Date", "value": "lastRevisionDate" },
+        { "name": "Created", "value": "jcr:created" },
+        { "name": "Last Modified", "value": "jcr:lastModified" },
+        { "name": "Policy Category", "value": "policyCategory" },
+        { "name": "Responsible Officer", "value": "responsibleOfficer" },
+        { "name": "Title", "value": "title_name" }
+        ]
+      },
+      { "component": "select", "name": "sortOrder", "label": "Sort Order", "valueType": "string", "required": true, "options": [
+        { "name": "Ascending", "value": "asc" },
+        { "name": "Descending", "value": "desc" }
+        ]
+      }
+    ]
+  },
+  { "id": "soloSpotlight",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      { "component": "select", "name": "soloSpotlight_layout", "valueType": "string", "label": "Solo Spotlight Layout Style", "required": true,
+        "options": [
+          { "name": "Solo Static", "value": "solo-static" },
+          { "name": "Solo - Cookie Based", "value": "solo-cookie-based" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "soloSpotlightItem",
+    "fields": [
+      { "component": "text", "valueType": "string", "name": "cookieId", "value": "", "required": true, "label": "Cookie ID" },
+      { "component": "text", "valueType": "string", "name": "tagline", "label": "Tagline/Headline", "value": "", "required": false,
+        "validation": {
+          "maxLength": 50,
+          "customErrorMsg": "Max characters 50"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "header", "label": "Header/Headline", "value": "", "required": true,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "subheading1", "label": "Subheading 1", "value": "", "required": false,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "subheading2", "label": "Subheading 2", "value": "", "required": false,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "pull_quote", "label": "Pull Quote", "value": "", "required": true,
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      { "component": "reference", "valueType": "string", "name": "spotlight_image", "label": "Image", "multi": false, "required": true },
+      { "component": "text", "valueType": "string", "name": "spotlight_imageAlt", "label": "Image Alt Text", "value": "", "required": true },
+      { "component": "select", "name": "image_layout", "valueType": "string", "label": "Select Image Layout Style", "required": false, "options": [ { "name": "Standard", "value": "standard" }, { "name": "Full Width", "value": "full-width" }, { "name": "One Third", "value": "one-third" } ] },
+      { "component": "richtext", "name": "story_text", "value": "", "label": "Story Text", "valueType": "string", "required": true },
+      { "component": "text", "valueType": "string", "name": "cta2_text", "label": "CTA Text", "value": "", "required": false, "description": "Solo Layout only. CTA will only include in inside storyText." },
+      { "component": "aem-content", "valueType": "string", "name": "cta2_url", "label": "CTA Link", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "justAsk",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "searchCategory",
+        "label": "Search Type",
+        "options": [
+          {
+            "name": "Just Ask",
+            "value": "just-ask"
+          },
+          {
+            "name": "It Help",
+            "value": "it-help"
+          },
+          {
+            "name": "Reserach",
+            "value": "research"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "duoSpotlight",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      {
+        "component": "select",
+        "name": "spotlight_layout",
+        "valueType": "string",
+        "label": "Spotlight Layout Style",
+        "required": true,
+        "options": [
+          {
+            "name": "Duo Static",
+            "value": "duo-static"
+          },
+          {
+            "name": "Duo - Cookie Based",
+            "value": "duo-cookie-based"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "duoSpotlightItem",
+    "fields": [
+      { "component": "text", "valueType": "string", "name": "cookieId", "value": "", "required": true, "label": "Cookie ID" },
+      { "component": "text", "valueType": "string", "name": "tagline", "label": "Tagline/Headline", "value": "", "required": false,
+        "validation": {
+          "maxLength": 50,
+          "customErrorMsg": "Max characters 50"
+        }
+      },
+      {
+        "component": "tab",
+        "label": "Left Spotlight",
+        "name": "tab1"
+      },
+      { "component": "text", "valueType": "string", "name": "leftHeader", "label": "Header/Headline", "value": "", "required": true,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "leftSubheading1", "label": "Subheading 1", "value": "", "required": false,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "leftSubheading2", "label": "Subheading 2", "value": "", "required": false,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "leftPullQuote", "label": "Pull Quote", "value": "", "required": false,
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      { "component": "reference", "valueType": "string", "name": "left_image", "label": "Image", "multi": false, "required": true },
+      { "component": "text", "valueType": "string", "name": "left_imageAlt", "label": "Image Alt Text", "value": "", "required": true },
+      { "component": "richtext", "name": "leftStory", "value": "", "label": "Story Text", "valueType": "string", "required": true },
+      { "component": "text", "valueType": "string", "name": "leftCta", "label": "Button Text", "value": "", "required": true }
+      ,
+      {
+        "component": "tab",
+        "label": "Right Spotlight",
+        "name": "tab2"
+      },
+      { "component": "text", "valueType": "string", "name": "rightHeader", "label": "Header/Headline", "value": "", "required": true,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "rightSubheading1", "label": "Subheading 1", "value": "", "required": false,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "rightSubheading2", "label": "Subheading 2", "value": "", "required": false,
+        "validation": {
+          "maxLength": 60,
+          "customErrorMsg": "Max characters 60"
+        }
+      },
+      { "component": "text", "valueType": "string", "name": "rightPullQuote", "label": "Pull Quote", "value": "", "required": false,
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      { "component": "reference", "valueType": "string", "name": "right_image", "label": "Image", "multi": false, "required": true },
+      { "component": "text", "valueType": "string", "name": "right_imageAlt", "label": "Image Alt Text", "value": "", "required": true },
+      { "component": "richtext", "name": "rightStory", "value": "", "label": "Story Text", "valueType": "string", "required": true },
+      { "component": "text", "valueType": "string", "name": "rightCta", "label": "Button Text", "value": "", "required": true }
+    ]
+  },
+  {
+    "id": "callout",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "text", "valueType": "string", "name": "title", "label": "Title", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "description", "label": "Description", "value": "", "required": false,
+        "validation": {
+          "maxLength": 250,
+          "customErrorMsg": "Max characters 250"
+        }
+      },
+      { "component": "reference", "valueType": "string", "name": "callout_image", "label": "Background Image", "multi": false, "required": false },
+      { "component": "text", "valueType": "string", "name": "callout_imageAlt", "label": "Image Alt Text", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "Link", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "text", "valueType": "string", "name": "cta2_text", "label": "View All CTA Text", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta2_url", "label": "View All CTA URL", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "office",
+    "fields": [
+      { "component": "text", "valueType": "string", "name": "isGlobal", "label": "Global Flag", "hidden": true},
+      { "component": "text", "valueType": "string", "name": "phone", "value": "", "label": "Phone" },
+      { "component": "text", "valueType": "string", "name": "fax", "value": "", "label": "Fax" },
+      { "component": "text", "valueType": "string", "name": "email", "value": "", "label": "Email" },
+      { "component": "text", "valueType": "string", "name": "deptHours", "value": "", "label": "Department Hours" },
+      { "component": "text", "valueType": "string", "name": "primaryContactName", "value": "", "label": "Primary Contact Name" },
+      { "component": "text", "valueType": "string", "name": "primaryContactJobtitle", "value": "", "label": "Primary Contact Title" },
+      { "component": "text", "valueType": "string", "name": "room", "value": "", "label": "Room" },
+      { "component": "text", "valueType": "string", "name": "building", "value": "", "label": "Building" },
+      { "component": "text", "valueType": "string", "name": "deptName", "value": "", "label": "Department Name" },
+      { "component": "text", "valueType": "string", "name": "addressLine2", "value": "4400 Massachusetts Avenue NW", "label": "Address Line 2" },
+      { "component": "text", "valueType": "string", "name": "city", "value": "Washington", "label": "City" },
+      { "component": "text", "valueType": "string", "name": "state", "value": "DC", "label": "State" },
+      { "component": "text", "valueType": "string", "name": "zip", "value": "20016", "label": "Zip" },
+      { "component": "text", "valueType": "string", "name": "mapsLink", "label": "Maps Link" }
+    ]
+  },
+  {
+    "id": "wclList",
+    "fields": [
+      { "component": "text", "valueType": "string", "name": "isGlobal", "label": "Global Flag", "hidden": true},
+      { "component": "text", "valueType": "string", "name": "type", "label": "Type", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "title", "label": "Title", "value": "", "required": true },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "URL To Article", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "richtext", "valueType": "string", "name": "description", "label": "Description", "value": "", "required": true },
+      { "component": "text", "valueType": "string", "name": "phone", "label": "Phone", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "email", "label": "Email", "value": "", "required": false },
+      { "component": "richtext", "valueType": "string", "name": "address", "label": "Address", "value": "", "required": false }
+    ]
+  },
+  {
+    "id": "imageWCaption",
+    "fields": [
+      { "component": "reference", "name": "image", "label": "Image", "multi": false },
+      { "component": "text", "name": "imageAlt", "label": "Alt Text" },
+      { "component": "richtext", "name": "caption", "value": "", "label": "Caption", "valueType": "string" },
+      {
+        "component": "select",
+        "name": "style_layout",
+        "label": "Image w Caption Layout Style",
+        "required": true,
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "Right Bleed",
+            "value": "right-bleed"
+          },
+          {
+            "name": "Full Bleed",
+            "value": "full-bleed"
+          }
+        ]
+      },
+      { "component": "text", "name": "isGlobal", "hidden": true, "label": "isGlobal", "valueType": "string" }
+    ]
+  },
+  {
+    "id": "wclInfoBox",
+    "fields": [
+      { "component": "text", "valueType": "string", "name": "isGlobal", "label": "Global Flag", "hidden": true},
+      { "component": "text", "valueType": "string", "name": "header", "label": "Header", "value": "", "required": false },
+      { "component": "richtext", "valueType": "string", "name": "description", "label": "Description", "value": "", "required": true }
+    ]
+  },
+  {
+    "id": "wclCourse",
+    "fields": [
+      { "component": "text", "valueType": "string", "name": "isGlobal", "label": "Global Flag", "hidden": true},
+      { "component": "text", "valueType": "string", "name": "category", "label": "Category", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "title", "label": "Title", "value": "", "required": true },
+      { "component": "richtext", "valueType": "string", "name": "summary", "label": "Summary", "value": "", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "cta1_url", "label": "Link", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "wclStory",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component" : "select", "name": "style", "label": "Select Style", "valueType": "string", "required": true,
+        "options": [
+          {"name": "WCL Article Grid", "value": "style-wcl-article"},
+          {"name": "Faculty block", "value": "style-faculty-block"},
+          {"name": "Impact story with text", "value": "style-impact-story-with-text"},
+          {"name": "Page listing", "value": "style-page-listing"}
+        ]
+      },
+      { "component": "reference", "name": "image", "label": "Image", "multi": false, "required": true },
+      { "component": "text", "name": "imageAlt", "label": "Image Alt Text", "valueType": "string", "required": true },
+      { "component": "text", "valueType": "string", "name": "title", "label": "Title", "value": "", "required": true },
+      { "component": "aem-content", "valueType": "string", "name": "url", "label": "URL", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "text", "valueType": "string", "name": "subtitle", "label": "Sub Title", "value": "", "required": false, "condition": { "or": [{ "!==": [{ "var": "style" }, "style-impact-story-with-text"] }, { "!==": [{ "var": "style" }, "style-page-listing"] }]} },
+      { "component": "richtext", "name": "content", "value": "", "label": "Content", "valueType": "string", "required": false, "condition": { "!==": [{ "var": "style" }, "style-impact-story-with-text"]} },
+      { "component": "date-time", "name": "date", "label": "Date", "displayFormat": "YYYY-MM-DD", "valueFormat": "YYYY-MM-DD" , "condition": { "===": [{ "var": "style" }, "style-page-listing"]} }
+    ]
+  },
+  {
+    "id": "wclWidget",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component" : "select", "name": "alignment", "label": "Text Alignment", "valueType": "string", "required": false,
+        "options": [
+          {"name": "Left", "value": "align-left"},
+          {"name": "Right", "value": "align-right"}
+        ]
+      },
+      { "component": "reference", "name": "image", "label": "Background Image", "multi": false, "required": false },
+      { "component": "text", "name": "imageAlt", "label": "Backgound Image Alt Text", "valueType": "string", "required": false },
+      { "component": "text", "valueType": "string", "name": "infoBox", "label": "Info box/Photo Credit", "value": "", "required": false },
+      { "component": "text", "valueType": "string", "name": "title", "label": "Title", "value": "", "required": false },
+      { "component": "richtext", "name": "description", "value": "", "label": "Description", "valueType": "string", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "readMore", "label": "Read More URL", "value": "", "required": false, "validation": {"rootPath": "/content/au"} },
+      { "component": "text", "valueType": "string", "name": "buttonTxt", "label": "Button Text", "value": "", "required": false, "condition": { "===": [{ "var": "alignment" }, "align-left"]}},
+      { "component": "aem-content", "valueType": "string", "name": "url", "label": "Button URL", "value": "", "required": false, "validation": {"rootPath": "/content/au"}, "condition": { "===": [{ "var": "alignment" }, "align-left"]} },
+      { "component": "richtext", "name": "desc", "value": "", "label": "Title Tags", "valueType": "string", "required": false, "condition": { "===": [{ "var": "alignment" }, "align-right"]}  }
+    ]
+  },
+  {
+    "id": "htmlEmbed",
+    "fields": [
+      {
+        "component": "aem-content-fragment",
+        "name": "htmlEmbed_contentfragment",
+        "label": "Choose Content Fragment",
+        "valueType": "string",
+        "validation": {
+            "rootPath": "/content/dam/au/cf"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dropForm",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "text", "name": "buttonTxt", "value": "", "label": "Button Text", "valueType": "string", "required": false },
+      { "component": "text", "name": "default-txt", "label": "Default Selected Option Text", "valueType": "string", "required": false },
+      { "component": "aem-content", "name": "dropdown-link", "label": "Select Spreadsheet for Dropdown Options", "valueType": "string", "validation": { "rootPath": "/content/au/form" } }
+    ]
+  },
+  {
+    "id": "miniDropForm",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "text", "name": "buttonTxt", "value": "", "label": "Button Text", "valueType": "string", "required": false },
+      { "component": "text", "name": "default-txt", "label": "Default Selected Option Text", "valueType": "string", "required": false }
+    ]
+  },
+  {
+    "id": "dropFormItem",
+    "fields": [
+      { "component": "text", "name": "key", "value": "", "label": "Key", "valueType": "string", "required": false },
+      { "component": "aem-content", "valueType": "string", "name": "value", "label": "Value", "value": "", "required": false, "validation": {"rootPath": "/content/au"} }
+    ]
+  },
+  {
+    "id": "textSearchForm",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "text", "name": "actionUrl", "value": "", "label": "Action URL", "valueType": "string", "required": true },
+      { "component": "select", "name": "search-btn-type", "label": "Search Button Type", "valueType": "string", "required": false, "value": "search-btn", "hidden": false, "options": [ { "name": "Text", "value": "search-btn" }, { "name": "Icon", "value": "search-icon" } ] },
+      { "component": "text", "name": "searchBtnTxt", "label": "Search Button Text", "valueType": "string", "condition": { "===": [{ "var": "searchButtonType" }, "search-btn"] } },
+      { "component": "boolean", "name": "isDropdown", "label": "Add a additional dropdown beside the search input bar.", "valueType": "boolean" },
+      { "component": "aem-content", "name": "dropdownURL", "value": "", "label": "Dropdown Options", "description": "Select the Spreadsheet for the Dropdown Options.", "valueType": "string", "validation": { "rootPath": "/content/au/form" }, "condition": { "===": [{ "var": "isDropdown" }, true] } },
+      { "component": "boolean", "name": "isFloatPlaceholder", "label": "Enable a floating placeholder.", "valueType": "boolean", "value": false },
+      { "component": "text", "name": "placeholderTxt", "label": "Default/Placeholder Text", "valueType": "string", "required": false },
+      { "component": "richtext", "name": "searchFooterTxt", "value": "", "label": "Footer Text", "valueType": "string", "required": false }
+    ]
+  },
+  {
+    "id": "formHiddenItem",
+    "fields": [
+      { "component": "text", "name": "key", "value": "", "label": "Key", "valueType": "string", "required": false },
+      { "component": "text", "valueType": "string", "name": "value", "label": "Value", "value": "", "required": false }
+    ]
+  },
+  {
+    "id": "directory-form",
+    "fields": [
+      {
+        "component": "select",
+        "name": "selectedDirectoryForm",
+        "label": "Pick Static Directory Form",
+        "valueType": "string",
+        "options": [
+          { "name": "People", "value": "people" },
+          { "name": "Departments", "value": "departments" },
+          { "name": "Services", "value": "services" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "programFinderSearch",
+    "fields": [
+      { "component": "text", "name": "isGlobal", "label": "Global Flag", "valueType": "string", "hidden": true },
+      { "component": "aem-content", "valueType": "string", "name": "actionUrl", "label": "Form Action URL", "value": "", "required": true, "validation": {"rootPath": "/content/au"} },
+      {
+        "component": "select",
+        "name": "programVariation",
+        "label": "Variation",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Variation 1", "value": "variation1" },
+          { "name": "Variation 2", "value": "variation2" }
+        ]
+      },
+      {
+        "component": "container",
+        "valueType": "string",
+        "collapsible": false,
+        "label": "Variation 1",
+        "name": "standardProgramFinder",
+        "condition": { "===": [{ "var": "programVariation" }, "variation1"] },
+        "fields": [
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "title",
+            "label": "Title",
+            "value": "",
+            "required": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "highlighted_text",
+            "label": "Highlighted Text",
+            "value": "",
+            "required": false
+          },
+         {
+            "component": "text",
+            "valueType": "string",
+            "name": "sub_title",
+            "label": "Sub Title",
+            "value": "",
+            "required": false
+          }
+        ]
+      },
+      {
+        "component": "container",
+        "valueType": "string",
+        "collapsible": false,
+        "label": "Variation 2",
+        "name": "legacyProgramFinder",
+        "condition": { "===": [{ "var": "programVariation" }, "variation2"] },
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "bg_image",
+            "label": "Background Image",
+            "multi": false,
+            "required": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "bg_imageAlt",
+            "label": "Background Image Alt Text",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "placeholder_text",
+        "label": "Search Placeholder Text",
+        "value": "",
+        "required": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta1_text",
+        "label": "CTA Text 1",
+        "value": "",
+        "required": false
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta1_url",
+        "label": "CTA URL 1",
+        "value": "",
+        "required": false,
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta2_text",
+        "label": "CTA Text 2",
+        "value": "",
+        "required": false
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta2_url",
+        "label": "CTA URL 2",
+        "value": "",
+        "required": false,
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta3_text",
+        "label": "CTA Text 3",
+        "value": "",
+        "required": false
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta3_url",
+        "label": "CTA URL 3",
+        "value": "",
+        "required": false,
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      }
+    ]
+  },
+  {
+    "id": "addCtaButton",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "cta_text",
+        "label": "CTA Text",
+        "value": "",
+        "required": true
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "cta_url",
+        "label": "CTA URL",
+        "value": "",
+        "required": true,
+        "validation": {
+          "rootPath": "/content/au"
+        }
+      }
+    ]
+  },
+  {
+    "id": "calendar",
+    "fields": [
+      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true }
+    ]
+  },
+  {
+    "id": "programRankList",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headingTxt",
+        "label": "Heading",
+        "validation": {
+          "maxLength": 80,
+          "customErrorMsg": "Max characters 80"
+        }
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "label": "Description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "programRankListItem",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "programRankListItem_figureTxt",
+        "label": "Figure Text",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "programRankListItem_title",
+        "label": "Title",
+        "required": true
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "programRankListItem_subtitle",
+        "label": "Subtitle",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "event-listing",
+    "fields": [
+      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true }
+    ]
+  },
+  {
+    "id": "service-now-article",
+    "fields": [
+      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true },
+      { "component": "text", "name": "serviceNowArticleNumber", "label": "ServiceNow Article Number", "valueType": "string", "required": true },
+      { "component": "richtext", "name": "apiResponse", "label": "API Response", "valueType": "string", "hidden": true },
+      {
+        "component": "select",
+        "name": "displaySelection",
+        "label": "Display Selection",
+        "valueType": "string",
+        "required": true,
+        "options": [
+          { "name": "Modal Popup", "value": "modalPopup" },
+          { "name": "Full Page", "value": "fullPage" },
+          { "name": "Collapsible", "value": "collapsible" }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "collapsible": false,
+        "name": "color",
+        "label": "Background Color",
+        "required": true,
+        "condition": { "===": [{ "var": "displaySelection" }, "collapsible"] },
+        "options": [
+                { "name": "Yellow", "value": "yellow" },
+                { "name": "Gray", "value": "gray" },
+                { "name": "Black", "value": "black" }
+              ]
+      }
+    ]
+  }
+]
