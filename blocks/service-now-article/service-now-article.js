@@ -3,19 +3,25 @@ function extractData(block) {
   const data = {};
 
   rows.forEach((row) => {
-    const keyP = row.children[0]?.querySelector('p');
+    const key = row.children[0]?.querySelector('p')?.textContent?.trim();
     const valueDiv = row.children[1];
 
-    if (!keyP || !valueDiv) return;
-
-    const key = keyP.textContent.trim();
+    if (!key || !valueDiv) return;
 
     if (key === 'apiResponse') {
-      // preserve rich text
-      data.apiResponse = valueDiv.innerHTML.trim();
+      const fragments = [];
+
+      [...valueDiv.children].forEach((child) => {
+        if (child.tagName === 'P' && child.children.length === 1) {
+          fragments.push(child.innerHTML);
+        } else {
+          fragments.push(child.outerHTML);
+        }
+      });
+
+      data.apiResponse = fragments.join('');
     } else {
-      const valueP = valueDiv.querySelector('p');
-      data[key] = valueP?.textContent?.trim();
+      data[key] = valueDiv.querySelector('p')?.textContent?.trim();
     }
   });
 
