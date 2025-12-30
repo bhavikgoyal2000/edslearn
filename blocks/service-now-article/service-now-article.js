@@ -5,33 +5,35 @@ function decodeHtml(html) {
 }
 
 function extractData(block) {
-  const rows = [...block.children];
-  const data = {};
+  const rows = [...block.children].slice(1);
 
-  rows.forEach((row) => {
-    const key = row.children[0]?.querySelector('p')?.textContent?.trim();
-    const valueDiv = row.children[1];
-    if (!key || !valueDiv) return;
+  const articleNumber = rows[0]?.querySelector(':scope > div:nth-child(2) > p')?.textContent?.trim();
 
-    if (key === 'apiResponse') {
-      const htmlParts = [];
+  const apiResponseContainer = rows[1]?.querySelector(':scope > div:nth-child(2)');
 
-      [...valueDiv.children].forEach((child) => {
-        if (child.tagName === 'P') {
-          htmlParts.push(child.innerHTML);
-        }
-      });
-      data.apiResponse = decodeHtml(htmlParts.join(''));
-    } else {
-      data[key] = valueDiv.querySelector('p')?.textContent?.trim();
-    }
-  });
+  const displaySelection = rows[2]?.querySelector(':scope > div:nth-child(2) > p')?.textContent?.trim();
+
+  const color = rows[3]?.querySelector(':scope > div:nth-child(2) > p')?.textContent?.trim();
+
+  let apiResponse = '';
+
+  if (apiResponseContainer) {
+    const htmlParts = [];
+
+    [...apiResponseContainer.children].forEach((child) => {
+      if (child.tagName === 'P') {
+        htmlParts.push(child.innerHTML);
+      }
+    });
+
+    apiResponse = decodeHtml(htmlParts.join(''));
+  }
 
   return {
-    articleNumber: data.serviceNowArticleNumber,
-    apiResponse: data.apiResponse,
-    displaySelection: data.displaySelection,
-    color: data.color,
+    articleNumber,
+    apiResponse,
+    displaySelection,
+    color,
   };
 }
 
