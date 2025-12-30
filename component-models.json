@@ -4754,10 +4754,15 @@
         "required": true,
         "condition": { "===": [{ "var": "displaySelection" }, "collapsible"] },
         "options": [
-                { "name": "Yellow", "value": "yellow" },
-                { "name": "Gray", "value": "gray" },
-                { "name": "Black", "value": "black" }
-              ]
+              { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
+              { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },
+              { "name": "District Gray", "value": "bg-district-gray-light-color" },
+              { "name": "Embassy Blue", "value": "bg-embassy-blue-light-color" },
+              { "name": "Indigo Purple", "value": "bg-indigo-purple-light-color" },
+              { "name": "McKinley Green", "value": "bg-mckinley-green-light-color" },
+              { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
+              { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" }
+            ]
       }
     ]
   }

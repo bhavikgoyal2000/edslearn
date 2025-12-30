@@ -91,7 +91,7 @@ function renderModal(data) {
 
 function renderCollapsible(data) {
   const wrapper = document.createElement('div');
-  wrapper.className = `sn-collapsible bg-${data.color || 'gray'}`;
+  wrapper.className = `sn-collapsible ${data.color || 'gray'}`;
 
   const header = document.createElement('button');
   header.className = 'sn-collapsible-header';
