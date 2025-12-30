@@ -1,3 +1,9 @@
+function decodeHtml(html) {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = html;
+  return textarea.value;
+}
+
 function extractData(block) {
   const rows = [...block.children];
   const data = {};
@@ -5,21 +11,17 @@ function extractData(block) {
   rows.forEach((row) => {
     const key = row.children[0]?.querySelector('p')?.textContent?.trim();
     const valueDiv = row.children[1];
-
     if (!key || !valueDiv) return;
 
     if (key === 'apiResponse') {
-      const fragments = [];
+      const htmlParts = [];
 
       [...valueDiv.children].forEach((child) => {
-        if (child.tagName === 'P' && child.children.length === 1) {
-          fragments.push(child.innerHTML);
-        } else {
-          fragments.push(child.outerHTML);
+        if (child.tagName === 'P') {
+          htmlParts.push(child.innerHTML);
         }
       });
-
-      data.apiResponse = fragments.join('');
+      data.apiResponse = decodeHtml(htmlParts.join(''));
     } else {
       data[key] = valueDiv.querySelector('p')?.textContent?.trim();
     }
