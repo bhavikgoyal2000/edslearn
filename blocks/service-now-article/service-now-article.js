@@ -1,39 +1,41 @@
 function decodeHtml(html) {
-  const textarea = document.createElement('textarea');
-  textarea.innerHTML = html;
-  return textarea.value;
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
 }
 
 function extractData(block) {
-  const rows = [...block.children].slice(1);
+  const rows = [...block.children];
+  const data = {};
 
-  const articleNumber = rows[0]?.querySelector(':scope > div:nth-child(2) > p')?.textContent?.trim();
+  rows.forEach((row) => {
+    if (row.children.length < 2) return;
 
-  const apiResponseContainer = rows[1]?.querySelector(':scope > div:nth-child(2)');
+    const key = row.children[0].textContent.trim();
+    const valueCell = row.children[1];
 
-  const displaySelection = rows[2]?.querySelector(':scope > div:nth-child(2) > p')?.textContent?.trim();
+    if (!key || !valueCell) return;
 
-  const color = rows[3]?.querySelector(':scope > div:nth-child(2) > p')?.textContent?.trim();
+    if (key === 'apiResponse') {
+      let html = '';
 
-  let apiResponse = '';
+      [...valueCell.children].forEach((child) => {
+        if (child.tagName === 'P') {
+          html += decodeHtml(child.textContent);
+        }
+      });
 
-  if (apiResponseContainer) {
-    const decodedFragments = [];
-
-    [...apiResponseContainer.children].forEach((p) => {
-      if (p.tagName === 'P') {
-        decodedFragments.push(decodeHtml(p.textContent));
-      }
-    });
-
-    apiResponse = decodedFragments.join('');
-  }
+      data.apiResponse = html;
+    } else {
+      data[key] = valueCell.textContent.trim();
+    }
+  });
 
   return {
-    articleNumber,
-    apiResponse,
-    displaySelection,
-    color,
+    articleNumber: data.serviceNowArticleNumber,
+    apiResponse: data.apiResponse,
+    displaySelection: data.displaySelection,
+    color: data.color,
   };
 }
 
