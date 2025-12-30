@@ -64,6 +64,7 @@
   padding: 12px 16px;
   background: #fff;
   z-index: 2;
+  border-radius: 8px;
 }
 
 /* ===== COLLAPSIBLE ===== */
