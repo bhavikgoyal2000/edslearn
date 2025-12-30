@@ -1,15 +1,28 @@
 function extractData(block) {
   const rows = [...block.children].slice(1);
+  const data = {};
 
-  const getValue = (row) => row?.children[1];
+  rows.forEach((row) => {
+    const key = row.children[0]?.textContent?.trim();
+    const valueCell = row.children[1];
+
+    if (!key || !valueCell) return;
+
+    if (key === 'apiResponse') {
+      data.apiResponse = valueCell.innerHTML.trim();
+    } else {
+      data[key] = valueCell.textContent.trim();
+    }
+  });
 
   return {
-    articleNumber: getValue(rows[0])?.textContent?.trim(),
-    apiResponse: getValue(rows[1])?.innerHTML?.trim(),
-    displaySelection: getValue(rows[2])?.textContent?.trim(),
-    color: getValue(rows[3])?.textContent?.trim(),
+    articleNumber: data.serviceNowArticleNumber,
+    apiResponse: data.apiResponse,
+    displaySelection: data.displaySelection,
+    color: data.color,
   };
 }
+
 
 /* ================= FULL PAGE ================= */
 
