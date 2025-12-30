@@ -1,17 +1,21 @@
 function extractData(block) {
-  const rows = [...block.children].slice(1);
+  const rows = [...block.children];
   const data = {};
 
   rows.forEach((row) => {
-    const key = row.children[0]?.textContent?.trim();
-    const valueCell = row.children[1];
+    const keyP = row.children[0]?.querySelector('p');
+    const valueDiv = row.children[1];
 
-    if (!key || !valueCell) return;
+    if (!keyP || !valueDiv) return;
+
+    const key = keyP.textContent.trim();
 
     if (key === 'apiResponse') {
-      data.apiResponse = valueCell.innerHTML.trim();
+      // preserve rich text
+      data.apiResponse = valueDiv.innerHTML.trim();
     } else {
-      data[key] = valueCell.textContent.trim();
+      const valueP = valueDiv.querySelector('p');
+      data[key] = valueP?.textContent?.trim();
     }
   });
 
@@ -22,7 +26,6 @@ function extractData(block) {
     color: data.color,
   };
 }
-
 
 /* ================= FULL PAGE ================= */
 
