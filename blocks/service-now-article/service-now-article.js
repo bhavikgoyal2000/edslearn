@@ -114,6 +114,7 @@ export default function decorate(block) {
   if (!data?.apiResponse) return;
 
   let rendered;
+  console.log(data.articleNumber);
 
   switch (data.displaySelection) {
     case 'fullPage':
