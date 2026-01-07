@@ -116,7 +116,17 @@ async function fetchArticleText(articleNumber) {
   const url = `${SERVER_URL}/content/apis/au/servicenowarticle.${articleNumber}.json`;
 
   try {
-    const response = await fetch(url);
+    const username = 'admin';
+    const password = 'admin';
+
+    const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: authHeader,
+      },
+    });
     if (!response.ok) return '';
 
     const json = await response.json();
