@@ -1,3 +1,5 @@
+import { SERVER_URL } from '../../scripts/constants.js';
+
 function decodeHtml(html) {
   const txt = document.createElement('textarea');
   txt.innerHTML = html;
@@ -32,7 +34,10 @@ function extractData(block) {
   });
 
   return {
-    articleNumber: data.serviceNowArticleNumber,
+    articleNumbers: data.serviceNowArticleNumber
+      ?.split(',')
+      .map((v) => v.trim())
+      .filter(Boolean),
     apiResponse: data.apiResponse,
     displaySelection: data.displaySelection,
     color: data.color,
@@ -107,29 +112,59 @@ function renderCollapsible(data) {
   return wrapper;
 }
 
-/* ================= DECORATE ================= */
+async function fetchArticleText(articleNumber) {
+  const url = `${SERVER_URL}/content/apis/au/servicenowarticle.${articleNumber}.json`;
 
-export default function decorate(block) {
-  const data = extractData(block);
-  if (!data?.apiResponse) return;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return '';
 
-  let rendered;
-  console.log(data.articleNumber);
-
-  switch (data.displaySelection) {
-    case 'fullPage':
-      rendered = renderFullPage(data);
-      break;
-    case 'modalPopup':
-      rendered = renderModal(data);
-      break;
-    case 'collapsible':
-      rendered = renderCollapsible(data);
-      break;
-    default:
-      return;
+    const json = await response.json();
+    return json['Article Text'] || '';
+  } catch (e) {
+    console.error(`Failed to fetch article ${articleNumber}`, e);
+    return '';
   }
+}
+
+/* ================= DECORATE ================= */
+export default async function decorate(block) {
+  const data = extractData(block);
+  if (!data?.articleNumbers?.length) return;
 
   block.innerHTML = '';
-  block.appendChild(rendered);
+
+  const articles = await Promise.all(
+    data.articleNumbers.map((articleNumber) => fetchArticleText(articleNumber)
+      .then((text) => ({ articleNumber, text }))),
+  );
+
+  articles
+    .filter((article) => article.text)
+    .forEach((article) => {
+      const articleData = {
+        apiResponse: article.text,
+        displaySelection: data.displaySelection,
+        color: data.color,
+        articleNumber: article.articleNumber,
+      };
+
+      let rendered;
+
+      switch (articleData.displaySelection) {
+        case 'fullPage':
+          rendered = renderFullPage(articleData);
+          break;
+        case 'modalPopup':
+          rendered = renderModal(articleData);
+          break;
+        case 'collapsible':
+          rendered = renderCollapsible(articleData);
+          break;
+        default:
+          return;
+      }
+
+      block.appendChild(rendered);
+    });
 }
