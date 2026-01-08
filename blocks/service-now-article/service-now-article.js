@@ -92,7 +92,7 @@ function renderModal(data) {
 
   /* ===== HEADER ===== */
   const header = document.createElement('div');
-  header.className = 'sn-modal-header';
+  header.className = `sn-modal-header ${data.color || ''}`;
 
   const title = document.createElement('h2');
   title.className = 'sn-modal-title';

@@ -4860,7 +4860,11 @@
       "name": "color",
       "label": "Background Color",
       "required": true,
-      "condition": { "===": [{ "var": "displaySelection" }, "collapsible"] },
+      "condition": { 
+        "or": [
+          { "===": [{ "var": "displaySelection" }, "collapsible"] },
+          { "===": [{ "var": "displaySelection" }, "modalPopup"] }
+      ] },
       "options": [
           { "name": "Botany Blue", "value": "bg-botany-blue-light-color" },
           { "name": "Clawed's Beak Yellow", "value": "bg-clawed-beak-yellow-light-color" },

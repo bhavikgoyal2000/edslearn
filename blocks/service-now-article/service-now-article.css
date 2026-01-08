@@ -54,7 +54,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
-  background: #f3f4f6;
   border-bottom: 1px solid #ddd;
 }
 
@@ -63,6 +62,12 @@
   font-size: 18px;
   font-weight: 600;
   color: #222;
+}
+
+.sn-modal-header .sn-modal-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /* ===== CLOSE BUTTON ===== */
