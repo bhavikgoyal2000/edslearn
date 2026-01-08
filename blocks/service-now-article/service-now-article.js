@@ -81,10 +81,22 @@ function renderModal(data) {
   const modal = document.createElement('div');
   modal.className = 'sn-modal';
 
-  const close = document.createElement('span');
-  close.className = 'sn-close';
-  close.textContent = '×';
+  /* ===== HEADER ===== */
+  const header = document.createElement('div');
+  header.className = 'sn-modal-header';
 
+  const title = document.createElement('h2');
+  title.className = 'sn-modal-title';
+  title.textContent = data.title || '';
+
+  const close = document.createElement('button');
+  close.className = 'sn-close';
+  close.setAttribute('aria-label', 'Close');
+  close.innerHTML = '&times;';
+
+  header.append(title, close);
+
+  /* ===== BODY ===== */
   const content = document.createElement('div');
   content.className = 'sn-content';
   content.innerHTML = data.desc;
@@ -92,7 +104,7 @@ function renderModal(data) {
   btn.onclick = () => overlay.classList.add('open');
   close.onclick = () => overlay.classList.remove('open');
 
-  modal.append(close, content);
+  modal.append(header, content);
   overlay.appendChild(modal);
   wrapper.append(btn, overlay);
 
