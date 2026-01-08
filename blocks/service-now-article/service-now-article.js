@@ -134,7 +134,11 @@ function renderCollapsible(data) {
   body.className = 'sn-collapsible-body';
   body.innerHTML = data.desc;
 
-  header.onclick = () => body.classList.toggle('open');
+  // header.onclick = () => body.classList.toggle('open');
+
+  header.onclick = () => {
+    wrapper.classList.toggle('open');
+  };
 
   wrapper.append(header, body);
   return wrapper;

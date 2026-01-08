@@ -163,11 +163,11 @@
 }
 
 .sn-collapsible.open {
-  border: 1px solid #cfd3d8;
+  border: 1px solid var(--accordion-bg);
 }
 
 .sn-collapsible.open .sn-collapsible-header::after {
-  content: '−';
+  content: '-';
 }
 
 .sn-collapsible-body {
@@ -178,7 +178,7 @@
 
 .sn-collapsible.open .sn-collapsible-body {
   display: block;
-  border: 1px solid #cfd3d8;
+  border: 1px solid var(--accordion-bg);
   border-top: none;
 }
 
@@ -187,11 +187,50 @@
 }
 
 /* ===== COLORS ===== */
-.bg-botany-blue-light-color { background: #F0F4FC; }
-.bg-clawed-beak-yellow-light-color { background: #FDF7EC; }
-.bg-district-gray-light-color { background: #F4F6F7; }
-.bg-embassy-blue-light-color { background: #D8E4EF; }
-.bg-indigo-purple-light-color { background: #4918cd; }
-.bg-mckinley-green-light-color { background: #E5F5F2; }
-.bg-metro-silver-light-color { background: #EEEFF2; }
-.bg-tenleytown-red-light-color { background: #F8E6E8; }
+.bg-botany-blue-light-color {
+  --accordion-bg: #F0F4FC;
+
+  background: var(--accordion-bg);
+}
+
+.bg-clawed-beak-yellow-light-color {
+  --accordion-bg: #FDF7EC;
+
+  background: var(--accordion-bg);
+}
+
+.bg-district-gray-light-color {
+  --accordion-bg: #F4F6F7;
+
+  background: var(--accordion-bg);
+}
+
+.bg-embassy-blue-light-color {
+  --accordion-bg: #D8E4EF;
+
+  background: var(--accordion-bg);
+}
+
+.bg-indigo-purple-light-color {
+  --accordion-bg: #4918cd;
+
+  background: var(--accordion-bg);
+}
+
+.bg-mckinley-green-light-color {
+  --accordion-bg: #E5F5F2;
+
+  background: var(--accordion-bg);
+}
+
+.bg-metro-silver-light-color {
+  --accordion-bg: #EEEFF2;
+
+  background: var(--accordion-bg);
+}
+
+.bg-tenleytown-red-light-color {
+  --accordion-bg: #F8E6E8;
+
+  background: var(--accordion-bg);
+}
