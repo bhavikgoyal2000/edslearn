@@ -66,7 +66,7 @@ function renderModal(data) {
 
   const btn = document.createElement('button');
   btn.className = 'sn-btn';
-  btn.textContent = 'View Article';
+  btn.textContent = data.title || 'View Article';
 
   const overlay = document.createElement('div');
   overlay.className = 'sn-modal-overlay';
@@ -80,7 +80,7 @@ function renderModal(data) {
 
   const content = document.createElement('div');
   content.className = 'sn-content';
-  content.innerHTML = data.apiResponse;
+  content.innerHTML = data.desc;
 
   btn.onclick = () => overlay.classList.add('open');
   close.onclick = () => overlay.classList.remove('open');
@@ -100,11 +100,11 @@ function renderCollapsible(data) {
 
   const header = document.createElement('button');
   header.className = 'sn-collapsible-header';
-  header.textContent = 'View Article';
+  header.textContent = data.title || 'View Article';
 
   const body = document.createElement('div');
   body.className = 'sn-collapsible-body';
-  body.innerHTML = data.apiResponse;
+  body.innerHTML = data.desc;
 
   header.onclick = () => body.classList.toggle('open');
 
@@ -127,10 +127,14 @@ async function fetchArticleText(articleNumber) {
         Authorization: authHeader,
       },
     });
-    if (!response.ok) return '';
+    if (!response.ok) return null;
 
     const json = await response.json();
-    return json['Article Text'] || '';
+
+    return {
+      title: json.title || 'View Article',
+      desc: json.desc || 'No Article Found.',
+    };
   } catch (e) {
     console.error(`Failed to fetch article ${articleNumber}`, e);
     return '';
@@ -145,18 +149,20 @@ export default async function decorate(block) {
   block.innerHTML = '';
 
   const articles = await Promise.all(
-    data.articleNumbers.map((articleNumber) => fetchArticleText(articleNumber)
-      .then((text) => ({ articleNumber, text }))),
+    data.articleNumbers.map((articleNumber) => fetchArticleText(articleNumber).then((result) => ({
+      articleNumber,
+      ...result,
+    }))),
   );
 
   articles
-    .filter((article) => article.text)
+    .filter((article) => article?.desc)
     .forEach((article) => {
       const articleData = {
-        apiResponse: article.text,
+        title: article.title,
+        desc: article.desc,
         displaySelection: data.displaySelection,
         color: data.color,
-        articleNumber: article.articleNumber,
       };
 
       let rendered;
