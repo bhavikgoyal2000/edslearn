@@ -1,0 +1,205 @@
+.flex-promo-text-wrapper {
+  .btn {
+    display: inline-block;
+    margin: 25px 0 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: none;
+    white-space: nowrap;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    line-height: 50px;
+    width: auto;
+    height: 50px;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    border-radius: 0;
+    text-decoration: none;
+    user-select: none;
+  }
+
+  .btn.btn-colorbg {
+    font-weight: 700;
+    color: var(--white-color);
+    background-color: var(--bg-intern-blue-color);
+  }
+
+  .el-flex-item .flex-promo-text {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .el-flex-item .flex-promo-text p.promo-cta .btn.btn-whitebg {
+    font-weight: 700;
+    background: var(--white-color);
+  }
+
+  .solid.bg-kay-flame-yellow-color h2.txt-color,
+  .solid.bg-kay-flame-yellow-color .promo-content {
+    color: var(--bg-intern-blue-color);
+  }
+
+  .solid.bg-district-gray-color h2.txt-color,
+  .solid.bg-district-gray-color .promo-content {
+    color: var(--black-color);
+  }
+
+  .outline.bg-district-gray-color .promo-title-text h2.txt-district-gray-color {
+    color: var(--black-color);
+    ;
+  }
+
+  .outline.bg-district-gray-color .promo-content.txt-district-gray-color {
+    color: var(--black-color);
+    ;
+  }
+
+  .outline .txt-arboretum-green-color a {
+    color: var(--bg-arboretum-green-color);
+  }
+
+  .outline .txt-intern-blue-color a {
+    color: var(--bg-intern-blue-color);
+  }
+
+  .outline .txt-embassy-blue-color a {
+    color: var(--bg-embassy-blue-color);
+  }
+
+  .outline .txt-rowhouse-red-color a {
+    color: var(--bg-rowhouse-red-color);
+  }
+
+  .outline .txt-suffragist-purple-color a {
+    color: var(--bg-suffragist-purple-color);
+  }
+
+  .outline .txt-district-gray-color a {
+    color: var(--black-color);
+  }
+
+  .outline .txt-kay-flame-yellow-color a {
+    color: var(--bg-kay-flame-yellow-color);
+  }
+
+  .solid.bg-suffragist-purple-color h2.txt-color,
+  .solid.bg-intern-blue-color h2.txt-color,
+  .solid.bg-arboretum-green-color h2.txt-color,
+  .solid.bg-rowhouse-red-color h2.txt-color,
+  .solid.bg-embassy-blue-color h2.txt-color,
+  .solid.bg-suffragist-purple-color .promo-content,
+  .solid.bg-intern-blue-color .promo-content,
+  .solid.bg-arboretum-green-color .promo-content,
+  .solid.bg-rowhouse-red-color .promo-content,
+  .solid.bg-embassy-blue-color .promo-content,
+  .solid.bg-suffragist-purple-color h2.txt-color a,
+  .solid.bg-intern-blue-color h2.txt-color a,
+  .solid.bg-arboretum-green-color h2.txt-color a,
+  .solid.bg-rowhouse-red-color h2.txt-color a,
+  .solid.bg-embassy-blue-color h2.txt-color a {
+    color: var(--white-color);
+  }
+
+  .el-flex-item .flex-promo-text p.promo-cta a {
+    font-weight: bold;
+  }
+
+  .el-flex-item .flex-promo-text .promo-title-text h2 a {
+    text-decoration: underline;
+  }
+
+  .el-flex-item .flex-promo-text p.promo-cta a:focus,
+  .el-flex-item .flex-promo-text p.promo-cta a:hover {
+    text-decoration: underline;
+  }
+
+  .el-flex-item .flex-promo-text .promo-title-text {
+    margin: 0;
+    padding: 25px 25px 15px;
+  }
+
+  .el-flex-item .flex-promo-text p.promo-cta .btn {
+    height: 45px;
+    min-width: 50%;
+  }
+
+  .el-flex-item .flex-promo-text .promo-title-text h2 {
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+  }
+
+  .el-flex-item .flex-promo-text.solid {
+    box-shadow: 0 5px 7px #ddd;
+  }
+
+  .el-flex-item .flex-promo-text p.promo-cta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .el-flex-item .flex-promo-text.solid p.promo-cta {
+    margin-bottom: 1px;
+    margin-left: 1px;
+  }
+
+  .el-flex-item .flex-promo-text.outline p.promo-cta {
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+
+  .flex-promo-text p.promo-cta .btn.btn-whitebg:hover,
+  .flex-promo-text p.promo-cta .btn.btn-whitebg:focus {
+    border: 1px solid var(--black-color);
+    color: var(--black-color);
+  }
+
+  .el-flex-item .flex-promo-text .promo-content {
+    padding: 0 25px;
+    font-size: 1.8rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    margin-bottom: 15px;
+    line-height: 2.6rem;
+  }
+
+  .el-flex-item .flex-promo-text .promo-content p {
+    font-size: 18px;
+  }
+
+  .el-flex-item .flex-promo-text .promo-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (width >=768px) {
+    .el-flex-grid .el-flex-item .flex-promo-text.xl {
+      min-height: 600px;
+      height: initial;
+      max-height: initial;
+    }
+  }
+
+  @media (width <=767px) {
+    .el-flex-item .flex-promo-text {
+      max-height: 425px;
+    }
+
+    .el-flex-item .flex-promo-text.xl {
+      max-height: 600px;
+    }
+  }
+}

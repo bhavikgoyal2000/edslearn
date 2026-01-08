@@ -1,0 +1,174 @@
+@media (width <= 600px) {
+    /* stylelint-disable-next-line rule-empty-line-before */
+    #row-mobile-header {
+        margin-top: 75px;
+    }
+
+    .navhidden > .header.block {
+        display: none;
+    }
+
+    .navhidden > #row-mobile-header {
+        margin-top:0;
+    }
+
+    .header-wrapper #row-mobile-header {
+        position: fixed;
+        inset: 0;
+        height: 85px;
+    }   
+
+    .bg-school-primary {
+        background-color: #0672b9;
+    }
+    
+    #main-container {
+        padding-top: 85px;
+    }
+
+    .col-xs-12 {
+        width: 100%;
+    }
+
+    .header-wrapper #row-mobile-header .navbar-mobile-full {
+        border-bottom: 1px solid #fff;
+        height: 47px;
+        align-items: center;
+        justify-content: flex-start;
+        display: flex !important;
+    }
+
+    /* Base before specific to satisfy no-descending-specificity */
+    .header-wrapper button.navbar-toggle {
+        width: auto;
+        height: 4rem;
+        line-height: 4rem;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: 700;
+        display: inline-block;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        text-transform: uppercase;
+        position: relative;
+        padding: 0 3rem 0 0;
+        float: none;
+        background-color: transparent;
+        background-image: none;
+        cursor: pointer;
+    }
+
+    .header-wrapper button.navbar-toggle[data-placement="left"] {
+        height: 2.7rem;
+        line-height: 2.7rem;
+    }
+
+    .header-wrapper #row-mobile-header button.navbar-toggle {
+        padding-right: 2.2rem;
+    }
+
+    .header-wrapper button.navbar-toggle span.ion-chevron-down::before {
+        font-size: 2.3rem;
+        line-height: 3rem;
+        position: absolute;
+        top: -1px;
+        right: 0;
+        font-weight: 400;
+        content: "\f123";
+    }
+
+    .header-wrapper #row-mobile-header #mobile-navigation-header-text {
+        font-family: "GT Walsheim", Arial, sans-serif;
+        font-size: 1.4rem;
+        line-height: 1.5rem;
+        color: #fff;
+        text-transform: capitalize;
+        margin: auto 0 auto 15px;
+        max-height: 3rem;
+        font-weight: 700;
+        text-align: left;
+        letter-spacing: 0;
+    }
+
+    .header-wrapper #row-mobile-header.has-crumb a.crumb {
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    span.ion-android-close::before {
+        font-size: 3rem;
+        line-height: 3.2rem;
+        position: absolute;
+        top: -1px;
+        right: 0;
+        font-weight: 400;
+        content: "\f2d7";
+    }
+}
+
+/** Custom changes start for mobile **/
+
+@media (width <= 600px) {
+  ul.tier-3-cta.fixed-bottom {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 1000000;
+    overflow: auto;
+    border-top: 1px solid #fff;
+    list-style: none;
+  }
+
+  ul.tier-3-cta.fixed-bottom li {
+    width: auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    margin: 0;
+    border-right: 1px solid #fff;
+  }
+
+  ul.tier-3-cta.fixed-bottom .btn.btn-cta.btn-school.single-line {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 30px;
+    font-weight: 700;
+    color: #fff;
+    background: #0672b9;
+    background-color: #0672b9;
+  }
+
+  .tier-3-cta.fixed-bottom li a.btn {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    padding: 0 20px;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 30px;
+  }
+
+  .a5-widget-container .a5-widget-card, .a5-widget-container .a5-widget-card.a5-widget>.a5-icon {
+    height: 40px !important;
+    width: 350px !important;
+    min-height: 40px !important;
+}
+
+.ion-lg {
+    position: relative;
+    font-size: 1.5em;
+    line-height: .75em;
+    vertical-align: -22.5%;
+}
+}
+
+/** Custom Changes END **/

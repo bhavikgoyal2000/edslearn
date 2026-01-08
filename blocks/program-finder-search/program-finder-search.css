@@ -1,0 +1,462 @@
+.program-finder-search-wrapper {
+  :root {
+	--navy-dark: #182449;
+	--embassy-blue: #005099;
+	--suffragist-purple: #3c208c;
+	--web-bright-blue: #0672b9;
+	--default-heading: var(--navy-dark);
+	--default-padding: clamp(1rem, 0.8333vw, 1.6rem);
+	}
+
+    margin: 0 auto;
+    max-width: 1480px!important;
+
+	.bg-blue.light {
+		background-color: #005099;
+	}
+
+	.btn {
+		background-image: none;
+		border: 1px solid transparent;
+		border-radius: 4px;
+		cursor: pointer;
+		display: inline-block;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.4286;
+		margin-bottom: 0;
+		padding: 6px 12px;
+		text-align: center;
+		touch-action: manipulation;
+		user-select: none;
+		vertical-align: middle;
+		white-space: nowrap;
+	}
+
+	.btn.btn-white {
+		background-color: #fff;
+		border: 2px solid #fff;
+		color: var(--navy-dark);
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: 2.4rem;
+		font-weight: 400;
+		height: auto;
+		line-height: 4rem;
+		margin-top: 0;
+		max-width: 100%;
+		padding: 0 1.6rem;
+		text-decoration: none;
+		text-transform: capitalize;
+		transition: color 0.5s ease-in, text-decoration 0.5s ease-in, background-color 0.5s ease-in;
+	}
+
+	.btn.btn-white:focus,
+	.btn.btn-white:hover {
+		background-color: #fff;
+		border: 2px solid #fff;
+		color: var(--navy-dark);
+		outline: none;
+		text-decoration: underline;
+		text-decoration-color: var(--default-link-hover);
+		text-decoration-skip-ink: auto;
+	}
+
+	.btn.btn-white:visited {
+		background-color: #fffffff7;
+		color: var(--default-link-visit);
+	}
+
+	.grid-browse-btn {
+		font-size: 1.6rem;
+		line-height: 1.4286;
+	}
+
+	form {
+		font-family: Interstate, Arial, sans-serif;
+		margin: 25px 0;
+		padding: 0;
+	}
+
+	form label,
+	form legend {
+		color: #343434;
+		font-size: 1.6rem;
+		font-weight: 700;
+	}
+
+	h1 {
+		color: var(--default-heading);
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(3rem, 2.1vw, 4rem);
+		font-weight: 700;
+		letter-spacing: -0.096rem;
+		line-height: 1.2;
+		margin: 0 0 2.5rem;
+		text-transform: none;
+	}
+
+	h2 {
+		color: var(--default-heading);
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(2.4rem, 1.6vw, 3rem);
+		font-weight: 700;
+		letter-spacing: 0;
+		line-height: 3.2rem;
+		margin: 0 0 10px;
+		text-transform: none;
+	}
+
+	p {
+		color: #182249;
+		font-family: Arial, sans-serif;
+		font-size: 1.7rem;
+		font-weight: normal;
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	#program-finder {
+		background: repeating-linear-gradient(36deg, #eef0f3, #eef0f3 15px, #d4d6d9 17px, #d4d6d9 18px);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: clamp(2rem, 1.6667vw, 3.2rem);
+	}
+
+	#program-finder .bg-blue.light a[href]:not(.btn) {
+		color: #fff;
+	}
+
+	#program-finder .border-solid {
+		border-color: #fff;
+		border-radius: 0;
+		border-style: solid;
+	}
+
+	#program-finder .btn.btn-white.lighttext {
+		color: var(--embassy-blue);
+	}
+
+	#program-finder .grid-container {
+		display: grid;
+		grid-gap: 1rem 2.5rem;
+		grid-template: "form" "browse-by" "search-btns" / 1fr;
+	}
+
+	#program-finder .item-browse-by {
+		grid-area: browse-by;
+		margin-top: -1em;
+		padding: clamp(2rem, 1.6667vw, 3.2rem);
+	}
+
+	#program-finder .item-cas,
+	#program-finder .item-kogod,
+	#program-finder .item-soc,
+	#program-finder .item-soe,
+	#program-finder .item-sis,
+	#program-finder .item-spexs,
+	#program-finder .item-spa,
+	#program-finder .item-wcl {
+		margin-bottom: 10px;
+	}
+
+	#program-finder .item-form {
+		grid-area: form;
+		padding: clamp(2rem, 1.6667vw, 3.2rem) clamp(2rem, 1.6667vw, 3.2rem) 0;
+	}
+
+	#program-finder .item-grad {
+		grid-area: grad;
+	}
+
+	#program-finder .item-pl {
+		grid-area: pl;
+	}
+
+	#program-finder .item-search-btns {
+		grid-area: search-btns;
+	}
+
+	#program-finder .item-undergrad {
+		grid-area: undergrad;
+	}
+	
+	#program-finder div.bg-blue>p {
+		margin: 0;
+	}
+
+	#program-finder h2 {
+		color: #fff;
+		font-size: 1.8rem;
+	}
+
+	#program-finder .teaser-text h2,
+	#program-finder .teaser-text h2 p {
+		color: var(--default-heading);
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(2.5rem, 5vw, 3.8rem);
+		font-style: italic;
+		font-weight: 500;
+		line-height: clamp(2.5rem, 5vw, 3.8rem);
+		margin-bottom: 35px;
+	}
+
+	#program-finder .rankings .ranking p {
+		color: var(--default-heading);
+		float: left;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(1rem, 4vw, 2.5rem);
+		font-weight: 500;
+		line-height: clamp(1rem, 4vw, 2.5rem);
+		margin-right: 25px;
+		margin-top: clamp(1px, 3vw, 35px);
+		width: 55%;
+	}
+
+	#program-finder .rankings .ranking p span.source {
+		display: block;
+		font-size: clamp(0.8rem, 3vw, 1.8rem);
+		font-style: italic;
+		font-weight: 500;
+		line-height: clamp(0.8rem, 3vw, 1.8rem);
+		margin-top: 8px;
+	}
+
+	#program-finder .rankings .ranking span.value {
+		color: var(--suffragist-purple);
+		display: block;
+		float: left;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(6rem, 6vw, 10.2rem);
+		font-weight: 800;
+		text-align: center;
+		width: 35%;
+	}
+
+	#program-finder form {
+		position: relative;
+	}
+
+	#program-finder form button {
+		background: transparent;
+		border: none;
+		color: #fff;
+		cursor: pointer;
+		position: absolute;
+		right: .1rem;
+		transform: rotate(90deg);
+	}
+
+	#program-finder form input {
+		background-color: transparent;
+		border-width: 0 0 6px;
+		color: #fff;
+		display: block;
+		margin-top: .6em;
+		width: 100%;
+	}
+
+	#program-finder label {
+		color: #fff;
+		position: absolute;
+		top: -3rem;
+		transition: font-size .5s ease;
+		width: 100%;
+	}
+
+	#program-finder label.overlay {
+		position: absolute;
+	}
+
+	#program-finder div.bg-blue>p>a {
+		display: block;
+		padding: 7px 0 10px 15px;
+		text-decoration: none;
+	}
+
+	#program-finder div.bg-blue>p>a:hover {
+		background-color: #034775;
+		color: #fff;
+		text-decoration: underline;
+	}
+
+	#program-finder .teaser-text {
+		margin-bottom: 25px;
+	}
+
+	#program-finder .teaser-text h1 {
+		color: black;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(4.5rem, 5vw, 6rem);
+		line-height: clamp(4.5rem, 5vw, 6rem);
+	}
+
+	#program-finder .teaser-text .hot-text {
+		color: #A82860;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: clamp(3.3rem, 5vw, 5.3rem);
+		font-weight: 800;
+		text-decoration: underline;
+	}
+
+	#program-finder .bg-blue.dark a[href]:not(.btn) {
+		text-decoration: none;
+		color: #fff !important;
+	}
+
+	#program-finder .bg-blue.dark a[href]:not(.btn):visited {
+		color: #fffffff7 !important;
+	}
+
+	#program-finder .bg-blue.dark {
+		background-color: var(--navy-dark) !important;
+	}
+
+	#program-finder .item-search-btns .bg-blue.dark {
+		margin-bottom: 10px;
+	}
+
+	#program-finder .hero-img {
+		max-width: 100vw;
+		padding: clamp(4rem, 4.2vw, 8rem);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	@media (width <= 320px) {
+		#program-finder {
+			padding: var(--default-padding);
+		}
+
+		#program-finder .btn-white {
+			font-size: 1.7rem;
+		}
+
+		#program-finder div.bg-blue>p>a {
+			font-size: 1.7rem;
+		}
+
+		#program-finder form button {
+			font-size: 2.5rem;
+			top: -1rem;
+		}
+
+		#program-finder form input {
+			font-size: 1.7rem;
+		}
+
+		#program-finder label.overlay {
+			font-size: 1.7rem;
+		}
+	}
+
+	@media (width <= 991px) {
+		#program-finder .btn-white {
+			font-size: 1.8rem;
+		}
+
+		#program-finder .grid-container {
+			grid-template-columns: 1fr;
+		}
+
+		#program-finder form button {
+			font-size: 3rem;
+			top: -1rem;
+		}
+
+		#program-finder form input {
+			font-size: 2.1rem;
+		}
+
+		#program-finder label.overlay {
+			font-size: 2.1rem;
+		}
+	}
+
+	@media (width <= 1470px) {
+		#program-finder .grid-browse-btn {
+			display: grid;
+			grid-area: browse-btn;
+			grid-gap: 2rem;
+			grid-template: "undergrad" "grad" "pl" 2fr / 1fr;
+			padding: var(--default-padding);
+		}
+	}
+
+	@media (width >= 992px) {
+		#program-finder {
+			padding-top: 30px;
+		}
+
+		#program-finder .grid-container {
+			grid-template-areas:
+				"form search-btns"
+				"browse-by search-btns";
+			grid-template-columns: 2fr 1fr;
+		}
+
+		#program-finder form {
+			margin-bottom: 0;
+			margin-top: 11rem;
+		}
+
+		#program-finder form button {
+			font-size: 3.5rem;
+			top: -1.3rem;
+		}
+
+		#program-finder form input {
+			font-size: 2.5rem;
+		}
+
+		#program-finder label.overlay {
+			font-size: 3.5rem;
+		}
+
+		#program-finder .btn-white {
+			min-width: 25rem;
+		}
+
+		#program-finder .item-browse-by {
+			padding-top: 4.5rem;
+		}
+
+		#program-finder .teaser-text {
+			margin-left: 40px;
+		}
+	}
+
+	@media (width <= 320px) {
+		#program-finder {
+			padding: var(--default-padding);
+		}
+
+		#program-finder form button {
+			font-size: 2.5rem;
+			top: -1rem;
+		}
+
+		#program-finder form input {
+			font-size: 1.7rem;
+		}
+
+		#program-finder label.overlay {
+			font-size: 1.7rem;
+		}
+
+		#program-finder .btn-white {
+			font-size: 1.7rem;
+		}
+
+		#program-finder div.bg-blue>p>a {
+			font-size: 1.7rem;
+		}
+	}
+
+	@media (width >= 1471px) {
+		#program-finder .btn.btn-white {
+			margin-right:2.5rem;
+		}
+	}
+}

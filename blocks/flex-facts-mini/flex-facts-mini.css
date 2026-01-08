@@ -1,0 +1,208 @@
+.flex-facts-mini-wrapper {
+  padding-bottom: 10px;
+}
+
+.flex-facts-mini-wrapper .flex-facts:has(.standard) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flex-facts-mini-wrapper .flex-facts:not(:has(.standard)) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+  margin: 0 auto;
+  height: 150px;
+  max-height: 150px;
+  width: 167px; 
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item div[class^="flex-"]:has(.mini-bg){
+  border: 1px solid #d2d2d2;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact  {
+  text-align: center;
+  position: relative;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-facts-mini-wrapper .standard {
+  background: repeating-linear-gradient(20deg, rgb(255 255 255), rgb(255 255 255) 8px, rgb(217 220 227) 9px, rgb(217 220 227) 10px);
+  border: none !important;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .fact-above, 
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .fact-below {
+  display: block;
+  line-height: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: "GT Walsheim", Arial, sans-serif;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .fact-focus {
+  display: block;
+  font-size: 6rem;
+  line-height: 0.5em;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  margin: 10px 0;
+  white-space: nowrap;
+}
+
+.flex-facts-mini-wrapper .mini-bg {
+  color: white;
+}
+
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .pound::after, 
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .percent::after, 
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .ratio::after, 
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .plus::after, 
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .dollar::after {
+  font-size: 8.1rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0 5px;
+  content: "";
+}
+
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .ratio::before,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .ratio::before {
+  content: none !important;
+  display: none !important;
+}
+
+.flex-facts-mini-wrapper .el-flex-item .flex-fact .pound::after {
+  vertical-align: top;
+  font-size: 3.6rem;
+  line-height: 1.5em;
+  content: "#";
+  position: absolute;
+  left: -3.4rem;
+  top: -60%;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .fact-big-number .fact-focus {
+  line-height: 0.8em;
+  margin: 0 0 10px;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .pound,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .percent,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .ratio,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .plus,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .dollar {
+  font-size: 3rem;
+  line-height: 1em;
+  position: relative;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .pound::after,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .ratio::after,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .plus::after,
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .dollar::after {
+  font-size: 4.5rem;
+  line-height: 1em;
+  display: inline-block;
+  margin: 0 5px;
+  content: "";
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .percent::after {
+  font-size: 5.4rem;
+  line-height: 1rem;
+  display: inline-block;
+  margin: 0 5px;
+  content: "%";
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .pound::after {
+  vertical-align: top;
+  font-size: 2rem;
+  line-height: 1.5em;
+  content: "#";
+  position: absolute;
+  left: -2rem;
+  top: -50%;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .dollar::after {
+  content: "";
+   /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+  font-family: Ionicons;
+  font-size: 3rem;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .ratio::after {
+  content: ":";
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .plus::after {
+  vertical-align: top;
+  line-height: 0.5em;
+  content: "+";
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item .flex-fact .factbox-focus {
+  height: 8px;
+  background-color: rgb(187 123 15);
+  width: 100%;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item a:hover .flex-fact.mini-bg,  
+.flex-facts-mini-wrapper .el-mini-flex-item a:focus .flex-fact.mini-bg {
+  background-image: linear-gradient(to bottom, #0000 0%, #0000 94%, #f4c74b 94%, #f4c74b 100%);
+  text-decoration: none;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item a.fact-link {
+  text-decoration: none !important;
+}
+
+.flex-facts-mini-wrapper .el-mini-flex-item a.fact-link .fact-attrib {
+  text-decoration: underline !important;
+}
+
+.flex-facts-mini-wrapper .smaller-dollar-font {
+  font-size: 3.5rem !important;
+}
+
+@media (width >= 768px) {
+  .flex-facts-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+    margin: 0 auto;
+    height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+  }
+}
+
+@media (width >= 1200px) {
+  .flex-facts-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+    width: 167px;
+    overflow: hidden;
+  }
+}
+
+@media (width <= 360px) {
+  .flex-facts-mini-wrapper .smaller-dollar-font {
+      font-size: 2.4rem !important;
+  }
+
+  .flex-facts-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+    margin: 0 auto;
+    height: 116px;
+    max-height: 116px;
+    overflow: hidden;
+  }
+
+  .flex-facts-mini-wrapper .fact-focus {
+    font-size: 5rem;
+  }
+}

@@ -1,0 +1,887 @@
+.duo-spotlight-wrapper {
+    header {
+      height: auto;
+    }
+  
+    .btn {
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: 400;
+        text-align: center;
+        vertical-align: middle;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        white-space: nowrap;
+        user-select: none;
+        font-size: 1.5rem;
+        font-family: "GT Walsheim",Arial,sans-serif;
+        line-height: 50px;
+        width: auto;
+        height: 50px;
+        padding: 0 20px;
+        margin-top: 25px;
+        border-radius: 0;
+        border: none;
+        text-decoration: none;
+        transition: background-color .5s ease,color .5s ease
+    }
+
+    .btn.btn-outline {
+        border: 2px solid #fff;
+        background: 0 0;
+        color: #fff!important;
+        font-weight: 700
+    }
+
+    .hide-for-mobile {
+      display: none;
+    }
+  
+    .hide-for-desktop {
+      display: block;
+    }
+
+    .pull-right {
+      float: right;
+      margin-right: 20px;
+      margin-top: 10px;
+    }
+  
+    address,blockquote,figcaption,figure,p,q {
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      font-family: "GT Walsheim",Arial,sans-serif;
+      font-weight: 400;
+      color: #343434;
+      margin: 0;
+    }
+
+    button.close {
+      padding: 0;
+      cursor: pointer;
+      background: 0 0;
+      border: 0;
+    }
+    
+    .close {
+      float: right;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1;
+      color: #000;
+      text-shadow: 0 1px 0 #fff;
+      opacity: .2
+    }
+
+    .close:focus,.close:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      opacity: .5
+    }
+
+    .section-spotlight {
+      padding: 0;
+    }
+  
+    .section-spotlight.bottom-margin {
+      margin-bottom: 25px !important;
+    }
+  
+    .section-spotlight img {
+      margin: 0;
+    }
+  
+    .section-spotlight header h1 {
+      color: #1a1c21;
+      font-family: "GT Walsheim",Arial,sans-serif!important;
+      font-weight: 700;
+      font-size: clamp(3rem, 2.1vw, 4rem);
+      line-height: 1.2;
+      letter-spacing: .005em;
+      text-transform: none;
+      margin: 0 0 2.5rem
+    }
+  
+    .section-spotlight .spotlight-ombre-bar {
+      background: linear-gradient(120deg, #e0263c 0%, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+      height: 6px;
+      width: 100%;
+    }
+  
+    .section-spotlight .panel-group,
+    .section-spotlight .panel,
+    .section-spotlight .panel-default,
+    .section-spotlight .panel-heading,
+    .section-spotlight .panel-body {
+      border: none !important;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+  
+    .section-spotlight .panel-group .panel+.panel {
+      margin-top: 0;
+    }
+  
+    .section-spotlight .panel-group,
+    .section-spotlight .spotlight-container,
+    .section-spotlight .panel-collapse {
+      background: #fff;
+    }
+  
+    .section-spotlight .spotlight-container .button-container {
+      margin-bottom: 40px;
+    }
+  
+    .section-spotlight .spotlight-container .button-container .left-button {
+      width: 49%;
+      height: 60px;
+      background-color: #3c208c;
+      color: #fff;
+      text-align: center;
+      margin-right: 1px;
+    }
+  
+    .section-spotlight .spotlight-container .button-container .left-button .swap-arrow {
+      top: 20px;
+      position: absolute;
+    }
+  
+    .section-spotlight .spotlight-container .button-container .left-button:hover,
+    .section-spotlight .spotlight-container .button-container .left-button:focus {
+      background-color: #4918cd;
+    }
+  
+    .section-spotlight .spotlight-container .button-container .right-button {
+      width: 49%;
+      height: 60px;
+      background-color: #3c208c;
+      color: #fff;
+      text-align: center;
+    }
+  
+    .section-spotlight .spotlight-container .button-container .right-button .swap-arrow {
+      top: 20px;
+      position: absolute;
+    }
+  
+    .section-spotlight .spotlight-container .button-container .right-button:hover,
+    .section-spotlight .spotlight-container .button-container .right-button:focus {
+      background-color: #4918cd;
+    }
+  
+    .section-spotlight button.close {
+      margin-top: -20px;
+      margin-right: -4px;
+      font-size: 1.5rem;
+    }
+  
+    .section-spotlight article,
+    .section-spotlight div.panel.panel-default {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+  
+    .section-spotlight article header,
+    .section-spotlight div.panel.panel-default header {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      background: #0f2846 !important;
+    }
+  
+    .section-spotlight article header img,
+    .section-spotlight div.panel.panel-default header img {
+      width: 100%;
+    }
+  
+    .section-spotlight article header .photo-overlay {
+      height: 100%;
+      width: 100%;
+      background: #00000080;
+      position: absolute;
+      inset: 6px 0 0;
+      text-align: center;
+    }
+
+    .section-spotlight article header a:focus .photo-overlay {
+      background: #0009;
+    }
+
+    .section-spotlight div.panel.panel-default header .photo-overlay {
+      height: 100%;
+      width: 100%;
+      background: #00000080;
+      position: absolute;
+      inset: 6px 0 0;
+      text-align: center;
+    }
+
+    .section-spotlight div.panel.panel-default header a:focus .photo-overlay {
+      background: #0009;
+    }
+  
+    .section-spotlight article header .photo-overlay .vertical-align,
+    .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align {
+      margin-top: 50%;
+      display: block;
+    }
+  
+    .section-spotlight article .panel-body .story-text .btn {
+      text-transform: none !important;
+    }
+
+    .section-spotlight article header .photo-overlay .vertical-align .btn {
+      font-size: 2rem;
+    }
+
+    .section-spotlight div.panel.panel-default .panel-body .story-text .btn {
+      text-transform: none !important;
+    }
+      
+    .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align .btn {
+      font-size: 2rem;
+    }
+  
+    .section-spotlight article header h1,
+    .section-spotlight div.panel.panel-default header h1 {
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 2.1vw, 3.2rem);
+      line-height: clamp(2.4rem, 2.1vw, 3.2rem);
+      color: #fff;
+      padding: 0 10%;
+    }
+  
+    .section-spotlight article header h1::after,
+    .section-spotlight div.panel.panel-default header h1::after {
+      content: '' !important;
+      display: none !important;
+    }
+  
+    .section-spotlight article header button,
+    .section-spotlight div.panel.panel-default header button {
+      font-weight: 700;
+      margin-top: 0;
+    }
+  
+    .section-spotlight article header a:focus .btn.btn-outline,
+    .section-spotlight div.panel.panel-default header a:focus .btn.btn-outline {
+      color: #343434 !important;
+      background: #fff !important;
+      text-decoration: none;
+    }
+  
+    .section-spotlight article .panel-body .byline,
+    .section-spotlight div.panel.panel-default .panel-body .byline {
+      margin: 0 0 0.5rem;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: #1a1c21;
+    }
+  
+    .section-spotlight article .panel-body .byline-sub,
+    .section-spotlight div.panel.panel-default .panel-body .byline-sub {
+      margin: 0;
+      margin-top: 12px;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
+      font-weight: 400;
+      color: #1a1c21;
+    }
+  
+    .section-spotlight article .panel-body .byline-sub-b,
+    .section-spotlight div.panel.panel-default .panel-body .byline-sub-b {
+      margin: 0 0 2rem;
+      margin-top: 12px;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      font-weight: 400;
+      color: #1a1c21;
+    }
+  
+    .section-spotlight article .panel-body blockquote,
+    .section-spotlight div.panel.panel-default .panel-body blockquote {
+      margin: 25px 0;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 2.2rem;
+      line-height: 2.2rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: #1a1c21;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+  
+    .section-spotlight article .panel-body blockquote::before,
+    .section-spotlight div.panel.panel-default .panel-body blockquote::before {
+      font-size: 1em;
+      line-height: 2.2rem;
+      font-weight: normal;
+      color: #1a1c21;
+      vertical-align: 0;
+    }
+  
+    .section-spotlight article .panel-body blockquote::after,
+    .section-spotlight div.panel.panel-default .panel-body blockquote::after {
+      font-size: 1em;
+      line-height: 2.2rem;
+      font-weight: normal;
+      color: #1a1c21;
+      vertical-align: 0;
+    }
+  
+    .section-spotlight article .panel-body .story-text,
+    .section-spotlight div.panel.panel-default .panel-body .story-text {
+      margin-top: 15px;
+    }
+  
+    .section-spotlight article .panel-body .story-text p:last-child,
+    .section-spotlight div.panel.panel-default .panel-body .story-text p:last-child {
+      margin-bottom: 0;
+    }
+  
+    .section-spotlight .collapse.in {
+      width: 100vw;
+      opacity: 1;
+      padding: 10px;
+      overflow: auto;
+    }
+  
+  
+    @media (width >= 768px) {
+      .hide-for-mobile {
+        display: block;
+      }
+  
+      .hide-for-desktop {
+        display: none;
+      }
+  
+      .section-spotlight {
+        padding: 50px 0;
+        overflow: hidden;
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+  
+      .section-spotlight .row-center {
+        overflow: visible;
+        max-width: 1300px;
+      }
+  
+      .section-spotlight .spotlight-container {
+        position: relative;
+        box-shadow: 0 3px 4px 0 #0000001a;
+      }
+  
+      .section-spotlight .spotlight-container .button-container {
+        margin-bottom: 0;
+      }
+  
+      .section-spotlight .spotlight-container .button-container .left-button {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #3c208c;
+        color: #fff;
+        bottom: -20px;
+        right: 90px;
+      }
+  
+      .section-spotlight .spotlight-container .button-container .left-button .swap-arrow {
+        top: 20px;
+        position: absolute;
+        left: 10px;
+      }
+  
+      .section-spotlight .spotlight-container .button-container .right-button {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #3c208c;
+        color: #fff;
+        bottom: -20px;
+        right: 24px;
+      }
+  
+      .section-spotlight .spotlight-container .button-container .right-button .swap-arrow {
+        top: 20px;
+        position: absolute;
+        left: 10px;
+      }
+  
+      .section-spotlight .spotlight-container.xparent {
+        box-shadow: none;
+      }
+  
+      .section-spotlight .panel-group,
+      .section-spotlight .panel,
+      .section-spotlight .panel-default,
+      .section-spotlight .panel-heading,
+      .section-spotlight .panel-body {
+        border: none !important;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+  
+      .section-spotlight .panel-group .panel+.panel {
+        margin-top: 0;
+      }
+  
+      .section-spotlight.duo {
+        overflow: initial;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
+      .section-spotlight article header h1 {
+        color: #fff;
+        padding: 0 5%;
+        width: 50vw;
+      }
+  
+      .section-spotlight .collapse.in {
+        width: 49vw;
+        max-width: calc(1300px / 2);
+        opacity: 1;
+        float: left;
+        overflow: auto;
+      }
+
+      .section-spotlight .panel-group.duo .panel-heading,
+      .section-spotlight .panel-group.duo .collapse,
+      .section-spotlight .panel-group.duo .collapse.in,
+      .section-spotlight .panel-group.duo article header h1 {
+        max-width: 47.5vw;
+      }
+  
+      .section-spotlight .panel-group.duo [id^="heading-left"] {
+        margin-right: 8px;
+      }
+  
+      .section-spotlight .panel-collapse {
+        background: #fff;
+      }
+  
+      .section-spotlight button.close {
+        margin-top: -20px;
+        margin-right: -20px;
+      }
+  
+      .section-spotlight article,
+      .section-spotlight div.panel.panel-default {
+        margin: 0;
+        padding: 0;
+      }
+  
+      /* .section-spotlight article.shift-left,
+      .section-spotlight div.panel.panel-default.shift-left {
+        position: absolute;
+        left: calc(-1300px / 2);
+      }
+  
+      .section-spotlight article.shift-left header,
+      .section-spotlight div.panel.panel-default.shift-left header {
+        width: 50vw;
+      }
+  
+      .section-spotlight article.shift-right,
+      .section-spotlight div.panel.panel-default.shift-right {
+        position: absolute;
+        right: calc(-1300px / 2);
+      }
+  
+      .section-spotlight article.shift-right header,
+      .section-spotlight div.panel.panel-default.shift-right header {
+        width: 50vw;
+      } */
+  
+      .section-spotlight article header,
+      .section-spotlight div.panel.panel-default header {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        max-width: calc(1300px / 2);
+        max-height: 563px;
+        overflow: hidden;
+        float: left;
+      }
+  
+      .section-spotlight article header img,
+      .section-spotlight div.panel.panel-default header img {
+        width: 100%;
+      }
+  
+      .section-spotlight article header .photo-overlay,
+      .section-spotlight div.panel.panel-default header .photo-overlay {
+        height: 100%;
+        width: 100%;
+        max-width: calc(1300px / 2);
+        background: #00000080;
+        position: absolute;
+        inset: 6px 0 0;
+        text-align: center;
+      }
+  
+      .section-spotlight article header .photo-overlay .vertical-align,
+      .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align {
+        margin-top: 42.5%;
+        display: block;
+      }
+  
+      .section-spotlight div.panel.panel-default header h1 {
+        color: #fff;
+        padding: 0 5%;
+        width: 50vw;
+      }
+
+      .section-spotlight article header .photo-overlay .vertical-align h1,
+      .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align h1 {
+        font-size: clamp(1.9rem, 2.1vw, 3.2rem);
+        line-height: clamp(1.9rem, 2.1vw, 3.2rem);
+      }
+  
+      .section-spotlight article header .photo-overlay .vertical-align .btn,
+      .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align .btn {
+        margin-top: 0;
+      }
+  
+      .section-spotlight article header button,
+      .section-spotlight div.panel.panel-default header button {
+        margin-top: 25px;
+      }
+  
+      .section-spotlight article .panel-body .byline,
+      .section-spotlight div.panel.panel-default .panel-body .byline {
+        color: #1a1c21;
+      }
+  
+      .section-spotlight article .panel-body .byline-sub,
+      .section-spotlight div.panel.panel-default .panel-body .byline-sub {
+        margin: 0;
+        margin-top: 12px;
+        color: #1a1c21;
+      }
+        
+      .section-spotlight article .panel-body .story-text {
+        margin: 0;
+      }
+
+      .section-spotlight article .panel-body .byline-sub+.story-text {
+        margin-top: 25px;
+      }
+
+      .section-spotlight div.panel.panel-default .panel-body .story-text {
+        margin: 0;
+      }
+
+      .section-spotlight div.panel.panel-default .panel-body .byline-sub+.story-text {
+        margin-top: 25px;
+      }
+
+      .section-spotlight article .panel-body blockquote,
+      .section-spotlight div.panel.panel-default .panel-body blockquote {
+        margin: 25px 0;
+        border: none;
+        background: none;
+        padding: 0;
+      }
+  
+      .section-spotlight article .panel-body blockquote::before,
+      .section-spotlight div.panel.panel-default .panel-body blockquote::before {
+        content: '\201C';
+      }
+  
+      .section-spotlight article .panel-body blockquote::after,
+      .section-spotlight div.panel.panel-default .panel-body blockquote::after {
+        content: '\201D';
+      }
+  
+      .section-spotlight article .panel-body .story-text p,
+      .section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+  
+      .section-spotlight .collapsing.width {
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        padding: 0 !important;
+        opacity: 0;
+        width: auto !important;
+        max-width: 45vw !important;
+        float: left;
+      }
+  
+      .section-spotlight .collapse.width {
+        height: 100%;
+        transition-property: width, height, opacity;
+        transition-duration: 0.35s;
+        transition-timing-function: ease;
+      }
+    }
+  
+    @media (width >= 992px) {
+      .section-spotlight .spotlight-container .button-container .left-button {
+        right: 66px;
+      }
+  
+      .section-spotlight .spotlight-container .button-container .right-button {
+        right: 0;
+      }
+  
+      .section-spotlight article header .photo-overlay .btn {
+        margin-top: 25px !important;
+      }
+  
+      .section-spotlight.duo {
+        overflow: hidden !important;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
+      }
+  
+      .section-spotlight .panel-group.duo .panel-heading,
+      .section-spotlight .panel-group.duo .collapse,
+      .section-spotlight .panel-group.duo .collapse.in,
+      .section-spotlight .panel-group.duo article header h1 {
+        max-width: 39.5vw;
+      }
+    }
+  
+    @media (width >= 1199px) {
+      .section-spotlight .collapse.in {
+        padding: 25px;
+        overflow: hidden;
+        max-width: 526px;
+      }
+
+      .section-spotlight .panel-heading,
+      .section-spotlight .collapse,
+      .section-spotlight .collapse.in,
+      .section-spotlight article header h1 {
+        max-width: 526px;
+        vertical-align: top;
+        overflow: hidden;
+      }
+
+      .section-spotlight article .panel-body blockquote,
+      .section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+      }
+  
+      .section-spotlight article .panel-body .story-text p,
+      .section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem;
+        line-height: 2.3rem;
+      }
+  
+      /* .section-spotlight article.shift-left,
+      .section-spotlight div.panel.panel-default.shift-left {
+        position: absolute;
+        left: calc(-1300px / 2);
+      }
+  
+      .section-spotlight article.shift-left header,
+      .section-spotlight div.panel.panel-default.shift-left header {
+        width: 50vw;
+      }
+  
+      .section-spotlight article.shift-right,
+      .section-spotlight div.panel.panel-default.shift-right {
+        position: absolute;
+        right: calc(-1300px / 2);
+      }
+  
+      .section-spotlight article.shift-right header,
+      .section-spotlight div.panel.panel-default.shift-right header {
+        width: 50vw;
+      } */
+  
+      .section-spotlight article header h1 {
+        padding: 0 4%;
+      }
+
+      .section-spotlight article header h1,
+      .section-spotlight div.panel.panel-default header h1 {
+        padding: 0 20%;
+        width: 50vw;
+      }
+  
+      .section-spotlight article header button,
+      .section-spotlight div.panel.panel-default header button {
+        margin-top: 2.5rem;
+      }
+  
+      .section-spotlight article header .photo-overlay .vertical-align,
+      .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align {
+        margin-top: 43%;
+      }
+  
+      /* .section-spotlight .collapse.in {
+        padding: 25px;
+      } */
+        
+
+  
+      .section-spotlight .panel-group.duo .panel-heading,
+      .section-spotlight .panel-group.duo .collapse,
+      .section-spotlight .panel-group.duo .collapse.in,
+      .section-spotlight .panel-group.duo article header h1 {
+        max-width: 40vw;
+      }
+  
+      .section-spotlight .panel-group.duo [id^="heading-left"] {
+        margin-right: 8px;
+      }
+  
+      .section-spotlight .panel-body {
+        padding: 0;
+      }
+  
+      .section-spotlight .panel-body button.close {
+        margin-top: -17px;
+        margin-right: -17px;
+      }
+  
+      .section-spotlight .panel-body .story-text {
+        overflow: hidden;
+      }
+  
+      /* .section-spotlight article.shift-left {
+        left: -526px;
+      }
+  
+      .section-spotlight article.shift-right {
+        right: -526px;
+      } */
+  
+    }
+  
+    @media (width >= 1200px) and (width <= 1329px) {
+      .section-spotlight article .panel-body blockquote,
+      .section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem !important;
+        line-height: 2.6rem !important;
+      }
+  
+      .section-spotlight article .panel-body .story-text p,
+      .section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem !important;
+        line-height: 2.3rem !important;
+      }
+  
+      .section-spotlight .collapse.in {
+        max-width: 39vw !important;
+      }
+  
+    }
+  
+    @media (width >= 1330px) {
+      .section-spotlight .collapse.in {
+        max-width: 526px !important;
+      }
+
+      .section-spotlight .panel-group.duo .panel-heading,
+      .section-spotlight .panel-group.duo .collapse,
+      .section-spotlight .panel-group.duo .collapse.in,
+      .section-spotlight .panel-group.duo article header h1 {
+        max-width: 529px;
+      }
+  
+      .section-spotlight article .panel-body blockquote,
+      .section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem !important;
+        line-height: 2.6rem !important;
+      }
+  
+      .section-spotlight article .panel-body .story-text p,
+      .section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem !important;
+        line-height: 2.3rem !important;
+      }
+    }
+  
+    @media (width >= 1024px) and (width <= 1199px) {
+      .section-spotlight {
+        margin-right: -30px;
+      }
+  
+      .section-spotlight article header .photo-overlay .vertical-align,
+      .section-spotlight div.panel.panel-default header .photo-overlay .vertical-align {
+        margin-top: 41%;
+      }
+  
+      /* .section-spotlight article .panel-body blockquote,
+      .section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+      }
+  
+      .section-spotlight article .panel-body .story-text p,
+      .section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem;
+        line-height: 2.3rem;
+      } */
+  
+      /* .section-spotlight article .collapse.in,
+      .section-spotlight div.panel.panel-default .collapse.in {
+        padding: 25px 25px 25px 15px;
+      } */
+  
+      .section-spotlight article header h1,
+      .section-spotlight div.panel.panel-default header h1 {
+        width: 41vw;
+      }
+  
+      .section-spotlight article .panel-body,
+      .section-spotlight div.panel.panel-default .panel-body {
+        transform: none;
+      }
+  
+      .section-spotlight article .panel-body blockquote,
+      .section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.2rem;
+        line-height: 2.4rem;
+      }
+  
+      .section-spotlight article .panel-body .story-text p,
+      .section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+  
+      .section-spotlight article .collapse.in,
+      .section-spotlight div.panel.panel-default .collapse.in {
+        width: 40vw;
+        max-width: calc(1300px / 2);
+        padding: 25px 25px 25px 15px;
+      }
+  
+      .section-spotlight .collapsing.width {
+        max-width: 39vw !important;
+      }
+  
+    }
+  
+    @media (width >= 1200px) {
+      .section-spotlight article header h1 {
+        padding: 0 20%;
+        width: calc(1300px / 2);
+      }
+    }
+  }

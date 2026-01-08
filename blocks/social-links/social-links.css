@@ -1,0 +1,37 @@
+.social-links{
+    .school-social-blogs {
+       margin: 15px 0;
+    }
+   
+    .school-social-blogs ul {
+       list-style: none;
+       margin: 0;
+       padding: 0;
+    }
+   
+    .school-social-blogs ul li {
+       margin: 0 15px 15px 0;
+       padding: 0;
+       float: left;
+    }
+   
+    .school-social-blogs ul li a {
+       display: inline-block;
+       text-align: center;
+       font-size: 2.2rem;
+       line-height: 3rem;
+       width: 3rem;
+       border: 1px solid #13477d;
+       transition: background-color 0.33s ease, color 0.33s ease, border-color 0.33s ease;
+    }
+   
+    .school-social-blogs ul li a:hover,
+    .school-social-blogs ul li a:focus {
+       background: #13477d;
+    }
+     
+    .school-social-blogs ul li a:hover .school-primary,
+    .school-social-blogs ul li a:focus .school-primary {
+       color: #fff;
+    }
+}

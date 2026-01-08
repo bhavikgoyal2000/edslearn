@@ -71,14 +71,13 @@ function buildEvents(data) {
   return `
     <div class="au-events">
       ${data.events.map((event) => {
-    const hasDetails = true;
-    const expandable = hasDetails;
+    const expandable = true;
     const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeDescription = (event.eventDescription || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
     return `
-          <div class="au-event ${expandable ? 'expandable' : ''}" 
+          <div class="au-event ${expandable ? 'expandable' : ''}"
             data-title="${safeTitle}"
             data-fullstart="${event.fullStart}"
             data-fullend="${event.fullEnd}"

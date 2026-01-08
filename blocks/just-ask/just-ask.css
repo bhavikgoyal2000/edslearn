@@ -1,0 +1,115 @@
+/* stylelint-disable */
+.just-ask-wrapper .just-ask.block {
+    width: 100%;
+    height: 350px;
+    background-size: cover !important;
+    background-position: center center;
+    margin-bottom: 87px !important;
+}
+
+.just-ask-wrapper .content-wrapper {
+    padding: 20px;
+    margin-top: 75px;
+}
+
+.just-ask-wrapper .text-center-align {
+    text-align: center !important;
+}
+
+.just-ask-wrapper h1 {
+    text-shadow: 2px 2px 16px #000;
+    font-size: 4em;
+    line-height: 6.0rem;
+    color: #fff !important;
+}
+
+.just-ask-wrapper form .form-control {
+    height: 50px;
+    font-size: 1.6rem;
+    line-height: 3.8rem;
+    border-color: #d2d2d2;
+    box-shadow: none;
+    outline: none;
+    border-radius: 0;
+}
+
+.just-ask-wrapper .form-control {
+    display: block;
+    padding: 6px 12px;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    transition: border-color ease-in-out .15s, box-shadow
+}
+
+.just-ask-wrapper .form-group .form-control {
+    width: 100% !important;
+}
+
+.just-ask-wrapper.form-group .btn-primary {
+    width: 100%;
+}
+
+.just-ask-wrapper form {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    /* input and button same height */
+}
+
+.just-ask-wrapper .search-field {
+    flex: 1;
+    width: 83.33333333%;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: content-box;
+}
+
+.just-ask-wrapper .sub-btn {
+    flex: 0 0 auto;
+    width: 16.66666667%;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: content-box;
+   
+}
+
+.just-ask-wrapper .sub-btn .btn-primary {
+    height: 100%;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+    background-image: linear-gradient(to bottom, #005099 0%, #005099 90%, #f4c74b 90%, #f4c74b 100%);
+    text-decoration: none;
+}
+
+@media (width >= 1200px) {
+
+.just-ask-wrapper .just-ask.block .right-rail {
+    height: 250px;
+    background: none;
+    background-color: #e2dfdb;
+    margin-bottom: 25px;
+    }
+
+ .just-ask-wrapper  .right-rail h1 {
+        color: #7e6d5f !important;
+        text-shadow: none;
+        font-size: 3rem !important;
+        font-weight: 700 !important;
+        line-height: 2.5rem !important;
+        text-align: left !important;
+    }
+
+ .just-ask-wrapper  .right-rail .search-field {
+        width: 100% !important;
+    }
+
+ .just-ask-wrapper  .right-rail .sub-btn {
+        width: 93px !important;
+    }
+}

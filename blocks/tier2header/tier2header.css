@@ -1,0 +1,701 @@
+/* stylelint-disable */
+li {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+@media (width >= 991px) {
+
+    .tier2header-wrapper {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .tier2header.block {
+        --body-font-family: "GT Walsheim", Arial, sans-serif;
+        transition: top 0.5s cubic-bezier(0.4,0,0.2,1), background-color 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+    .tier2header.block.affix-top {
+    top: 80px; /* or whatever offset you want when at the top */
+    background-color: transparent;
+    box-shadow: none;
+}
+    .tier2header.block.has-image .row-center {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 0;
+        max-width: initial;
+    }
+    .tier2header.block.has-image .overlay {
+        background: rgba(64, 69, 71, .7);
+        padding: 175px 50px 0;
+        min-height: 440px;
+    }
+    .tier2header.block.has-image .innerlay {
+        max-width: 1246px;
+        margin: 0 auto;
+    }
+
+     .tier2header.block.has-image .ctaUl {
+        background: 0 0;
+        -moz-column-count: 1;
+        column-count: 1;
+        width: 480px;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-align: center;
+        align-items: center;
+        height: 135px;
+        position: relative;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.affix-top.has-image  .ctaUl li {
+        width: 120px;
+        height: 55px;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        margin: 0 60px 0 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        line-height: 26px;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.has-image .ctaUl li > a.single-line {
+
+        line-height: 4rem;
+    }
+    .tier2header.block.has-image .ctaUl li > a {
+        line-height: 4rem;
+        background-color: #4918cd;
+        width: 120px;
+        height: 55px;
+        white-space: normal;
+        padding: 7px 10px 8px;
+        line-height: 2rem;
+        letter-spacing: .16rem;
+        margin: 0;
+        border: 1px solid rgba(255, 255, 255, 0);
+        max-width: 50vw;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.has-image .ctaUl li > a:hover,
+    .tier2header.block.has-image .ctaUl li > a:focus {
+        background-color: #4918cd;
+        background-image: linear-gradient(to bottom, #4918cd 0, #4918cd 90%, #f4c74b 90%, #f4c74b 100%) !important;
+        border-color: #4918cd !important;
+    }
+
+    .tier2header.block.has-image .ctaUl li .btn {
+        text-align: center;
+        vertical-align: middle;
+        touch-action: manipulation;
+        cursor: pointer;
+        font-family: "GT Walsheim", Arial, sans-serif;
+    }
+
+    .tier2header.block.has-image .ctaUl li .btn.btn-cta {
+        font-weight: 700;
+        color: #fff;
+    }
+
+    .tier2header.block.has-image .bg-school-primary {
+    background-color: #4918cd;
+    }
+
+    .tier2header.block.has-image .collapse {
+        display: none;
+    }
+
+    .tier2header.block.has-image .collapse.in {
+        width: 250px;
+        position: absolute;
+        top: 54px;
+        left: -65px;
+        z-index: 400;
+        border: 1px solid #fff;
+        border-top: none;
+        padding: 15px 25px 25px;
+        border-radius: 0;
+        font-family: "GT Walsheim", Arial, sans-serif;
+        color: #fff;
+        box-shadow: none;
+        display: block;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.has-image .cta-content.bg-school-primary.collapse.in::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 65px;
+        width: 0;
+        height: 0;
+        transform: rotate(360deg);
+        border-color: transparent;
+        border-style: solid;
+        border-width: 12px 60px 0 60px;
+        border-top-color: #d0c4b6;
+        border-left-color: rgba(208, 196, 182, 0);
+        border-right-color: rgba(208, 196, 182, 0);
+        z-index: 402;
+        box-sizing: border-box;
+    }
+    a.btn.btn-outline {
+        display: block;
+        border-radius: 0;
+        height: auto;
+        line-height: 3.6rem !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        color: #fff;
+        width: auto;
+        border: 2px solid #fff;
+        background: 0 0;
+        color: #fff !important;
+        font-weight: 700;
+        text-decoration: none !important;
+    }
+
+    a.btn.btn-outline:hover {
+    background-color: #fff !important;
+    color: #4d4037 !important;
+    }
+    .collapse.in h2 {
+        font-family: "GT Walsheim", Arial, sans-serif;
+        font-weight: 700;
+        color: #4d4037;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        margin: 0 0 10px;
+        color: #fff;
+        margin-bottom: 0;
+    }
+
+    .btn {
+        max-width: 300px;
+        margin-top: 25px;
+        font-size: 1.5rem;
+        font-family: "GT Walsheim", Arial, sans-serif;
+        text-decoration: none !important;
+        padding: 0 20px;
+        transition: background-color .5s ease, color .5s ease;
+    }
+
+    a.btn.btn-outline:last-of-type {
+        margin-bottom: 20px;
+    }
+
+    .subnav-wrapper-full-width {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .tier2header.block.affix-top.no-school div.row-center .overlay h1 {
+        font-size: 4rem;
+        line-height: 4.2rem;
+        color: #fff;
+        margin: 0 auto;
+        text-shadow: 1px 1px 1px #343434;
+    }
+
+    .tier2header.block.affix-top.no-school div.row-center .overlay h1 a {
+        line-height: 2rem;
+        text-decoration: underline;
+        -webkit-text-decoration-line: underline;
+        -moz-text-decoration-line: underline;
+        text-decoration-line: underline;
+        -webkit-text-decoration-color: #aabdbe;
+        -moz-text-decoration-color: #aabdbe;
+        text-decoration-color: #aabdbe;
+        color: #fff;
+        background-position: 0 1.05em;
+        margin-right: 0;
+        display: inline-block;
+        letter-spacing: 0.005em;
+    }
+
+    .tier2header.block.affix-top.no-school div.row-center .overlay h1 .child {
+        display: block;
+        margin-top: 20px;
+    }
+
+
+    /* Starting chages for Sticky header */
+
+    .tier2header.block.has-image.affix {
+        background-color: #0672b9;
+        height: 76px;
+        margin-top: 80px;
+        display: block;
+        width: 100%;
+        min-height: 0;
+        opacity: 1;
+        transition: opacity .5s ease-in;
+        height: 76px;
+        margin-top: 79px;
+        background-repeat: repeat;
+        z-index: 401;
+        position: fixed;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.has-image.affix .row-center{
+
+        background-image: none !important;
+        color: #fff;
+        top: -8px;
+        position: relative;
+        margin: 0 auto;
+        max-width: 1310px;
+    }
+
+   .tier2header.block.has-image.affix .header-ombre {
+        top: -8px;
+        box-sizing: border-box;
+        display: block;
+        height: 8px;
+        position: relative;
+        background: linear-gradient(120deg, #e0263c 0, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+   }
+    .tier2header.block.has-image.affix .overlay{
+        min-height: 0;
+        padding: 0 0 0 15px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        align-items: center;
+        background: 0 0;
+        font-size: 16px;
+        line-height: 22.875px;
+    }
+
+    .tier2header.block.has-image.affix .overlay .innerlay{
+        display: contents;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.has-image.affix .t2-page-header{
+        flex: 0 1 auto;
+        display: block !important;
+        font-family: "GT Walsheim", Arial, sans-serif;
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-transform: none;
+        height: 75px;
+        color: #fff;
+        margin: 0 !important;
+        line-height: 7.5rem;
+        padding: 0 15px;
+    }
+
+    .tier2header.block.has-image.affix .ctaUl li {
+        width: 120px;
+        height: 55px;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        padding: 0;
+        position: relative;
+        display: block;
+        line-height: 26px;
+        box-sizing: border-box;
+    }
+
+    .tier2header.block.has-image.affix .overlay ul {
+        display: block;
+        min-height: 75px;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        width: 362px;
+        height: 75px;
+        padding: 0;
+        margin: 0 auto;
+        overflow: visible;
+        border-right: 1px solid #fff;
+        -moz-column-count: 1;
+        column-count: 1 !important;
+    }
+
+    .tier2header.block.has-image.affix .overlay ul > li {
+        float: left;
+        min-height: 75px;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        width: 120px;
+        position: relative;
+    }
+
+    .tier2header.block.has-image.affix .overlay ul > li {
+        float: left;
+        min-height: 75px;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        width: 120px;
+        position: relative;
+    }
+
+    .tier2header.block.has-image.affix .overlay ul li > a {
+        line-height: 4.5rem;
+        background-color: #0672b9;
+        line-height: 2.3rem;
+        border: none;
+        white-space: normal;
+        letter-spacing: .05rem;
+    }
+
+    .tier2header.block.affix .t2-page-header,
+    .tier2header.block.has-image.affix .t2-page-header {
+        font-weight: 700;
+    }
+
+    .tier2header.block.has-image.affix {
+        top: 0;
+        background-color: #0672b9;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+    /* Sticky header changes ends here  */
+
+    .tier2header.block.affix-top.no-image {
+        display: block;
+        min-height: 175px !important;
+        position: static !important;
+    }
+
+    .tier2header.block.affix-top.no-image .sub-header {
+        top: 0;
+        margin-top: -8px;
+        position: relative;
+    }
+
+    .tier2header.block div.row-center {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 0;
+        max-width: initial;
+        margin: 0 auto;
+    }
+
+    .tier2header.block.affix-top.no-image div.row-center .overlay {
+        background: linear-gradient(to right, #182449 0%, #182449 0%, #005099 100%, #005099 100%);
+        padding: 60px 50px;
+        min-height: 256px;
+    }
+
+    .tier2header.block.affix-top.no-image div.row-center .overlay .innerlay {
+        max-width: 1246px;
+        margin: 0 auto;
+    }
+
+
+    .tier2header.block.affix-top.no-image .schoolDeptTitle {
+        display: initial;
+        position: relative;
+        color: #fff;
+        font-family: 'GT Walsheim', Arial, "sans serif";
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 5rem;
+        white-space: pre-line;
+    }
+
+    .tier2header.block.affix { 
+        display: block;
+        width: 100%;
+        min-height: 0;
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
+        height: 69px;
+        background-repeat: repeat;
+        z-index: 401;
+        background-color: #0672b9;
+    }
+
+    .tier2header.block.affix .header-ombre {
+        top: -8px;
+        box-sizing: border-box;
+        display: block;
+        height: 8px;
+        position: relative;
+        background: linear-gradient(120deg, #e0263c 0, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+   }
+
+   .tier2header.block.affix div.row-center {
+        background-image: none !important;
+        color: #fff;
+        max-width: 1310px;
+   }
+
+   .tier2header.block.affix div.row-center .overlay .t2-page-header {
+        display: block !important;
+        font-family: "GT Walsheim", Arial, sans-serif;
+        font-size: 1.8rem;
+        font-weight: 400;
+        text-transform: none;
+        height: 75px;
+        color: #fff;
+        margin: 0 !important;
+        line-height: 7.5rem;
+        padding: 0 15px;
+   }
+
+   .t2-page-header a.crumb {
+    font-size: 1.8rem;
+    line-height: 7.5rem;
+    color: rgba(255, 255, 255, .96);
+    margin-right: 1em;
+    position: relative;
+    background-image: none;
+    display: inline;
+    text-decoration: none;
+   }
+
+   .t2-page-header a.crumb:after {
+    content: '\f125';
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    top: 0;
+    font-family: Ionicons;
+    color: rgba(255, 255, 255, .6);
+    position: absolute;
+    right: -1.1em;
+    display: block;
+   }
+
+   .tier2header.block.affix.no-image div.row-center .overlay ul.tier-2-cta {
+            display: block;
+        min-height: 75px;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        width: 362px;
+        width: initial;
+        height: 75px;
+        padding: 0;
+        margin: 0 auto;
+        overflow: visible;
+        border-right: 1px solid #fff;
+        -moz-column-count: 1;
+        column-count: 1;
+        background: #fff;
+   }
+
+   .tier2header.block.affix.no-image div.row-center .overlay ul.tier-2-cta li { 
+        float: left;
+        min-height: 75px;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        width: 120px;
+        position: relative;
+   }
+
+   .tier2header.block.affix.no-image div.row-center .overlay ul.tier-2-cta li > a {
+        padding: 15px 18px;
+        line-height: 4.5rem;
+        border: none;
+        height: 74px;
+        letter-spacing: 0.05rem;
+        display: block;
+        margin-top: 0;
+   }
+
+   .tier2header.block.affix.no-image div.row-center .overlay {
+
+    min-height: 0;
+        padding: 0 0 0 15px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        align-items: center;
+   }
+
+   .tier2header.block.affix.no-image div.row-center .overlay .innerlay {
+    display: contents;
+   }
+
+   .tier2header.block .btn.btn-cta {
+    font-weight: 700;
+    color: #fff;
+    background: #0672b9;
+   }
+
+   .tier2header.block .btn.btn-cta:focus {
+      background: #0672b9;
+      background-image: linear-gradient(to bottom, #0672b9 0, #0672b9 90%, #f4c74b 90%, #f4c74b 100%);
+      text-decoration: none;
+    }
+
+   .tier-2-cta {
+    list-style: none;
+   }
+
+   .tier2header.block.affix.no-image { 
+    height: auto !important;
+   }
+
+   .tier2header.block.no-image.affix-top .t2-page-header a.crumb:after {
+        content: '';
+    }
+
+    .tier2header.block.affix-top.has-image div.row-center .overlay ul.tier-2-cta {
+
+        background: transparent;
+        -moz-column-count: 1;
+        column-count: 1;
+        width: 480px;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-align: center;
+        align-items: center;
+        height: 135px;
+        position: relative;
+    }
+
+    .tier2header.block.affix-top.has-image div.row-center .overlay ul.tier-2-cta li {
+        width: 120px;
+        height: 55px;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        margin: 0 60px 0 0;
+        padding: 0;
+        position: relative;
+    }
+
+    .tier2header.block div.row-center .overlay ul.tier-2-cta li {
+        display: block;
+    }
+
+    .tier2header.block div.row-center .overlay ul.tier-2-cta li > a {
+        display: block;
+    }
+   
+    .tier2header.block.affix-top.has-image div.row-center .overlay ul.tier-2-cta li > a {
+        width: 120px;
+        height: 55px;
+        white-space: normal;
+        padding: 7px 10px 8px;
+        line-height: 2rem;
+        letter-spacing: 0.16rem;
+        margin: 0;
+        max-width: 50vw;
+    }
+
+    .tier2header.block.affix-top div.row-center .overlay ul.tier-2-cta li > a {
+        background-color: #4918cd;
+    }
+
+    .tier2header.block.affix-top.has-image div.row-center .overlay ul.tier-2-cta li > a.single-line {
+        line-height: 4rem;
+    }
+
+    .tier2header.block.affix-top.has-school div.row-center .overlay h1 {
+        display: none !important;
+    }
+
+    .tier2header.block div.row-center .overlay .schoolDeptTitle {
+        display: none;
+    }
+
+    .tier2header.block.affix-top.has-image div.row-center .overlay .schoolDeptTitle {
+
+        display: initial;
+        position: relative;
+        color: #fff;
+        font-family: 'GT Walsheim', Arial, "sans serif";
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 5rem;
+        white-space: pre-line;
+    }
+
+    .tier2header.block.affix-top.no-school div.row-center .overlay h1 .you-are-here {
+        margin-top: 20px;
+        display: block;
+    }
+
+    .tier2header.affix-top.has-image.no-school div.row-center .overlay {
+        background: rgba(64, 69, 71, 0.7);
+        padding: 140px 50px 0;
+    }
+
+    .tier2header.block.affix-top.no-school .t2-page-header a.crumb:after {
+        content: '';
+    }
+
+    .t2-page-header .you-are-here {
+        font-weight: 700;
+        font-family: "GT Walsheim", Arial, sans-serif;
+        letter-spacing: -0.04rem;
+    }
+
+    .tier2header.block.affix-top.no-image div.row-center .overlay .schoolDeptTitle {
+        display: initial;
+        position: relative;
+        color: #fff;
+        font-family: 'GT Walsheim', Arial, "sans serif";
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 5rem;
+        white-space: pre-line;
+    }
+
+    .tier2header.block.affix-top div.row-center .overlay ul.tier-2-cta li>a:hover, .tier2header.block.affix-top div.row-center .overlay ul.tier-2-cta li>a[aria-expanded=true] {
+        background-color: #4918cd;
+        background-image: linear-gradient(to bottom, #4918cd 0, #4918cd 90%, #f4c74b 90%, #f4c74b 100%) !important;
+        border-color: #4918cd !important;
+    }
+
+    .tier2header.block.no-image.affix div.sub-header {
+        margin-top: -7px;
+    }
+
+    .tier2header.block.affix-top.no-school.has-image .t2-page-header [itemtype="https://schema.org/BreadcrumbList"] > span[itemprop="itemListElement"] {
+        display: none;
+    }
+
+    /* Case 1: first child is an itemListElement (no sr-only before it) */
+    .tier2header.block.affix-top.no-school.has-image .t2-page-header [itemtype="https://schema.org/BreadcrumbList"] > span[itemprop="itemListElement"]:first-child {
+        display: inline;
+    }
+
+    /* Case 2: there is a leading non-itemListElement (e.g., the sr-only label) */
+    .tier2header.block.affix-top.no-school.has-image .t2-page-header [itemtype="https://schema.org/BreadcrumbList"] > :not([itemprop="itemListElement"]) + span[itemprop="itemListElement"] {
+    display: inline;
+    }
+}

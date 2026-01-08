@@ -1,0 +1,231 @@
+/* Fixed CSS based on lint errors */
+.section-left {
+    padding-right: 25px;
+}
+
+#left-navigation {
+    display: block;
+}
+
+.section-left #left-navigation,
+.section-left .office-module,
+.section-left .school-social-blogs {
+    z-index: 200;
+    background: #fff;
+    position: relative;
+}
+
+.section-left .back-to-top {
+    position: static;
+    display: none;
+}
+
+.section-left .back-to-top a {
+    opacity: .6;
+}
+
+.section-left .back-to-top a:focus,
+.section-left .back-to-top a:hover {
+    opacity: 1;
+}
+
+.section-left .back-to-top.affix {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    bottom: 25px;
+    margin-bottom: 0;
+    left: auto;
+}
+
+#new-mobile-nav {
+    padding-left: 50px;
+}
+
+#new-mobile-nav a.you-are-here {
+    position: relative;
+}
+
+#new-mobile-nav a.you-are-here::before {
+    width: 0;
+    height: 0;
+    transform: rotate(360deg);
+    border-color: transparent;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-left-color: #eeb137;
+    border-top-color: color-mix(in srgb, #eeb137 0%, transparent);
+    border-bottom-color: color-mix(in srgb, #eeb137 0%, transparent);
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    z-index: 5000;
+    display: block;
+    content: ' ';
+}
+
+#new-mobile-nav ul.content-navigation {
+    padding-bottom: 15px;
+}
+
+#new-mobile-nav ul.content-navigation li p {
+    padding: 0;
+    margin: 0;
+}
+
+#left-navigation a.you-are-here {
+    background: #d9dce3;
+    position: relative;
+}
+
+#left-navigation a.you-are-here::after {
+    width: 0;
+    height: 0;
+    transform: rotate(360deg);
+    border-color: transparent;
+    border-style: solid;
+    border-width: 20px 0 20px 10px;
+    border-left-color: #d9dce3;
+    border-top-color: color-mix(in srgb, #d9dce3 0%, transparent);
+    border-bottom-color: color-mix(in srgb, #d9dce3 0%, transparent);
+    position: absolute;
+    right: -10px;
+    top: 0;
+    z-index: 5000;
+    display: block;
+    content: ' ';
+}
+
+#left-navigation a.you-are-here.two-line::after {
+    width: 0;
+    height: 0;
+    transform: rotate(360deg);
+    border-color: transparent;
+    border-style: solid;
+    border-width: 30px 0 30px 20px;
+    border-left-color: #d9dce3;
+    border-top-color: color-mix(in srgb, #d9dce3 0%, transparent);
+    border-bottom-color: color-mix(in srgb, #d9dce3 0%, transparent);
+}
+
+#left-navigation ul.content-navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: visible;
+}
+
+#left-navigation ul.content-navigation li {
+    border-bottom: 1px solid #d2d2d2;
+    min-height: 40px;
+    margin: 0;
+    border-collapse: collapse;
+}
+
+#left-navigation ul.content-navigation li ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#left-navigation ul.content-navigation li ul li:first-child {
+    border-top: 1px solid #d2d2d2;
+}
+
+#left-navigation ul.content-navigation li ul li:last-child {
+    border-bottom: none;
+}
+
+#left-navigation ul.content-navigation li p {
+    padding: 0;
+    margin: 0;
+}
+
+#left-navigation ul.content-navigation li a {
+    display: block;
+    position: relative;
+    font-size: 1.4rem;
+    min-height: 40px;
+    line-height: 2rem;
+    padding: 10px 25px 10px 10px;
+    color: #343434;
+    font-family: "GT Walsheim", Arial, sans-serif;
+}
+
+#left-navigation ul.content-navigation li ul li a {
+    padding-left: 25px;
+}
+
+#left-navigation ul.content-navigation li a:visited {
+    color: #343434;
+}
+
+#left-navigation ul.content-navigation li a:focus,
+#left-navigation ul.content-navigation li a:hover {
+    background: #d9dce3;
+    font-weight: 700;
+    color: #0672b9;
+}
+
+#left-navigation ul.content-navigation li a:focus {
+    text-decoration: underline;
+}
+
+#left-navigation ul.content-navigation li a[aria-expanded]::after {
+    font-family: Ionicons, sans-serif;
+    content: '\f2c7';
+    color: #343434;
+    position: absolute;
+    right: 8px;
+}
+
+#left-navigation ul.content-navigation li a[aria-expanded]:focus::after,
+#left-navigation ul.content-navigation li a[aria-expanded]:hover::after {
+    content: '\f2c7';
+    color: #0672b9;
+}
+
+#left-navigation ul.content-navigation li a[aria-expanded="true"]::after {
+    content: '\f462';
+    color: #005099;
+}
+
+#left-navigation ul.content-navigation li a[aria-expanded="true"]:focus::after,
+#left-navigation ul.content-navigation li a[aria-expanded="true"]:hover::after {
+    content: '\f462';
+    color: #0672b9;
+}
+
+#left-navigation ul.content-navigation li a.active,
+#left-navigation ul.content-navigation li a[aria-expanded="true"] {
+    text-decoration: none;
+}
+
+#left-navigation #nav-accordion-holder .collapsed {
+    outline: 0 !important;
+}
+
+/** Responsive styles for side navigation 
+    commented for future use
+
+@media (width >= 992px) {
+    .section-left .back-to-top.affix {
+        left: 5px;
+    }
+
+    .resp-element.contact-us {
+        padding: 0 10px 10px;
+    }
+
+    #left-navigation {
+        display: block !important;
+    }
+}
+
+@media (width >= 1200px) {
+    .section-left .back-to-top.affix {
+        left: auto;
+    }
+}
+*/

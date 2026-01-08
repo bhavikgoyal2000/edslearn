@@ -1,1 +1,125 @@
 /* add global styles that can be loaded post LCP here */
+a.button.primary {
+    font-weight: 700;
+    color: #fff;
+    background: #005099;
+    font-size: 1.5rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    line-height: 50px;
+    width: auto;
+    height: 50px;
+    padding: 0 20px;
+    margin-top: 25px;
+    border-radius: 0;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+a.button.primary:hover {
+    background-image: linear-gradient(to bottom, #005099 0, #005099 90%, #f4c74b 90%, #f4c74b 100%);
+    text-decoration: none;
+}
+
+.default-content-wrapper .button-container >a.button[title="Back to top"] {
+    position: fixed;
+    z-index: 1;
+    bottom: 25px;
+    margin: 0;
+    left: auto;
+    color: #0672b9;
+    font-weight: 700;
+    background: #fff;
+    border: 1px solid #0672b9;
+    text-decoration: none;
+    display: none;
+    margin-bottom: 0;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    font-size: 1.5rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    line-height: 50px;
+    width: auto;
+    height: 50px;
+    padding: 0 20px;
+    margin-top: 25px;
+    border-radius: 0;
+    transition: background-color .5s ease, color .5s ease;
+}
+
+.default-content-wrapper .button-container >a.button[title="Back to top"] .ion-chevron-up {
+    margin-left: 3px;
+}
+
+.default-content-wrapper .button-container >a.button[title="Back to top"]:focus, 
+.default-content-wrapper .button-container >a.button[title="Back to top"]:hover {
+    color: #0672b9;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
+    border-color: #0672b9;
+    border-bottom-color: #f4c74b;
+}
+
+.button-container > a.button {
+    font-weight: 700;
+    color: #0672b9;
+    background: #fff;
+    border: 1px solid #0672b9;
+    display: inline-block;
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.5rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    line-height: 50px;
+    width: auto;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.button-container > a.button:focus,
+.button-container > a.button:hover {
+    color: #0672b9;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
+    border-color: #0672b9;
+    border-bottom-color: #f4c74b;
+}
+
+#skip-navigation {
+    padding: 10px;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    background-color: #13477d;
+    color: #fff;
+    max-width: 1280px;
+}
+
+.skip-navigation-only-focusable:active, .skip-navigation-only-focusable:focus {
+    position: static;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+}
+
+.skip-navigation-only-focusable:not(:focus) {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+    height: 1px;
+}

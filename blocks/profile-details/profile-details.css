@@ -1,0 +1,440 @@
+.profile-details-wrapper {
+h1 {
+  color: #4d4037;
+  font-family: "GT Walsheim", Arial, sans-serif!important;
+  font-size: clamp(3rem, 2.1vw, 4rem);
+  font-weight: 700;
+  letter-spacing: .005em;
+  line-height: 1.2;
+  margin: 0 0 2.5rem;
+  text-transform: none;
+}
+
+h2 {
+  color: #4d4037;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: clamp(2.4rem, 1.6vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 3.2rem;
+  margin: 0 0 10px;
+  text-transform: none;
+}
+
+h3 {
+  color: #4d4037;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: clamp(2rem, 1.25vw, 2.4rem);
+  font-weight: 700;
+  line-height: 2.8rem;
+  margin: 0;
+  text-transform: none;
+}
+
+a {
+  color: #005099;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  text-decoration: none;
+}
+
+dl {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+dd,
+dt {
+  line-height: 1.4286;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-left: 0;
+}
+
+ul,
+li {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+dl dd,
+dl dt,
+ul li {
+  color: #343434;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+}
+
+dd + dt {
+  margin-top: 25px;
+}
+
+.profile-contact-info dt,
+.profile-info-bio dt {
+  color: #4d4037;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+  margin: 0;
+}
+
+.profile-teaching-list li {
+  margin-bottom: 15px;
+}
+
+.profile-affiliations li {
+  list-style: none;
+  margin: 0 0 15px;
+}
+
+ul[class*="cols-"] li {
+  border: none;
+  break-inside: avoid-column;
+  page-break-inside: avoid;
+  padding: 0 0 10px;
+}
+
+ul[class*="cols-"]:last-child {
+  margin-bottom: 15px;
+}
+
+p {
+  color: #343434;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+  margin: 0;
+}
+
+address,
+blockquote,
+figcaption,
+figure,
+p,
+q {
+  color: #343434;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 2.6rem;
+  margin: 0;
+}
+
+figure + p {
+  margin-top: 25px;
+}
+
+p:last-child {
+  margin-bottom: 25px;
+}
+
+.btn.btn-block {
+  max-width: 100%;
+  width: 100%;
+}
+
+.btn.btn-default {
+  background: #fff;
+  background-color: #fff;
+  border: 1px solid #0672b9;
+  border-color: #0672b9;
+  color: #0672b9;
+  font-weight: 700;
+}
+
+.btn.btn-default:focus,
+.btn.btn-default:hover {
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
+  border-bottom-color: #f4c74b;
+  color: #0672b9;
+}
+
+.btn {
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 0;
+  margin-top: 25px;
+  padding: 0 20px;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: background-color .5s ease, color .5s ease;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+}
+
+.profile-listing {
+  margin-bottom: 50px;
+}
+
+.profile-listing section .profile-item {
+  align-items: stretch;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.profile-listing section .profile-item .flex-1 {
+  flex: 0 1 25vw;
+  width: 25vw;
+}
+
+.profile-contact-info img {
+  display: inline;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.profile-image-cv img {
+  padding-top: 7px;
+}
+
+.profile-listing section .profile-item .flex-1 img {
+  border-radius: 50%;
+  padding-top: 7px;
+}
+
+.profile-listing section .profile-item .flex-3 {
+  flex: 3 1 25vw;
+  padding-left: 5vw;
+  width: 70vw;
+}
+
+.profile-listing section .profile-item .profile-office {
+  margin-top: 5px;
+  max-width: 60vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-listing section .profile-item .profile-name {
+  color: #1a1c21;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 3.2rem;
+  margin: 0 0 5px;
+  text-transform: none;
+}
+
+.profile-listing section .profile-item [itemprop="jobTitle"],
+.profile-listing section .profile-item [itemprop="worksFor"] {
+  color: #1a1c21;
+  display: block;
+  font-size: 80%;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.profile-listing section .profile-item .profile-link,
+.profile-listing section .profile-item .profile-email,
+.profile-listing section .profile-item .profile-phone {
+  margin-top: 10px;
+}
+
+.profile-listing section .profile-item .profile-bio {
+  margin-top: 15px;
+}
+
+.profile-listing section .profile-item span[class^="ion"] {
+  color: #005099;
+  display: inline-block;
+  font-size: 2.4rem;
+  vertical-align: middle;
+}
+
+.profile-image-cv .btn {
+  margin-top: 0;
+}
+
+.profile-listing section .profile-item .btn,
+.profile-listing section .profile-item .btn-cta,
+.profile-listing section .profile-item .btn-sm {
+  background-color: #1a1c21;
+  border-radius: 50px;
+}
+
+.profile-listing section .profile-item .btn:focus,
+.profile-listing section .profile-item .btn-cta:focus,
+.profile-listing section .profile-item .btn-sm:focus,
+.profile-listing section .profile-item .btn:hover,
+.profile-listing section .profile-item .btn-cta:hover,
+.profile-listing section .profile-item .btn-sm:hover {
+  background: #1a1c21 !important;
+  background-image: none;
+  border: none !important;
+  text-decoration: none !important;
+}
+
+.logged-in > p {
+  background: #f9f9f9;
+  font-weight: 700;
+  padding: 10px 25px 10px 10px !important;
+}
+
+.profile-image-cv {
+  float: initial;
+  margin: 0 25px 15px 0;
+  max-width: 250px;
+  text-align: initial;
+}
+
+h1.profile-name small {
+  color: #4d4037;
+  display: block;
+  font-size: 0.5em;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.profile-contact-info .profile-email i.fa-envelope {
+  color: #005099;
+}
+
+.profile-contact-info .profile-phone i.fa-phone {
+  color: #005099;
+}
+
+.profile-info-bio {
+  clear: left;
+}
+
+.other-content section {
+  border-top: 1px solid #d2d2d2;
+  margin: 25px 0;
+  padding-top: 25px;
+}
+
+.other-content section h1 {
+  margin-bottom: 15px;
+}
+
+.other-content .profile-teaching-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.profile-teaching-list .teaching-item {
+  box-sizing: border-box;
+  flex: 1 1 48%;
+  min-width: 300px;
+}
+
+.profile-info-bio li:last-child {
+  margin-bottom: 25px;
+}
+
+.profile-detail-graphql-loader {
+  align-items: center;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+  font-size: 16px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.profile-detail-graphql-loader .spinner {
+  animation: spin 1s linear infinite;
+  border: 4px solid rgb(0 0 0 / 10%);
+  border-left-color: #333;
+  border-radius: 50%;
+  height: 40px;
+  margin-bottom: 10px;
+  width: 40px;
+}
+
+.profile-see-also dt {
+  font-family: "GT Walsheim", Arial, sans-serif;
+  color: #4d4037;
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+  font-weight: 400;
+}
+
+@media (width <= 768px) {
+  .profile-teaching-list .teaching-item {
+    flex: 1 1 100%;
+  }
+}
+
+@media (width >= 768px) {
+  .profile-image-cv {
+    float: left !important;
+    text-align: center !important;
+    min-height: 300px;
+  }
+}
+
+@media (width >= 992px) {
+  ul.cols-3-2-1 {
+    column-count: 3;
+  }
+
+  .profile-listing section .profile-item.col-md-5:nth-of-type(odd) {
+    clear: both;
+  }
+
+  .profile-listing section .profile-item .profile-office {
+    max-width: 90%;
+  }
+
+  .profile-listing section .profile-item.col-md-5 .profile-office {
+    max-width: 70%;
+  }
+
+  .profile-listing section .profile-item .flex-1 {
+    flex: 0 0 25%;
+    width: 25%;
+  }
+
+  .profile-listing section .profile-item .flex-3 {
+    flex: 3 1 25%;
+    padding-left: 15px;
+    width: auto;
+  }
+
+  .profile-listing section .profile-item.two-columns .flex-3 {
+    max-width: 312px;
+  }
+
+  .profile-listing section .profile-item .btn {
+    margin-bottom: 15px;
+  }
+
+  .profile-listing section .profile-item .profile-email,
+  .profile-listing section .profile-item .profile-phone {
+    margin-top: 5px;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+}

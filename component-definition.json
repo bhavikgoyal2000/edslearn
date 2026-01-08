@@ -1134,6 +1134,21 @@
           }
         },
         {
+          "title": "Program Finder Search Results",
+          "id": "programFinderSearchResults",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Program Finder Search Results",
+                  "filter": "programFinderSearchResults"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "CTA Button",
           "id": "addCtaButton",
           "plugins": {
@@ -1210,6 +1225,37 @@
           }
         },
         {
+          "title": "Magazine Issue",
+          "id": "magazineIssue",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Magazine Issue",
+                  "model": "magazineIssue"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "AU Experts Search Results",
+          "id": "au-experts-search-results",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "AU Experts Search Results",
+                  "filter": "au-experts-search-results",
+                  "model": "au-experts-search-results"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Service Now Article",
           "id": "service-now-article",
           "plugins": {
@@ -1219,6 +1265,38 @@
                 "template": {
                   "name": "Service Now Article",
                   "model": "service-now-article"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Emergency Notification",
+          "id": "emergency-notification",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Emergency Notification",
+                  "model": "emergency-notification",
+                  "filter": "emergency-notification"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Emergency Notification Details",
+          "id": "emergency-notification-details",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Emergency Notification Details",
+                  "model": "emergency-notification-details",
+                  "filter": "emergency-notification-details"
                 }
               }
             }
@@ -1667,6 +1745,22 @@
           }
         },
         {
+          "title": "CeDiploma Validation Form",
+          "id": "cediplomaValidationForm",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "CeDiploma Validation Form",
+                  "model": "cediplomaValidationForm",
+                  "filter": "cediplomaValidationForm"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Mini Drop Form",
           "id": "miniDropForm",
           "plugins": {
@@ -1742,6 +1836,42 @@
                 }
               }
             }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Magazine Blocks",
+      "id": "magazineblocks",
+      "components": [
+        {
+          "title": "Magazine Header",
+          "id": "magazineHeader",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Magazine Header",
+                  "model": "magazineHeader"
+                }
+              }
+            }
+          }
+        },
+        {
+        "title": "Magazine Article",
+        "id": "magazineArticle",
+        "plugins": {
+          "xwalk": {
+            "page": {
+              "resourceType": "core/franklin/components/block/v1/block",
+              "template": {
+                "name": "Magazine Article",
+                "model": "magazineArticle"
+              }
+            }
+          }
           }
         }
       ]

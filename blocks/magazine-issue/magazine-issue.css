@@ -1,0 +1,129 @@
+.section.magazine-issue-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.magazine-issue-wrapper {
+  *:focus,
+  :focus {
+    border-color: #961e28;
+    box-shadow: none;
+    outline: none;
+    outline-offset: 0;
+  }
+
+  a {
+    background-image: linear-gradient(
+      to bottom,
+      #c4122f00 50%,
+      #c4122f00 50%
+    );
+    background-position: 0 1.1em;
+    background-repeat: repeat-x;
+    background-size: 2px 0.1em;
+    color: #c4122f;
+    text-decoration: none;
+  }
+
+  a:focus,
+  a:hover {
+    background-image: linear-gradient(
+      to bottom,
+      #c4122f40 50%,
+      #c4122f00 50%
+    );
+    color: #961e28;
+    text-decoration: none;
+  }
+
+  a[data-fancybox] {
+    background: transparent;
+    display: block;
+    position: relative;
+  }
+
+  a[data-fancybox]:focus::after,
+  a[data-fancybox]:hover::after {
+    background: #09001e;
+    bottom: 0;
+    color: #fff;
+    content: "\f21f";
+    font-family: Ionicons, sans-serif;
+    font-size: 3.5rem;
+    line-height: 50px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    text-shadow: 2px 2px 4px #09001e;
+    width: 50px;
+  }
+
+  .magazine-issue figcaption {
+    margin-bottom: 5px;
+    margin-top: 15px;
+  }
+
+  figure figcaption:last-child {
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+
+  h2 {
+    color: #09001e;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 2.7rem;
+    margin: 0 0 10px;
+    text-transform: capitalize;
+  }
+
+  .magazine-issue {
+    margin-top: 10px;
+    max-width: 400px;
+    padding: 5px;
+    text-align: left;
+  }
+
+  .magazine-issue a:not([data-fancybox]) {
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 700;
+  }
+
+  p {
+    color: #09001e;
+    font-family: Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: normal;
+    line-height: 2.6rem;
+    margin: 0;
+  }
+
+  p:last-child {
+    margin-top: 15px;
+  }
+
+  /* ----------- MEDIA QUERIES ----------- */
+
+  @media (width >= 1024px) {
+    h2 {
+      font-size: 2.4rem;
+      line-height: 3rem;
+    }
+  }
+
+  @media (width <= 1023px) {
+    .magazine-issue h2 {
+      color: #09001e;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 2.4rem;
+      margin: 0 0 10px;
+      text-transform: none;
+    }
+  }
+}

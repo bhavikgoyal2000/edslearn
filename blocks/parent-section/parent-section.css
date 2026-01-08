@@ -1,0 +1,58 @@
+.section-row {
+  display: flex;
+  width: 100%;
+  align-items: stretch; 
+}
+
+.section-width-25 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.section-width-33 {
+  flex: 0 0 33%;
+  max-width: 33%;
+}
+
+.section-width-50 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.section-width-66 {
+  flex: 0 0 66%;
+  max-width: 66%;
+}
+
+.section-width-75 {
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.section-width-100 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.left-rail,
+.right-rail,
+.middle-section {
+  box-sizing: border-box;
+}
+
+/* Mobile: stack vertically */
+@media (width <= 768px) {
+  .section-row {
+    flex-direction: column;
+  }
+
+  .section-row > .left-rail,
+  .section-row > .middle-section,
+  .section-row > .right-rail {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    
+    /* Optional: add spacing or styling for mobile */
+  }
+}

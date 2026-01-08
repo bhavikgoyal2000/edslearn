@@ -1,0 +1,31 @@
+.image-w-caption-wrapper img {
+  width: 100%;
+}
+
+.image-w-caption-wrapper .full-bleed img {
+  margin-left: -5px;
+  margin-right: -5px;
+  width: calc(100% + 10px);
+  max-width: unset;
+}
+
+.image-w-caption-wrapper .right-bleed img {
+  margin-right: -5px;
+  width: calc(100% + 5px);
+  max-width: unset;
+}
+
+@media (width >= 992px) {
+  .image-w-caption-wrapper .full-bleed img {
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+    max-width: unset;
+  }
+
+  .image-w-caption-wrapper .right-bleed img {
+    margin-right: -10px;
+    width: calc(100% + 10px);
+    max-width: unset;
+  }
+}

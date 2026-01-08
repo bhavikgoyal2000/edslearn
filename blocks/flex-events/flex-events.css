@@ -1,0 +1,272 @@
+.flex-events {
+	img {
+      min-width: -webkit-fill-available;
+   }
+
+	.flex-event picture.bg-img {
+		display: flex;
+		height: 425px;
+		width: inherit;
+	}
+
+   .flex-event.xl picture.bg-img {
+		display: flex;
+		height: 600px;
+		width: inherit;
+	}
+
+	a.btn-primary {
+		color: #fff;
+	}
+
+   .btn.btn-primary {
+      font-weight: 700;
+      color: #fff;
+      background: #005099;
+    }
+
+	.el-flex-item .flex-event {
+		background-image: radial-gradient(#414547, #99a3a6);
+		background-size: cover;
+		background-position: center center;
+		position: relative;
+		min-height: 425px;
+	}
+
+	.el-flex-item .flex-event .overlay {
+		position: absolute;
+		inset: 0;
+		padding: 25px;
+		background: #000000b3;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.el-flex-item .flex-event .overlay>p {
+		margin-bottom: 0;
+	}
+
+	.el-flex-item .flex-event .overlay>p a {
+		margin-bottom: 0;
+		background: #961E28;
+		background-image: none;
+		width: 100%;
+		border-radius: 20px;
+		padding: 12px;
+		height: initial;
+		min-height: initial;
+		line-height: initial;
+		outline: 0;
+		margin-top: 7px;
+		text-decoration: underline;
+		border: 1px solid #961E28;
+		transition: 0.2s ease-in-out;
+	}
+
+	.el-flex-item .flex-event .overlay>p a:hover,
+	.el-flex-item .flex-event .overlay>p a:focus,
+	.el-flex-item .flex-event .overlay>p a:active {
+		background: #77151e;
+		border-color: #77151e;
+		text-decoration: underline;
+	}
+
+	.el-flex-item .flex-event .overlay>p a.btn-secondary {
+		background: transparent;
+		border: 1px solid #fff;
+		color: #fff;
+	}
+
+	.el-flex-item .flex-event .overlay>p a.btn-secondary:hover,
+	.el-flex-item .flex-event .overlay>p a.btn-secondary:focus,
+	.el-flex-item .flex-event .overlay>p a.btn-secondary:active {
+		background: #fff;
+		color: #000;
+	}
+
+	.el-flex-item .flex-event .flex-body {
+		text-shadow: 1px 1px 2px #343434;
+	}
+
+	.el-flex-item .flex-event .flex-body p {
+		color: #fff;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 2.2rem;
+		margin: 0;
+	}
+
+	.el-flex-item .flex-event .flex-body p.date {
+		font-weight: 700;
+		line-height: 3.2rem;
+		letter-spacing: 0;
+		margin: 0 0 10px;
+		margin: 0;
+		color: #fff;
+		text-transform: none;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: 20px;
+	}
+
+	.el-flex-item .flex-event .flex-body p.time {
+		font-weight: initial !important;
+	}
+
+	.el-flex-item .flex-event .title-wrapper {
+		margin-top: 20px;
+		text-shadow: 1px 1px 2px #343434;
+	}
+
+	.el-flex-item .flex-event h1 {
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-weight: 700;
+		line-height: 3.2rem;
+		letter-spacing: 0;
+		margin: 0 0 10px;
+		margin: 0;
+		padding: 0;
+		color: #fff;
+		text-transform: none;
+		font-size: 22px;
+	}
+
+	.el-flex-item .flex-event.style-2 {
+		background-image: none;
+		min-height: initial;
+	}
+
+   .el-flex-item .flex-event.style-2 .overlay {
+		position: relative;
+		inset: auto;
+		padding: 0 0 15px;
+		background: #fff;
+		justify-content: center;
+		min-height: 50%;
+	}
+
+	.el-flex-item .flex-event.style-2.image-bottom .overlay {
+		order: 2;
+	}
+
+	.el-flex-item .flex-event.style-2::before {
+		content: '';
+		height: 5px;
+		width: 100%;
+		position: absolute;
+		background: #f70909;
+		background: linear-gradient(90deg, #f70909 0%, #4918cd 100%);
+		top: 0;
+		left: 0;
+		z-index: 1;
+	}
+
+	.el-flex-item .flex-event.style-2 .event-photo {
+      max-height: 210px;
+		overflow: hidden;
+	}
+
+   .el-flex-item .flex-event.style-2.xl .event-photo {
+      max-height: 300px;
+		overflow: hidden;
+	}
+
+   .el-flex-item .flex-event.style-2.image-bottom .event-photo {
+		order: 1;
+	}
+
+	.el-flex-item .flex-event.style-2 .event-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.el-flex-item .flex-event.style-2 .overlay>p {
+		position: absolute;
+		margin-bottom: 15px;
+		bottom: 0;
+		padding: 0 15px;
+	}
+
+	.el-flex-item .flex-event.style-2 .flex-body {
+		position: static;
+		bottom: auto;
+		padding: 0 15px;
+		text-shadow: none;
+	}
+
+	.el-flex-item .flex-event.style-2 .flex-body p {
+		color: #1A1C21;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: 1.8rem;
+		font-weight: 400;
+		line-height: 1.8rem;
+		margin: 0;
+	}
+
+	.el-flex-item .flex-event.style-2 .flex-body p.date {
+		font-weight: 700;
+		letter-spacing: 0;
+		margin: 0 0 10px;
+		margin: 0;
+		color: #000;
+		text-transform: none;
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-size: 1.8rem;
+		line-height: 2.2rem;
+	}
+
+	.el-flex-item .flex-event.style-2 .title-wrapper {
+		margin: 0;
+		padding: 15px;
+		text-shadow: none;
+	}
+
+	.el-flex-item .flex-event.style-2 .title-wrapper h1 {
+		font-family: "GT Walsheim", Arial, sans-serif;
+		font-weight: 700;
+		letter-spacing: 0;
+		margin: 0 0 10px;
+		margin: 0;
+		padding: 0;
+		color: #005099;
+		text-transform: none;
+		font-size: 22px;
+		line-height: 2.8rem;
+	}
+
+	@media (width >= 992px) {
+		.style-2 .overlay {
+			height: 210px;
+		}
+
+		.style-2 .event-photo {
+			height: 300px;
+		}
+
+		.style-2.image-bottom .overlay {
+			order: 1;
+			min-height: 225px;
+			padding: 0;
+		}
+
+		.style-2.image-bottom .event-photo {
+			order: 2;
+		}
+
+		.flex-event.xl {
+			min-height: 600px;
+			height: 600px;
+			max-height: initial;
+		}
+
+		.flex-event.xl .xl-text {
+			margin-top: 15px;
+		}
+
+		.flex-event.xl .xl-text p {
+			font-weight: 400;
+		}
+	}
+}

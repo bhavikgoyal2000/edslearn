@@ -1,0 +1,59 @@
+.office-wrapper .office {
+    margin: 25px 0;
+    color: #343434;
+    width: 100%;
+}
+
+.office-wrapper .office-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    margin: 0 0 10px;
+}
+
+.office-wrapper p {
+    margin: 0 0 5px;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+}
+
+.office-wrapper .office-location {
+    margin: 0;
+}
+
+.office-wrapper .office-location p {
+    margin: 0;
+}
+
+.office-wrapper .office-primary-title {
+    margin-top: -5px;
+}
+
+@media (width >= 768px) and (width < 992px) {
+    .office-wrapper .office {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+    }
+
+    .office-contact-info {
+        width: calc(100% / 3);
+    }
+    
+    .office-primary-contact {
+        width: calc(100% / 3);
+    }
+    
+    .office-location {
+        width: calc(100% / 3);
+    }
+}
+
+@media (width >= 992px){
+    .office-wrapper p {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+
+}

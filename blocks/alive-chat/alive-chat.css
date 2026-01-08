@@ -1,0 +1,182 @@
+/* --- Fixed lint issues --- */
+
+.alive-chat {
+  .btn.btn-alive-chat {
+    margin: 5px 0 10px;
+  }
+
+  .btn.btn-primary {
+    font-weight: 700;
+    color: #fff;
+    background: #005099;
+  }
+
+  .btn.btn-primary:hover, .btn.btn-primary:focus {
+    background-image: linear-gradient(to bottom, #005099 0%, #005099 90%, #f4c74b 90%, #f4c74b 100%);
+    text-decoration: none;
+  }
+
+  .btn {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    line-height: 50px;
+    width: auto;
+    height: 50px;
+    padding: 0 20px;
+    font-size: 1.5rem;
+    border-radius: 0;
+    border: none;
+    text-decoration: none;
+  }
+
+  @media (width >= 992px) {
+    max-width: 300px;
+  }
+
+  .ion-lg {
+    position: relative;
+    font-size: 1.5em;
+    line-height: 0.75em;
+    vertical-align: -22.5%;
+  }
+}
+
+.a5-widget-container .a5-widget-card,
+.a5-widget-container .a5-widget-card.a5-widget > .a5-icon {
+  height: 40px !important;
+  width: 350px !important;
+}
+
+.a5-widget-container .a5-widget,
+.a5-widget-container .a5-widget-cover {
+  border-radius: 6px !important;
+  min-height: 40px !important;
+}
+
+.flex-center {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: normal;
+}
+
+.alive-chat-wrapper {
+  /* Move this selector up to resolve no-descending-specificity */
+  .el-mini-flex-item div[class^="flex-"] {
+    width: 167px;
+    overflow: hidden;
+    height: 150px;
+    max-height: 150px;
+    border: 1px solid #d2d2d2;
+  }
+
+  .el-flex-grid .el-mini-flex-item:nth-of-type(2n) div[class^="flex-"] {
+    width: 167px;
+    overflow: hidden;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-secondary-outline {
+    background-color: #fff !important;
+    border: 3px solid #1c7f66 !important;
+  }
+
+  .el-mini-flex-item .flex-icon {
+    text-align: center;
+    position: relative;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .el-mini-flex-item .flex-icon .flex-center {
+    flex: 0 1 auto;
+    margin: 0;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-secondary-outline span {
+    color: #1c7f66 !important;
+  }
+
+  .el-mini-flex-item .flex-icon .icon-focus {
+    margin: 10px 0;
+    position: relative;
+    top: -20px;
+    display: block;
+  }
+
+  .el-mini-flex-item .flex-icon .text-below {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    display: block;
+    line-height: 1.7rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-cta-outline {
+    background-color: #fff !important;
+    border: 3px solid #1c7f66 !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-cta-outline span {
+    color: #3c208c !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-cta-outline i {
+    color: #3c208c !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-secondary {
+    background-color: #1c7f66 !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-secondary span {
+    color: #fff !important;
+  }
+
+  .ion-ios-chatboxes-outline::before {
+    content: "\f3f9";
+  }
+
+  .el-mini-flex-item .flex-icon.icon-cta {
+    background-color: #3c208c !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-cta span {
+    color: #fff !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-primary {
+    background-color: #005099 !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-primary span,
+  .el-mini-flex-item .flex-icon.icon-primary i {
+    color: #fff !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-primary-outline {
+    background-color: #fff !important;
+    border: 3px solid #005099 !important;
+  }
+
+  .el-mini-flex-item .flex-icon.icon-primary-outline span,
+  .el-mini-flex-item .flex-icon.icon-primary-outline i {
+    color: #005099 !important;
+  }
+
+  .btn.btn-outline:hover, .btn.btn-outline:focus {
+    color: #343434 !important;
+    background: #fff !important;
+    text-decoration: none;
+    border: 2px solid #fff;
+  }
+}

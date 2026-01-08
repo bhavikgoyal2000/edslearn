@@ -1,0 +1,131 @@
+.emergency-notification.block {
+    background-color: #961e28;
+
+#emergency-top {
+    margin: 0 auto;
+    padding: 5px 0;
+    text-align: left;
+}
+
+.white {
+    color: #fff !important;
+}
+
+.white a {
+    text-decoration: underline;
+    color: #f4c74b !important;
+    text-decoration-color: #fff;
+    text-decoration-line: underline;
+}
+
+.white a:hover {
+    color: #fff !important;
+    text-decoration-color: #f4c74b;
+}
+
+#emergency-top .interior-msg {
+    font-weight: 700;
+}
+
+#emergency-top p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/** Home page changes **/
+
+@media (width >= 992px) {
+    #emergency-top {
+        border-top: 25px solid #961e28;
+    }
+
+    #emergency-home {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: rgb(150 30 40 / 90%);
+        color: #fff;
+        width: 100%;
+        z-index: 399;
+    }
+
+    .col-md-3 {
+        width: 25%;
+        float: left;
+    }
+
+    .col-md-6 {
+        width: 50%;
+        float: left;
+    }
+
+    .clear-left:not(:first-child) {
+        clear: left;
+    }
+
+    #emergency-home #emergency-message.page-title-em {
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    #emergency-home #emergency-message {
+        color: #fff;
+    }
+}
+
+#emergency-home #emergency-message.page-title-em {
+    width: 100%;
+    max-width: 1280px;
+}
+
+#emergency-home #emergency-message div {
+    padding-top: 10px;
+}
+
+#emergency-home #emergency-message h1.emergency {
+    color: #fff;
+    text-transform: uppercase;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.8rem;
+    line-height: 2rem;
+    font-family: "GT Walsheim", Arial, sans-serif !important;
+}
+
+#emergency-home #emergency-message h2.emergency-title {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 2rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: bold;
+    background: none;
+    border: none;
+}
+
+#emergency-home #emergency-message p {
+    clear: both;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    color: #fff;
+    padding: 0;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+}
+
+#emergency-home #emergency-message a.emergency-link {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 0 15px;
+    background: rgb(0 0 0 / 10%);
+    font-weight: 700;
+    font-family: Arial, sans-serif;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    border: 1px solid rgb(255 255 255 / 80%);
+    margin-bottom: 10px;
+}
+}

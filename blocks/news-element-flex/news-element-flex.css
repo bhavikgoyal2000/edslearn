@@ -1,0 +1,163 @@
+.news-element-flex-wrapper .no-padding {
+  padding: 0;
+}
+
+.news-element-flex-wrapper .flex-title h1 {
+    font-weight: 700;
+    color: #4d4037;
+    font-size: clamp(3rem, 2.1vw, 4rem);
+    line-height: 1.2;
+    letter-spacing: 0.005em;
+    text-transform: none;
+    font-family: "GT Walsheim", Arial, sans-serif !important;
+}
+
+.news-element-flex-wrapper article.el-flex-item {
+  margin-bottom: 0;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(197 197 197);
+  border-image: initial;
+}
+ 
+.news-element-flex-wrapper .news-photo {
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.news-element-flex-wrapper img {
+    height: auto;
+    display: block;
+    max-width: 100% !important;
+    width: 100%;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.news-element-flex-wrapper img:last-child {
+  margin-bottom: 10px;
+}
+
+.news-element-flex-wrapper .text-body-base {
+  padding: 15px 25px 0;
+}
+
+.news-element-flex-wrapper .text-body-base p {
+  color: rgb(109 109 109);
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0 0 5px;
+}
+
+.news-element-flex-wrapper .text-body {
+  margin: 0;
+  padding: 0 25px 15px;
+}
+
+.news-element-flex-wrapper .text-body h1 {
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 700;
+  color: rgb(77 64 55);
+  font-size: 2.2rem;
+  line-height: 2.6rem;
+  text-transform: none;
+  margin: 0;
+  padding: 0;
+}
+
+.news-element-flex-wrapper .btn.btn-news, [class^="template-"] .btn.btn-yellow {
+  font-weight: 700;
+  color: #fff;
+  background: #182449;
+}
+
+.news-element-flex-wrapper .btn {
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  font-size: 1.5rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  line-height: 50px;
+  width: auto;
+  height: 50px;
+  padding: 0 20px;
+  border-radius: 0;
+  border: none;
+  text-decoration: none;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.news-element-flex-wrapper .btn.btn-news:hover {
+  background: #182449;
+  background-image: linear-gradient(to bottom, #182449 0%, #182449 90%, #f4c74b 90%, #f4c74b 100%);
+  text-decoration: none;
+}
+
+@media (width >= 768px) {
+.news-element-flex-wrapper .el-flex-grid .el-flex-item {
+    height: 425px;
+    max-height: 425px;
+    position: relative;
+  }
+
+  .news-element-flex-wrapper .text-body {
+    max-height: 108px;
+    scrollbar-width: none;
+    overflow-y: scroll;
+  }
+
+  .news-element-flex-wrapper .cta-paragraph {
+    position: absolute;
+    bottom: 15px;
+    left: 25px;
+    right: 25px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+
+@media (width >= 992px) and (width <= 1200px) {
+  .news-element-flex-wrapper .flex-title {
+    padding: 0 15px;
+  }
+
+  .news-element-flex-wrapper .el-flex-grid .el-flex-item {
+    height: 425px;
+  }  
+}
+
+@media (width <= 992px) and  (width >= 767px)  {
+  .news-element-flex-wrapper .flex-title {
+    padding: 0 15px;
+  }
+
+  .news-element-flex-wrapper .el-flex-grid .el-flex-item {
+    height: 425px;
+   }
+}
+
+@media (width <= 768px) {
+  .news-element-flex-wrapper .flex-title {
+    padding: 0 15px;
+  }
+
+  .news-element-flex-wrapper .el-flex-item.flex-left{
+    position: relative;
+    z-index: 200;
+  }
+
+  .news-element-flex-wrapper .cta-paragraph {
+    padding: 0 25px;
+    margin-bottom: 15px;
+    position: static;
+  }
+  
+ }

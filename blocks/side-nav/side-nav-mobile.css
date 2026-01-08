@@ -1,0 +1,145 @@
+@media (width <= 600px) {
+  /* General rule must come before contextual rules (no-descending-specificity) */
+  #new-mobile-nav {
+    width: 100%;
+    min-width: 320px;
+    overflow-y: auto;
+    position: fixed;
+    inset: 47px 0 0;
+    z-index: 10000;
+    background: #fff;
+    color: #000;
+    border: 1px solid #182449;
+    padding: 0 15px;
+    text-align: left;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 3rem;
+  }
+
+  /* More specific variant follows the general selector */
+  #row-mobile-header #new-mobile-nav {
+    box-shadow: 2px 5px 5px #aaa;
+  }
+
+  #new-mobile-nav.navmenu.collapse.in {
+    position: fixed;
+    inset: var(--mobile-header-offset, 85px) 0 0;
+    background: #fff;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto; /* scroll inside drawer */
+    z-index: 100010; /* above sticky chat/cta bars */
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  }
+
+  #row-mobile-header.sticky-bottom > nav {
+    background: #fff;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+  }
+
+  /* Merge duplicate selectors into one (no-duplicate-selectors) */
+  #new-mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Put the more general list rule before the more specific one (no-descending-specificity) */
+  #new-mobile-nav ul li {
+    border-top: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 400;
+    color: #343434;
+  }
+
+  #new-mobile-nav .content-navigation li {
+    margin-bottom: 10px;
+  }
+
+  #new-mobile-nav ul.content-navigation {
+    padding-bottom: 15px;
+    padding-top: 10px;
+  }
+
+  #new-mobile-nav ul.content-navigation li p {
+    padding: 0;
+    margin: 0;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 400;
+    color: #343434;
+  }
+
+  #new-mobile-nav .content-navigation a {
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: #000;
+    padding: 8px 24px 7px 12px;
+    display: block;
+    position: relative;
+    background: 0 0;
+  }
+
+  #new-mobile-nav a .caret {
+    border: none;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 25%;
+    width: 5px;
+  }
+
+  #new-mobile-nav ul.content-navigation li a[aria-expanded]::after {
+    font-family: Ionicons, sans-serif;
+    content: '\f2c7';
+    color: #343434;
+    position: absolute;
+    right: 8px;
+  }
+
+  /* New: hide caret when LI has no direct submenu UL (class added by JS) */
+  #new-mobile-nav ul.content-navigation li:not(.has-submenu) > p > a[aria-expanded]::after {
+    content: none;
+  }
+
+  #new-mobile-nav ul.content-navigation li a[aria-expanded="true"]:focus::after,
+  #new-mobile-nav ul.content-navigation li a[aria-expanded="true"]:hover::after {
+    content: '\f462';
+    color: #0672b9;
+  }
+
+  /* Also suppress the expanded/hover caret when there is no submenu UL */
+  #new-mobile-nav ul.content-navigation li:not(.has-submenu) > p > a[aria-expanded="true"]:focus::after,
+  #new-mobile-nav ul.content-navigation li:not(.has-submenu) > p > a[aria-expanded="true"]:hover::after {
+    content: none;
+  }
+
+  #new-mobile-nav .content-navigation ul.collapse {
+    margin: 0 !important;
+    padding-left: 15px;
+  }
+
+  #new-mobile-nav .content-navigation ul.collapse li {
+    margin: 0 !important;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: none;
+    line-height: 2.4rem;
+  }
+
+  #new-mobile-nav .content-navigation ul.collapse li a {
+    font-weight: 400;
+  }
+
+  html.mobile-nav-open,
+  body.mobile-nav-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+}

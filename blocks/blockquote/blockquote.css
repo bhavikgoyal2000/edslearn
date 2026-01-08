@@ -1,0 +1,142 @@
+.blockquote-wrapper{
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+picture.pull-right{
+  float: right
+}
+
+.blockquote-wrapper .pull-quote {
+  display: flex;
+  flex-direction: column;
+  padding-left: 103.4px !important;
+  margin-top: 25px;
+}
+
+.blockquote-wrapper .block-above{
+  width: 100%;
+  background: linear-gradient(120deg, #e0263c 0, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+  height: 6px;
+}
+
+.blockquote-wrapper .border-circle img{
+  border: 1px solid #0000;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.blockquote-wrapper .bq-wrap{
+  display: flex;
+  flex-direction: row;
+  height: auto;
+}
+
+.blockquote-wrapper .quote-mark{
+  display: block;
+  margin-top: 50px;
+  margin-left: 10px;
+  height: 70px;
+  width: 165px;
+}
+
+.blockquote-wrapper .quote-mark img{
+  width: 165px;
+  height: 70px;
+  max-width: none;
+}
+
+.blockquote-wrapper .quote {
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+.blockquote-wrapper .quote-mark .quote{
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+.blockquote-wrapper .quote-mark-mobile-flow{
+  margin: 5px 30px 5px 25px;
+  height: 59px;
+  width: 83px;
+  float: left;
+  display: none;
+}
+
+.blockquote-wrapper blockquote{
+  border: none;
+  padding: 30px 0 0;
+}
+
+.blockquote-wrapper blockquote p,
+.blockquote-wrapper blockquote em,
+.blockquote-wrapper blockquote u,
+.blockquote-wrapper blockquote strong {
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-size: 2.1rem;
+  line-height: 2.5rem;
+  letter-spacing: -.02em;
+  font-weight: 400;
+  margin-top: 0 !important;
+  background: 0 0;
+  padding: 0;
+}
+
+.blockquote-wrapper blockquote strong,
+.blockquote-wrapper blockquote em strong,
+.blockquote-wrapper blockquote strong em,
+.blockquote-wrapper blockquote strong u,
+.blockquote-wrapper blockquote strong u em,
+.blockquote-wrapper blockquote u strong em,
+.blockquote-wrapper blockquote strong em u,
+.blockquote-wrapper blockquote em strong u {
+    font-weight: 700 !important;
+  }
+
+.blockquote-wrapper blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.blockquote-wrapper .quote cite{
+  color: #1a1c21;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-style: normal;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  margin: 25px 0 !important;
+  display: block;
+}
+
+.blockquote-wrapper .active-border{
+  border-left: 2px solid gray;
+}
+
+.image-background{
+  background-image: linear-gradient(45deg, #8a95a5 7.14%, #fff 7.14%, #fff 50%, #8a95a5 50%, #8a95a5 57.14%, #fff 57.14%, #fff 100%);
+  background-size: 9.9px 9.9px;
+}
+
+@media screen and (width<= 768px) {
+  .blockquote-wrapper .quote-mark-mobile-flow{
+    display: block;
+  }
+
+  .blockquote-wrapper .quote-mark{
+    display: none;
+  }
+  
+}
+
+@media screen and (width <= 480px) {
+  .blockquote-wrapper .small-blockquote {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    align-items: center;
+  }
+
+}

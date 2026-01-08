@@ -1,0 +1,1203 @@
+<script src="https://cdn.jsdelivr.net/npm/tinymce@7.2.1/tinymce.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<script>
+  tinymce.init({
+    selector: '#bio-editor, #degrees-editor, #additionalPositions-editor, #scholarly-editor, #partnerships-editor, #links-editor',
+    height: 300,
+    menubar: false,
+    plugins: 'lists link',
+    toolbar: 'undo redo | bold italic underline | bullist numlist | link | removeformat',
+    branding: false
+  });
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+  }
+
+  .tox-editor-header > .tox-promotion, .tox-editor-header > .tox-menubar,  .tox-statusbar {
+    display: none !important;
+  }
+
+  .tabbed-form-container {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 24px 32px 16px 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin: 32px auto;
+  }
+  .tabbed-form-tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+  }
+  .tabbed-form-tab {
+    background: #eaeaea;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 24px;
+    margin-right: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #222;
+    font-weight: bold;
+    outline: none;
+    transition: background 0.2s;
+  }
+  .tabbed-form-tab.active {
+    background: #f5f5f5;
+    border-bottom: 2px solid #fff;
+    color: #222;
+  }
+  .tabbed-form-content {
+    display: none;
+    padding-top: 8px;
+  }
+  .tabbed-form-content.active {
+    display: block;
+  }
+  .tabbed-form-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .tabbed-form-label {
+    width: 180px;
+    font-weight: bold;
+    color: #1a237e;
+    padding-top: 6px;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+  .tabbed-form-input {
+    flex: 1;
+  }
+  .tabbed-form-input input,
+  .tabbed-form-input select,
+  .tabbed-form-input textarea {
+    width: 80%;
+    padding: 6px 8px;
+    font-size: 11px;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  .tabbed-form-actions {
+    text-align: right;
+    margin-top: 24px;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+  }
+  .tabbed-form-actions button {
+    font-size: 1em;
+    padding: 6px 18px;
+    margin-left: 8px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .tabbed-form-actions .submit-btn {
+    background: #1976d2;
+    color: #fff;
+  }
+  .tabbed-form-actions .cancel-btn {
+    background: #fff;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+  }
+  .tabbed-form-actions .submit-btn:hover {
+    background: #1565c0;
+  }
+  .tabbed-form-actions .cancel-btn:hover {
+    background: #fbe9e7;
+  }
+  /* Admins list styling */
+  .admin-list {
+    height: 350px;
+    border: 1px solid #222;
+    background: #f5f5f5;
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    overflow-y: auto;
+    width: 240px;
+    min-width: 180px;
+    max-width: 260px;
+    transition: background 0.2s;
+  }
+  .admin-list.drag-over {
+    background: #e3f2fd !important;
+  }
+  .admin-list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    transition: background 0.2s;
+    min-height: 56px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .admin-list-item:hover {
+    background: #f0f8ff;
+  }
+  .admin-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 2px;
+    object-fit: cover;
+    background: #eee;
+  }
+  .admin-link {
+    color: #1976d2;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.08em;
+  }
+  .admin-link:hover {
+    text-decoration: underline;
+  }
+  #admin-search-btn {
+    background: #3b5bfa;
+    color: #fff;
+    border-radius: 16px;
+    border: none;
+    font-weight: bold;
+    padding: 6px 18px;
+    margin-left: 8px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  #admin-search-btn:hover {
+    background: #274bb5;
+  }
+  .tabbed-form-admins-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .tabbed-form-admins-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .tabbed-form-admins-lists {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    width: 100%;
+  }
+  .tabbed-form-admins-list-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-form-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* or center if needed */
+  gap: 10px; /* space between spinner and text */
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #555;
+  padding: 24px;
+}
+
+.profile-form-loader .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#wlcinfo-checkboxes > div {
+  display: flex;
+  align-items: flex-start;   /* <-- changed from center to flex-start */
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+#wlcinfo-checkboxes input[type="checkbox"] {
+  width: auto;
+  min-width: unset;
+  margin-right: 8px;
+  flex: 0 0 auto;
+}
+#wlcinfo-checkboxes label {
+  flex: 1 1 auto;
+  word-break: break-word;
+  line-height: 1.4;
+}
+#wlcinfo-checkboxes > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+</style>
+
+<div class="tabbed-form-container">
+  <h2>Edit Profile</h2>
+  <div class="tabbed-form-tabs">
+    <button class="tabbed-form-tab active" data-tab="profile">Profile</button>
+    <button class="tabbed-form-tab" data-tab="contact-details">Contact Details</button>
+    <button class="tabbed-form-tab" data-tab="admins">Authorized Admins</button>
+    <button class="tabbed-form-tab" data-tab="auinfo">AU Information</button>
+    <button class="tabbed-form-tab" data-tab="wlcinfo">WLC Information</button>
+  </div>
+  <div class="profile-form-loader" id="profile-form-loader"><div class="spinner"> </div><p>Loading...</p></div>
+<form id="profileForm" style="display:none;" enctype="multipart/form-data">
+    <!-- Profile Tab -->
+    <div class="tabbed-form-content active" id="profile">
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Photo</div>
+        <div class="tabbed-form-input">
+          <input type="file" name="photo">
+          <img id="photo-preview" src="" alt="Profile Photo" style="display:none;max-width:180px;margin-top:8px;">
+          <button id="upload-btn" type="button">Upload</button>
+          <div style="font-size:13px;color:#444;margin-top:4px;">
+            Please upload file of type (.jpg, jpeg, .png) and size less than 1MB.
+          </div>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Force Display</div>
+        <div class="tabbed-form-input">
+          <select name="forceDisplay">
+            <option value="">--Select--</option>
+            <option value="none">None</option>
+            <option value="yes">Yes</option>
+          </select>
+          <div style="font-size:13px;color:#444;margin-top:4px;">
+            Users with multiple profiles can force the display of one profile at all times.
+          </div>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Force Title</div>
+        <div class="tabbed-form-input">
+          <select name="forceTitle">
+            <option value="">--Select--</option>
+            <option value="none">None</option>
+            <option value="yes">Yes</option>
+          </select>
+          <div style="font-size:13px;color:#444;margin-top:4px;">
+            Force faculty/staff title
+          </div>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Bio</div>
+        <div class="tabbed-form-input">
+          <textarea id="bio-editor" name="bio" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Degrees</div>
+        <div class="tabbed-form-input">
+          <textarea id="degrees-editor" name="degrees" rows="3"></textarea>
+        </div>
+      </div>
+      <!-- Resume Upload Row -->
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Resume</div>
+        <div class="tabbed-form-input">
+          <input type="file" name="resume" accept=".pdf,.doc,.docx">
+          <div id="resume-attachment" style="margin-top:8px; display:none;">
+            <a id="resume-link" href="#" target="_blank" style="color:#1976d2; text-decoration:underline;">View Current Resume</a>
+          </div>
+          <div style="margin-top:8px;">
+            <button id="upload-resume-btn" type="button" style="padding:4px 12px; font-size:0.9em; margin-right:8px;">Upload...</button>
+            <button id="resume-clear-btn" type="button" style="padding:4px 12px; font-size:0.9em;">Clear</button>
+            <div style="font-size:13px;color:#444;margin-top:4px;">
+              Please upload file of type (.pdf, .doc, .docx) and size less than 1MB.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Additional Positions</div>
+        <div class="tabbed-form-input">
+          <textarea id="additionalPositions-editor" name="additionalPositions" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Partnerships</div>
+        <div class="tabbed-form-input">
+          <textarea id="partnerships-editor" name="partnerships" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Scholarly</div>
+        <div class="tabbed-form-input">
+          <textarea id="scholarly-editor" name="scholarly" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <!-- Other Tabs (empty for demo, add your fields as needed) -->
+    <div class="tabbed-form-content" id="contact-details">
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Office Hours</div>
+        <div class="tabbed-form-input">
+          <input name="officeHours" />
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Alt Phone</div>
+        <div class="tabbed-form-input">
+          <input type="tel" name="altPhone">
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Alt Phone Type</div>
+        <div class="tabbed-form-input">
+          <select name="altPhoneType">
+            <option value="">--Select--</option>
+            <option value="office">Office</option>
+            <option value="mobile">Mobile</option>
+            <option value="home">Home</option>
+          </select>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Links</div>
+        <div class="tabbed-form-input">
+          <textarea id="links-editor" name="contactLinks" rows="4"></textarea>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="tabbed-form-content" id="admins">
+      <div class="tabbed-form-row tabbed-form-admins-center">
+        <div style="font-weight:bold; color:#1a237e; margin-bottom:4px; text-align:center;">
+          Authorized Admins
+          <span style="font-weight:normal; color:#222;">
+            Select the records you want to include in the selections by dragging items into or out of the 'Available Items' list.<br>
+            Order the columns within the datasheet by dragging items within the 'Selected Items' field.
+          </span>
+        </div>
+        <div class="tabbed-form-admins-searchbar">
+          <input type="text" id="admin-search" placeholder="Search" style="padding:4px 8px; font-size:1em;">
+          <button type="button" id="admin-search-btn">Search</button>
+        </div>
+        <div class="tabbed-form-admins-lists">
+          <div class="tabbed-form-admins-list-col">
+            <div style="font-weight:bold; margin-bottom:4px;">Available Items:</div>
+            <ul id="available-admins" class="admin-list"></ul>
+          </div>
+          <div class="tabbed-form-admins-list-col">
+            <div style="font-weight:bold; margin-bottom:4px;">Selected Items:</div>
+            <ul id="selected-admins" class="admin-list"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tabbed-form-content" id="auinfo">
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">First Name</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="first_name" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Last Name</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="last_name" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Web Name</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="webName" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Email</div>
+        <div class="tabbed-form-input">
+          <input type="email" name="email" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">College</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="college" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Degree</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="degree" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Academic Program</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="Academic_Unit" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Academic Program Title</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="Academic_Appointment_Title" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Major 1</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="major1" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Major 2</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="major2" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Term</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="term" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Commencement</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="commencement" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Division</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="division" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">School</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="school" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Department</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="department" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Department Name</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="department_name" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Staff Title</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="staffTitle" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Staff Status</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="staffStatus" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Staff Position ID</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="staffPositionID" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Faculty Dept</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="faculty_dept_id" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Faculty Dept Name</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="faculty_dept_name" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Faculty Division</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="faculty_cost_center_name" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Faculty Title</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="faculty_title" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Faculty Status</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="faculty_status" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Office 1</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="fso_line1" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Office 2</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="fso_line2" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Office Phone</div>
+        <div class="tabbed-form-input">
+          <input type="tel" name="fso_phone" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">EE Type</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="ee_type" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Eaglenet ID</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="username" disabled/>
+        </div>
+      </div>
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">Directory Flag</div>
+        <div class="tabbed-form-input">
+          <input type="text" name="directory_flag" disabled/>
+        </div>
+      </div>
+    </div>
+    <div class="tabbed-form-content" id="wlcinfo">
+      <div class="tabbed-form-row">
+        <div class="tabbed-form-label">WLC Information Field</div>
+        <div class="tabbed-form-input" id="wlcinfo-checkboxes">
+          <!-- Checkboxes will be loaded here -->
+        </div>
+      </div>
+    </div>
+    <div class="tabbed-form-actions">
+      <button type="submit" class="submit-btn">Submit</button>
+      <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
+    </div>
+    <input type="hidden" name="fragmentId" value="">
+    <input type="hidden" name="eTag" value="">
+    <input type="hidden" name="cfTitle" value="">
+    <input type="hidden" name="cfFieldsJson" value="">
+    <input type="hidden" name="fragmentPath" value="">
+  </form>
+</div>
+<script>
+// Fetch ACS Common List and render checkboxes for WLC Information Field
+async function loadWLCInfoCheckboxes() {
+  const container = document.getElementById('wlcinfo-checkboxes');
+  if (!container) return;
+  container.innerHTML = '<span>Loading options...</span>';
+  try {
+    const response = await fetch('https://publish-p153273-e1586163.adobeaemcloud.com/etc/acs-commons/lists/AU-AEM/specialization-data-list.-1.json');
+    if (!response.ok) throw new Error('Failed to fetch WLC Info List');
+    const data = await response.json();
+    container.innerHTML = '';
+    const list = data?.['jcr:content']?.list;
+    if (list && typeof list === 'object') {
+      Object.keys(list)
+        .filter(key => key.startsWith('item'))
+        .forEach(key => {
+          const item = list[key];
+          const id = `wlcinfofield_${item.value}`;
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.name = 'areasOfSpecialization';
+          checkbox.value = item.value;
+          checkbox.id = id;
+          const label = document.createElement('label');
+          label.htmlFor = id;
+          label.textContent = item['jcr:title'] || item.value;
+          const wrapper = document.createElement('div');
+          wrapper.style.display = 'flex';
+          wrapper.style.gap = '8px';
+          wrapper.style.marginBottom = '6px';
+          wrapper.appendChild(checkbox);
+          wrapper.appendChild(label);
+          container.appendChild(wrapper);
+        });
+    } else {
+      container.innerHTML = '<span>No options found.</span>';
+    }
+    return true; // Return success
+  } catch (err) {
+    container.innerHTML = `<span style='color:red;'>Error loading options: ${err.message}</span>`;
+    return false;
+  }
+}
+
+function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name) || '';
+}
+
+function setHiddenFields(form, hiddenInput, value) {
+  if (form && hiddenInput) {
+    hiddenInput.value = value;
+  }
+}
+</script>
+<script>
+  // This script will be overridden by the modal's tab functionality
+  // The actual tab switching is handled by form.js when loaded in modal
+  let availableAdmins = [];
+    let selectedAdmins = [];
+  // Only run if not in modal (standalone page)
+  if (!window.parent || window.parent === window) {
+    const allAdmins = [];
+    
+
+    function renderAdmins() {
+      const avail = document.getElementById('available-admins');
+      const sel = document.getElementById('selected-admins');
+      if (!avail || !sel) return;
+      avail.innerHTML = '';
+      sel.innerHTML = '';
+      
+      availableAdmins.forEach(admin => {
+        const li = document.createElement('li');
+        li.className = 'admin-list-item';
+        li.draggable = true;
+        li.ondragstart = e => {
+          e.dataTransfer.setData('text/plain', admin.email);
+          e.dataTransfer.setData('from', 'available');
+        };
+        li.onclick = () => {
+          availableAdmins = availableAdmins.filter(a => a.email !== admin.email);
+          selectedAdmins.push(admin);
+          renderAdmins();
+        };
+        // Only show name and email, no image
+        const displayName = `${admin.firstname || ''} ${admin.lastname || ''}`.trim() || admin.email;
+        li.innerHTML = `
+          <a href="#" class="admin-link">
+            ${displayName}
+            <span style="display:block; color:#555; font-size:0.95em; word-break:break-all;">${admin.email}</span>
+          </a>
+        `;
+        avail.appendChild(li);
+      });
+      
+      selectedAdmins.forEach(admin => {
+        const li = document.createElement('li');
+        li.className = 'admin-list-item';
+        li.draggable = true;
+        li.ondragstart = e => {
+          e.dataTransfer.setData('text/plain', admin.email);
+          e.dataTransfer.setData('from', 'selected');
+        };
+        li.onclick = () => {
+          selectedAdmins = selectedAdmins.filter(a => a.email !== admin.email);
+          availableAdmins.push(admin);
+          renderAdmins();
+        };
+        // Only show name and email, no image
+        const displayName = `${admin.firstname || ''} ${admin.lastname || ''}`.trim() || admin.email;
+        li.innerHTML = `
+          <a href="#" class="admin-link">
+            ${displayName}
+            <span style="display:block; color:#555; font-size:0.95em; word-break:break-all;">${admin.email}</span>
+          </a>
+        `;
+        sel.appendChild(li);
+      });
+
+      document.getElementById('profileForm').selectedAdmins = selectedAdmins;
+    }
+
+    // Tab switching logic for standalone page
+    document.querySelectorAll('.tabbed-form-tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        document.querySelectorAll('.tabbed-form-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tabbed-form-content').forEach(tc => tc.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById(this.dataset.tab).classList.add('active');
+
+        // Only initialize admins UI when Authorized Admins tab is shown
+        if (this.dataset.tab === 'admins') {
+          renderAdmins();
+          const availList = document.getElementById('available-admins');
+          const selList = document.getElementById('selected-admins');
+          
+          availList.ondragover = e => { e.preventDefault(); availList.classList.add('drag-over'); };
+          availList.ondragleave = () => availList.classList.remove('drag-over');
+          availList.ondrop = e => {
+            availList.classList.remove('drag-over');
+            const email = e.dataTransfer.getData('text/plain');
+            const from = e.dataTransfer.getData('from');
+            if (from === 'selected') {
+              const admin = selectedAdmins.find(a => a.email === email);
+              if (admin) {
+                selectedAdmins = selectedAdmins.filter(a => a.email !== email);
+                availableAdmins.push(admin);
+                renderAdmins();
+              }
+            }
+          };
+          
+          selList.ondragover = e => { e.preventDefault(); selList.classList.add('drag-over'); };
+          selList.ondragleave = () => selList.classList.remove('drag-over');
+          selList.ondrop = e => {
+            selList.classList.remove('drag-over');
+            const email = e.dataTransfer.getData('text/plain');
+            const from = e.dataTransfer.getData('from');
+            if (from === 'available') {
+              const admin = availableAdmins.find(a => a.email === email);
+              if (admin) {
+                availableAdmins = availableAdmins.filter(a => a.email !== email);
+                selectedAdmins.push(admin);
+                renderAdmins();
+              }
+            }
+          };
+
+          // Updated search button handler for new API response format
+          document.getElementById('admin-search-btn').onclick = async () => {
+            const q = document.getElementById('admin-search').value.toLowerCase().trim();
+
+            if (!q) {
+              availableAdmins = allAdmins.filter(a => !selectedAdmins.some(s => s.email === a.email));
+              renderAdmins();
+              return;
+            }
+
+            try {
+              const searchBtn = document.getElementById('admin-search-btn');
+              const originalText = searchBtn.textContent;
+              searchBtn.textContent = 'Searching...';
+              searchBtn.disabled = true;
+
+              const response = await fetch(`https://publish-p153273-e1586163.adobeaemcloud.com/bin/profile/searchUsers?user=${q}`, {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                }
+              });
+
+              if (!response.ok) {
+                throw new Error(`Search failed: ${response.status}`);
+              }
+
+              const searchResults = await response.json();
+              // Use results array from new API response
+              if (!searchResults.results || !Array.isArray(searchResults.results)) {
+                console.error('Unexpected API response format:', searchResults);
+                throw new Error('Invalid response format from API - missing results array');
+              }
+
+              const transformedUsers = searchResults.results.map(user => ({
+                email: user.email,
+                firstname: user.firstname,
+                lastname: user.lastname,
+                img: "https://american.edu/uploads/defaults/small/au_profile.jpg"
+              })).filter(user => user.email);
+
+              availableAdmins = transformedUsers.filter(admin => 
+                !selectedAdmins.some(selected => selected.email === admin.email)
+              );
+
+              document.getElementById('profileForm').selectedAdmins = selectedAdmins;
+
+              renderAdmins();
+              searchBtn.textContent = originalText;
+              searchBtn.disabled = false;
+
+            } catch (error) {
+              console.error('Search API error:', error);
+              const searchBtn = document.getElementById('admin-search-btn');
+              searchBtn.textContent = 'Search';
+              searchBtn.disabled = false;
+              alert('Results not found.');
+            }
+          };
+          
+          document.getElementById('admin-search').oninput = () => {
+            if (!document.getElementById('admin-search').value) {
+              availableAdmins = allAdmins.filter(a => !selectedAdmins.some(s => s.email === a.email));
+              renderAdmins();
+            }
+          };
+        }
+      });
+    });
+  }
+
+  document.getElementById('upload-btn').addEventListener('click', async function () {
+    const uploadBtn = this;
+    const fileInput = document.querySelector('input[name="photo"]');
+    if (!fileInput.files.length) {
+      alert('Please select a photo to upload.');
+      return;
+    }
+    const file = fileInput.files[0];
+    // Validate file type
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    if (!allowedTypes.includes(file.type)) {
+      alert('Only JPG and PNG files are allowed.');
+      return;
+    }
+    // Validate file size (1MB = 1 * 1024 * 1024 bytes)
+    if (file.size > 1 * 1024 * 1024) {
+      alert('File size must be less than 1MB.');
+      return;
+    }
+    const usernameInput = document.querySelector('input[name="username"]');
+    const formData = new FormData();
+    formData.append('file', file);
+    uploadBtn.disabled = true;
+    const originalText = uploadBtn.textContent;
+    uploadBtn.innerHTML = `<span class="mini-spinner" style="display:inline-block;width:16px;height:16px;border:2px solid #ccc;border-top:2px solid #1976d2;border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle;margin-right:6px;"></span>Uploading...`;
+
+    if (usernameInput && usernameInput.value) {
+      const username = usernameInput.value.trim();
+      const ext = file.name.split('.').pop();
+      const newFileName = `${username}.${ext}`;
+      formData.append('fileName', newFileName);
+      const path = document.querySelector('input[name="fragmentPath"]').value;
+      const folderPath = path.substring(0, path.lastIndexOf('/'));
+      formData.append('folderPath', folderPath);
+      const fragmentID = document.querySelector('input[name="fragmentId"]').value;
+      formData.append('fragmentID', fragmentID);
+      const etag = document.querySelector('input[name="eTag"]').value;
+      formData.append('eTag', etag);
+      formData.append('assetType', 'photo');
+    }
+    try {
+      const response = await fetch('https://1053853-633gainsboroboa-dev.adobeio-static.net/api/v1/web/AU-OpenAPI/uploadFile', {
+        method: 'POST',
+        body: formData
+      });
+      if (response.ok) {
+        const result = await response.json();
+        let uploadStatus = 'unknown';
+        let uploadError;
+        let eTagValue = '';
+        if (result.uploads && Array.isArray(result.uploads) && result.uploads.length > 0) {
+          uploadStatus = result.uploads[0].status;
+          uploadError = result.uploads[0].error;
+          // Get eTag if present
+          if (result.uploads[0].aemResponse && result.uploads[0].aemResponse.eTag) {
+            eTagValue = result.uploads[0].aemResponse.eTag;
+          }
+        }
+        // Always update hidden eTag field if eTag is present
+        if (eTagValue) {
+          const eTagInput = document.querySelector('input[name="eTag"]');
+          if (eTagInput) eTagInput.value = eTagValue;
+        }
+        if (uploadStatus === 'success') {
+          alert('Upload successful!');
+          loadFormDetails();
+          // Optionally update the preview here
+        } else {
+          alert('Upload failed.');
+          console.error(uploadError);
+        }
+      } else {
+        alert('Photo upload failed.');
+      }
+    } catch (err) {
+      alert('Photo upload error.');
+      console.error(err);
+    } finally {
+    // Re-enable button and restore text
+    uploadBtn.disabled = false;
+    uploadBtn.textContent = originalText;
+  }
+  });
+
+  // Resume upload
+  document.getElementById('upload-resume-btn').addEventListener('click', async function () {
+    const uploadBtn = this;
+    const fileInput = document.querySelector('input[name="resume"]');
+    if (!fileInput.files.length) {
+      alert('Please select a resume to upload.');
+      return;
+    }
+    const file = fileInput.files[0];
+    // Validate file type
+    const allowedTypes = [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  ];
+  if (!allowedTypes.includes(file.type)) {
+    alert('Only PDF, DOC, and DOCX files are allowed.');
+    return;
+  }
+    // Validate file size (1MB = 1 * 1024 * 1024 bytes)
+    if (file.size > 1 * 1024 * 1024) {
+      alert('File size must be less than 1MB.');
+      return;
+    }
+    const usernameInput = document.querySelector('input[name="username"]');
+    const formData = new FormData();
+    formData.append('file', file);
+    uploadBtn.disabled = true;
+    const originalText = uploadBtn.textContent;
+    uploadBtn.innerHTML = `<span class="mini-spinner" style="display:inline-block;width:16px;height:16px;border:2px solid #ccc;border-top:2px solid #1976d2;border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle;margin-right:6px;"></span>Uploading...`;
+
+    if (usernameInput && usernameInput.value) {
+      const username = usernameInput.value.trim();
+      const ext = file.name.split('.').pop();
+      const newFileName = `${username}-resume.${ext}`;
+      formData.append('fileName', newFileName);
+      const path = document.querySelector('input[name="fragmentPath"]').value;
+      const folderPath = path.substring(0, path.lastIndexOf('/'));
+      formData.append('folderPath', folderPath);
+      const fragmentID = document.querySelector('input[name="fragmentId"]').value;
+      formData.append('fragmentID', fragmentID);
+      const etag = document.querySelector('input[name="eTag"]').value;
+      formData.append('eTag', etag);
+      formData.append('assetType', 'resume');
+    }
+    try {
+      const response = await fetch('https://1053853-633gainsboroboa-dev.adobeio-static.net/api/v1/web/AU-OpenAPI/uploadFile', {
+        method: 'POST',
+        body: formData
+      });
+      if (response.ok) {
+        const result = await response.json();
+        let uploadStatus = 'unknown';
+        let uploadError;
+        let eTagValue = '';
+        if (result.uploads && Array.isArray(result.uploads) && result.uploads.length > 0) {
+          uploadStatus = result.uploads[0].status;
+          uploadError = result.uploads[0].error;
+          // Get eTag if present
+          if (result.uploads[0].aemResponse && result.uploads[0].aemResponse.eTag) {
+            eTagValue = result.uploads[0].aemResponse.eTag;
+          }
+        }
+        // Always update hidden eTag field if eTag is present
+        if (eTagValue) {
+          const eTagInput = document.querySelector('input[name="eTag"]');
+          if (eTagInput) eTagInput.value = eTagValue;
+        }
+        if (uploadStatus === 'success') {
+          alert('Resume uploaded successfully!');
+          loadFormDetails();
+        } else {
+          alert('Resume upload failed.');
+          console.error(uploadError);
+        }
+      }
+    } catch (err) {
+      alert('Resume upload failed.');
+      console.error(err);
+    } finally {
+      uploadBtn.disabled = false;
+      uploadBtn.textContent = originalText;
+  }
+  });
+
+  document.getElementById('resume-clear-btn').addEventListener('click', function () {
+  // Only clear the file input, do NOT hide the attachment
+  const fileInput = document.querySelector('input[name="resume"]');
+  if (fileInput) fileInput.value = '';
+});
+
+  function getQueryParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name) || '';
+  }
+
+  function setHiddenFields(form, hiddenInput, value) {
+    if (form && hiddenInput) {
+      hiddenInput.value = value;
+    }
+  }
+ 
+  async function loadFormDetails() {
+  const loader = document.getElementById('profile-form-loader');
+  const form = document.getElementById('profileForm');
+  const uuid = getQueryParam('uuid') || 'd9d91df6-afd9-47a9-b281-53b5943afae4';
+  setHiddenFields(form, form.querySelector('input[name="fragmentId"]'), uuid);
+  if (loader) loader.style.display = 'block'; // Show loader
+  if (form) form.style.display = 'none';      // Hide form
+  let checkboxesLoaded = false;
+  let formData = null;
+  
+  try {
+    // Load checkboxes and form data in parallel
+    const [checkboxResult, response] = await Promise.all([
+      loadWLCInfoCheckboxes(),
+      fetch('https://1053853-633gainsboroboa-dev.adobeio-static.net/api/v1/web/AU-OpenAPI/getFragment?cf_uuid=' + uuid)
+    ]);
+    
+    checkboxesLoaded = checkboxResult;
+    
+    if (!response.ok) throw new Error('Network response was not ok');
+    formData = await response.json();
+    
+    const etag = formData.etag;
+    const cleanEtag = etag && etag.startsWith('"') && etag.endsWith('"') ? etag.slice(1, -1) : etag;
+    const cfTitle = formData.title;
+    const fragmentPath = formData.path;
+    setHiddenFields(form, form.querySelector('input[name="eTag"]'), cleanEtag);
+    setHiddenFields(form, form.querySelector('input[name="cfTitle"]'), cfTitle);
+    setHiddenFields(form, form.querySelector('input[name="fragmentPath"]'), fragmentPath);
+    setHiddenFields(form, form.querySelector('input[name="cfFieldsJson"]'), JSON.stringify(formData.fields));
+
+    // Process form fields
+    if (Array.isArray(formData.fields)) {
+      formData.fields.forEach(field => {
+        if (field.values && field.values.length > 0) {
+          if (field.name === 'photo' && field.values && field.values[0]) {
+            const photoUrl = field.values[0];
+            const img = document.getElementById('photo-preview');
+            if (img && photoUrl) {
+              img.src = photoUrl;              
+              img.style.display = 'block';
+            } else {
+              img.src = '';
+              img.style.display = 'none';
+            }
+          }
+          // Handle checkboxes for areasOfSpecialization
+          else if (field.name === 'areasOfSpecialization' && checkboxesLoaded) {
+            // Uncheck all first
+            document.querySelectorAll('input[name="areasOfSpecialization"]').forEach(cb => cb.checked = false);
+            // Then check only those in the data
+            field.values.forEach(value => {
+              const checkbox = document.querySelector(`input[name="areasOfSpecialization"][value="${value}"]`);
+              if (checkbox) {
+                checkbox.checked = true;
+              }
+            });
+          }
+          else if (field.name === 'sample') {
+            // Parse each value in the format "Firstname Lastname (email@domain.com)"
+            console.log('Inside sample field....');
+            selectedAdmins = field.values.map(val => {
+              const match = val.match(/^(.+?)\s+(.+?)\s+\(([^)]+)\)$/);
+              if (match) {
+                return {
+                  firstname: match[1],
+                  lastname: match[2],
+                  email: match[3]
+                };
+              } else {
+                // fallback: just email
+                return { firstname: '', lastname: '', email: val };
+              }
+            });
+
+            // Remove selected admins from availableAdmins
+            availableAdmins = availableAdmins.filter(a =>
+              !selectedAdmins.some(s => s.email === a.email)
+            );
+            console.log('Before calling renderAdmins....',selectedAdmins, availableAdmins);
+            // Update the UI
+            renderAdmins();
+          }
+          else if (field.name === 'resume' && field.values && field.values[0]) {
+            const resumeUrl = field.values[0];
+            const resumeAttachmentDiv = document.getElementById('resume-attachment');
+            const resumeLink = document.getElementById('resume-link');
+            if (resumeAttachmentDiv && resumeLink) {
+              // Extract file name from URL
+              const fileName = resumeUrl.split('/').pop().split('?')[0];
+              // Choose icon class based on extension
+              let iconClass = 'fa-file';
+              if (fileName.endsWith('.pdf')) iconClass = 'fa-file-pdf';
+              else if (fileName.endsWith('.doc') || fileName.endsWith('.docx')) iconClass = 'fa-file-word';
+              resumeLink.href = resumeUrl;
+              resumeLink.innerHTML = `<i class="fa-solid ${iconClass}" style="margin-right:6px;"></i>${fileName}`;
+              resumeAttachmentDiv.style.display = 'block';
+            }
+          }
+          else {
+            const input = document.querySelector(`[name="${field.name}"]`);
+            if (input) {
+              if (input.type === 'file') return;
+              else if (input.tagName === 'SELECT') {
+                const val = field.values[0];
+                const optionExists = Array.from(input.options).some(opt => opt.value === val);
+                if (optionExists) {
+                  input.value = val;
+                } 
+              }
+              if (input.tagName === 'INPUT') {
+                input.value = field.values[0];
+              } else if (input.tagName === 'TEXTAREA') {
+                if (input.id === 'bio-editor' && window.tinymce && tinymce.get('bio-editor')) {
+                  tinymce.get('bio-editor').setContent(field.values[0]);
+                } else if (input.id === 'degrees-editor' && window.tinymce && tinymce.get('degrees-editor')) {
+                  tinymce.get('degrees-editor').setContent(field.values[0]);
+                } else if (input.id === 'additionalPositions-editor' && window.tinymce && tinymce.get('additionalPositions-editor')) {
+                  tinymce.get('additionalPositions-editor').setContent(field.values[0]);
+                } else if (input.id === 'scholarly-editor' && window.tinymce && tinymce.get('scholarly-editor')) {
+                  tinymce.get('scholarly-editor').setContent(field.values[0]);
+                } else if (input.id === 'partnerships-editor' && window.tinymce && tinymce.get('partnerships-editor')) {
+                  tinymce.get('partnerships-editor').setContent(field.values[0]);
+                } else if (input.id === 'links-editor' && window.tinymce && tinymce.get('links-editor')) {
+                  tinymce.get('links-editor').setContent(field.values[0]);
+                }
+                input.value = field.values[0];
+              }
+            }
+          }
+        }
+      });
+    }
+  } catch (error) {
+    console.error('Error loading form details:', error);
+  } finally {
+    if (loader) loader.style.display = 'none'; // Hide loader
+    if (form) form.style.display = 'block';    // Show form
+  }
+}
+
+console.log('Script loaded!');
+function initForm() {
+  console.log('Init called...');
+  loadFormDetails();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initForm);
+} else {
+  initForm();
+}
+</script>
+

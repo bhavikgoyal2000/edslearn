@@ -1,0 +1,135 @@
+.policy-list-block {
+    .row {
+      --bs-gutter-x: 0;
+      --bs-gutter-y: 0;
+    }
+
+    .row>* {
+      padding-left: 15px !important;
+      padding-right: 0 !important;
+    }
+
+    .column-count-1 {
+      column-count: 1;
+    }
+  
+    .column-count-2 {
+      column-count: 2;
+    }
+  
+    .column-count-3 {
+      column-count: 3;
+    }
+  
+    .column-count-4 {
+      column-count: 4;
+    }
+  
+    .column-count-5 {
+      column-count: 5;
+    }
+
+    .no-padding-left {
+      padding-left: 0;
+    }
+  
+    h1 {
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 700;
+      color: #4d4037;
+      font-size: clamp(3rem, 2.1vw, 4rem);
+      line-height: 1.2;
+      letter-spacing: .005em;
+      text-transform: none;
+      margin: 0.8em 0 2.5rem;
+    }
+  
+    ul {
+      padding-left: 25px;
+      margin-top: 15px;
+    }
+
+    ul.all-policy-list {
+      padding-left: 0 !important;
+    }
+  
+    ul li {
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 400;
+      color: #343434;
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+  
+    .all-policy-list li {
+      list-style: none;
+    }
+  
+    .all-policy-list ul:last-child {
+      margin-bottom: 15px
+    }
+  
+    p {
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 600;
+      color: #343434;
+      margin: 0 0 10px;
+    }
+  
+    p.list-item {
+      font-size: 1.8rem;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 600;
+    }
+  
+    .all-policy-list p.list-item {
+      font-size: 16px;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 400;
+    }
+  
+    p:only-child {
+      margin-bottom: 15px;
+    }
+  
+    a {
+      font-family: "GT Walsheim", Arial, sans-serif;
+      text-decoration: none;
+      color: #005099
+    }
+  
+    a:focus,
+    a:hover {
+      color: #0672b9;
+      text-decoration: underline;
+      text-decoration-line: underline;
+      text-decoration-color: #0672b9;
+    }
+  
+    :focus {
+      outline: 0;
+      box-shadow: none;
+      border-color: #0672b9;
+    }
+  
+    @media (width <=768px) {
+      .column-count-1,
+      .column-count-2,
+      .column-count-3,
+      .column-count-4,
+      .column-count-5 {
+        column-count: 1;
+      }
+    }
+  
+    @media (width >=992px) {
+      a:focus {
+        outline: 1px dotted #0672b9;
+        outline-offset: -1px;
+      }
+    }
+  }

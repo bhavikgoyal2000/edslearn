@@ -1,0 +1,457 @@
+.wcl-story-wrapper .faculty-block-wrapper,
+.wcl-story-wrapper .impact-story-with-text,
+.wcl-story-wrapper .wcl-article {
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+    display: block;
+    margin-right: 1.0104%;
+    width: 100%;
+}
+
+.wcl-story-wrapper .faculty-block-wrapper:hover,
+.wcl-story-wrapper .impact-story-with-text:hover {
+    cursor: pointer;
+    box-shadow: 0 0 0 3px rgb(6 114 185 / 80%);
+}
+
+.wcl-story-wrapper .faculty-block-wrapper .faculty-block-photo,
+.wcl-story-wrapper .impact-story-with-text-photo{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+}
+
+.wcl-story-wrapper .faculty-block-wrapper .details,
+.wcl-story-wrapper .detail-wrapper {
+    background: #fff;
+    display: block;
+    padding: 1.575rem 1.75rem 0;
+    min-height: 80px;
+    margin-top: 78%;
+    width: 82%;
+    position: relative;
+    z-index: 1;
+}
+
+.wcl-story-wrapper .faculty-block-wrapper a.detail-link,
+.wcl-story-wrapper .detail-wrapper a.detail-link {
+    color: #3C208C;
+    display: block;
+    line-height: 23px;
+    font-size: 1.6rem;
+    margin-bottom: 0.875rem;
+    text-decoration: none;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+}
+
+.wcl-story-wrapper .faculty-block-wrapper span.subtitle {
+    color: #363b3b;
+    display: block;
+    line-height: 1.6364;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    margin-bottom: 0.875rem;
+    letter-spacing: 1px;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.wcl-story-wrapper .faculty-block-wrapper p {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: normal;
+    color: #343434;
+    margin: 0;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+}
+
+.wcl-story-wrapper .article-block-story p {
+    color: #fff;
+    line-height: 2.4rem;
+}
+
+.wcl-story-wrapper .faculty-block-wrapper p:last-child {
+    margin-bottom: 25px;
+}
+
+.wcl-story-wrapper .article-block-story a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.wcl-story-wrapper .impact-story-with-text .title a {
+    color: #1c7f66 !important;
+    font-size: 18px;
+    line-height: 29px;
+}
+
+.wcl-story-wrapper .detail-wrapper a.detail-link {
+    font-size: 18px  !important;
+    line-height: 29px  !important;
+    color: #1c7f66 !important;
+}
+
+.wcl-story-wrapper .impact-story-with-text .title::after {
+    margin: 2.1rem 0 1.575rem;
+    transition: background-color 150ms ease-in-out;
+    height: 0.35rem;
+    width: 4.375rem;
+    background-color: #F4F6F7;
+    content: '';
+    display: block;
+ }
+
+@media screen and (width >= 1280px) {
+    .wcl-story-wrapper .faculty-block-wrapper a.detail-link {
+        font-size: 1.75rem;
+    }
+}
+
+
+/* page-listing */
+
+.wcl-story-wrapper .page-listing-item {
+    padding: 2.0125rem 0;
+    border-bottom: 1px solid rgb(244 246 247);
+}
+
+.wcl-story-wrapper .page-listing-item picture {
+    float: left;
+    width: 31.9%;
+    max-width: 224px;
+    margin: 0.6125rem 6.6% 0 0;
+    height:  229px;
+}
+
+.wcl-story-wrapper .article-block-story img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(0.35);
+    transition: filter 0.3s ease;
+}
+
+.wcl-story-wrapper .page-listing-item picture img {
+    height: 100%;
+}
+
+.wcl-story-wrapper .page-listing-item .listing-header {
+    display: block;
+}
+
+.wcl-story-wrapper .page-listing-item .listing-header h2 {
+    font-size: 1.6rem;
+    line-height: 30px;
+    margin-bottom: 0.875rem;
+    font-weight: 700;
+    font-family: 'GT Walsheim', Arial, sans-serif;
+    color: rgb(65 69 71);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.wcl-story-wrapper .page-listing-item a.listing-link {
+    text-decoration: none;
+    color: rgb(0 80 153);
+    text-underline-offset: 0.3rem;
+    background-color: transparent;
+    font-family: "GT Walsheim", Helvetica, Arial, sans-serif;
+}
+
+
+.wcl-story-wrapper .page-listing-item .date {
+    font-size: 1.6rem;
+    line-height: 1;
+    color: rgb(94 94 94);
+    font-family: "GT Walsheim", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.wcl-story-wrapper .page-listing-item .listing-description {
+    clear: left;
+    padding-top: 2.0125rem;
+    color: rgb(65 69 71);
+
+}
+
+.wcl-story-wrapper .page-listing-item a.read-more-link {
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif !important;
+    text-decoration: none;
+    color: rgb(0 80 153);
+    text-underline-offset: 0.3rem;
+    transition: background-color 150ms 
+    ease-in-out, color 150ms 
+    ease-in-out;
+    background-color: transparent;
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    padding: 0.175rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.wcl-story-wrapper .page-listing-item a.read-more-link::after {
+    content: "»";
+    padding-left: 0.2625rem;
+    vertical-align: 5%;
+}
+
+.wcl-story-wrapper .page-listing-item::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.wcl-story-wrapper .page-listing-item .listing-description p {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: "GT Walsheim", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: rgb(52 52 52);
+    margin: 0;
+    margin-bottom: 1.925rem;
+}
+
+@media screen and (width >= 960px) {
+    .wcl-story-wrapper .page-listing-item .listing-description {
+        clear: none;
+        overflow: hidden;
+    }
+
+}
+
+@media screen and (width >= 580px) {
+    .wcl-story-wrapper .page-listing-item {
+        padding: 3.675rem 0 2.8875rem;
+    }
+
+    .wcl-story-wrapper .page-listing-item .listing-header h2 {
+        font-size: 1.925rem;
+        line-height: 1.4546;
+    }
+
+    .wcl-story-wrapper .page-listing-item .listing-header {
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .wcl-story-wrapper .page-listing-item .listing-header::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: #005099;
+        margin-top: 1rem;
+    }
+
+    .wcl-story-wrapper .page-listing-item .date {
+        font-size: 1.6rem;
+    }
+
+    .wcl-story-wrapper .page-listing-item .listing-description{
+        padding-top: 2.7125rem;
+    }
+
+}
+
+@media  screen and (width <= 580px) {
+    .wcl-story-wrapper .page-listing-item .listing-description::before {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 4px;
+        background: #005099;
+        margin-bottom: 2.0125rem;
+    }
+    
+}
+
+/* Wcl Article CSS */
+.wcl-story-wrapper .article-block-story {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    display: block;
+    margin: 0 0.75rem 0.5rem;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 150ms ease-in-out;
+}
+
+.wcl-story-wrapper .article-block-story a:hover {
+    color: #fff;
+}
+
+.wcl-story-wrapper .article-block-story.active {
+    box-shadow: 0 0 0 3px #0672b9cc;
+    outline: 0;
+}
+
+.wcl-story-wrapper .article-block-story.active a:focus {
+    outline: none;
+}
+
+.wcl-story-wrapper .article-block-story.active,
+.wcl-stroy-wrapper .no-touchevents .article-block-story:hover {
+    color: #fff;
+}
+
+.wcl-story-wrapper .article-block-story::before {
+    background-color: #000000b3;
+    content: '';
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    inset: 0;
+    transition: background-color 150ms ease-in-out, opacity 150ms ease-in-out;
+    width: 100%;
+    z-index: 0;
+}
+
+.wcl-story-wrapper .article-block-story:hover::before {
+    background-color: #1774a9;
+    z-index: 1;
+}
+
+.wcl-story-wrapper .article-block-story.active::before,
+.wcl-stroy-wrapper .no-touchevents .article-block-story:hover::before {
+    background-color: #1774a9;
+}
+
+.wcl-story-wrapper .article-block-story .category::after {
+    background-color: #005099;
+    content: '';
+    display: block;
+    height: 0.35rem;
+    margin: 4.025rem auto 2.1rem;
+    transition: background-color 150ms ease-in-out;
+    width: 4.375rem;
+}
+
+.wcl-story-wrapper .article-block-story.active .category::after {
+    background-color: #343560;
+}
+
+.wcl-story-wrapper .article-block-story .category:hover::after,
+.wcl-story-wrapper .article-block-story.linkify:hover .category::after {
+    background-color: #3c208c;
+}
+
+.wcl-stroy-wrapper .no-touchevents .article-block-story:hover .category::after {
+    background-color: #343560;
+}
+
+.wcl-story-wrapper .article-block-story .article {
+    display: block;
+    font-size: 1.925rem;
+    letter-spacing: 0;
+    line-height: 1.4445;
+    margin-bottom: 2.1rem;
+    text-transform: none;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+}
+
+.wcl-story-wrapper .article-block-story .article-block-inner {
+    display: block;
+    padding: 2.8rem 1rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.wcl-story-wrapper .article-block-story .category {
+    display: inline-block;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 200;
+    letter-spacing: 0.0875rem;
+    line-height: 1.6667;
+    margin: 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.wcl-story-wrapper .article-block-story .date,
+.wcl-story-wrapper .article-block-story .description {
+    bottom: 60px;
+    display: inline-block;
+    font-size: 1.6rem;
+    left: 0;
+    letter-spacing: 0.0875rem;
+    line-height: 1.6667;
+    text-align: center;
+    text-transform: capitalize;
+    width: 100%;
+    z-index: 1;
+}
+
+.wcl-story-wrapper .article-block-story .description {
+    bottom: 3.0625rem;
+}
+
+.wcl-story-wrapper .article-block-story .description p {
+    color: #fff;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    line-height: 2.4rem;
+}
+
+.wcl-story-wrapper .article-block-story.linkify:hover {
+    box-shadow: 0 0 0 3px #0672b9cc;
+    cursor: pointer;
+}
+
+.block-grid-container .wcl-story-wrapper .article-block-story:hover,
+.block-grid-container .wcl-story-wrapper .article-block-story:focus {
+    text-decoration: none;
+}
+
+@media screen and (width >=580px) {
+    .wcl-story-wrapper .article-block-story .article-block-inner {
+        padding-bottom: 4.55rem;
+    }
+
+    .wcl-story-wrapper .article-block-story .category::after {
+        margin: 2.625rem auto;
+    }
+
+    .wcl-story-wrapper .article-block-story {
+        margin-bottom: 2rem;
+    }
+}
+
+@media screen and (width >=1200px) {
+    .wcl-story-wrapper .article-block-story {
+        margin-bottom: -4rem;
+    }
+
+    .wcl-story-wrapper .article-block-story .block-flow {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (width >=1280px) {
+    .wcl-story-wrapper .article-block-story .category::after {
+        margin-top: 5.27rem;
+    }
+}
+
+@media screen and (width >=1299px) {
+    .wcl-story-wrapper .article-block-story {
+        margin: 0 0.5rem 1rem;
+    }
+
+}

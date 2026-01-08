@@ -1,0 +1,88 @@
+.flex-3-bullets-wrapper .three-bullet-wrapper {
+    align-items:start;
+}
+
+.flex-3-bullets-wrapper .three-bullet-card {
+    background: #e5ebeb;
+    padding: 15px;
+    display: flex;        
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.flex-3-bullets-wrapper .three-bullet-card h1 {
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 700;
+    color: #4d4037;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    margin: 0 0 10px;
+    letter-spacing: .005em;
+    text-transform: none;
+}
+
+.flex-3-bullets-wrapper p {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 400;
+    color: #343434;
+    margin: 0;
+ }
+
+ .flex-3-bullets-wrapper p+p {
+    margin-top: 25px;
+}
+
+.flex-3-bullets-wrapper ul li{
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: normal;
+    color: #343434;
+    margin-bottom: 15px;
+}
+
+.flex-3-bullets-wrapperul li:last-child {
+    margin-bottom: 0;
+}
+
+.flex-3-bullets-wrapper ul li p {
+    font-family: "GT Walsheim", Arial, sans-serif;
+    line-height: 2.2rem;
+}
+
+.flex-3-bullets-wrapper p:last-child{
+    margin-bottom: 25px;
+}
+
+.flex-3-bullets-wrapper ul li p:last-child {
+    margin-bottom: 0;
+}
+
+.flex-3-bullets-wrapper ul {
+    margin: 10px 0;
+    padding: 0 20px;
+    list-style: square;
+}
+
+@media (width <= 992px) and  (width >= 767px)  {
+    .flex-3-bullets-wrapper .three-bullet-wrapper {
+      justify-content: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+}
+
+@media (width <= 768px) {  
+    .flex-3-bullets-wrapper .three-bullet-wrapper {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .flex-3-bullets-wrapper .three-bullet-card {
+      max-width: 100%;
+      width: 100%;
+    }
+}

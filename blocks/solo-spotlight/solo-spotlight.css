@@ -1,0 +1,1104 @@
+.spotlight-wrapper {
+    div.spotlight-header {
+      height: auto;
+    }
+  
+    h1 {
+      font-family: "GT Walsheim", Arial, sans-serif !important;
+      font-weight: 700;
+      color: var(--default-heading);
+      font-size: clamp(3rem, 2.1vw, 4rem);
+      line-height: 1.2;
+      letter-spacing: .005em;
+      text-transform: none;
+      margin: 0 0 2.5rem
+    }
+  
+    address,
+    blockquote,
+    figcaption,
+    figure,
+    p,
+    q {
+      font-size: 1.6rem;
+      line-height: 2.6rem;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 400;
+      color: #343434;
+      margin: 0
+    }
+  
+  
+    .hide-for-mobile {
+      display: none;
+    }
+  
+    .hide-for-desktop {
+      display: block;
+    }
+  
+    section.section-spotlight {
+      padding: 0;
+    }
+  
+    section.section-spotlight.spotlight-solo {
+      display: none;
+    }
+  
+    section.section-spotlight.spotlight-solo.spotlighted {
+      display: block;
+    }
+  
+    section.section-spotlight.bottom-margin {
+      margin-bottom: 25px;
+    }
+  
+    section.section-spotlight img {
+      margin: 0;
+    }
+  
+    section.section-spotlight div.spotlight-header h1 {
+      color: #1a1c21;
+    }
+  
+    section.section-spotlight .spotlight-ombre-bar {
+      background: linear-gradient(120deg, #e0263c 0%, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+      height: 6px;
+      width: 100%;
+    }
+  
+    section.section-spotlight .panel-group,
+    section.section-spotlight .panel,
+    section.section-spotlight .panel-default,
+    section.section-spotlight .panel-heading,
+    section.section-spotlight .panel-body {
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+  
+    section.section-spotlight .panel-group .panel+.panel {
+      margin-top: 0;
+    }
+  
+    section.section-spotlight .panel-group,
+    section.section-spotlight .spotlight-container,
+    section.section-spotlight .panel-collapse {
+      background: #fff;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container {
+      margin-bottom: 40px;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container .left-button {
+      width: 49%;
+      height: 60px;
+      background-color: #3c208c;
+      color: #fff;
+      text-align: center;
+      margin-right: 1px;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container .left-button .swap-arrow {
+      top: 10px;
+      position: relative;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container .left-button:hover,
+    section.section-spotlight .spotlight-container .button-container .left-button:focus {
+      background-color: #4918cd;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container .right-button {
+      width: 49%;
+      height: 60px;
+      background-color: #3c208c;
+      color: #fff;
+      text-align: center;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container .right-button .swap-arrow {
+      top: 10px;
+      position: relative;
+    }
+  
+    section.section-spotlight .spotlight-container .button-container .right-button:hover,
+    section.section-spotlight .spotlight-container .button-container .right-button:focus {
+      background-color: #4918cd;
+    }
+  
+    section.section-spotlight article,
+    section.section-spotlight div.panel.panel-default {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+  
+    section.section-spotlight article div.spotlight-header,
+    section.section-spotlight div.panel.panel-default div.spotlight-header {
+      position: relative;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      background: #0f2846;
+    }
+
+    section.section-spotlight article div.spotlight-header img {
+      width: 100%;
+    }
+
+    section.section-spotlight.spotlight-solo .panel-title,
+    section.section-spotlight.spotlight-solo .panel-title img {
+      max-width: 100vw;
+    }
+
+    section.section-spotlight.spotlight-solo .panel-title img {
+      width: 100%;
+      height: auto;
+    }
+  
+    section.section-spotlight article div.spotlight-header .photo-overlay {
+      height: 100%;
+      width: 100%;
+      background: #00000080;
+      position: absolute;
+      inset: 6px 0 0;
+      text-align: center;
+    }
+    
+    section.section-spotlight div.panel.panel-default div.spotlight-header img {
+      width: 100%;
+    }
+
+    section.section-spotlight article div.spotlight-header a:focus .photo-overlay {
+      background: #0009;
+    }
+  
+    section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay {
+      height: 100%;
+      width: 100%;
+      background: #00000080;
+      position: absolute;
+      inset: 6px 0 0;
+      text-align: center;
+    }
+  
+    section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align,
+    section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align {
+      margin-top: 50%;
+      display: block;
+    }
+
+    section.section-spotlight article .panel-body .story-text .btn {
+      text-transform: none;
+    }
+
+    section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align .btn {
+      font-size: 2rem;
+    }
+  
+    section.section-spotlight div.panel.panel-default .panel-body .story-text .btn {
+      text-transform: none;
+    }
+
+    section.section-spotlight div.panel.panel-default div.spotlight-header a:focus .photo-overlay {
+      background: #0009;
+    }
+
+    section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align .btn {
+      font-size: 2rem;
+    }
+      
+    section.section-spotlight article div.spotlight-header h1 {
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 2.1vw, 3.2rem);
+      line-height: clamp(2.4rem, 2.1vw, 3.2rem);
+      color: #fff;
+      padding: 0 10%;
+    }
+
+    section.section-spotlight.spotlight-solo div.spotlight-header h1 {
+      padding: 25px 15px 0;
+    }
+    
+    section.section-spotlight div.panel.panel-default div.spotlight-header h1 {
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 2.1vw, 3.2rem);
+      line-height: clamp(2.4rem, 2.1vw, 3.2rem);
+      color: #fff;
+      padding: 0 10%;
+    }
+  
+    section.section-spotlight article div.spotlight-header h1::after,
+    section.section-spotlight div.panel.panel-default div.spotlight-header h1::after {
+      content: '';
+      display: none;
+    }
+  
+    section.section-spotlight article div.spotlight-header button,
+    section.section-spotlight div.panel.panel-default div.spotlight-header button {
+      font-weight: 700;
+      margin-top: 0;
+    }
+  
+    section.section-spotlight article div.spotlight-header a:focus .btn.btn-outline,
+    section.section-spotlight div.panel.panel-default div.spotlight-header a:focus .btn.btn-outline {
+      color: #343434;
+      background: #fff;
+      text-decoration: none;
+    }
+  
+    section.section-spotlight article .panel-body .byline,
+    section.section-spotlight div.panel.panel-default .panel-body .byline {
+      margin: 0 0 0.5rem;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 3.5rem;
+      line-height: 3.5rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: #1a1c21;
+    }
+  
+    section.section-spotlight article .panel-body .byline-sub,
+    section.section-spotlight div.panel.panel-default .panel-body .byline-sub {
+      margin: 0;
+      margin-top: calc(25px / 2);
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
+      font-weight: 400;
+      color: #1a1c21;
+    }
+  
+    section.section-spotlight article .panel-body .byline-sub-b,
+    section.section-spotlight div.panel.panel-default .panel-body .byline-sub-b {
+      margin: 0 0 2rem;
+      margin-top: calc(25px / 2);
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      font-weight: 400;
+      color: #1a1c21;
+    }
+  
+    section.section-spotlight article .panel-body blockquote,
+    section.section-spotlight div.panel.panel-default .panel-body blockquote {
+      margin: 25px 0;
+      font-family: "GT Walsheim", Arial, sans-serif;
+      font-size: 2.2rem;
+      line-height: 2.2rem;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: #1a1c21;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+  
+    section.section-spotlight article .panel-body blockquote::before,
+    section.section-spotlight div.panel.panel-default .panel-body blockquote::before {
+      font-size: 1em;
+      line-height: 2.2rem;
+      font-weight: normal;
+      color: #1a1c21;
+      vertical-align: 0;
+    }
+  
+    section.section-spotlight article .panel-body blockquote::after,
+    section.section-spotlight div.panel.panel-default .panel-body blockquote::after {
+      font-size: 1em;
+      line-height: 2.2rem;
+      font-weight: normal;
+      color: #1a1c21;
+      vertical-align: 0;
+    }
+  
+    section.section-spotlight article .panel-body .story-text,
+    section.section-spotlight div.panel.panel-default .panel-body .story-text {
+      margin-top: 15px;
+    }
+  
+    section.section-spotlight article .panel-body .story-text p:last-child,
+    section.section-spotlight div.panel.panel-default .panel-body .story-text p:last-child {
+      margin-bottom: 0;
+    }
+  
+    section.section-spotlight .collapse.in {
+      width: 100vw;
+      opacity: 1;
+      padding: 10px;
+      overflow: auto;
+    }
+  
+    section.section-spotlight.spotlight-solo .panel-heading {
+      padding: 0;
+      margin: 0;
+    }
+  
+    section.section-spotlight.spotlight-solo .panel-collapse {
+      padding: 25px 0 0;
+    }
+  
+    @media (width >= 768px) {
+      .hide-for-mobile {
+        display: block;
+      }
+  
+      .hide-for-desktop {
+        display: none;
+      }
+  
+      section.section-spotlight {
+        padding: 50px 0;
+        overflow: hidden;
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+  
+      section.section-spotlight .row-center {
+        overflow: visible;
+        max-width: 1300px;
+      }
+  
+      section.section-spotlight .spotlight-container {
+        position: relative;
+        box-shadow: 0 3px 4px 0 #0000001a;
+      }
+  
+      section.section-spotlight .spotlight-container .button-container {
+        margin-bottom: 0;
+      }
+  
+      section.section-spotlight .spotlight-container .button-container .left-button {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #3c208c;
+        color: #fff;
+        bottom: -20px;
+        right: 90px;
+      }
+  
+      section.section-spotlight .spotlight-container .button-container .left-button .swap-arrow {
+        top: 20px;
+        position: absolute;
+        left: 10px;
+      }
+  
+      section.section-spotlight .spotlight-container .button-container .right-button {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        background-color: #3c208c;
+        color: #fff;
+        bottom: -20px;
+        right: 24px;
+      }
+  
+      section.section-spotlight .spotlight-container .button-container .right-button .swap-arrow {
+        top: 20px;
+        position: absolute;
+        left: 10px;
+      }
+  
+      section.section-spotlight .spotlight-container.xparent {
+        box-shadow: none;
+      }
+  
+      section.section-spotlight .panel-group,
+      section.section-spotlight .panel,
+      section.section-spotlight .panel-default,
+      section.section-spotlight .panel-heading,
+      section.section-spotlight .panel-body {
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+  
+      section.section-spotlight.spotlight-fullwidth .panel {
+        height: 452px;
+        background-size: cover !important;
+      }
+
+      section.section-spotlight .panel-group .panel+.panel {
+        margin-top: 0;
+      }
+  
+      section.section-spotlight .panel-collapse {
+        background: #fff;
+      }
+  
+      section.section-spotlight article,
+      section.section-spotlight div.panel.panel-default {
+        margin: 0;
+        padding: 0;
+      }
+  
+      section.section-spotlight article.shift-left,
+      section.section-spotlight div.panel.panel-default.shift-left {
+        position: absolute;
+        left: calc(-1300px / 2);
+      }
+
+      section.section-spotlight article div.spotlight-header {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        max-width: calc(1300px / 2);
+        max-height: 563px;
+        overflow: hidden;
+        float: left;
+      }
+    
+      section.section-spotlight.spotlight-solo div.spotlight-header {
+        padding-left: 30px;
+      }
+
+      section.section-spotlight article.shift-left div.spotlight-header {
+        width: 50vw;
+      }
+
+      section.section-spotlight article.shift-right div.spotlight-header {
+        width: 50vw;
+      }
+
+      section.section-spotlight div.panel.panel-default div.spotlight-header {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        max-width: calc(1300px / 2);
+        max-height: 563px;
+        overflow: hidden;
+        float: left;
+      }
+
+      section.section-spotlight div.panel.panel-default.shift-right div.spotlight-header {
+        width: 50vw;
+      }
+
+      section.section-spotlight div.panel.panel-default.shift-left div.spotlight-header {
+        width: 50vw;
+      }
+  
+      section.section-spotlight article.shift-right,
+      section.section-spotlight div.panel.panel-default.shift-right {
+        position: absolute;
+        right: calc(-1300px / 2);
+      }
+        
+      section.section-spotlight article div.spotlight-header img {
+        width: 100%;
+      }
+
+      section.section-spotlight.spotlight-solo .panel-title,
+      section.section-spotlight.spotlight-solo .panel-title img {
+        max-width: 50vw;
+      }
+
+      section.section-spotlight.spotlight-solo.one-third .panel-title,
+      section.section-spotlight.spotlight-solo.one-third .panel-title img {
+        max-width: 25vw;
+      }
+
+      section.section-spotlight div.panel.panel-default div.spotlight-header img {
+        width: 100%;
+      }
+  
+      section.section-spotlight article div.spotlight-header .photo-overlay,
+      section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay {
+        height: 100%;
+        width: 100%;
+        max-width: calc(1300px / 2);
+        background: #00000080;
+        position: absolute;
+        inset: 6px 0 0;
+        text-align: center;
+      }
+  
+      section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align,
+      section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align {
+        margin-top: 42.5%;
+        display: block;
+      }
+        
+      .section-spotlight article div.spotlight-header h1 {
+        color: #fff;
+        padding: 0 5%;
+        width: 50vw;
+      }
+
+      section.section-spotlight.spotlight-solo div.spotlight-header h1 {
+        padding: 0;
+      }
+
+      section.section-spotlight div.panel.panel-default div.spotlight-header h1 {
+        color: #fff;
+        padding: 0 5%;
+        width: 50vw;
+      }
+
+      section.section-spotlight article div.spotlight-header button,
+      section.section-spotlight div.panel.panel-default div.spotlight-header button {
+        margin-top: 25px;
+      }
+
+      section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align h1,
+      section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align h1 {
+        font-size: clamp(1.9rem, 2.1vw, 3.2rem);
+        line-height: clamp(1.9rem, 2.1vw, 3.2rem);
+      }
+  
+      section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align .btn,
+      section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align .btn {
+        margin-top: 0;
+      }
+  
+      section.section-spotlight article .panel-body .byline,
+      section.section-spotlight div.panel.panel-default .panel-body .byline {
+        color: #1a1c21;
+      }
+  
+      section.section-spotlight article .panel-body .byline-sub,
+      section.section-spotlight div.panel.panel-default .panel-body .byline-sub {
+        margin: 0;
+        margin-top: calc(25px / 2);
+        color: #1a1c21;
+      }
+
+      section.section-spotlight article .panel-body .story-text {
+        margin: 0;
+      }
+        
+      section.section-spotlight article .panel-body .byline-sub+.story-text {
+        margin-top: 25px;
+      }
+
+      section.section-spotlight div.panel.panel-default .panel-body .story-text {
+        margin: 0;
+      }
+
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body .story-text {
+        color: #fff;
+      }
+
+      section.section-spotlight div.panel.panel-default .panel-body .byline-sub+.story-text {
+        margin-top: 25px;
+      }
+
+      section.section-spotlight article .panel-body blockquote::before,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote::before {
+        content: '\201C';
+      }
+  
+      section.section-spotlight article .panel-body blockquote::after,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote::after {
+        content: '\201D';
+      }
+        
+      section.section-spotlight article .panel-body blockquote,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote {
+        margin: 25px 0;
+        border: none;
+        background: none;
+        padding: 0;
+      }
+
+      section.section-spotlight article .panel-body .story-text p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body p {
+        color: #fff;
+      }
+
+      section.section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body .byline,
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body .byline-sub,
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body .byline-sub-b,
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body blockquote,
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body blockquote::before,
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse .panel-body blockquote::after {
+        color: #fff;
+      }
+
+      section.section-spotlight .collapse.in {
+        width: 49vw;
+        max-width: calc(1300px / 2);
+        opacity: 1;
+        float: left;
+        overflow: auto;
+      }
+  
+      section.section-spotlight .collapsing.width {
+        height: 0;
+        min-height: 0;
+        max-height: 0;
+        padding: 0;
+        opacity: 0;
+        width: auto;
+        max-width: 45vw;
+        float: left;
+      }
+  
+      section.section-spotlight .collapse.width {
+        height: 100%;
+        transition-property: width, height, opacity;
+        transition-duration: 0.35s;
+        transition-timing-function: ease;
+      }
+  
+      section.section-spotlight.spotlight-solo {
+        padding-top: 25px;
+      }
+  
+      section.section-spotlight.spotlight-solo .spotlight-container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading,
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        float: left;
+        max-height: 43vw;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-group {
+        overflow: visible;
+        margin: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading {
+        padding: 0;
+        overflow: hidden;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        max-width: 49vw;
+        padding: 10px 0 0 25px;
+        overflow-y: auto;
+      }
+  
+      section.section-spotlight.spotlight-solo.image-right .panel-heading {
+        float: right;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-collapse {
+        max-width: 72vw;
+      }
+  
+      section.section-spotlight.spotlight-fullwidth .panel .spotlight-container {
+        padding-left: 0;
+        padding-right: 0;
+      }
+  
+      section.section-spotlight.spotlight-fullwidth .panel .full-photo-overlay {
+        height: 100%;
+        width: 100%;
+        max-width: calc(1300px / 2);
+        background: #00000080;
+        position: absolute;
+        inset: 6px 0 0;
+        text-align: center;
+      }
+  
+      section.section-spotlight.spotlight-fullwidth .panel .panel-collapse {
+        background: transparent;
+        padding: 25px 35px;
+      }
+  
+      section.section-spotlight.spotlight-fullwidth .panel .panel-heading .panel-title img {
+        display: none;
+      }
+    }
+  
+    @media (width >= 992px) {
+      section.section-spotlight .spotlight-container .button-container .left-button {
+        right: 66px;
+      }
+  
+      section.section-spotlight .spotlight-container .button-container .right-button {
+        right: 0;
+      }
+  
+      section.section-spotlight article div.spotlight-header .photo-overlay .btn {
+        margin-top: 25px;
+      }
+  
+      section.section-spotlight.spotlight-solo .spotlight-container {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 3px;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-title,
+      section.section-spotlight.spotlight-solo.one-third .panel-title img {
+        max-width: 25vw;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-collapse {
+        max-width: 65vw;
+      }
+  
+      section.section-spotlight.spotlight-fullwidth .spotlight-container {
+        margin-left: 0;
+      }
+    }
+  
+    @media (width >= 1199px) {
+      section.section-spotlight article .panel-body blockquote,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+      }
+  
+      section.section-spotlight article .panel-body .story-text p,
+      section.section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem;  
+        line-height: 2.3rem;
+      }
+  
+      section.section-spotlight article.shift-left,
+      section.section-spotlight div.panel.panel-default.shift-left {
+        position: absolute;
+        left: calc(-1300px / 2);
+      }
+      
+      section.section-spotlight article.shift-left div.spotlight-header,
+      section.section-spotlight article.shift-right div.spotlight-header,
+      section.section-spotlight div.panel.panel-default.shift-left div.spotlight-header,
+      section.section-spotlight div.panel.panel-default.shift-right div.spotlight-header {
+        width: 50vw;
+      }
+
+      section.section-spotlight article.shift-right,
+      section.section-spotlight div.panel.panel-default.shift-right {
+        position: absolute;
+        right: calc(-1300px / 2);
+      }
+  
+      section.section-spotlight .panel-heading,
+      section.section-spotlight .collapse,
+      section.section-spotlight article div.spotlight-header h1 {
+        max-width: 526px;
+        vertical-align: top;
+        overflow: hidden;
+      }
+  
+      section.section-spotlight article div.spotlight-header h1 {
+        padding: 0 4%;
+      }
+
+      section.section-spotlight article div.spotlight-header h1,
+      section.section-spotlight div.panel.panel-default div.spotlight-header h1 {
+        padding: 0 20%;
+        width: 50vw;
+      }
+  
+      section.section-spotlight article div.spotlight-header button,
+      section.section-spotlight div.panel.panel-default div.spotlight-header button {
+        margin-top: 2.5rem;
+      }
+  
+      section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align,
+      section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align {
+        margin-top: 43%;
+      }
+  
+      section.section-spotlight .collapse.in {
+        padding: 25px;
+        overflow: hidden;
+        max-width: 526px;
+        vertical-align: top;
+      }
+  
+      section.section-spotlight .panel-body {
+        padding: 0;
+      }
+  
+      section.section-spotlight .panel-body .story-text {
+        overflow: hidden;
+      }
+  
+      section.section-spotlight article.shift-left {
+        left: -526px;
+      }
+  
+      section.section-spotlight article.shift-right {
+        right: -526px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading,
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        float: left;
+        max-height: 452px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-group {
+        overflow: visible;
+        margin: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading {
+        padding: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-title,
+      section.section-spotlight.spotlight-solo .panel-title img {
+        max-width: 526px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        max-width: 526px;
+        padding: 25px;
+        overflow: hidden;
+      }
+  
+      section.section-spotlight.spotlight-solo.image-right .panel-heading {
+        float: right;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-title,
+      section.section-spotlight.spotlight-solo.one-third .panel-title img {
+        max-width: 325px;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-collapse {
+        max-width: 325px;
+        padding: 25px;
+        overflow: hidden;
+      }
+  
+      section.section-spotlight.spotlight-solo.spotlight-fullwidth .panel-collapse {
+        padding: 25px 35px;
+      }
+    }
+  
+    @media (width >= 1240px) {
+      #site-wrapper.is-marketing-landing section.section-spotlight.spotlight-solo .panel-collapse {
+        max-width: 650px;
+      }
+    }
+  
+    @media (width >= 1200px) and (width <= 1329px) {
+      section.section-spotlight article .panel-body blockquote,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+      }
+  
+      section.section-spotlight article .panel-body .story-text p,
+      section.section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem;
+        line-height: 2.3rem;
+      }
+  
+      section.section-spotlight .collapse.in {
+        max-width: 39vw;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-title,
+      section.section-spotlight.spotlight-solo .panel-title img {
+        max-width: 39vw;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        max-width: 39vw;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-title,
+      section.section-spotlight.spotlight-solo.one-third .panel-title img {
+        max-width: 25vw;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-collapse {
+        max-width: 52vw;
+      }
+    }
+  
+    @media (width >= 1330px) {
+      section.section-spotlight.spotlight-solo div.spotlight-header {
+        padding-left: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading {
+        max-height: 563px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        max-width: 630px;
+        padding: 25px 50px;
+        max-height: 563px;
+      }
+  
+      section.section-spotlight article .panel-body blockquote,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+      }
+  
+      section.section-spotlight article .panel-body .story-text p,
+      section.section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.6rem;
+        line-height: 2.3rem;
+      }
+  
+      section.section-spotlight .collapse.in {
+        max-width: 526px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-title,
+      section.section-spotlight.spotlight-solo .panel-title img {
+        max-width: 526px;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-collapse {
+        max-width: 865px;
+      }
+    }
+  
+    @media (width >= 1024px) and (width <= 1199px) {
+      section.section-spotlight {
+        margin-right: -30px;
+      }
+  
+      section.section-spotlight article div.spotlight-header .photo-overlay .vertical-align,
+      section.section-spotlight div.panel.panel-default div.spotlight-header .photo-overlay .vertical-align {
+        margin-top: 41%;
+      }
+  
+      section.section-spotlight article div.spotlight-header h1,
+      section.section-spotlight div.panel.panel-default div.spotlight-header h1 {
+        width: 41vw;
+      }
+  
+      section.section-spotlight article .panel-body,
+      section.section-spotlight div.panel.panel-default .panel-body {
+        transform: none;
+      }
+  
+      section.section-spotlight article .panel-body blockquote,
+      section.section-spotlight div.panel.panel-default .panel-body blockquote {
+        font-size: 2.2rem;
+        line-height: 2.4rem;
+      }
+  
+      section.section-spotlight article .panel-body .story-text p,
+      section.section-spotlight div.panel.panel-default .panel-body .story-text p {
+        font-size: 1.5rem;
+        line-height: 2rem;
+      }
+  
+      section.section-spotlight article .collapse.in,
+      section.section-spotlight div.panel.panel-default .collapse.in {
+        width: 40vw;
+        max-width: calc(1300px / 2);
+        padding: 25px 25px 25px 15px;
+      }
+  
+      section.section-spotlight .collapsing.width {
+        max-width: 39vw;
+      }
+  
+      section.section-spotlight.spotlight-solo {
+        padding: 25px 4px;
+      }
+  
+      section.section-spotlight.spotlight-solo div.spotlight-header {
+        padding: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading,
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        float: left;
+        max-height: 452px;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-group {
+        overflow: visible;
+        margin: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading,
+      section.section-spotlight.spotlight-solo .panel-title,
+      section.section-spotlight.spotlight-solo .panel-title img {
+        padding: 0;
+        max-width: 39vw;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-collapse {
+        max-width: 39vw;
+        padding: 10px 0 0;
+        overflow-y: auto;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-heading,
+      section.section-spotlight.spotlight-solo.one-third .panel-title,
+      section.section-spotlight.spotlight-solo.one-third .panel-title img {
+        padding: 0;
+        max-width: 25vw;
+      }
+  
+      section.section-spotlight.spotlight-solo.one-third .panel-collapse {
+        max-width: 54vw;
+        padding: 10px 0 0;
+        overflow-y: auto;
+      }
+  
+      section.section-spotlight.spotlight-solo.spotlight-fullwidth .panel-collapse {
+        padding: 25px 35px;
+      }
+    }
+  
+    @media (width >= 1200px) {
+      section.section-spotlight article div.spotlight-header h1 {
+        padding: 0 20%;
+        width: calc(1300px / 2);
+      }
+    }
+  
+    @media print {
+      section.section-spotlight.spotlight-solo {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+  
+      section.section-spotlight.spotlight-solo h1 {
+        font-size: 2.4rem;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading {
+        width: 25%;
+        float: left;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-heading img {
+        width: 100%;
+        max-width: 100%;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-default .panel-collapse {
+        padding: 0 0 0 2.5%;
+        width: 70%;
+        max-width: 70%;
+      }
+  
+      section.section-spotlight.spotlight-solo .panel-default .panel-collapse .panel-body blockquote {
+        margin: 15px 0;
+      }
+    }
+  
+  }

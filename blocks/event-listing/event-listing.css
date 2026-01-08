@@ -241,9 +241,9 @@
   background: transparent;
   padding: 0 0 1.25rem;
   transition: none;
-} 
+}
 
-.au-calendar .au-event.open .au-details { 
+.au-calendar .au-event.open .au-details {
   display: flex;
   gap: 2rem;
   align-items: flex-start;

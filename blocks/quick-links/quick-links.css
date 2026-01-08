@@ -1,0 +1,133 @@
+.quick-links-wrapper figure.task-group-container figcaption,
+.quick-links-wrapper figure.compact-links figcaption {
+  font-family: "Interstate Bold", Interstate, Arial, sans-serif;
+  font-weight: 700;
+  color: #4d4037;
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  line-height: 1.6rem;
+  margin-bottom: 5px;
+}
+
+.quick-links-wrapper figure ul li {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: normal;
+  color: #343434;
+}
+
+.quick-links-wrapper figure.task-group-container ul,
+.quick-links-wrapper figure.compact-links ul,
+.quick-links-wrapper figure.task-group-container ol,
+.quick-links-wrapper figure.compact-links ol {
+  margin: 0;
+}
+
+.quick-links-wrapper figure.compact-links figcaption {
+  border-bottom: 2px solid #d2d2d2;
+}
+
+.quick-links-wrapper ul.compact{
+  padding: 0;
+  list-style: none;
+}
+
+.quick-links-wrapper ul.compact li {
+  margin-bottom: 15px;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: visible;
+  border: 1px solid #d2d2d2;
+  border-radius: 0;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #d2d2d2;
+  position: relative;
+  min-height: 40px;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item:hover,
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item:focus {
+  background: #e5f0f4;
+  text-decoration: none;
+  color: #343434;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item:last-child {
+  border-bottom: none;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item a {
+  display: block;
+  position: relative;
+  font-size: 1.4rem;
+  min-height: 40px;
+  line-height: 2.0rem;
+  padding: 10px 25px 10px 10px;
+  color: #006796;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item a:visited {
+  color: #006796;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item a:hover,
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item a:focus {
+  background: #e5f0f4;
+  text-decoration: none;
+  color: #343434;
+}
+
+.quick-links-wrapper figure.task-group-container .task-group .task-group-item a:focus {
+  text-decoration: underline;
+}
+
+.quick-links-wrapper figure.task-group-container ul.task-group {
+  list-style: none;
+}
+
+.quick-links-wrapper figure.task-group-container ol.task-group {
+  list-style: none;
+  counter-reset: li;
+}
+
+.quick-links-wrapper figure.task-group-container ol.task-group li.task-group-item {
+  margin-left: 2.5em;
+}
+
+.quick-links-wrapper figure.task-group-container ol.task-group li.task-group-item::before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  top: 0;
+  left: -2.5em;
+  width: 2.5em;
+  height: 40px;
+  line-height: 40px;
+  background: #d2d2d2;
+  border: 1px solid #d2d2d2;
+  color: #343434;
+  font-family: Interstate, Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (width >= 992px) {
+  .quick-links-wrapper figure.task-group-container ul,
+  .quick-links-wrapper figure.compact-links ul,
+  .quick-links-wrapper figure.task-group-container ol,
+  .quick-links-wrapper figure.compact-links ol {
+    max-width: 50vw;
+  }
+}

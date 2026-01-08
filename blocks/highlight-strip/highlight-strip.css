@@ -1,0 +1,32 @@
+.highlight-strip-wrapper .highlight-mobile {
+  display: none;
+}
+
+@media screen and (width >= 768px) {
+  .highlight-strip-wrapper  .highlight-hover {
+    display: none;
+  }
+
+  .highlight-strip-wrapper a:hover .highlight-desktop {
+    display: none;
+  }
+
+  .highlight-strip-wrapper a:hover .highlight-hover {
+    display: block;
+  }
+}
+
+@media screen and (width <= 767px) {
+  .highlight-strip-wrapper .highlight-desktop,
+  .highlight-strip-wrapper .highlight-hover {
+    display: none;
+  }
+
+  .highlight-strip-wrapper .highlight-mobile {
+    display: block;
+  }
+  
+  .highlight-strip-wrapper .highlight-mobile img {
+    width: 100% !important;
+  }
+}

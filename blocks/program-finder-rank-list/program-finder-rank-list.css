@@ -1,0 +1,49 @@
+.program-finder-rank-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1450px!important;
+  margin: 0 auto;
+  background: repeating-linear-gradient(
+    36deg,
+    #eef0f3,
+    #eef0f3 15px,
+    #d4d6d9 17px,
+    #d4d6d9 18px
+  );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .ranking span.value {
+    float: left;
+    width: 35%;
+    display: block;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-size: clamp(6rem, 6vw, 10.2rem);
+    font-weight: 800;
+    color: #3c208c;
+    text-align: center;
+  }
+
+  .ranking p {
+    float: left;
+    width: 55%;
+    margin-top: clamp(1px, 3vw, 35px);
+    margin-right: 25px;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-size: clamp(1rem, 4vw, 2.5rem);
+    line-height: clamp(1rem, 4vw, 2.5rem);
+    font-weight: 500;
+    color: #182449;
+  }
+
+  .ranking p span.source {
+    display: block;
+    margin-top: 8px;
+    font-size: clamp(0.8rem, 3vw, 1.8rem);
+    line-height: clamp(0.8rem, 3vw, 1.8rem);
+    font-style: italic;
+    font-weight: 500;
+  }
+}

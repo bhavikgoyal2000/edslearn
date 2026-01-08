@@ -1,0 +1,59 @@
+.wcl-info-box-wrapper {
+  h3 {
+    font-size: 1.75rem;
+    color: #3C208C;
+    text-transform: capitalize;
+    margin-bottom: 0.4375rem;
+    line-height: 1.1;
+    font-weight: normal;
+    font-family: "GT Walsheim", Arial, sans-serif;
+  }
+
+  p {
+    background: #F4F6F7;
+    margin: 0;
+    padding: 1.225rem 1.75rem;
+    list-style: none;
+    line-height: 1.6667;
+    font-size: 1.6rem;
+    margin-bottom: 0.9625rem;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    color: #343434;
+  }
+
+  .sidebar-infobox {
+    margin-bottom: 1.4rem; 
+  }
+
+  .sidebar-infobox p {
+    background: #F4F6F7;
+    margin: 0;
+    padding: 1.225rem 1.75rem;
+    list-style: none;
+    line-height: 1.6667;
+    font-size: 1.6rem;
+    margin-bottom: 0.9625rem; 
+  }
+
+  @media screen and (width >= 580px) {
+    p {
+      padding-left: 2.8rem;
+      padding-right: 2.8rem;
+      font-size: 1.6rem;
+      line-height: 1.6;
+    }
+
+    .sidebar-infobox {
+      margin-bottom: 1.75rem; 
+    } 
+
+    .sidebar-infobox p {
+      padding-left: 2.8rem;
+      padding-right: 2.8rem;
+      font-size: 1.6rem;
+      line-height: 1.6; 
+    } 
+  }
+}
+  

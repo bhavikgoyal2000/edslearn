@@ -1,0 +1,216 @@
+.cediploma-validation-form-wrapper .cediploma-validation-row {
+  margin: 2rem auto;
+  max-width: 800px;
+  background: #fff;
+  padding: 1.5rem 2rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Layout the form and image side by side on desktop */
+.cediploma-validation-form-wrapper .cediploma-validation-row .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+}
+
+.cediploma-validation-form-wrapper .col-md-9.col-xs-8,
+.cediploma-validation-form-wrapper .col-md-3.col-xs-4 {
+  box-sizing: border-box;
+}
+
+.cediploma-validation-form-wrapper .col-md-9.col-xs-8 {
+  flex: 1 1 60%;
+  min-width: 250px;
+  max-width: 66.6667%;
+}
+
+.cediploma-validation-form-wrapper .col-md-3.col-xs-4 {
+  flex: 1 1 26%;
+  min-width: 120px;
+  max-width: 33.3333%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.cediploma-validation-form-wrapper .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.cediploma-validation-form-wrapper .control-label {
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.25em;
+}
+
+.cediploma-validation-form-wrapper .form-control {
+  display: flex;
+  width: 100%;
+  padding: 7px 12px;
+  line-height: 3.8rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.25em;
+  color: #555;
+}
+
+.cediploma-validation-form-wrapper .help-block {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: #666;
+  margin-bottom: 0.25em;
+}
+
+.cediploma-validation-form-wrapper .responsive-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+
+.cediploma-validation-row .ce-error-msg.hidden {
+  display: none;
+}
+
+.cediploma-validation-row .ce-error-msg strong {
+  font-weight: bold;
+  
+}
+
+.cediploma-validation-form-wrapper .alert.single p {
+  border: 1px solid #b58500;
+  background: #fff;
+  color: #000;
+  padding: 3.5rem 28px;
+  margin: 18px 0;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  box-sizing: border-box;
+  border-radius: 0;
+  display: block;
+}
+
+.cediploma-validation-form-wrapper #ce-error-msg.hidden { display: none !important; }
+
+.cediploma-validation-form-wrapper .single {
+  margin-top: 0.5em;
+}
+
+/* The rest of your panels and results styling */
+.cediploma-validation-form-wrapper .panel {
+  margin: 1em 0 0;
+  border-radius: 4px;
+  border: 1px solid #d5d5d5;
+  background: #f9f9f9;
+}
+
+.cediploma-validation-form-wrapper .panel-heading {
+  background: #e8e8ec;
+  font-weight: 700;
+  padding: 0.7em 1em;
+  font-size: 1.07em;
+  border-bottom: 1px solid #d5d5d5;
+}
+
+.cediploma-validation-form-wrapper .panel-body {
+  padding: 1.1em 1.2em;
+}
+
+.cediploma-validation-form-wrapper .tabular.narrow-term {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.3em 1.2em;
+  align-items: start;
+}
+
+.cediploma-validation-form-wrapper .tabular.narrow-term dt {
+  grid-column: 1;
+  font-weight: 600;
+  color: #222;
+  margin: 0;
+  padding: 0.15em 0;
+}
+
+.cediploma-validation-form-wrapper .tabular.narrow-term dd {
+  grid-column: 2;
+  color: #444;
+  font-weight: 400;
+  margin: 0;
+  padding: 0.15em 0;
+}
+
+.cediploma-validation-form-wrapper .btn.btn-primary {
+  background: #005099;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: none;
+  padding: 0 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.cediploma-validation-form-wrapper .btn.btn-primary:hover,
+.cediploma-validation-form-wrapper .btn.btn-primary:focus {
+  background: #005099;
+  color: #fff;
+  padding: 10px 20px 5px;
+  border-bottom: 4px solid #f4c74b;
+}
+
+.cediploma-validation-form-wrapper .icon.ion-loading-a {
+  margin-left: 8px;
+  font-size: 1.35em;
+  vertical-align: middle;
+  animation: spin 1.1s linear infinite;
+}
+
+.cediploma-validation-form-wrapper #frm-validate-diploma {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.cediploma-validation-form-wrapper .hidden { display: none !important; }
+
+/* Responsive: stack form and image on mobile */
+@media (width <= 740px) { /* media-feature-range-notation */
+  .cediploma-validation-form-wrapper #ce-error-msg {
+    width: 100%;
+    font-size: 15px;
+    padding: 0;
+  }
+
+  .cediploma-validation-form-wrapper .cediploma-validation-row {
+    padding: 1rem 0.5rem;
+  }
+
+  .cediploma-validation-form-wrapper .cediploma-validation-row .row {
+    flex-direction: column;
+    gap: 1.5rem 0;
+  }
+
+  .cediploma-validation-form-wrapper .col-md-9.col-xs-8,
+  .cediploma-validation-form-wrapper .col-md-3.col-xs-4 {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .cediploma-validation-form-wrapper .panel-body {
+    padding: 0.8em 0.7em;
+  }
+}

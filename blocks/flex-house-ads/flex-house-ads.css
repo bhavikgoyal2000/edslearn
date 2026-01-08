@@ -1,0 +1,91 @@
+.flex-house-ads-wrapper .house-ads-wrapper {
+  align-items: start;
+}
+
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all 0.25s;
+}
+
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house a {
+  width: 100%;
+  height: auto;
+  flex: 0 1 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house a:hover,
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house a:focus {
+  overflow: hidden;
+}
+
+.flex-house-ads-wrapper .el-flex-item .flex-house img {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  transition: all 0.25s;
+}
+
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house a:hover img,
+.flex-house-ads-wrapper .el-mini-flex-item .flex-house a:focus img {
+  transform: scale(1.1, 1.1);
+  transform-origin: center;
+}
+
+.flex-house-ads-wrapper .el-flex-item .flex-house {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.flex-house-ads-wrapper .el-flex-item .flex-house a:hover,
+.flex-house-ads-wrapper .el-flex-item .flex-house a:focus {
+  overflow: hidden;
+}
+
+.flex-house-ads-wrapper .el-flex-item .flex-house a:hover img,
+.flex-house-ads-wrapper .el-flex-item .flex-house a:focus img {
+  transform: scale(1.1, 1.1);
+  transform-origin: center;
+}
+
+@media (width >= 768px) {
+  .flex-house-ads-wrapper .el-flex-item .flex-house img {
+    max-height: 425px !important;
+    min-height: 425px !important;
+  }
+}
+
+@media (width <= 992px) and (width >= 767px) {
+  .flex-house-ads-wrapper .house-ads-wrapper {
+    justify-content: center;
+    padding: 0 15px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+@media (width <= 768px) {
+  .flex-house-ads-wrapper .house-ads-wrapper {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .flex-house-ads-wrapper .el-flex-item {
+    max-width: 100%;
+    width: 100%;
+    max-height: none;
+    height: auto;
+  }
+}

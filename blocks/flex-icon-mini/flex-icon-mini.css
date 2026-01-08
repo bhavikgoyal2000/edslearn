@@ -1,0 +1,118 @@
+.flex-icon-mini-wrapper {
+  padding-bottom: 10px;
+}
+
+.flex-icon-mini-wrapper .flex-icon-mini {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.flex-icon-mini-wrapper article.el-mini-flex-item {
+  justify-content: center;
+  display: flex;
+}
+
+.flex-icon-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+  margin: 0 auto;
+  height: 150px;
+  max-height: 150px;
+  width: 167px; 
+}
+
+.flex-icon-mini-wrapper .flex-icon {
+  text-align: center;
+  position: relative;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-icon-mini-wrapper .mini-bg {
+  color: white;
+}
+
+.flex-icon-mini-wrapper .flex-icon .flex-center {
+  flex: 0 1 auto;
+  margin: 0;
+}
+
+.flex-icon-mini-wrapper .flex-icon .icon-focus {
+  margin: 10px 0;
+  position: relative;
+  top: -20px;
+  display: block;
+}
+
+.flex-icon-mini-wrapper .flex-icon .icon-focus i,
+.flex-icon-mini-wrapper .flex-icon .icon-focus span {
+  white-space: nowrap;
+}
+
+.flex-icon-mini-wrapper .flex-icon .text-below {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  display: block;
+  line-height: 1.7rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+}
+
+.flex-icon-mini-wrapper .flex-icon.link-hover:hover,
+.flex-icon-mini-wrapper .flex-icon.link-hover:focus {
+  background-image: linear-gradient(to bottom, #0000 0%, #0000 94%, #f4c74b 94%, #f4c74b 100%);
+  text-decoration: none;
+}
+
+.flex-icon-mini-wrapper a.fact-link {
+  text-decoration: none !important;
+}
+
+.flex-icon-mini-wrapper a.fact-link .fact-attrib {
+  text-decoration: underline !important;
+}
+
+@media (width >= 768px) {  
+  .flex-icon-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+    max-width: 167px;
+    margin: 0 auto;
+    height: 150px;
+    max-height: 150px;
+    overflow: hidden;
+  }
+
+  .flex-icon-mini-wrapper .flex-icon .fact-attrib {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 25px;
+  }
+
+}
+
+@media (width >= 1200px) {
+  .flex-icon-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+    width: 167px;
+    overflow: hidden;
+  }
+}
+
+@media (width >= 992px) and (width <= 1200px) {
+  .flex-facts-wrapper .el-mini-flex-item {
+    max-width: 180px !important;
+  }
+}
+
+@media (width <= 360px) {
+  .flex-icon-mini-wrapper .el-mini-flex-item div[class^="flex-"] {
+    max-width: 130px;
+    margin: 0 auto;
+    height: 116px;
+    max-height: 116px;
+    overflow: hidden;
+  }
+}

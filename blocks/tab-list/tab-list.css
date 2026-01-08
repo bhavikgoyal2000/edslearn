@@ -1,0 +1,288 @@
+/* Content box wrapper */
+.tab-list-content-box {
+  border: 1px solid #888;
+  background: #fff;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 5%);
+  margin: 32px auto;
+  padding: 0;
+  max-width: 1200px;
+  display: block;
+  overflow: visible;
+}
+
+/* Tabs container (scoped variables) */
+.tab-list {
+  --tab-h: 54px;
+  --tab-border: #888;
+  --dd-shadow: 0 2px 16px rgb(0 0 0 / 12%);
+
+  margin: 0;
+  background: #fff;
+  position: relative;
+}
+
+.tab-list ul {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tab-list ul li {
+  display: flex;
+  margin: 0;
+}
+
+/* Tab buttons (general rule comes first to satisfy specificity order) */
+.tab-list ul li button {
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 0;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+  position: relative;
+  border-right: 1px solid var(--tab-border);
+  border-bottom: 1px solid var(--tab-border);
+  flex: 1 1 auto;
+  height: var(--tab-h);
+  box-sizing: border-box;
+}
+
+/* Make filler button rule more specific (and after the general rule) */
+.tab-list ul li.tab-list-filler > button {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* Active tab */
+.tab-list ul li button[aria-selected="true"] {
+  background: #fff;
+  color: #000;
+  z-index: 2;
+  border-bottom: 0 !important;
+}
+
+/* Inactive tab hatch */
+.tab-list ul li button[aria-selected="false"] {
+  background-color: #fff;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #d9dce3,
+    #d9dce3 1px,
+    #fff 1px,
+    #fff 4px
+  );
+}
+
+/* Remove top bar for inactive tabs */
+.tab-list ul li button[aria-selected="false"]::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: none;
+}
+
+/* Last-tab filler area (desktop) */
+.tab-list-filler {
+  flex: 1 1 auto !important;
+  min-width: 0;
+  position: relative;
+}
+
+/* Remove right border from last tab */
+.tab-list ul li.tab-list-filler button {
+  border-right: none !important;
+}
+
+/* Gradient bar on the active last tab button (desktop only) */
+.tab-list ul li.tab-list-filler button[aria-selected="true"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #f70909 0%, #4918cd 100%);
+  z-index: 2;
+}
+
+/* Gradient bar that stretches from selected tab to right edge */
+.tab-list-gradient-bar {
+  position: absolute;
+  top: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f70909 0%, #4918cd 100%);
+  z-index: 10;
+  pointer-events: none;
+  transition: left 0.2s, width 0.2s;
+}
+
+/* Tab panels: expand to fit content (including floats) */
+[role="tabpanel"] {
+  padding: 1rem 24px;
+  background: #fff;
+  border-radius: 0 0 6px 6px;
+  display: flow-root;
+  position: static;
+  height: auto;
+}
+
+[role="tabpanel"][hidden] {
+  display: none !important;
+}
+
+/* Mobile */
+@media (width <= 600px) {
+  .tab-list {
+    position: relative;
+    overflow: visible;
+  }
+
+  .tab-list ul {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    border-bottom: 1px solid var(--tab-border);
+  }
+
+  .tab-list ul li {
+    display: none;
+    align-items: stretch;
+    height: var(--tab-h);
+    margin: 0;
+    padding: 0;
+  }
+
+  .tab-list ul li button {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    height: var(--tab-h);
+  }
+
+  /* Only the active tab (first child after JS reordering) and the dummy filler are visible */
+  .tab-list ul li:first-child,
+  .tab-list ul li.tab-list-filler-dummy {
+    display: flex !important;
+    align-items: center;
+    position: relative;
+    height: var(--tab-h);
+  }
+
+  .tab-list ul li:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-right: 1px solid var(--tab-border);
+    background: #fff;
+    z-index: 1;
+  }
+
+  .tab-list ul li.tab-list-filler-dummy {
+    flex: 0 0 var(--tab-h);
+    max-width: var(--tab-h);
+    min-width: var(--tab-h);
+    height: var(--tab-h);
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    position: static; /* let dropdown position relative to .tab-list */
+    z-index: auto;
+    border-right: none;
+    border-left: none;
+  }
+
+  .tab-list-filler-dummy .tab-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 16px 18px;
+    border: none;
+    border-bottom: 1px solid var(--tab-border);
+    background: #f7f7f7;
+    text-align: left;
+    font-size: 1em;
+    color: #222;
+    cursor: pointer;
+    font-weight: normal;
+    background-image: none !important;
+  }
+
+  /* Filler button (place BEFORE dropdown button rules to satisfy specificity order) */
+  .tab-list ul li.tab-list-filler-dummy > button {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #888;
+    border-bottom: none;
+    box-sizing: border-box;
+  }
+
+  /* Dropdown: full width, directly below the tabs */
+  .tab-list-filler-dummy .tab-dropdown {
+    display: none;
+    position: absolute;
+    top: var(--tab-h);
+    left: 0;
+    right: 0;
+    width: 86.7%;
+    background: #fff;
+    border: 1px solid var(--tab-border);
+    border-top: none;
+    z-index: 9999;
+    box-shadow: var(--dd-shadow);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .tab-list-filler-dummy.open .tab-dropdown {
+    display: block;
+    animation: fade-in 0.2s;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  
+  .tab-list-filler-dummy .tab-dropdown button:last-child {
+    border-bottom: none;
+  }
+
+  .tab-list-filler-dummy .tab-dropdown button[aria-selected="true"] {
+    background: #fff !important;
+    font-weight: bold;
+    color: #000;
+  }
+
+  /* Icon */
+  .tab-filler-icon {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,284 @@
+.callout-wrapper {
+    .block-grid-container div.layout {
+      width: 100%;
+    }
+  
+    .callout-block {
+        background-color: transparent;
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        display: block;
+        min-height: 300px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+    }
+
+    .callout-block .callout-block-inner {
+        background-color: #000000b3;
+        content: '';
+        display: block;
+        height: 100%;
+        min-height: 152px;
+        padding: 2.45rem 1.75rem 1.05rem;
+        position: absolute;
+        inset: 60% 0 0;
+        transition: all 400ms ease-in-out;
+        width: 100%;
+        z-index: 0;
+    }
+
+    .callout-block a {
+      color: #fff;
+      text-decoration: none;
+   }
+   
+   .callout-block .title a {
+      font-size: 2.1rem;
+   }
+   
+   .callout-block .title a:hover,
+   .callout-block .title a:focus {
+      color: #fff;
+      text-decoration: underline solid #fff;
+      text-underline-offset: 0.3rem;
+   }
+   
+   .callout-block.linkify:hover {
+     cursor: pointer;
+     box-shadow: 0 0 0 3px #0672b9cc;
+   }
+   
+   .callout-block.active {
+      outline: 0;
+      box-shadow: 0 0 0 3px #0672b9cc;
+   }
+   
+   .callout-block.active a:focus {
+     outline: none;
+   }
+  
+    .block-grid-container .callout-block {
+      color: #fff;
+      max-height: 300px;
+    }
+  
+    .touchevents .callout-block .callout-block-inner {
+      height: 100%;
+      top: 0;
+    }
+
+    .callout-block.active .callout-block-inner,
+    .no-touchevents .callout-block:focus .callout-block-inner,
+    .no-touchevents .callout-block:hover .callout-block-inner {
+      height: 100%;
+      top: 0;
+    }
+  
+    .callout-block .description {
+        display: block;
+        font-size: 1.6rem;
+        line-height: 1.6667;
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity 400ms ease-in-out;
+    }
+
+    .callout-block.active .description,
+    .no-touchevents .callout-block:focus .description,
+    .no-touchevents .callout-block:hover .description {
+      color: #fff;
+      opacity: 1;
+    }
+  
+    .callout-block .title {
+      display: block;
+      margin: 0;
+    }
+
+    .callout-block.active .title,
+    .no-touchevents .callout-block:focus .title,
+    .no-touchevents .callout-block:hover .title {
+      color: #fff;
+    }
+  
+    .callout-block .title::after {
+      background-color: #005099;
+      content: '';
+      display: block;
+      height: 0.35rem;
+      margin: 2.1rem 0;
+      transition: background-color 150ms ease-in-out;
+      width: 4.375rem;
+    }
+  
+    .callout-block .title .truncate {
+      display: block;
+      font-size: 2.1rem;
+      height: 4.375rem;
+      line-height: 1.25;
+      overflow: hidden;
+    }
+  
+    .layout {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1280px;
+      width: calc(100% - 32px);
+    }
+  
+    .layout::after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+  
+    .block-grid-container {
+      margin: 0.875rem 0 3.5rem;
+    }
+  
+    .block-grid-container::after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+  
+    .block-grid-container .grid-block {
+      margin-bottom: 0.875rem;
+    }
+  
+    .block-grid-container .faculty-block-inner a:focus,
+    .block-grid-container .faculty-block-inner a:hover {
+      text-decoration: underline;
+    }
+  
+    .block-grid-container .article-block:focus,
+    .block-grid-container .article-block:hover {
+      text-decoration: none;
+    }
+  
+    .block-grid-container a.article-block,
+    .block-grid-container a.article-block:visited {
+      color: #fff;
+    }
+  
+    .block-grid-container .grid-block:last-child .see-all {
+      padding-bottom: 0;
+    }
+  
+    .block-grid-container.three-block {
+      margin-bottom: 3.5rem;
+    }
+  
+    .touchevents .callout-block .callout-block-inner .description {
+      opacity: 1;
+    }
+  
+    @media screen and (width >= 580px) {
+      .callout-block {
+        min-height: 260px;
+      }
+  
+      .callout-block .callout-block-inner {
+        top: 57%;
+      }
+  
+      .callout-block .title::after {
+        margin: 2.625rem 0;
+      }
+  
+      .layout {
+        width: calc(100% - 60px);
+      }
+  
+      .block-grid-container .grid-block {
+        display: block;
+        float: left;
+      }
+  
+      .block-grid-container .grid-block:last-child {
+        margin-right: 0;
+      }
+  
+      .block-grid-container .grid-block:nth-child(2n) {
+        margin-right: 0;
+      }
+  
+      .block-grid-container .grid-block:nth-child(2n+1) {
+        clear: left;
+      }
+    }
+  
+    @media screen and (width >= 960px) {
+      .callout-block {
+        min-height: 300px;
+      }
+  
+      .layout {
+        min-width: 900px;
+        width: 89.0625%;
+      }
+  
+      .block-grid-container .grid-block {
+        display: block;
+        float: left;
+      }
+  
+      .block-grid-container .grid-block:last-child {
+        margin-right: 0;
+      }
+  
+      .block-grid-container .grid-block:nth-child(2n+1) {
+        clear: none;
+      }
+  
+      .block-grid-container .grid-block:nth-child(3n) {
+        margin-right: 0;
+      }
+  
+      .block-grid-container .grid-block:nth-child(3n+1) {
+        clear: left;
+      }
+  
+      .block-grid-container.two-block .grid-block:last-child {
+        margin-right: 0;
+      }
+  
+      .block-grid-container.two-block .grid-block:nth-child(odd) {
+        clear: left;
+      }
+  
+      .block-grid-container.two-block .grid-block:nth-child(even) {
+        clear: none;
+        margin-right: 0;
+      }
+    }
+  
+    @media screen and (width >= 1280px) {
+      .callout-block {
+        min-height: 380px;
+      }
+  
+      .callout-block .callout-block-inner {
+        min-height: 230px;
+        padding-top: 3.325rem;
+      }
+  
+      .callout-block .title .truncate {
+        display: block;
+        font-size: 2.1rem;
+        line-height: 1.4;
+        overflow: hidden;
+      }
+  
+      .callout-block .description {
+        display: block;
+        font-size: 1.6rem;
+        line-height: 1.6667;
+        overflow: hidden;
+      }
+    }
+}
+  

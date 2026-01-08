@@ -1,0 +1,436 @@
+.single-image-quote-wrapper .quote-photo-wrapper {
+    position: relative;
+}
+
+.single-image-quote-wrapper .button {
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out, border-color 150ms ease-in-out;
+    appearance: none;
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 2.1;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 1.925rem;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid !important;
+    border-color: #FFF !important;
+    text-decoration: none;
+    text-transform: capitalize;
+    height: 3.5rem;
+    border-radius: 3.5rem !important;
+    background-color: #1c7f66 !important;
+    color: #fff;
+}
+
+.single-image-quote-wrapper .button-container .button {
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.single-image-quote-wrapper a:hover, 
+.single-image-quote-wrapper .button-container .button:focus {
+    border-color: #fff !important;
+    background-color: #1774a9 !important;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 150px;
+    position: relative;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text {
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: end;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.75rem;
+    text-indent: -0.9625rem;
+}
+
+.single-image-quote-wrapper p.quotee-text {
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote::after {
+    transition: background-color 150ms ease-in-out;
+    height: 0.35rem;
+    width: 4.375rem;
+    background-color: #005099;
+    margin: 2.1rem 0;
+    content: '';
+    display: block;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote.quotation-text {
+    text-indent: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quotee-text {
+    line-height: 1.7858;
+    font-size: 1.6rem;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner {
+    padding: 2.45rem 1.875rem 1.75rem;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text-banner.layout,
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text-banner.layout div {
+    text-align: left !important;
+}
+
+.single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .button-container {
+    padding-top: 1.05rem;
+}
+
+.single-image-quote-wrapper .info-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    left: auto;
+    z-index: 10;
+    width: 250px;
+}
+
+.single-image-quote-wrapper .right {
+    float: right;
+}
+
+.single-image-quote-wrapper .info-container .info-icon {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    left: auto;
+    height: 30px;
+    width: 30px;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    color: transparent;
+    cursor: pointer;
+    display: block;
+    z-index: 12;
+}
+
+.single-image-quote-wrapper .info-container .info-icon::after {
+    transition: color 150ms ease-in-out;
+    position: absolute;
+    top: 2px;
+    left: 10px;
+    line-height: 1.091;
+    content: 'i';
+    color: #fff;
+    font-size: 1.925rem;
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.single-image-quote-wrapper .info-container .info-box {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    transition: opacity 150ms ease-in-out;
+    line-height: 1.3847;
+    padding: 1.575rem 5.25rem 1.575rem 1.575rem;
+    box-shadow: 0 0 4px 0 #00000026;
+    background: #fff;
+    color: #414547;
+    font-size: 1.6rem;
+    z-index: 11;
+    opacity: 0;
+}
+
+.single-image-quote-wrapper .info-container .info-icon.is-open::after {
+    color: #17020d;
+}
+
+.single-image-quote-wrapper .info-container .info-icon.is-open,
+.single-image-quote-wrapper .info-container .info-icon:focus {
+    background: #61A8F3;
+    border-color: #61A8F3;
+    z-index: 12;
+}
+
+.single-image-quote-wrapper .info-container .info-box.active {
+    opacity: 1;
+}
+
+@media screen and (width >=1280px) {
+    .single-image-quote-wrapper .quote-photo-wrapper img {
+        position: static;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-image img {
+        height: 500px !important;
+        width: 100%;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote {
+        font-size: 2.625rem;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner {
+        float: left;
+        display: block;
+        margin-right: 1.0104%;
+        width: 65%;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner.align-left {
+        left: 2% !important;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner.align-right {
+        right: 2% !important;
+    }
+}
+
+@media screen and (width >=1090px) and (width <=1279px){
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner.align-left {
+        left: 1% !important;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner.align-right {
+        right: 1% !important;
+    }
+}
+
+@media screen and (width >=992px) {
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-image img {
+        height: 420px;
+        width: 100%;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner {
+        position: absolute;
+        bottom: 0;
+        background: #000;
+        padding: 4rem 5rem 3.25rem;
+        z-index: 9;
+        width: 60%;
+    }
+
+    /* Align left */
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner.align-left {
+        left: 0;
+        right: auto;
+    }
+
+    /* Align right */
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner.align-right {
+        right: 0;
+        left: auto;
+    }
+}
+
+@media screen and (width >=960px) and (width <=991px) {
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-banner {
+        max-width: 1280px;
+        margin: 0 auto;
+        width: 89.0625%;
+        min-width: 870px;
+        position: relative;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-banner::after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-image img {
+        height: 420px;
+        width: 100%;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text {
+        background: transparent;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote {
+        font-size: 2.1rem;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner {
+        background-color: #000;
+        width: 100%;
+        padding: 2.5rem;
+        right: 0;
+        left: auto;
+    }
+}
+
+@media screen and (width >=580px) and (width <=959px) {
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-image img {
+        height: 300px;
+        width: 100%;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote::after {
+        margin: 2.625rem 0;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote {
+        font-size: 2.625rem;
+        text-indent: -1.4875rem;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quotee-text {
+        font-size: 1.75rem;
+    }
+
+    .single-image-quote-wrapper .quote-photo-wrapper .quote-photo-text .quote-photo-text-banner {
+        padding-top: 2.8rem;
+        padding-bottom: 2.1rem;
+    }
+}
+
+/* sinlge Image Quote */
+.single-image-quote-wrapper .single-image-feature {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 37.7rem; /* keep same as reference */
+}
+
+/* Make <picture> & <img> act like background */
+.single-image-quote-wrapper .single-image-feature picture,
+.single-image-quote-wrapper .single-image-feature img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Gradient overlay */
+.single-image-quote-wrapper .single-image-feature::before {
+    position: absolute;
+    inset: 0;
+    content: '';
+    z-index: 1; /* sits above image but below text */
+}
+
+/* Gradients */
+.single-image-quote-wrapper .single-image-feature.grad-green::before {
+    background: linear-gradient(-130deg, rgb(20 122 108 / 80%), rgb(64 137 77 / 80%));
+}
+
+.single-image-quote-wrapper .single-image-feature.grad-purple::before {
+    background: linear-gradient(144deg, rgb(42 43 94 / 90%), rgb(85 20 91 / 90%));
+}
+
+/* Text container */
+.single-image-quote-wrapper .single-image-feature .layout-wrapper {
+    position: relative;
+    z-index: 2;
+    padding: 3.9375rem 0 4.375rem;
+    left: 5%;
+    width: 41.0772%;
+}
+
+.single-image-quote-wrapper .single-image-feature .text-wrapper {
+    color: #fff;
+}
+
+.single-image-quote-wrapper .single-image-feature .text-wrapper p {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: normal;
+    margin: 0;
+}
+
+.single-image-quote-wrapper .single-image-feature .text-wrapper h2 {
+    font-size: 2.625rem;
+    color: inherit;
+    margin: 0;
+}
+
+.single-image-quote-wrapper .single-image-feature .text-wrapper h2::after {
+    transition: background-color 150ms ease-in-out;
+    height: 0.35rem;
+    width: 4.375rem;
+    background-color: #005099;
+    margin: 2.1rem 0;
+    content: '';
+    display: block;
+}
+
+.single-image-quote-wrapper .single-image-feature .text-wrapper h3 {
+    font-size: 2.1rem;
+    margin: 0.525rem 0 2.1875rem;
+    color: #fff;
+}
+
+.single-image-quote-wrapper .single-image-feature .text-wrapper .button-container {
+    margin-top: 2.0125rem;
+}
+
+.single-image-quote-wrapper .single-image-feature .info-container .info-box {
+    font-family: 'GT Walsheim', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Responsive tweaks */
+@media screen and (width >= 960px) {
+    .single-image-quote-wrapper .single-image-feature .layout-wrapper {
+        padding: 14rem 0 5.25rem;
+    }
+
+    .single-image-quote-wrapper .single-image-feature .text-wrapper {
+        float: left;
+        display: block;
+        margin-right: 1.0104%;
+    }
+
+    .single-image-quote-wrapper .single-image-feature .text-wrapper:last-child {
+        margin-right: 0;
+    }
+}
+
+@media screen and (width >= 580px) {
+    .single-image-quote-wrapper .single-image-feature .text-wrapper h2::after {
+        margin: 3.85rem 0;
+    }
+
+    .single-image-quote-wrapper .single-image-feature .text-wrapper h2 {
+        font-size: 3.5rem;
+        line-height: 3.2rem;
+    }
+
+    .single-image-quote-wrapper .single-image-feature .text-wrapper h3 {
+        font-size: 2.625rem;
+        margin: 1.75rem 0 2.8rem;
+        line-height: 2.8rem;
+    }
+
+    .single-image-quote-wrapper .single-image-feature .text-wrapper .button-container {
+        margin-top: 2.45rem;
+    }
+}
+
+@media screen and (width <= 579px) {
+    .single-image-quote-wrapper .single-image-feature .text-wrapper p {
+        font-size: 1.6rem;
+        line-height: 1.7143;
+    }
+}

@@ -1,0 +1,192 @@
+li {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+@media (width >=991px) {
+  .tier3header-wrapper {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .tier3header.block {
+    --body-font-family: "GT Walsheim", arial, sans-serif;
+
+    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .tier3header.block.has-emergency {
+    border-top: none !important;
+    min-height: 76px !important;
+  }
+
+  .tier3header.block.affix-top, .tier3header.block.affix {
+    min-height: 90px;
+    display: block;
+    height: 76px;
+    border-top: 15px solid;
+    border-image: linear-gradient(120deg, #e0263c 0%, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+    border-bottom: 0;
+    z-index: 401;
+  }
+
+  .bg-school-primary {
+    background-color: #0672b9;
+  }
+
+  .tier3header.block .tier-3-header-ombre {
+    display: block;
+    height: 8px;
+    position: relative;
+    top: -8px;
+    background: linear-gradient(120deg, #e0263c 0, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+  }
+
+  .tier3header.block .sub-header {
+    position: relative;
+    top: -8px;
+  }
+
+  /** Breadcrumb changes start */
+
+  .tier3header.block .overlay {
+    background: 0 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tier3header.block .overlay>.t3-page-header {
+    display: block !important;
+    flex: 0 1 auto;
+    font-family: "GT Walsheim", arial, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: none;
+    height: 75px;
+    color: #fff;
+    margin: 0 !important;
+    line-height: 7.5rem;
+    padding: 0 15px 0 0;
+  }
+
+  .tier3header.block .child.you-are-here {
+    font-weight: 700;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    letter-spacing: -.04rem;
+  }
+
+  .t3-page-header a.crumb.parent {
+    font-size: 1.8rem;
+    line-height: 7.5rem;
+    color: rgb(255 255 255 / 96%);
+    margin-right: 1em;
+    position: relative;
+    background-image: none;
+    display: inline;
+    text-decoration: none;
+  }
+
+  a.crumb:visited {
+    color: rgb(255 255 255 / 96%);
+  }
+
+  .tier3header.block .t3-page-header a.crumb::after {
+    content: '\f125';
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    top: 0;
+    font-family: Ionicons, sans-serif;
+    color: rgb(255 255 255 / 60%);
+    position: absolute;
+    right: -1.1em;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  .tier3header.block .you-are-here {
+    font-weight: 700;
+    font-family: "GT Walsheim", arial, sans-serif;
+    letter-spacing: -.04rem;
+    box-sizing: border-box;
+  }
+
+  .tier3header.block .overlay ul.tier-3-cta {
+    display: flex;
+    min-height: 75px;
+    flex: 0 1 auto;
+    width: 362px;
+    height: 75px;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    border-right: 2px solid #fff;
+    column-count: 1;
+    list-style: none;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .tier3header.block .overlay ul.tier-3-cta li {
+    flex: 0 1 auto;
+    min-height: 75px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    width: 120px;
+  }
+
+  .tier3header.block .overlay ul.tier-3-cta li>a {
+    padding: 15px 18px;
+    line-height: 2.3rem;
+    border: none;
+    width: 120px;
+    height: 75px;
+    white-space: normal;
+    margin: 0;
+    font-weight: 700;
+    color: #fff;
+    background: #0672b9;
+    background-color: #0672b9;
+  }
+
+  .btn.btn-school {
+    font-weight: 700;
+    color: #fff;
+    background: #0672b9;
+    background-color: #0672b9;
+  }
+
+  .affix-top.has-breadcrumb .row-center {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .btn.btn-school:hover,
+  .btn.btn-school:focus {
+    background-color: #0672b9;
+    background-image: linear-gradient(to bottom, #0672b9 0, #0672b9 90%, #f4c74b 90%, #f4c74b 100%) !important;
+    border-color: #0672b9 !important;
+  }
+
+  .a5-widget-container .a5-widget-card, .a5-widget-container .a5-widget-card.a5-widget>.a5-icon {
+    height: 40px !important;
+    width: 350px !important;
+    min-height: 40px !important;
+  }
+
+
+  .ion-lg {
+    position: relative;
+    font-size: 1.5em;
+    line-height: .75em;
+    vertical-align: -22.5%;
+  }
+
+  .tier3header.block.affix {
+    width: 100%;
+    position: fixed;
+  }
+
+  /** * Breadcrumb changes ends here */
+}
