@@ -138,6 +138,7 @@
 
 .sn-collapsible-header {
   width: 100%;
+  background: none;
   border: none;
   padding: 16px 20px;
   font-size: 22px;
