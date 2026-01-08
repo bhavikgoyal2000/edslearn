@@ -50,9 +50,16 @@ function renderFullPage(data) {
   const section = document.createElement('section');
   section.className = 'sn-article sn-full-page';
 
+  if (data.title) {
+    const heading = document.createElement('h2');
+    heading.className = 'sn-title';
+    heading.textContent = data.title;
+    section.appendChild(heading);
+  }
+
   const content = document.createElement('div');
   content.className = 'sn-content';
-  content.innerHTML = data.apiResponse;
+  content.innerHTML = data.desc;
 
   section.appendChild(content);
   return section;
