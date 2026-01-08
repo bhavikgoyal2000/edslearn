@@ -72,8 +72,17 @@ function renderModal(data) {
   wrapper.className = 'sn-modal-wrapper';
 
   const btn = document.createElement('button');
-  btn.className = 'sn-btn';
-  btn.textContent = data.title || 'View Article';
+  btn.className = 'sn-info-btn';
+
+  const icon = document.createElement('span');
+  icon.className = 'sn-info-icon';
+  icon.textContent = 'i';
+
+  const text = document.createElement('span');
+  text.className = 'sn-info-text';
+  text.textContent = 'more info';
+
+  btn.append(icon, text);
 
   const overlay = document.createElement('div');
   overlay.className = 'sn-modal-overlay';
