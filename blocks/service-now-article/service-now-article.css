@@ -42,7 +42,6 @@
   background: #fff;
   width: min(920px, 92vw);
   max-height: 90vh;
-  border-radius: 6px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 40px rgb(0 0 0 / 30%);
