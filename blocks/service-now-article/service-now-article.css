@@ -133,23 +133,52 @@
 
 /* ===== COLLAPSIBLE ===== */
 .sn-collapsible {
-  padding: 16px;
   margin: 20px 0;
 }
 
 .sn-collapsible-header {
   width: 100%;
-  background: none;
   border: none;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
+  padding: 16px 20px;
+  font-size: 22px;
+  font-weight: 500;
   text-align: left;
+  cursor: pointer;
+  color: #4d4037;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sn-collapsible-header:hover {
+  color: #0672b9;
+}
+
+.sn-collapsible-header::after {
+  content: '+';
+  font-size: 28px;
+  font-weight: 300;
+  color: inherit;
+}
+
+.sn-collapsible.open {
+  border: 1px solid #cfd3d8;
+}
+
+.sn-collapsible.open .sn-collapsible-header::after {
+  content: '−';
 }
 
 .sn-collapsible-body {
   display: none;
-  margin-top: 12px;
+  padding: 16px 20px;
+  background: #fff;
+}
+
+.sn-collapsible.open .sn-collapsible-body {
+  display: block;
+  border: 1px solid #cfd3d8;
+  border-top: none;
 }
 
 .sn-collapsible-body.open {
