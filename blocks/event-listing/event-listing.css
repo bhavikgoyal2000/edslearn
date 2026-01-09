@@ -167,7 +167,7 @@
   z-index: 1;
 }
 
-.au-calendar h1 small {
+.au-calendar .au-event-detail .event-date {
   display: block;
   color: #4d4037;
   font-size: 80%;

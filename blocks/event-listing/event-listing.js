@@ -425,7 +425,7 @@ function renderEventDetail(block, eventData) {
       </div>
       <section class="au-event-detail">
         <div class="event-content">
-          <h1 class="event-date"><small>${formattedDate}</small></h1>
+          <h1 class="event-date">${formattedDate}</h1>
           <h1>${eventData.title}</h1>
 
           <p class="event-time-location">
