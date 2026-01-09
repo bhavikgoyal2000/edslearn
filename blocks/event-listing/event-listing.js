@@ -82,7 +82,13 @@ function buildEvents(data) {
             data-fullstart="${event.fullStart}"
             data-fullend="${event.fullEnd}"
             data-location="${safeLocation}"
-            data-description="${safeDescription}">
+            data-description="${safeDescription}"
+            data-type="${event.type || ''}"
+            data-groupname="${event.groupName || ''}"
+            data-groupdisplayonweb="${event.groupDisplayOnWeb}"
+            data-contactname="${event.contactName || ''}"
+            data-contactemail="${event.contactEmail || ''}"
+            data-contactphone="${event.contactPhone || ''}">
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               <div class="au-time">${event.time || ''}</div>
