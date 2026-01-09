@@ -392,37 +392,64 @@ async function loadAnnouncementsForDate(dateStr, block) {
   }
 }
 
+function formatEventDate(dateStr) {
+  if (!dateStr) return '';
+
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
 function renderEventDetail(block, eventData) {
+  const formattedDate = formatEventDate(eventData.fullStart);
   block.innerHTML = `
     <section class="au-event-detail">
-
-      <button class="back-to-calendar">← Back to Calendar</button>
-
-      <div class="event-hero">
-        <img src="/content/dam/sample/event-hero.jpg" alt="${eventData.title}">
-      </div>
-
       <div class="event-content">
+        <p class="event-date">${formattedDate}</p>
         <h1>${eventData.title}</h1>
 
-        <p class="event-time">
-          ${eventData.fullStart} – ${eventData.fullEnd}
+        <p class="event-time-location">
+          ${new Date(eventData.fullStart).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+          -
+          ${new Date(eventData.fullEnd).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}, ${eventData.location}
         </p>
-
-        <p class="event-location">${eventData.location}</p>
 
         <div class="event-description">
           ${eventData.description}
         </div>
+        ${eventData.type ? `
+          <div class="meta-row">
+            <span class="meta-label"><p>Type</p></span>
+            <span class="meta-value">${eventData.type}</span>
+          </div>
+        ` : ''}
+        ${eventData.groupName && eventData.groupDisplayOnWeb ? `
+          <div class="meta-row">
+            <span class="meta-label"><p>Host</p></span>
+            <span class="meta-value">${eventData.groupName}</span>
+          </div>
+        ` : ''}
+        <div class="meta-row">
+          <span class="meta-label"><p>Contact</p></span>
+          <span class="meta-value">
+            ${eventData.contactName ? `${eventData.contactName}` : ''}
+            ${eventData.contactEmail ? ` &lt;<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>&gt;` : ''}
+            ${eventData.contactPhone ? `, ${eventData.contactPhone}` : ''}
+          </span>
+        </div>
+        <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
       </div>
 
     </section>
   `;
 
-  block.querySelector('.back-to-calendar').addEventListener('click', () => {
-    const today = new Date().toISOString().split('T')[0];
-    loadAnnouncementsForDate(today, block);
-  });
+  // block.querySelector('.back-to-calendar').addEventListener('click', () => {
+  //   const today = new Date().toISOString().split('T')[0];
+  //   loadAnnouncementsForDate(today, block);
+  // });
 }
 
 function attachEventPageLinks(block) {
@@ -438,6 +465,12 @@ function attachEventPageLinks(block) {
         fullEnd: eventDiv.dataset.fullend,
         location: eventDiv.dataset.location,
         description: eventDiv.dataset.description,
+        type: eventDiv.dataset.type,
+        groupName: eventDiv.dataset.groupname,
+        groupDisplayOnWeb: eventDiv.dataset.groupdisplayonweb === 'true',
+        contactEmail: eventDiv.dataset.contactemail,
+        contactName: eventDiv.dataset.contactname,
+        contactPhone: eventDiv.dataset.contactphone,
       });
     });
   });
