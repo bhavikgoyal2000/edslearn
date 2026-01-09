@@ -443,7 +443,7 @@ function renderEventDetail(block, eventData) {
           <span class="meta-value">
             <div class="contact-name">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
             <div class="contact-email">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</div>
-            <div class="contact-phone">${eventData.contactPhone ? `${eventData.contactPhone}` : ''}</div>
+            <div class="contact-phone">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</div>
           </span>
         </div>
         <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
