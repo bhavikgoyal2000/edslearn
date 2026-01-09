@@ -93,6 +93,17 @@
   margin-bottom: 1.5rem;
 }
 
+.au-calendar h1 {
+    font-family: "GT Walsheim", Arial, sans-serif !important;
+    font-weight: 700;
+    color: var(--default-heading);
+    font-size: clamp(3rem, 2.1vw, 4rem);
+    line-height: 1.2;
+    letter-spacing: .005em;
+    text-transform: none;
+    margin: 0 0 2.5rem;
+}
+
 .au-calendar .au-header h1 {
   font-family: "GT Walsheim", Arial, sans-serif !important;
   font-size: clamp(3rem, 2.1vw, 4rem);
@@ -101,6 +112,12 @@
   letter-spacing: .005em;
   text-transform: none;
   margin: 0 0 2.5rem;
+}
+
+.au-calendar .au-event-detail .event-time-location {
+  font-size: 1.8rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 600;
 }
 
 .au-calendar .au-nav.day-by-day-navigation {
@@ -149,6 +166,13 @@
   text-decoration: underline;
   text-decoration-color: #0672b9;
   z-index: 1;
+}
+
+.au-calendar h1 small {
+  display: block;
+  color: #4d4037;
+  font-size: 80%;
+  line-height: 1.2;
 }
 
 .au-calendar .au-announcement {

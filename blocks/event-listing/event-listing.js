@@ -425,7 +425,7 @@ function renderEventDetail(block, eventData) {
       </div>
       <section class="au-event-detail">
         <div class="event-content">
-          <p class="event-date">${formattedDate}</p>
+          <h1 class="event-date"><small>${formattedDate}</small></h1>
           <h1>${eventData.title}</h1>
 
           <p class="event-time-location">
@@ -435,7 +435,7 @@ function renderEventDetail(block, eventData) {
           </p>
 
           <div class="event-description">
-            ${eventData.description}
+            <p>${eventData.description}</p>
           </div>
           ${eventData.type ? `
             <div class="meta-row">
