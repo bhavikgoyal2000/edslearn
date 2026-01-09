@@ -263,8 +263,9 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   block.textContent = '';
 
   const html = `
+    <div class="au-calendar">
 
-    <!-- Search -->
+      <!-- Search -->
       <div class="au-search">
         <div class="au-input-wrapper">
             <input type="text" id="searchInput" required>
@@ -274,8 +275,6 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
           <ion-icon name="search-outline"></ion-icon>
         </button>
       </div>
-      
-    <div class="au-calendar">
 
       <!-- Header -->
       ${buildHeader(data, currentDateStr)}
@@ -413,44 +412,56 @@ function formatEventDate(dateStr) {
 function renderEventDetail(block, eventData) {
   const formattedDate = formatEventDate(eventData.fullStart);
   block.innerHTML = `
-    <section class="au-event-detail">
-      <div class="event-content">
-        <p class="event-date">${formattedDate}</p>
-        <h1>${eventData.title}</h1>
-
-        <p class="event-time-location">
-          ${new Date(eventData.fullStart).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-          -
-          ${new Date(eventData.fullEnd).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}, ${eventData.location}
-        </p>
-
-        <div class="event-description">
-          ${eventData.description}
+    <div class="au-calendar">
+      <!-- Search -->
+      <div class="au-search">
+        <div class="au-input-wrapper">
+            <input type="text" id="searchInput" required>
+            <label for="searchInput">Search University Calendar</label>
         </div>
-        ${eventData.type ? `
-          <div class="meta-row">
-            <span class="meta-label">Type</span>
-            <span class="meta-value">${eventData.type}</span>
-          </div>
-        ` : ''}
-        ${eventData.groupName && eventData.groupDisplayOnWeb ? `
-          <div class="meta-row">
-            <span class="meta-label">Host</span>
-            <span class="meta-value">${eventData.groupName}</span>
-          </div>
-        ` : ''}
-        <div class="meta-row">
-          <span class="meta-label">Contact</span>
-          <span class="meta-value">
-            <div class="contact-name">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
-            <div class="contact-email">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</div>
-            <div class="contact-phone">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</div>
-          </span>
-        </div>
-        <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
+        <button type="button" aria-label="Search">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
       </div>
+      <section class="au-event-detail">
+        <div class="event-content">
+          <p class="event-date">${formattedDate}</p>
+          <h1>${eventData.title}</h1>
 
-    </section>
+          <p class="event-time-location">
+            ${new Date(eventData.fullStart).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
+            -
+            ${new Date(eventData.fullEnd).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}, ${eventData.location}
+          </p>
+
+          <div class="event-description">
+            ${eventData.description}
+          </div>
+          ${eventData.type ? `
+            <div class="meta-row">
+              <span class="meta-label">Type</span>
+              <span class="meta-value">${eventData.type}</span>
+            </div>
+          ` : ''}
+          ${eventData.groupName && eventData.groupDisplayOnWeb ? `
+            <div class="meta-row">
+              <span class="meta-label">Host</span>
+              <span class="meta-value">${eventData.groupName}</span>
+            </div>
+          ` : ''}
+          <div class="meta-row">
+            <span class="meta-label">Contact</span>
+            <span class="meta-value">
+              <div class="contact-name">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
+              <div class="contact-email">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</div>
+              <div class="contact-phone">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</div>
+            </span>
+          </div>
+          <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
+        </div>
+
+      </section>
+    </div>
   `;
 
   // block.querySelector('.back-to-calendar').addEventListener('click', () => {
