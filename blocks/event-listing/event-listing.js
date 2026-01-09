@@ -263,9 +263,8 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   block.textContent = '';
 
   const html = `
-    <div class="au-calendar">
 
-      <!-- Search -->
+    <!-- Search -->
       <div class="au-search">
         <div class="au-input-wrapper">
             <input type="text" id="searchInput" required>
@@ -275,6 +274,8 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
           <ion-icon name="search-outline"></ion-icon>
         </button>
       </div>
+      
+    <div class="au-calendar">
 
       <!-- Header -->
       ${buildHeader(data, currentDateStr)}
