@@ -109,7 +109,9 @@ function buildEvents(data) {
                     ${`
                       <div class="meta-row">
                         <span class="meta-label"><p>More Info</p></span>
-                        <span class="meta-value"><a href="javascript:void(0);" target="_blank">Event Page</a></span>
+                        <span class="meta-value">
+                          <a href="javascript:void(0);" class="event-page-link">Event Page</a>
+                        </span>
                       </div>
                     `}
                   </div>
@@ -291,6 +293,8 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachNavButtons(block);
   attachExport(block);
   attachPopup(block);
+  // eslint-disable-next-line no-use-before-define
+  attachEventPageLinks(block);
 }
 
 async function loadAnnouncementsForDate(dateStr, block) {
@@ -386,6 +390,57 @@ async function loadAnnouncementsForDate(dateStr, block) {
     block.textContent = 'Failed to load announcements and events.';
     block.style.color = 'red';
   }
+}
+
+function renderEventDetail(block, eventData) {
+  block.innerHTML = `
+    <section class="au-event-detail">
+
+      <button class="back-to-calendar">← Back to Calendar</button>
+
+      <div class="event-hero">
+        <img src="/content/dam/sample/event-hero.jpg" alt="${eventData.title}">
+      </div>
+
+      <div class="event-content">
+        <h1>${eventData.title}</h1>
+
+        <p class="event-time">
+          ${eventData.fullStart} – ${eventData.fullEnd}
+        </p>
+
+        <p class="event-location">${eventData.location}</p>
+
+        <div class="event-description">
+          ${eventData.description}
+        </div>
+      </div>
+
+    </section>
+  `;
+
+  block.querySelector('.back-to-calendar').addEventListener('click', () => {
+    const today = new Date().toISOString().split('T')[0];
+    loadAnnouncementsForDate(today, block);
+  });
+}
+
+function attachEventPageLinks(block) {
+  block.querySelectorAll('.event-page-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const eventDiv = link.closest('.au-event');
+
+      renderEventDetail(block, {
+        title: eventDiv.dataset.title,
+        fullStart: eventDiv.dataset.fullstart,
+        fullEnd: eventDiv.dataset.fullend,
+        location: eventDiv.dataset.location,
+        description: eventDiv.dataset.description,
+      });
+    });
+  });
 }
 
 export default async function decorate(block) {
