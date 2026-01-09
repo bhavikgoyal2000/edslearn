@@ -428,22 +428,22 @@ function renderEventDetail(block, eventData) {
         </div>
         ${eventData.type ? `
           <div class="meta-row">
-            <span class="meta-label"><p>Type</p></span>
+            <span class="meta-label">Type</span>
             <span class="meta-value">${eventData.type}</span>
           </div>
         ` : ''}
         ${eventData.groupName && eventData.groupDisplayOnWeb ? `
           <div class="meta-row">
-            <span class="meta-label"><p>Host</p></span>
+            <span class="meta-label">Host</span>
             <span class="meta-value">${eventData.groupName}</span>
           </div>
         ` : ''}
         <div class="meta-row">
-          <span class="meta-label"><p>Contact</p></span>
+          <span class="meta-label">Contact</span>
           <span class="meta-value">
-            ${eventData.contactName ? `${eventData.contactName}` : ''}
-            ${eventData.contactEmail ? ` &lt;<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>&gt;` : ''}
-            ${eventData.contactPhone ? `, ${eventData.contactPhone}` : ''}
+            <div class="contact-name">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
+            <div class="contact-email">${eventData.contactEmail ? ` &lt;<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>&gt;` : ''}</div>
+            <div class="contact-phone">${eventData.contactPhone ? `, ${eventData.contactPhone}` : ''}</div>
           </span>
         </div>
         <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
