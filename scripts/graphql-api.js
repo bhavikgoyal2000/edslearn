@@ -31,11 +31,16 @@ async function fetchGraphQLData(queryName, path) {
 async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
+    const username = 'admin';
+    const password = 'admin';
+
+    const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3BeventStart%3D${eventStartDate}%3BeventEnd%3D${eventEndDate}%3BvisibilityLevel%3D${visibilityLevel}%3BvisibilityApproved%3D${visibilityApproved}%3Bdate%3D${date}%3BvisbleRequested%3D${visbleRequested}%3BvisibleApproved%3D${visibleApproved}?${cacheBuster}`;
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: authHeader,
       },
     });
 
