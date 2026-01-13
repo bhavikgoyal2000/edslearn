@@ -335,8 +335,6 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
       ${buildFooter(data, currentDateStr)}
 
-      ${buildFooter(data, currentDateStr)}
-
       ${buildUpcomingEvents(data, currentDateStr)}
 
     </div>
@@ -354,7 +352,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
 async function loadUpcomingEvents(eventEndDateTime) {
   try {
-    const json = await fetchCalendarData('GetUpcomingCalendarEvents', eventEndDateTime, '2', '2');
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, '2', '2');
 
     return json?.calendarEventsList?.items || [];
   } catch (e) {
