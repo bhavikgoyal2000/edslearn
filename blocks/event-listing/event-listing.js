@@ -259,6 +259,51 @@ END:VCALENDAR`;
   });
 }
 
+function buildUpcomingEvents(data, currentDateStr) {
+  if (!data.upcomingEvents || data.upcomingEvents.length === 0) return '';
+
+  const headingDate = new Date(currentDateStr).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  let lastDate = '';
+
+  const items = data.upcomingEvents.map((event) => {
+    const eventDate = new Date(event.fullStart).toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+    });
+
+    const dateHeader = eventDate !== lastDate
+      ? `<div class="au-upcoming-date">${eventDate}</div>`
+      : '';
+
+    lastDate = eventDate;
+
+    return `
+      ${dateHeader}
+      <div class="au-event upcoming">
+        <div class="au-event-header">
+          <div class="au-time">${event.time}</div>
+          <div class="au-title">${event.title}</div>
+          <div class="au-location">${event.location}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <section class="au-upcoming-events">
+      <h2>After ${headingDate}</h2>
+      ${items}
+    </section>
+  `;
+}
+
 export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0]) {
   block.textContent = '';
 
@@ -290,6 +335,10 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
       ${buildFooter(data, currentDateStr)}
 
+      ${buildFooter(data, currentDateStr)}
+
+      ${buildUpcomingEvents(data, currentDateStr)}
+
     </div>
   `;
 
@@ -301,6 +350,16 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachPopup(block);
   // eslint-disable-next-line no-use-before-define
   attachEventPageLinks(block);
+}
+
+async function loadUpcomingEvents(eventEndDateTime) {
+  try {
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', eventEndDateTime, '2', '2');
+
+    return json?.calendarEventsList?.items || [];
+  } catch (e) {
+    return [];
+  }
 }
 
 async function loadAnnouncementsForDate(dateStr, block) {
@@ -333,28 +392,32 @@ async function loadAnnouncementsForDate(dateStr, block) {
       };
     });
 
-    const rawEvents = calendarJson?.calendarEventsList?.items || [];
-    const events = rawEvents.map((item) => {
+    const rawEventsToday = calendarJson?.calendarEventsList?.items || [];
+
+    const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
+
+    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd);
+
+    const mapEvent = (item) => {
       const start = new Date(item.eventStart);
       const end = new Date(item.eventEnd);
+
       const startTime = start.toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
         timeZone: 'America/New_York',
       });
+
       const endTime = end.toLocaleTimeString('en-US', {
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
         timeZone: 'America/New_York',
       });
-      const time = item.eventStart && item.eventEnd
-        ? `${startTime} – ${endTime}`
-        : (startTime || '');
+
       return {
-        time,
-        eventId: item.bookingId || '',
+        time: `${startTime} – ${endTime}`,
         title: item.eventName || 'Untitled Event',
         location: item.roomDescription?.markdown || '',
         eventDescription: item.eventDescription?.markdown || '',
@@ -363,12 +426,20 @@ async function loadAnnouncementsForDate(dateStr, block) {
         contactName: item.calendarContactName || '',
         contactEmail: item.calendarContactEmail || '',
         contactPhone: item.calendarContactPhone || '',
-        type: item.eventTypeName || '(none)',
-        moreInfo: item.path ? `${window.location.origin}${item.path.replace('/content/dam', '/events')}` : '',
+        type: item.eventTypeName || '',
         fullStart: item.eventStart,
         fullEnd: item.eventEnd,
+        dateLabel: start.toLocaleDateString('en-US', {
+          weekday: 'short',
+          month: '2-digit',
+          day: '2-digit',
+          year: 'numeric',
+        }),
       };
-    });
+    };
+
+    const eventsToday = rawEventsToday.map(mapEvent);
+    const upcomingEvents = upcomingRawEvents.map(mapEvent);
 
     const dateObj = new Date(dateStr);
     const dateFormatted = dateObj.toLocaleDateString('en-US', {
@@ -381,7 +452,8 @@ async function loadAnnouncementsForDate(dateStr, block) {
     const data = {
       dateFormatted,
       announcements,
-      events,
+      events: eventsToday,
+      upcomingEvents,
       popupItems: [
         { color: 'red', label: '<ion-icon name="calendar-outline"></ion-icon>Semester Calendar', description: "AU's standard academic calendar consisting of the Fall & Spring Semesters and the Summer Sessions each year." },
         { color: 'gray', label: '<ion-icon name="calendar-outline"></ion-icon>Four Term Calendar', description: "AU's Four Term academic calendar..." },
