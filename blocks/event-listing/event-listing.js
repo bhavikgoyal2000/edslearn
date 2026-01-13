@@ -259,48 +259,17 @@ END:VCALENDAR`;
   });
 }
 
-function buildUpcomingEvents(data, currentDateStr) {
-  if (!data.upcomingEvents || data.upcomingEvents.length === 0) return '';
-
-  const headingDate = new Date(currentDateStr).toLocaleDateString('en-US', {
+function buildUpcomingHeading(currentDateStr) {
+  const date = new Date(currentDateStr).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
   });
 
-  let lastDate = '';
-
-  const items = data.upcomingEvents.map((event) => {
-    const eventDate = new Date(event.fullStart).toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric',
-    });
-
-    const dateHeader = eventDate !== lastDate
-      ? `<div class="au-upcoming-date">${eventDate}</div>`
-      : '';
-
-    lastDate = eventDate;
-
-    return `
-      ${dateHeader}
-      <div class="au-event upcoming">
-        <div class="au-event-header">
-          <div class="au-time">${event.time}</div>
-          <div class="au-title">${event.title}</div>
-          <div class="au-location">${event.location}</div>
-        </div>
-      </div>
-    `;
-  }).join('');
-
   return `
-    <section class="au-upcoming-events">
-      <h2>After ${headingDate}</h2>
-      ${items}
-    </section>
+    <h2 class="au-upcoming-heading">
+      After ${date}
+    </h2>
   `;
 }
 
@@ -328,14 +297,18 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       ${buildAnnouncements(data)}
 
       <!-- Events -->
-      ${buildEvents(data)}
+      ${buildEvents({ ...data, events: data.events })}
 
       <!-- Popup -->
       ${buildPopup(data)}
 
       ${buildFooter(data, currentDateStr)}
 
-      ${buildUpcomingEvents(data, currentDateStr)}
+      ${data.upcomingEvents?.length
+    ? buildUpcomingHeading(currentDateStr)
+          + buildEvents({ ...data, events: data.upcomingEvents })
+    : ''
+}
 
     </div>
   `;
