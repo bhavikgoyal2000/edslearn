@@ -64,6 +64,7 @@ function buildAnnouncements(data) {
 }
 
 function buildEvents(data) {
+  const isUpcoming = data.isUpcoming === true;
   if (!data.events || data.events.length === 0) {
     return '<p class="no-events">No events scheduled for this day.</p>';
   }
@@ -75,6 +76,13 @@ function buildEvents(data) {
     const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     const safeDescription = (event.eventDescription || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    const eventDateLabel = isUpcoming ? new Date(event.fullStart).toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric',
+    })
+      : '';
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
@@ -91,6 +99,7 @@ function buildEvents(data) {
             data-contactphone="${event.contactPhone || ''}">
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
+              ${isUpcoming ? `<div class="au-date"> ${eventDateLabel}</div>` : ''}
               <div class="au-time">${event.time || ''}</div>
               <div class="au-title">${event.title}</div>
               <div class="au-location">${event.location || ''}</div>
@@ -304,11 +313,9 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
       ${buildFooter(data, currentDateStr)}
 
-      ${data.upcomingEvents?.length
-    ? buildUpcomingHeading(currentDateStr)
-          + buildEvents({ ...data, events: data.upcomingEvents })
-    : ''
-}
+      ${buildUpcomingHeading(currentDateStr)}
+
+      ${buildEvents({ ...data, events: data.upcomingEvents, isUpcoming: true })}
 
     </div>
   `;
