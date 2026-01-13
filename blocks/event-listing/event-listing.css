@@ -183,6 +183,12 @@
   position: relative;
 }
 
+.au-calendar .au-event-header .au-date {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.15rem;
+}
+
 .au-calendar .info-icon.main-icon {
   font-size: 2rem;
   font-family: Ionicons, sans-serif;
