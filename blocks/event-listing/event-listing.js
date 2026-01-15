@@ -353,9 +353,9 @@ async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, locati
   }
 }
 
-async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visbleRequested, visibleApproved) {
+async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   try {
-    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visbleRequested, visibleApproved, groupId, eventTypeId, location);
+    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, groupId, eventTypeId, location);
     let rawItems = [];
     if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {
       rawItems = calendarJson.announcementList.items;
@@ -387,7 +387,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
 
     const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
 
-    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visbleRequested, visibleApproved);
+    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 
     const mapEvent = (item) => {
       const start = new Date(item.eventStart);
@@ -456,7 +456,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
       ],
     };
 
-    renderCalendarFromApi(block, data, dateStr, visibilityLevel, visibilityApproved, visbleRequested, visibleApproved);
+    renderCalendarFromApi(block, data, dateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   } catch (err) {
     block.textContent = 'Failed to load announcements and events.';
     block.style.color = 'red';
@@ -630,6 +630,17 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
   });
 }
 
+function parseDefaultValues(str) {
+  if (!str || str.trim() === '') return 2;
+  const num = parseInt(str.trim(), 10);
+  return Number.isNaN(num) ? 2 : num;
+}
+
+function parseBoolean(str, defaultValue = false) {
+  if (!str || str.trim() === '') return defaultValue;
+  return str.trim().toLowerCase() === 'true';
+}
+
 function extractData(block) {
   const rows = [...block.children];
   const data = {};
@@ -647,10 +658,10 @@ function extractData(block) {
     groupId: data.groupId,
     eventTypeId: data.eventTypeId,
     location: data.location,
-    visibilityLevel: data.visibilityLevel,
-    visibilityApproved: data.visibilityApproved,
-    visibleRequested: data.visibleRequested,
-    visibleApproved: data.visibleApproved,
+    visibilityLevel: parseDefaultValues(data.visibilityLevel),
+    visibilityApproved: parseDefaultValues(data.visibilityApproved),
+    visibleRequested: parseDefaultValues(data.visibleRequested),
+    visibleApproved: parseBoolean(data.visibleApproved),
   };
 }
 
