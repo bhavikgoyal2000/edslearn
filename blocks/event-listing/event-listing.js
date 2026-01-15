@@ -343,7 +343,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
 async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location) {
   try {
-    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, '2', '2', groupId, eventTypeId, location);
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, '2', '2', null, null, null, groupId, eventTypeId, location);
 
     return json?.calendarEventsList?.items || [];
   } catch (e) {
