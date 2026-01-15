@@ -4730,7 +4730,11 @@
       { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true },
       { "component": "number", "name": "groupId", "label": "Host Id", "valueType": "number"},
       { "component": "number", "name": "eventTypeId", "label": "Event Type Id", "valueType": "number"},
-      { "component": "number", "name": "location", "label": "Location ", "valueType": "number"}
+      { "component": "number", "name": "location", "label": "Location ", "valueType": "number"},
+      { "component": "text", "name": "visibilityLevel", "label": "Visibility Level (For Event Listing)", "valueType": "string"},
+      { "component": "text", "name": "visibilityApproved", "label": "Visibility Approved (For Event Listing)", "valueType": "string"},
+      { "component": "text", "name": "visbleRequested", "label": "Visibility Requested (For Announcement Listing)", "valueType": "string"},
+      { "component": "boolean", "name": "visibleApproved", "label": "Visibility Approved (For Announcement Listing)", "valueType": "boolean"}
     ]
   },
   {

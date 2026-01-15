@@ -292,7 +292,8 @@ function buildUpcomingHeading(currentDateStr) {
   `;
 }
 
-export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0]) {
+// eslint-disable-next-line default-param-last
+export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   block.textContent = '';
 
   const html = `
@@ -337,14 +338,14 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachExport(block);
   attachPopup(block);
   // eslint-disable-next-line no-use-before-define
-  attachEventPageLinks(block);
+  attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   // eslint-disable-next-line no-use-before-define
-  attachHostFilter(block, currentDateStr);
+  attachHostFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 }
 
-async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location) {
+async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   try {
-    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, '2', '2', null, null, null, groupId, eventTypeId, location);
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, visibilityLevel, visibilityApproved, null, visibleRequested, visibleApproved, groupId, eventTypeId, location);
 
     return json?.calendarEventsList?.items || [];
   } catch (e) {
@@ -352,9 +353,9 @@ async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, locati
   }
 }
 
-async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location) {
+async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visbleRequested, visibleApproved) {
   try {
-    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2', dateStr, '2', 'true', groupId, eventTypeId, location);
+    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visbleRequested, visibleApproved, groupId, eventTypeId, location);
     let rawItems = [];
     if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {
       rawItems = calendarJson.announcementList.items;
@@ -386,7 +387,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
 
     const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
 
-    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, groupId, eventTypeId, location);
+    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visbleRequested, visibleApproved);
 
     const mapEvent = (item) => {
       const start = new Date(item.eventStart);
@@ -455,7 +456,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
       ],
     };
 
-    renderCalendarFromApi(block, data, dateStr);
+    renderCalendarFromApi(block, data, dateStr, visibilityLevel, visibilityApproved, visbleRequested, visibleApproved);
   } catch (err) {
     block.textContent = 'Failed to load announcements and events.';
     block.style.color = 'red';
@@ -473,7 +474,7 @@ function formatEventDate(dateStr) {
   });
 }
 
-function renderEventDetail(block, eventData) {
+function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   const formattedDate = formatEventDate(eventData.fullStart);
   block.innerHTML = `
     <div class="au-calendar">
@@ -543,16 +544,11 @@ function renderEventDetail(block, eventData) {
   `;
 
   // eslint-disable-next-line no-use-before-define
-  attachEventTypeFilter(block, eventData.fullStart?.split('T')[0]);
+  attachEventTypeFilter(block, eventData.fullStart?.split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   attachExport(block);
-
-  // block.querySelector('.back-to-calendar').addEventListener('click', () => {
-  //   const today = new Date().toISOString().split('T')[0];
-  //   loadAnnouncementsForDate(today, block);
-  // });
 }
 
-function attachEventTypeFilter(block, currentDateStr) {
+function attachEventTypeFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   const link = block.querySelector('.event-type-filter-link');
   if (!link) return;
 
@@ -570,11 +566,15 @@ function attachEventTypeFilter(block, currentDateStr) {
       null,
       eventTypeId,
       null,
+      visibilityLevel,
+      visibilityApproved,
+      visibleRequested,
+      visibleApproved,
     );
   });
 }
 
-function attachHostFilter(block, currentDateStr) {
+function attachHostFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   block.querySelectorAll('.host-filter-link').forEach((link) => {
     link.addEventListener('click', async (e) => {
       e.preventDefault();
@@ -591,12 +591,16 @@ function attachHostFilter(block, currentDateStr) {
         groupId,
         null,
         null,
+        visibilityLevel,
+        visibilityApproved,
+        visibleRequested,
+        visibleApproved,
       );
     });
   });
 }
 
-function attachEventPageLinks(block) {
+function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   block.querySelectorAll('.event-page-link').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -617,6 +621,10 @@ function attachEventPageLinks(block) {
         contactEmail: eventDiv.dataset.contactemail,
         contactName: eventDiv.dataset.contactname,
         contactPhone: eventDiv.dataset.contactphone,
+        visibilityLevel,
+        visibilityApproved,
+        visibleRequested,
+        visibleApproved,
       });
     });
   });
@@ -639,6 +647,10 @@ function extractData(block) {
     groupId: data.groupId,
     eventTypeId: data.eventTypeId,
     location: data.location,
+    visibilityLevel: data.visibilityLevel,
+    visibilityApproved: data.visibilityApproved,
+    visibleRequested: data.visibleRequested,
+    visibleApproved: data.visibleApproved,
   };
 }
 
@@ -646,11 +658,11 @@ export default async function decorate(block) {
   block.textContent = 'Loading Announcements...';
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block, data.groupId, data.eventTypeId, data.location);
+  await loadAnnouncementsForDate(today, block, data.groupId, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate, block, data.groupId, data.eventTypeId, data.location);
+    loadAnnouncementsForDate(selectedDate, block, data.groupId, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
   if (!document.querySelector('script[src*="ionicons"]')) {
