@@ -340,6 +340,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   // eslint-disable-next-line no-use-before-define
   attachEventPageLinks(block);
   // eslint-disable-next-line no-use-before-define
+  attachFilterHandlers(block, currentDateStr);
 }
 
 async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location) {
@@ -541,33 +542,39 @@ function renderEventDetail(block, eventData) {
       </section>
     </div>
   `;
+
+  attachExport(block);
+  // eslint-disable-next-line no-use-before-define
+  attachFilterHandlers(block, eventData.fullStart?.split('T')[0]);
 }
 
-function attachDelegatedFilters(block) {
-  block.addEventListener('click', (e) => {
-    const hostBtn = e.target.closest('.host-filter-link');
-    const typeBtn = e.target.closest('.event-type-filter-link');
+function attachFilterHandlers(block, currentDateStr) {
+  const date = currentDateStr || new Date().toISOString().split('T')[0];
 
-    if (!hostBtn && !typeBtn) return;
+  // Host filter
+  block.querySelectorAll('.host-filter-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    e.preventDefault();
-    e.stopPropagation();
+      const groupId = link.dataset.groupid;
+      if (!groupId) return;
 
-    const date = block.querySelector('.au-header h1') ? new Date().toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+      loadAnnouncementsForDate(date, block, groupId, null, null);
+    });
+  });
 
-    if (hostBtn) {
-      const groupId = hostBtn.dataset.groupid;
-      if (groupId) {
-        loadAnnouncementsForDate(date, block, groupId, null, null);
-      }
-    }
+  // Event type filter
+  block.querySelectorAll('.event-type-filter-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (typeBtn) {
-      const eventTypeId = typeBtn.dataset.eventtypeid;
-      if (eventTypeId) {
-        loadAnnouncementsForDate(date, block, null, eventTypeId, null);
-      }
-    }
+      const eventTypeId = link.dataset.eventtypeid;
+      if (!eventTypeId) return;
+
+      loadAnnouncementsForDate(date, block, null, eventTypeId, null);
+    });
   });
 }
 
@@ -619,7 +626,6 @@ function extractData(block) {
 
 export default async function decorate(block) {
   block.textContent = 'Loading Announcements...';
-  attachDelegatedFilters(block);
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
   await loadAnnouncementsForDate(today, block, data.groupId, data.eventTypeId, data.location);
