@@ -636,7 +636,7 @@ function parseDefaultValues(str) {
   return Number.isNaN(num) ? 2 : num;
 }
 
-function parseBoolean(str, defaultValue = false) {
+function parseBoolean(str, defaultValue = true) {
   if (!str || str.trim() === '') return defaultValue;
   return str.trim().toLowerCase() === 'true';
 }
