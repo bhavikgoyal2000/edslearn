@@ -338,7 +338,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   // eslint-disable-next-line no-use-before-define
   attachEventPageLinks(block);
   // eslint-disable-next-line no-use-before-define
-  attachHostFilter(block, currentDateStr);
+  attachFilterHandlers(block, currentDateStr);
 }
 
 async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location) {
@@ -539,56 +539,37 @@ function renderEventDetail(block, eventData) {
     </div>
   `;
 
-  // eslint-disable-next-line no-use-before-define
-  attachEventTypeFilter(block, eventData.fullStart?.split('T')[0]);
   attachExport(block);
-
-  // block.querySelector('.back-to-calendar').addEventListener('click', () => {
-  //   const today = new Date().toISOString().split('T')[0];
-  //   loadAnnouncementsForDate(today, block);
-  // });
+  // eslint-disable-next-line no-use-before-define
+  attachFilterHandlers(block, eventData.fullStart?.split('T')[0]);
 }
 
-function attachEventTypeFilter(block, currentDateStr) {
-  const link = block.querySelector('.event-type-filter-link');
-  if (!link) return;
+function attachFilterHandlers(block, currentDateStr) {
+  const date = currentDateStr || new Date().toISOString().split('T')[0];
 
-  link.addEventListener('click', async (e) => {
-    e.preventDefault();
-
-    const eventTypeId = link.dataset.eventtypeid;
-    if (!eventTypeId) return;
-
-    const date = currentDateStr || new Date().toISOString().split('T')[0];
-
-    await loadAnnouncementsForDate(
-      date,
-      block,
-      null,
-      eventTypeId,
-      null,
-    );
-  });
-}
-
-function attachHostFilter(block, currentDateStr) {
+  // Host filter
   block.querySelectorAll('.host-filter-link').forEach((link) => {
-    link.addEventListener('click', async (e) => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
 
       const groupId = link.dataset.groupid;
       if (!groupId) return;
 
-      const date = currentDateStr || new Date().toISOString().split('T')[0];
+      loadAnnouncementsForDate(date, block, groupId, null, null);
+    });
+  });
 
-      await loadAnnouncementsForDate(
-        date,
-        block,
-        groupId,
-        null,
-        null,
-      );
+  // Event type filter
+  block.querySelectorAll('.type-filter-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const eventTypeId = link.dataset.eventtypeid;
+      if (!eventTypeId) return;
+
+      loadAnnouncementsForDate(date, block, null, eventTypeId, null);
     });
   });
 }
