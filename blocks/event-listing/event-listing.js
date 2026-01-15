@@ -116,7 +116,7 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>Host</p></span>
                         <span class="meta-value">
-                          <a href="#"
+                          <a href="javascript:void(0);"
                             class="host-filter-link"
                             data-groupid="${event.groupId}">
                             ${event.groupName}
@@ -134,7 +134,7 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>More Info</p></span>
                         <span class="meta-value">
-                          <a href="#" class="event-page-link">Event Page</a>
+                          <a href="javascript:void(0);" class="event-page-link">Event Page</a>
                         </span>
                       </div>
                     `}
@@ -338,7 +338,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   // eslint-disable-next-line no-use-before-define
   attachEventPageLinks(block);
   // eslint-disable-next-line no-use-before-define
-  attachFilterHandlers(block, currentDateStr);
+  attachHostFilter(block, currentDateStr);
 }
 
 async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location) {
@@ -504,7 +504,7 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label">Type</span>
               <span class="meta-value">
-                <a href="#"
+                <a href="javascript:void(0);"
                   class="event-type-filter-link"
                   data-eventtypeid="${eventData.eventTypeId}">
                   ${eventData.type}
@@ -516,7 +516,7 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label"><p>Host</p></span>
               <span class="meta-value">
-                <a href="#"
+                <a href="javascript:void(0);"
                   class="host-filter-link"
                   data-groupid="${eventData.groupId}">
                   ${eventData.groupName}
@@ -539,37 +539,56 @@ function renderEventDetail(block, eventData) {
     </div>
   `;
 
-  attachExport(block);
   // eslint-disable-next-line no-use-before-define
-  attachFilterHandlers(block, eventData.fullStart?.split('T')[0]);
+  attachEventTypeFilter(block, eventData.fullStart?.split('T')[0]);
+  attachExport(block);
+
+  // block.querySelector('.back-to-calendar').addEventListener('click', () => {
+  //   const today = new Date().toISOString().split('T')[0];
+  //   loadAnnouncementsForDate(today, block);
+  // });
 }
 
-function attachFilterHandlers(block, currentDateStr) {
-  const date = currentDateStr || new Date().toISOString().split('T')[0];
+function attachEventTypeFilter(block, currentDateStr) {
+  const link = block.querySelector('.event-type-filter-link');
+  if (!link) return;
 
-  // Host filter
+  link.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const eventTypeId = link.dataset.eventtypeid;
+    if (!eventTypeId) return;
+
+    const date = currentDateStr || new Date().toISOString().split('T')[0];
+
+    await loadAnnouncementsForDate(
+      date,
+      block,
+      null,
+      eventTypeId,
+      null,
+    );
+  });
+}
+
+function attachHostFilter(block, currentDateStr) {
   block.querySelectorAll('.host-filter-link').forEach((link) => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', async (e) => {
       e.preventDefault();
       e.stopPropagation();
 
       const groupId = link.dataset.groupid;
       if (!groupId) return;
 
-      loadAnnouncementsForDate(date, block, groupId, null, null);
-    });
-  });
+      const date = currentDateStr || new Date().toISOString().split('T')[0];
 
-  // Event type filter
-  block.querySelectorAll('.event-type-filter-link').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const eventTypeId = link.dataset.eventtypeid;
-      if (!eventTypeId) return;
-
-      loadAnnouncementsForDate(date, block, null, eventTypeId, null);
+      await loadAnnouncementsForDate(
+        date,
+        block,
+        groupId,
+        null,
+        null,
+      );
     });
   });
 }
