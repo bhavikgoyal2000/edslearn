@@ -28,14 +28,36 @@ async function fetchGraphQLData(queryName, path) {
   }
 }
 
-async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
+async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, groupId, eventTypeId, location) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
     const username = 'admin';
     const password = 'admin';
 
     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3BeventStart%3D${eventStartDate}%3BeventEnd%3D${eventEndDate}%3BvisibilityLevel%3D${visibilityLevel}%3BvisibilityApproved%3D${visibilityApproved}%3Bdate%3D${date}%3BvisbleRequested%3D${visbleRequested}%3BvisibleApproved%3D${visibleApproved}%3BgroupId%3D?${cacheBuster}`;
+    const paramParts = [
+      `eventStart%3D${encodeURIComponent(eventStartDate)}`,
+      `eventEnd%3D${encodeURIComponent(eventEndDate)}`,
+      `visibilityLevel%3D${encodeURIComponent(visibilityLevel)}`,
+      `visibilityApproved%3D${encodeURIComponent(visibilityApproved)}`,
+      `date%3D${encodeURIComponent(date)}`,
+      `visbleRequested%3D${encodeURIComponent(visbleRequested)}`,
+      `visibleApproved%3D${encodeURIComponent(visibleApproved)}`,
+    ];
+
+    if (groupId != null && groupId !== '') {
+      paramParts.push(`groupId%3D${encodeURIComponent(groupId)}`);
+    }
+    if (eventTypeId != null && eventTypeId !== '') {
+      paramParts.push(`eventTypeId%3D${encodeURIComponent(eventTypeId)}`);
+    }
+    if (location != null && location !== '') {
+      paramParts.push(`location%3D${encodeURIComponent(location)}`);
+    }
+
+    const paramString = paramParts.length > 0 ? `%3B${paramParts.join('%3B')}` : '';
+
+    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}${paramString}?${cacheBuster}`;
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
       headers: {
