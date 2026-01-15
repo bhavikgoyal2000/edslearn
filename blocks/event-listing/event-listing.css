@@ -149,6 +149,22 @@
   margin: 0 -2px 0 0;
 }
 
+.au-calendar .link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--link-color, #005ea2);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.au-calendar .link-button:hover {
+  text-decoration: none;
+}
+
+
 .au-calendar .au-nav.day-by-day-navigation .previous::after {
   content: '';
   position: absolute;

@@ -116,11 +116,12 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>Host</p></span>
                         <span class="meta-value">
-                          <a href="#"
-                            class="host-filter-link"
+                          <button
+                            type="button"
+                            class="host-filter-link link-button"
                             data-groupid="${event.groupId}">
                             ${event.groupName}
-                          </a>
+                          </button>
                         </span>
                       </div>
                     ` : ''}
@@ -187,7 +188,8 @@ function attachAccordion(block) {
     const icon = arrow?.querySelector('ion-icon');
     if (icon) icon.name = 'chevron-down-outline';
 
-    header.addEventListener('click', () => {
+    header.addEventListener('click', (e) => {
+      if (e.target.closest('a, button')) return;
       const isOpen = event.classList.toggle('open');
       if (icon) icon.name = isOpen ? 'chevron-up-outline' : 'chevron-down-outline';
       if (details) details.style.display = isOpen ? 'flex' : 'none';
@@ -504,11 +506,12 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label">Type</span>
               <span class="meta-value">
-                <a href="#"
-                  class="event-type-filter-link"
+                <button
+                  type="button"
+                  class="event-type-filter-link link-button"
                   data-eventtypeid="${eventData.eventTypeId}">
                   ${eventData.type}
-                </a>
+                </button>
               </span>
             </div>
           ` : ''}
@@ -516,11 +519,12 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label"><p>Host</p></span>
               <span class="meta-value">
-                <a href="#"
-                  class="host-filter-link"
+                <button
+                  type="button"
+                  class="host-filter-link link-button"
                   data-groupid="${eventData.groupId}">
                   ${eventData.groupName}
-                </a>
+                </button>
               </span>
             </div>
           ` : ''}
