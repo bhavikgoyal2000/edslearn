@@ -116,11 +116,12 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>Host</p></span>
                         <span class="meta-value">
-                          <a href="#"
+                          <button
+                            type="button"
                             class="host-filter-link"
                             data-groupid="${event.groupId}">
                             ${event.groupName}
-                          </a>
+                          </button>
                         </span>
                       </div>
                     ` : ''}
@@ -504,11 +505,12 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label">Type</span>
               <span class="meta-value">
-                <a href="#"
+                <button
+                  type="button"
                   class="event-type-filter-link"
                   data-eventtypeid="${eventData.eventTypeId}">
                   ${eventData.type}
-                </a>
+                </button>
               </span>
             </div>
           ` : ''}
@@ -516,11 +518,12 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label"><p>Host</p></span>
               <span class="meta-value">
-                <a href="#"
-                  class="host-filter-link"
-                  data-groupid="${eventData.groupId}">
-                  ${eventData.groupName}
-                </a>
+                <button
+                type="button"
+                class="host-filter-link"
+                data-groupid="${eventData.groupId}">
+                ${eventData.groupName}
+              </button>
               </span>
             </div>
           ` : ''}
@@ -561,7 +564,7 @@ function attachFilterHandlers(block, currentDateStr) {
   });
 
   // Event type filter
-  block.querySelectorAll('.type-filter-link').forEach((link) => {
+  block.querySelectorAll('.event-type-filter-link').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
