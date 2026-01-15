@@ -116,7 +116,7 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>Host</p></span>
                         <span class="meta-value">
-                          <a href="javascript:void(0);"
+                          <a href="#"
                             class="host-filter-link"
                             data-groupid="${event.groupId}">
                             ${event.groupName}
@@ -134,7 +134,7 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>More Info</p></span>
                         <span class="meta-value">
-                          <a href="javascript:void(0);" class="event-page-link">Event Page</a>
+                          <a href="#" class="event-page-link">Event Page</a>
                         </span>
                       </div>
                     `}
@@ -504,7 +504,7 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label">Type</span>
               <span class="meta-value">
-                <a href="javascript:void(0);"
+                <a href="#"
                   class="event-type-filter-link"
                   data-eventtypeid="${eventData.eventTypeId}">
                   ${eventData.type}
@@ -516,7 +516,7 @@ function renderEventDetail(block, eventData) {
             <div class="meta-row">
               <span class="meta-label"><p>Host</p></span>
               <span class="meta-value">
-                <a href="javascript:void(0);"
+                <a href="#"
                   class="host-filter-link"
                   data-groupid="${eventData.groupId}">
                   ${eventData.groupName}
