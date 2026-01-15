@@ -156,12 +156,12 @@
   margin: 0;
   font: inherit;
   color: var(--link-color, #005ea2);
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .au-calendar .link-button:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 
