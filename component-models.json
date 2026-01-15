@@ -4727,7 +4727,10 @@
   {
     "id": "event-listing",
     "fields": [
-      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true }
+      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true },
+      { "component": "number", "name": "groupId", "label": "Host Id", "valueType": "number"},
+      { "component": "number", "name": "eventTypeId", "label": "Event Type Id", "valueType": "number"},
+      { "component": "number", "name": "location", "label": "Location ", "valueType": "number"}
     ]
   },
   {

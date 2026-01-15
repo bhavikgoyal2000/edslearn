@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { fetchCalendarData } from '../../scripts/graphql-api.js';
 
 function buildHeader(data, currentDateStr) {
@@ -91,7 +92,9 @@ function buildEvents(data) {
             data-fullend="${event.fullEnd}"
             data-location="${safeLocation}"
             data-description="${safeDescription}"
+            data-eventtypeid="${event.eventTypeId || ''}"
             data-type="${event.type || ''}"
+            data-groupid="${event.groupId || ''}"
             data-groupname="${event.groupName || ''}"
             data-groupdisplayonweb="${event.groupDisplayOnWeb}"
             data-contactname="${event.contactName || ''}"
@@ -112,7 +115,13 @@ function buildEvents(data) {
                     ${event.groupName && event.groupDisplayOnWeb ? `
                       <div class="meta-row">
                         <span class="meta-label"><p>Host</p></span>
-                        <span class="meta-value">${event.groupName}</span>
+                        <span class="meta-value">
+                          <a href="javascript:void(0);"
+                            class="host-filter-link"
+                            data-groupid="${event.groupId}">
+                            ${event.groupName}
+                          </a>
+                        </span>
                       </div>
                     ` : ''}
                     ${event.type ? `
@@ -328,11 +337,13 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachPopup(block);
   // eslint-disable-next-line no-use-before-define
   attachEventPageLinks(block);
+  // eslint-disable-next-line no-use-before-define
+  attachHostFilter(block, currentDateStr);
 }
 
-async function loadUpcomingEvents(eventEndDateTime) {
+async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location) {
   try {
-    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, '2', '2');
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, '2', '2', groupId, eventTypeId, location);
 
     return json?.calendarEventsList?.items || [];
   } catch (e) {
@@ -340,9 +351,9 @@ async function loadUpcomingEvents(eventEndDateTime) {
   }
 }
 
-async function loadAnnouncementsForDate(dateStr, block) {
+async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location) {
   try {
-    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2', dateStr, '2', 'true');
+    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, '2', '2', dateStr, '2', 'true', groupId, eventTypeId, location);
     let rawItems = [];
     if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {
       rawItems = calendarJson.announcementList.items;
@@ -374,7 +385,7 @@ async function loadAnnouncementsForDate(dateStr, block) {
 
     const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
 
-    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd);
+    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, groupId, eventTypeId, location);
 
     const mapEvent = (item) => {
       const start = new Date(item.eventStart);
@@ -399,6 +410,8 @@ async function loadAnnouncementsForDate(dateStr, block) {
         title: item.eventName || 'Untitled Event',
         location: item.roomDescription?.markdown || '',
         eventDescription: item.eventDescription?.markdown || '',
+        groupId: item.groupId || '',
+        eventTypeId: item.eventTypeId || '',
         groupName: item.groupName || '',
         groupDisplayOnWeb: item.groupDisplayOnWeb || false,
         contactName: item.calendarContactName || '',
@@ -490,13 +503,25 @@ function renderEventDetail(block, eventData) {
           ${eventData.type ? `
             <div class="meta-row">
               <span class="meta-label">Type</span>
-              <span class="meta-value">${eventData.type}</span>
+              <span class="meta-value">
+                <a href="javascript:void(0);"
+                  class="event-type-filter-link"
+                  data-eventtypeid="${eventData.eventTypeId}">
+                  ${eventData.type}
+                </a>
+              </span>
             </div>
           ` : ''}
           ${eventData.groupName && eventData.groupDisplayOnWeb ? `
             <div class="meta-row">
-              <span class="meta-label">Host</span>
-              <span class="meta-value">${eventData.groupName}</span>
+              <span class="meta-label"><p>Host</p></span>
+              <span class="meta-value">
+                <a href="javascript:void(0);"
+                  class="host-filter-link"
+                  data-groupid="${eventData.groupId}">
+                  ${eventData.groupName}
+                </a>
+              </span>
             </div>
           ` : ''}
           <div class="meta-row">
@@ -514,10 +539,58 @@ function renderEventDetail(block, eventData) {
     </div>
   `;
 
+  // eslint-disable-next-line no-use-before-define
+  attachEventTypeFilter(block, eventData.fullStart?.split('T')[0]);
+  attachExport(block);
+
   // block.querySelector('.back-to-calendar').addEventListener('click', () => {
   //   const today = new Date().toISOString().split('T')[0];
   //   loadAnnouncementsForDate(today, block);
   // });
+}
+
+function attachEventTypeFilter(block, currentDateStr) {
+  const link = block.querySelector('.event-type-filter-link');
+  if (!link) return;
+
+  link.addEventListener('click', async (e) => {
+    e.preventDefault();
+
+    const eventTypeId = link.dataset.eventtypeid;
+    if (!eventTypeId) return;
+
+    const date = currentDateStr || new Date().toISOString().split('T')[0];
+
+    await loadAnnouncementsForDate(
+      date,
+      block,
+      null,
+      eventTypeId,
+      null,
+    );
+  });
+}
+
+function attachHostFilter(block, currentDateStr) {
+  block.querySelectorAll('.host-filter-link').forEach((link) => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const groupId = link.dataset.groupid;
+      if (!groupId) return;
+
+      const date = currentDateStr || new Date().toISOString().split('T')[0];
+
+      await loadAnnouncementsForDate(
+        date,
+        block,
+        groupId,
+        null,
+        null,
+      );
+    });
+  });
 }
 
 function attachEventPageLinks(block) {
@@ -535,6 +608,8 @@ function attachEventPageLinks(block) {
         description: eventDiv.dataset.description,
         type: eventDiv.dataset.type,
         groupName: eventDiv.dataset.groupname,
+        groupId: eventDiv.dataset.groupid,
+        eventTypeId: eventDiv.dataset.eventtypeid,
         groupDisplayOnWeb: eventDiv.dataset.groupdisplayonweb === 'true',
         contactEmail: eventDiv.dataset.contactemail,
         contactName: eventDiv.dataset.contactname,
@@ -544,15 +619,35 @@ function attachEventPageLinks(block) {
   });
 }
 
+function extractData(block) {
+  const rows = [...block.children];
+  const data = {};
+
+  rows.forEach((row) => {
+    const key = row.children[0].textContent.trim();
+    const valueCell = row.children[1];
+
+    if (!key || !valueCell) return;
+
+    data[key] = valueCell.textContent.trim();
+  });
+
+  return {
+    groupId: data.groupId,
+    eventTypeId: data.eventTypeId,
+    location: data.location,
+  };
+}
+
 export default async function decorate(block) {
   block.textContent = 'Loading Announcements...';
-
+  const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block);
+  await loadAnnouncementsForDate(today, block, data.groupId, data.eventTypeId, data.location);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate, block);
+    loadAnnouncementsForDate(selectedDate, block, data.groupId, data.eventTypeId, data.location);
   });
 
   if (!document.querySelector('script[src*="ionicons"]')) {
