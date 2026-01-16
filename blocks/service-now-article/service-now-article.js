@@ -1,11 +1,10 @@
-/* eslint-disable max-len */
 import { SERVER_URL } from '../../scripts/constants.js';
 
 function extractData(block) {
-  const [serviceNowArticleNumberObj, displaySelectionObj, colorObj] = Array.from(block.children).slice(1);
-  const serviceNowArticleNumber = serviceNowArticleNumberObj ? serviceNowArticleNumberObj.textContent.trim() : '';
-  const displaySelection = displaySelectionObj ? displaySelectionObj.textContent.trim() : '';
-  const color = colorObj ? colorObj.textContent.trim() : '';
+  const [serviceNowArticleNumberObj, displaySelectionObj, colorObj] = block.children;
+  const serviceNowArticleNumber = serviceNowArticleNumberObj ? serviceNowArticleNumberObj.querySelector('p')?.innerHTML.trim() : '';
+  const displaySelection = displaySelectionObj ? displaySelectionObj.querySelector('p')?.innerHTML.trim() : '';
+  const color = colorObj ? colorObj.querySelector('p')?.innerHTML.trim() : '';
 
   return {
     articleNumbers: serviceNowArticleNumber
