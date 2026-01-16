@@ -669,11 +669,11 @@ function extractData(block) {
 export default async function decorate(block) {
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block, data.groupId, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate, block, data.groupId, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
   if (!document.querySelector('script[src*="ionicons"]')) {
