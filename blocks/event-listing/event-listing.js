@@ -858,9 +858,9 @@ async function fetchDynamic(query, variables = {}, queryName) {
     // Assuming GRAPHQL_ENDPOINT is defined globally in your project, e.g.:
     // const GRAPHQL_ENDPOINT = '/graphql/execute.json';
     // (Common AEM path for both persisted and ad-hoc queries)
-    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}?${cacheBuster}`;
+    // const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}?${cacheBuster}`;
 
-    const response = await fetch(`${GRAPHQL_ENDPOINT_PATH}/${queryName}?${cacheBuster}`, {
+    const response = await fetch(`${GRAPHQL_ENDPOINT}/${queryName}?${cacheBuster}`, {
       method: 'POST', // POST required for ad-hoc/dynamic queries
       headers: {
         'Content-Type': 'application/json',
