@@ -488,7 +488,7 @@ async function loadAnnouncementsForDate(
       visibleApproved,
     };
 
-    const dayData = await fetchDynamic(dayQuery, dayVariables);
+    const dayData = await fetchDynamic(dayQuery, dayVariables, 'GetCalendarData');
 
     // Process announcements (unchanged from your original)
     const rawItems = dayData?.announcementList?.items || [];
@@ -529,7 +529,7 @@ async function loadAnnouncementsForDate(
       visibilityApproved: visibilityApproved.toString(),
     };
 
-    const upcomingData = await fetchDynamic(upcomingQuery, upcomingVariables);
+    const upcomingData = await fetchDynamic(upcomingQuery, upcomingVariables, 'GetUpcomingCalendarEvents');
     const upcomingRawEvents = upcomingData?.calendarEventsList?.items || [];
 
     const mapEvent = (item) => {
@@ -847,7 +847,7 @@ export default async function decorate(block) {
   }
 }
 
-async function fetchDynamic(query, variables = {}) {
+async function fetchDynamic(query, variables = {}, queryName) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
 
@@ -860,7 +860,7 @@ async function fetchDynamic(query, variables = {}) {
     // (Common AEM path for both persisted and ad-hoc queries)
     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}?${cacheBuster}`;
 
-    const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
+    const response = await fetch(`${GRAPHQL_ENDPOINT_PATH}/${queryName}?${cacheBuster}`, {
       method: 'POST', // POST required for ad-hoc/dynamic queries
       headers: {
         'Content-Type': 'application/json',
