@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable default-param-last */
 /* eslint-disable max-len */
-// import { GRAPHQL_ENDPOINT } from '../../scripts/constants.js';
+import { GRAPHQL_ENDPOINT } from '../../scripts/constants.js';
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
@@ -849,7 +849,7 @@ export default async function decorate(block) {
 
 async function fetchDynamic(query, variables = {}) {
   try {
-    // const cacheBuster = `_cb=${Date.now()}`;
+    const cacheBuster = `_cb=${Date.now()}`;
 
     const username = 'admin';
     const password = 'admin';
@@ -858,8 +858,9 @@ async function fetchDynamic(query, variables = {}) {
     // Assuming GRAPHQL_ENDPOINT is defined globally in your project, e.g.:
     // const GRAPHQL_ENDPOINT = '/graphql/execute.json';
     // (Common AEM path for both persisted and ad-hoc queries)
-    const GRAPHQL_DYNAMIC_ENDPOINT = 'http://localhost:4502/content/_cq_graphql/global/endpoint.json/graphql';
-    const response = await fetch(GRAPHQL_DYNAMIC_ENDPOINT, {
+    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}?${cacheBuster}`;
+
+    const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'POST', // POST required for ad-hoc/dynamic queries
       headers: {
         'Content-Type': 'application/json',
