@@ -643,58 +643,51 @@ function parseBoolean(str, defaultValue = true) {
   return str.trim().toLowerCase() === 'true';
 }
 
+function getMetaContent(name) {
+  return document.querySelector(`meta[name="${name}"]`)?.getAttribute('content') || '';
+}
+
 function extractData() {
-  const { body } = document;
-  const data = body?.dataset || {};
-
-  const initialGroupIds = data.hostids
-    ? data.hostids
-      .split(',')
-      .map((s) => parseFloat(s.trim()))
-      .filter((n) => !Number.isNaN(n))
-    : [];
-
-  const initialEventTypeIds = data.eventtypeids
-    ? data.eventtypeids
-      .split(',')
-      .map((s) => parseFloat(s.trim()))
-      .filter((n) => !Number.isNaN(n))
-    : [];
+  const hostIds = getMetaContent('hostids');
+  const eventTypeIds = getMetaContent('eventtypeids');
+  const location = getMetaContent('location');
 
   return {
-    initialGroupIds,
-    initialEventTypeIds,
-    location: data.location || '',
-    visibilityLevel: parseDefaultValues(data.eventlistingvisibilitylevel),
-    visibilityApproved: parseDefaultValues(data.eventlistingvisibilityapproved),
-    visibleRequested: parseDefaultValues(data.announcementlistingvisiblerequested),
-    visibleApproved: parseBoolean(data.announcementlistingvisibleapproved),
+    initialGroupIds: hostIds
+      ? hostIds
+        .split(',')
+        .map((s) => parseFloat(s.trim()))
+        .filter((n) => !Number.isNaN(n))
+      : [],
+
+    initialEventTypeIds: eventTypeIds
+      ? eventTypeIds
+        .split(',')
+        .map((s) => parseFloat(s.trim()))
+        .filter((n) => !Number.isNaN(n))
+      : [],
+
+    location,
+
+    visibilityLevel: parseDefaultValues(
+      getMetaContent('eventlistingvisibilitylevel'),
+    ),
+
+    visibilityApproved: parseDefaultValues(
+      getMetaContent('eventlistingvisibilityapproved'),
+    ),
+
+    visibleRequested: parseDefaultValues(
+      getMetaContent('announcementlistingvisiblerequested'),
+    ),
+
+    visibleApproved: parseBoolean(
+      getMetaContent('announcementlistingvisibleapproved'),
+    ),
   };
 }
 
-async function applyCalendarDataToBody() {
-  const metas = document.querySelectorAll('meta[name]');
-  const { body } = document;
-
-  metas.forEach((meta) => {
-    const name = meta.getAttribute('name');
-    const value = meta.getAttribute('content');
-
-    if (!name || value == null) return;
-
-    // whitelist only what you want
-    if (name.startsWith('event')
-        || name.startsWith('announcement')
-        || name === 'hostids'
-        || name === 'location'
-        || name === 'iscalendarpage') {
-      body.dataset[name.toLowerCase()] = value;
-    }
-  });
-}
-
 export default async function decorate(block) {
-  await applyCalendarDataToBody();
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
   await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
