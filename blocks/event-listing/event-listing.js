@@ -643,22 +643,9 @@ function parseBoolean(str, defaultValue = true) {
   return str.trim().toLowerCase() === 'true';
 }
 
-function parseCalendarMetaContent(content) {
-  if (!content) {
-    return {};
-  }
-
-  const decoded = content.replace(/&quot;/g, '"');
-
-  const wrapper = document.createElement('div');
-  wrapper.innerHTML = `<div ${decoded}></div>`;
-
-  return wrapper.firstChild?.dataset || {};
-}
-
 function extractData() {
-  const meta = document.querySelector('meta[name="calendardata"]');
-  const data = parseCalendarMetaContent(meta?.getAttribute('content'));
+  const { body } = document;
+  const data = body?.dataset || {};
 
   const initialGroupIds = data.hostids
     ? data.hostids
@@ -667,7 +654,6 @@ function extractData() {
       .filter((n) => !Number.isNaN(n))
     : [];
 
-  // if you ever add event type ids later
   const initialEventTypeIds = data.eventtypeids
     ? data.eventtypeids
       .split(',')
