@@ -339,10 +339,32 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+function applyCalendarDataToBody() {
+  const metas = document.querySelectorAll('meta[name]');
+  const { body } = document;
+
+  metas.forEach((meta) => {
+    const name = meta.getAttribute('name');
+    const value = meta.getAttribute('content');
+
+    if (!name || value == null) return;
+
+    // whitelist only what you want
+    if (name.startsWith('event')
+        || name.startsWith('announcement')
+        || name === 'hostIds'
+        || name === 'location'
+        || name === 'isCalendarPage') {
+      body.dataset[name.toLowerCase()] = value;
+    }
+  });
+}
+
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
+  applyCalendarDataToBody();
 }
 
 loadPage();
