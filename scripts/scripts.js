@@ -257,27 +257,6 @@ export function decorateMain(main) {
   initAdobeDataLayer();
 }
 
-async function applyCalendarDataToBody() {
-  const metas = document.querySelectorAll('meta[name]');
-  const { body } = document;
-
-  metas.forEach((meta) => {
-    const name = meta.getAttribute('name');
-    const value = meta.getAttribute('content');
-
-    if (!name || value == null) return;
-
-    // whitelist only what you want
-    if (name.startsWith('event')
-        || name.startsWith('announcement')
-        || name === 'hostIds'
-        || name === 'location'
-        || name === 'isCalendarPage') {
-      body.dataset[name.toLowerCase()] = value;
-    }
-  });
-}
-
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
@@ -299,7 +278,6 @@ async function loadEager(doc) {
       document.body.classList.add('appear', 'childpage');
     }
     await loadSection(main.querySelector('.section'), waitForFirstImage);
-    await applyCalendarDataToBody();
   }
 
   try {

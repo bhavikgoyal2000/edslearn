@@ -672,7 +672,29 @@ function extractData() {
   };
 }
 
+async function applyCalendarDataToBody() {
+  const metas = document.querySelectorAll('meta[name]');
+  const { body } = document;
+
+  metas.forEach((meta) => {
+    const name = meta.getAttribute('name');
+    const value = meta.getAttribute('content');
+
+    if (!name || value == null) return;
+
+    // whitelist only what you want
+    if (name.startsWith('event')
+        || name.startsWith('announcement')
+        || name === 'hostIds'
+        || name === 'location'
+        || name === 'isCalendarPage') {
+      body.dataset[name.toLowerCase()] = value;
+    }
+  });
+}
+
 export default async function decorate(block) {
+  await applyCalendarDataToBody();
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
   await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
