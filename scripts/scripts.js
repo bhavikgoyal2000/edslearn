@@ -362,9 +362,9 @@ function applyCalendarDataToBody() {
 
 async function loadPage() {
   await loadEager(document);
+  await applyCalendarDataToBody();
   await loadLazy(document);
   loadDelayed();
-  applyCalendarDataToBody();
 }
 
 loadPage();
