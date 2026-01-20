@@ -643,26 +643,46 @@ function parseBoolean(str, defaultValue = true) {
   return str.trim().toLowerCase() === 'true';
 }
 
-function extractData(block) {
-  const [groupIdObj, eventTypeIdObj, locationObj, visibilityLevelObj, visibilityApprovedObj, visibleRequestedObj, visibleApprovedObj] = block.children;
-  const groupIdStr = groupIdObj ? groupIdObj.querySelector('p')?.textContent.trim() : '';
-  const initialGroupIds = groupIdStr ? groupIdStr.split(',').map((s) => parseFloat(s.trim())).filter((n) => !Number.isNaN(n)) : [];
-  const eventTypeIdStr = eventTypeIdObj ? eventTypeIdObj.querySelector('p')?.textContent.trim() : '';
-  const initialEventTypeIds = eventTypeIdStr ? eventTypeIdStr.split(',').map((s) => parseFloat(s.trim())).filter((n) => !Number.isNaN(n)) : [];
-  const location = locationObj ? locationObj.querySelector('p')?.innerHTML.trim() : '';
-  const visibilityLevel = visibilityLevelObj ? visibilityLevelObj.querySelector('p')?.innerHTML.trim() : '';
-  const visibilityApproved = visibilityApprovedObj ? visibilityApprovedObj.querySelector('p')?.innerHTML.trim() : '';
-  const visibleRequested = visibleRequestedObj ? visibleRequestedObj.querySelector('p')?.innerHTML.trim() : '';
-  const visibleApproved = visibleApprovedObj ? visibleApprovedObj.querySelector('p')?.innerHTML.trim() : '';
+function parseCalendarMetaContent(content) {
+  if (!content) {
+    return {};
+  }
+
+  const decoded = content.replace(/&quot;/g, '"');
+
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = `<div ${decoded}></div>`;
+
+  return wrapper.firstChild?.dataset || {};
+}
+
+function extractData() {
+  const meta = document.querySelector('meta[name="calendardata"]');
+  const data = parseCalendarMetaContent(meta?.getAttribute('content'));
+
+  const initialGroupIds = data.hostids
+    ? data.hostids
+      .split(',')
+      .map((s) => parseFloat(s.trim()))
+      .filter((n) => !Number.isNaN(n))
+    : [];
+
+  // if you ever add event type ids later
+  const initialEventTypeIds = data.eventtypeids
+    ? data.eventtypeids
+      .split(',')
+      .map((s) => parseFloat(s.trim()))
+      .filter((n) => !Number.isNaN(n))
+    : [];
 
   return {
     initialGroupIds,
     initialEventTypeIds,
-    location,
-    visibilityLevel: parseDefaultValues(visibilityLevel),
-    visibilityApproved: parseDefaultValues(visibilityApproved),
-    visibleRequested: parseDefaultValues(visibleRequested),
-    visibleApproved: parseBoolean(visibleApproved),
+    location: data.location || '',
+    visibilityLevel: parseDefaultValues(data.eventlistingvisibilitylevel),
+    visibilityApproved: parseDefaultValues(data.eventlistingvisibilityapproved),
+    visibleRequested: parseDefaultValues(data.announcementlistingvisblerequested),
+    visibleApproved: parseBoolean(data.announcementlistingvisibleapproved),
   };
 }
 
