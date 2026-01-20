@@ -667,7 +667,7 @@ function extractData() {
     location: data.location || '',
     visibilityLevel: parseDefaultValues(data.eventlistingvisibilitylevel),
     visibilityApproved: parseDefaultValues(data.eventlistingvisibilityapproved),
-    visibleRequested: parseDefaultValues(data.announcementlistingvisblerequested),
+    visibleRequested: parseDefaultValues(data.announcementlistingvisiblerequested),
     visibleApproved: parseBoolean(data.announcementlistingvisibleapproved),
   };
 }
