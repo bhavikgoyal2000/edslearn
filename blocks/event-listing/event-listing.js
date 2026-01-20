@@ -685,9 +685,9 @@ async function applyCalendarDataToBody() {
     // whitelist only what you want
     if (name.startsWith('event')
         || name.startsWith('announcement')
-        || name === 'hostIds'
+        || name === 'hostids'
         || name === 'location'
-        || name === 'isCalendarPage') {
+        || name === 'iscalendarpage') {
       body.dataset[name.toLowerCase()] = value;
     }
   });
