@@ -389,8 +389,16 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
       upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
     } else {
       const servletUrl = buildCalendarByHostIdsUrl(dateStr, normalizedHostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
-
-      const response = await fetch(servletUrl);
+      const username = 'admin';
+      const password = 'admin';
+      const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
+      const response = await fetch(servletUrl, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authHeader,
+        },
+      });
       if (!response.ok) {
         throw new Error('Failed to fetch calendar by hostIds');
       }
