@@ -345,9 +345,9 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachHostFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 }
 
-async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   try {
-    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, visibilityLevel, visibilityApproved, null, visibleRequested, visibleApproved, groupId, eventTypeId, location);
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, visibilityLevel, visibilityApproved, null, visibleRequested, visibleApproved);
 
     return json?.calendarEventsList?.items || [];
   } catch (e) {
@@ -357,7 +357,7 @@ async function loadUpcomingEvents(eventEndDateTime, groupId, eventTypeId, locati
 
 async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   try {
-    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, groupId, eventTypeId, location);
+    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved);
     let rawItems = [];
     if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {
       rawItems = calendarJson.announcementList.items;
@@ -389,7 +389,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
 
     const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
 
-    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 
     const mapEvent = (item) => {
       const start = new Date(item.eventStart);

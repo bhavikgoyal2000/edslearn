@@ -28,7 +28,7 @@ async function fetchGraphQLData(queryName, path) {
   }
 }
 
-async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, groupId, eventTypeId, location) {
+async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
     const username = 'admin';
@@ -44,17 +44,6 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
       `visbleRequested%3D${encodeURIComponent(visbleRequested)}`,
       `visibleApproved%3D${encodeURIComponent(visibleApproved)}`,
     ];
-
-    if (groupId != null && groupId !== '') {
-      paramParts.push(`groupId%3D${encodeURIComponent(groupId)}`);
-    }
-    if (eventTypeId != null && eventTypeId !== '') {
-      paramParts.push(`eventTypeId%3D${encodeURIComponent(eventTypeId)}`);
-    }
-    if (location != null && location !== '') {
-      paramParts.push(`location%3D${encodeURIComponent(location)}`);
-    }
-
     const paramString = paramParts.length > 0 ? `%3B${paramParts.join('%3B')}` : '';
 
     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}${paramString}?${cacheBuster}`;
@@ -157,8 +146,8 @@ export async function fetchComponentData(name, path) {
   return result;
 }
 
-export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, groupId, eventTypeId, location) {
-  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, groupId, eventTypeId, location);
+export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
+  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved);
   if (error) return { data: null };
   const result = data.data || null;
   return result;
