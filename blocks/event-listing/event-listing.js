@@ -345,10 +345,13 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachHostFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 }
 
+function buildCalendarByHostIdsUrl(dateStr, hostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+  return `/content/apis/au/calenderByMultipleHostIds${`${dateStr}.${hostIds.join('$')}.${visibilityLevel}.${visibilityApproved}.${visibleRequested}.${visibleApproved}`}.json`;
+}
+
 async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   try {
     const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, visibilityLevel, visibilityApproved, null, visibleRequested, visibleApproved);
-
     return json?.calendarEventsList?.items || [];
   } catch (e) {
     return [];
@@ -356,11 +359,54 @@ async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityA
 }
 
 async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+  let normalizedHostIds = [];
+  if (Array.isArray(groupId)) {
+    normalizedHostIds = groupId.filter(Boolean);
+  } else if (groupId) {
+    normalizedHostIds = [groupId];
+  }
+
   try {
-    const calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved);
+    let calendarJson;
+    let rawEventsToday = [];
+    let upcomingRawEvents = [];
     let rawItems = [];
-    if (calendarJson && calendarJson.announcementList && calendarJson.announcementList.items) {
-      rawItems = calendarJson.announcementList.items;
+
+    if (normalizedHostIds.length === 0) {
+      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved);
+
+      if (calendarJson && calendarJson.calendarEventsList && Array.isArray(calendarJson.calendarEventsList.items)) {
+        rawEventsToday = calendarJson.calendarEventsList.items;
+      }
+
+      if (calendarJson && calendarJson.announcementList && Array.isArray(calendarJson.announcementList.items)) {
+        rawItems = calendarJson.announcementList.items;
+      }
+
+      const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
+
+      upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+    } else {
+      const servletUrl = buildCalendarByHostIdsUrl(dateStr, normalizedHostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+
+      const response = await fetch(servletUrl);
+      if (!response.ok) {
+        throw new Error('Failed to fetch calendar by hostIds');
+      }
+
+      calendarJson = await response.json();
+
+      if (calendarJson && Array.isArray(calendarJson.calendarEventsList)) {
+        rawEventsToday = calendarJson.calendarEventsList;
+      }
+
+      if (calendarJson && Array.isArray(calendarJson.upcomingCalendarEventsList)) {
+        upcomingRawEvents = calendarJson.upcomingCalendarEventsList;
+      }
+
+      if (calendarJson && Array.isArray(calendarJson.announcementList)) {
+        rawItems = calendarJson.announcementList;
+      }
     }
 
     const collectionMap = {
@@ -384,12 +430,6 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         popupKey: tag?.popupKey || '',
       };
     });
-
-    const rawEventsToday = calendarJson?.calendarEventsList?.items || [];
-
-    const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
-
-    const upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 
     const mapEvent = (item) => {
       const start = new Date(item.eventStart);
