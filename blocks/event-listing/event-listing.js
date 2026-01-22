@@ -683,11 +683,7 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
         contactEmail: eventDiv.dataset.contactemail,
         contactName: eventDiv.dataset.contactname,
         contactPhone: eventDiv.dataset.contactphone,
-        visibilityLevel,
-        visibilityApproved,
-        visibleRequested,
-        visibleApproved,
-      });
+      }, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
     });
   });
 }
