@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable default-param-last */
 /* eslint-disable max-len */
+import { SERVER_URL } from '../../scripts/constants.js';
 import { fetchCalendarData } from '../../scripts/graphql-api.js';
 
 function buildHeader(data, currentDateStr) {
@@ -346,7 +347,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 }
 
 function buildCalendarByHostIdsUrl(dateStr, hostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
-  return `/content/apis/au/calenderByMultipleHostIds${`${dateStr}.${hostIds.join('$')}.${visibilityLevel}.${visibilityApproved}.${visibleRequested}.${visibleApproved}`}.json`;
+  return `${SERVER_URL}/content/apis/au/calenderByMultipleHostIds${`${dateStr}.${hostIds.join('$')}.${visibilityLevel}.${visibilityApproved}.${visibleRequested}.${visibleApproved}`}.json`;
 }
 
 async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
