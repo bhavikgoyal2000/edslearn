@@ -642,7 +642,7 @@ function attachHostFilter(block, currentDateStr, visibilityLevel, visibilityAppr
       e.preventDefault();
       e.stopPropagation();
 
-      const groupId = link.dataset.groupid;
+      const groupId = parseDefaultValues(link.dataset.groupid);
       if (!groupId) return;
 
       const date = currentDateStr || new Date().toISOString().split('T')[0];
