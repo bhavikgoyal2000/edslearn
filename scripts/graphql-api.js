@@ -4,11 +4,16 @@ import { GRAPHQL_ENDPOINT } from './constants.js';
 async function fetchGraphQLData(queryName, path) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
+    const username = 'admin';
+    const password = 'admin';
+
+    const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}%3Bpath%3D${encodeURIComponent(path)}?${cacheBuster}`;
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: authHeader,
       },
     });
 
