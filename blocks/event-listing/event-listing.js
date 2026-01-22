@@ -366,6 +366,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
   } else if (groupId) {
     normalizedHostIds = [groupId];
   }
+  const hasHostIds = normalizedHostIds && normalizedHostIds.length > 0;
 
   try {
     let calendarJson;
@@ -458,11 +459,21 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         timeZone: 'America/New_York',
       });
 
+      let eventDescription = '';
+      let locationDesc = '';
+      if (hasHostIds) {
+        eventDescription = item.eventDescription || '';
+        locationDesc = item.roomDescription || '';
+      } else {
+        eventDescription = item.eventDescription?.markdown || '';
+        locationDesc = item.roomDescription?.markdown || '';
+      }
+
       return {
         time: `${startTime} – ${endTime}`,
         title: item.eventName || 'Untitled Event',
-        location: item.roomDescription?.markdown || '',
-        eventDescription: item.eventDescription?.markdown || '',
+        location: locationDesc,
+        eventDescription,
         groupId: item.groupId || '',
         eventTypeId: item.eventTypeId || '',
         groupName: item.groupName || '',
