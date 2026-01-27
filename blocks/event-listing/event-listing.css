@@ -525,3 +525,44 @@
 .au-calendar .au-tag.gray { background: #888; }
 .au-calendar .au-tag.navy { background: #036; }
 .au-calendar .au-tag.green { background: #060; }
+
+.au-calendar .au-selector-list {
+  column-count: 3;
+  column-gap: 4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.au-calendar .au-selector-list li {
+  break-inside: avoid;
+  margin-bottom: 0.6rem;
+}
+
+.au-calendar .selector-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.95rem;
+  color: #005eb8;
+  cursor: pointer;
+  text-align: left;
+}
+
+.au-calendar .selector-link:hover {
+  text-decoration: underline;
+}
+
+.au-calendar .au-selector-footer {
+  margin-top: 2rem;
+}
+
+.au-calendar .selector-all {
+  background-color: #005eb8;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}

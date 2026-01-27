@@ -786,19 +786,14 @@ function renderSelector(block, type, items) {
   };
 
   block.innerHTML = `
-    <div class="au-selector">
-      <h2>${titleMap[type]}</h2>
+    <div class="au-selector au-selector--${type}">
+      <h2 class="au-selector__title">${titleMap[type]}</h2>
 
-      <ul class="selector-list">
-        <li>
-          <button class="selector-item" data-id="all">
-            All
-          </button>
-        </li>
-
+      <ul class="au-selector__list">
         ${items.map((item) => `
-          <li>
+          <li class="au-selector__item">
             <button
+              type="button"
               class="selector-item"
               data-id="${item.id}">
               ${item.title}
@@ -806,6 +801,15 @@ function renderSelector(block, type, items) {
           </li>
         `).join('')}
       </ul>
+
+      <div class="au-selector__footer">
+        <button
+          type="button"
+          class="selector-item selector-item--all"
+          data-id="all">
+          All ${titleMap[type].replace('Browse by ', '')}
+        </button>
+      </div>
     </div>
   `;
 
