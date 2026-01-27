@@ -907,11 +907,11 @@ async function fetchEventTypesForCurrentMonth(data = extractData()) {
   const uniqueMap = new Map();
 
   items.forEach((item) => {
-    const { roomId, roomDescription } = item;
-    if (roomId && !uniqueMap.has(roomId)) {
-      uniqueMap.set(roomId, {
-        id: String(roomId),
-        title: roomDescription,
+    const { eventTypeId, eventTypeName } = item;
+    if (eventTypeId && !uniqueMap.has(eventTypeId)) {
+      uniqueMap.set(eventTypeId, {
+        id: String(eventTypeId),
+        title: eventTypeName,
       });
     }
   });
