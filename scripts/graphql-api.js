@@ -40,18 +40,26 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     const password = 'admin';
 
     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
-    const paramParts = [
-      `eventStart%3D${encodeURIComponent(eventStartDate)}`,
-      `eventEnd%3D${encodeURIComponent(eventEndDate)}`,
-      `visibilityLevel%3D${encodeURIComponent(visibilityLevel)}`,
-      `visibilityApproved%3D${encodeURIComponent(visibilityApproved)}`,
-      `date%3D${encodeURIComponent(date)}`,
-      `visbleRequested%3D${encodeURIComponent(visbleRequested)}`,
-      `visibleApproved%3D${encodeURIComponent(visibleApproved)}`,
-    ];
-    const paramString = paramParts.length > 0 ? `%3B${paramParts.join('%3B')}` : '';
+    const paramParts = [];
+
+    const addParam = (key, value) => {
+      if (value !== null && value !== undefined && value !== '') {
+        paramParts.push(`${key}%3D${encodeURIComponent(value)}`);
+      }
+    };
+
+    addParam('eventStart', eventStartDate);
+    addParam('eventEnd', eventEndDate);
+    addParam('visibilityLevel', visibilityLevel);
+    addParam('visibilityApproved', visibilityApproved);
+    addParam('date', date);
+    addParam('visbleRequested', visbleRequested);
+    addParam('visibleApproved', visibleApproved);
+
+    const paramString = paramParts.length ? `%3B${paramParts.join('%3B')}` : '';
 
     const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}${paramString}?${cacheBuster}`;
+
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
       headers: {
