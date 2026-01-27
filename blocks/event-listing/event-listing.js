@@ -787,11 +787,11 @@ function renderSelector(block, type, items) {
 
   block.innerHTML = `
     <div class="au-selector au-selector--${type}">
-      <h2 class="au-selector__title">${titleMap[type]}</h2>
+      <h2 class="au-selector-title">${titleMap[type]}</h2>
 
-      <ul class="au-selector__list">
+      <ul class="au-selector-list">
         ${items.map((item) => `
-          <li class="au-selector__item">
+          <li class="au-selector-item">
             <button
               type="button"
               class="selector-item"
@@ -802,7 +802,7 @@ function renderSelector(block, type, items) {
         `).join('')}
       </ul>
 
-      <div class="au-selector__footer">
+      <div class="au-selector-footer">
         <button
           type="button"
           class="selector-item selector-item--all"
