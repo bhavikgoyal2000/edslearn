@@ -890,12 +890,18 @@ async function fetchLocationsForCurrentMonth(data = extractData()) {
   return [
     ...new Map(
       items
-        .map((item) => ({
-          id: item.roomId,
-          title: item.roomDescription || '',
-        }))
-        .filter((item) => item.id && item.title)
-        .map((item) => [item.id, item]),
+        .map((item) => {
+          const title = item.roomDescription?.markdown || item.roomDescription || '';
+          return {
+            id: title,
+            title,
+          };
+        })
+        .filter((item) => item.title.trim())
+        .map((item) => [
+          item.title.trim().toLowerCase(),
+          item,
+        ]),
     ).values(),
   ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
