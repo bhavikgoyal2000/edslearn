@@ -43,7 +43,7 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     const paramParts = [];
 
     const addParam = (key, value) => {
-      if (value !== null && value !== undefined && value !== '') {
+      if (value !== null && value !== undefined && value !== '' && !(typeof value === 'number' && Number.isNaN(value))) {
         paramParts.push(`${key}%3D${encodeURIComponent(value)}`);
       }
     };
