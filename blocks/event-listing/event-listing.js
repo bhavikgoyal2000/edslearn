@@ -891,13 +891,18 @@ async function fetchLocationsForCurrentMonth(data = extractData()) {
     ...new Map(
       items
         .map((item) => {
-          const title = item.roomDescription?.markdown || item.roomDescription || '';
+          const title = typeof item.roomDescription === 'string'
+            ? item.roomDescription
+            : item.roomDescription?.markdown || '';
+
           return {
             id: title,
             title,
           };
         })
-        .filter((item) => item.title.trim())
+        .filter(
+          (item) => typeof item.title === 'string' && item.title.trim().length > 0,
+        )
         .map((item) => [
           item.title.trim().toLowerCase(),
           item,
