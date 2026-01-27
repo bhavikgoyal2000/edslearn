@@ -15,9 +15,84 @@ function loadSideNavMobileCSS() {
   }
 }
 
+function buildCalendarSideNav() {
+  const fragment = document.createDocumentFragment();
+
+  const calendarLi = document.createElement('li');
+  calendarLi.classList.add('calendar-sidenav');
+
+  // TODAY
+  const todayP = document.createElement('p');
+  const todayBtn = document.createElement('button');
+  todayBtn.type = 'button';
+  todayBtn.className = 'calendar-filter';
+  todayBtn.dataset.filterType = 'today';
+  todayBtn.dataset.filterValue = 'today';
+  todayBtn.textContent = 'Today';
+
+  todayP.appendChild(todayBtn);
+  calendarLi.appendChild(todayP);
+
+  // BROWSE BY
+  const browseByP = document.createElement('p');
+  browseByP.className = 'browse-by-title';
+  browseByP.textContent = 'Browse By';
+  calendarLi.appendChild(browseByP);
+
+  const browseUl = document.createElement('ul');
+  browseUl.className = 'browse-by-list';
+
+  const browseItems = [
+    { label: 'Event Type', type: 'eventType' },
+    { label: 'Location', type: 'location' },
+    { label: 'Host', type: 'host' },
+    { label: 'Series', type: 'series' },
+  ];
+
+  browseItems.forEach((item) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+
+    btn.type = 'button';
+    btn.className = 'calendar-filter';
+    btn.dataset.filterType = item.type;
+    btn.dataset.filterValue = item.type;
+    btn.textContent = item.label;
+
+    li.appendChild(btn);
+    browseUl.appendChild(li);
+  });
+
+  calendarLi.appendChild(browseUl);
+  fragment.appendChild(calendarLi);
+
+  return fragment;
+}
+
+function attachCalendarSideNavEvents(container) {
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.calendar-filter');
+    if (!btn) return;
+
+    e.preventDefault();
+
+    document.dispatchEvent(
+      new CustomEvent('calendar:filterSelected', {
+        detail: {
+          filterType: btn.dataset.filterType,
+          value: btn.dataset.filterValue,
+        },
+      }),
+    );
+  });
+}
+
 export default async function decorate(block) {
   const contentFragmentPath = block.querySelector('p')?.textContent.trim() || null;
   const contentFragmentJson = await fetchComponentData('SideNav-GraphQL-Query', contentFragmentPath);
+  const isCalendarPageString = document.querySelector('meta[name="isCalendarPage"]')?.getAttribute('content');
+  const isCalendarPage = typeof isCalendarPageString === 'string' ? isCalendarPageString.trim().toLowerCase() === 'true' : false;
+
   const sections = contentFragmentJson.sideNavFragmentByPath.item;
   const nav = document.createElement('nav');
   nav.id = 'left-navigation';
@@ -35,6 +110,12 @@ export default async function decorate(block) {
   const ul = document.createElement('ul');
   ul.id = 'nav-accordion-holder';
   ul.className = 'sideAccordion content-navigation';
+
+  if (isCalendarPage) {
+    const calendarNav = buildCalendarSideNav();
+    ul.appendChild(calendarNav);
+    attachCalendarSideNavEvents(ul);
+  }
 
   sections.sidenavLinksCMF.forEach((sectionArray, index) => {
     const section = JSON.parse(sectionArray);
