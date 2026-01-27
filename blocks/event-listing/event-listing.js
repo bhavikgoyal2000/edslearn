@@ -831,6 +831,7 @@ function getCurrentMonthRange(date = new Date()) {
 
 async function fetchHostsForCurrentMonth(data = extractData()) {
   const { start, end } = getCurrentMonthRange();
+
   const json = await fetchFilters(
     'GetHosts',
     start,
@@ -839,7 +840,22 @@ async function fetchHostsForCurrentMonth(data = extractData()) {
     data.visibilityApproved,
   );
 
-  return json?.hostList?.items || [];
+  const items = json?.calendarEventsList?.items || [];
+
+  const uniqueMap = new Map();
+
+  items.forEach((item) => {
+    const { groupId, groupName } = item;
+    if (groupId && !uniqueMap.has(groupId)) {
+      uniqueMap.set(groupId, {
+        id: String(groupId),
+        title: groupName,
+      });
+    }
+  });
+
+  return Array.from(uniqueMap.values())
+    .sort((a, b) => a.title.localeCompare(b.title));
 }
 
 async function loadSelectorList(block, type) {
