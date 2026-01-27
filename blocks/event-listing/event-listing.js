@@ -378,7 +378,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
     let rawItems = [];
 
     if (normalizedHostIds.length === 0) {
-      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, eventTypeId);
+      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved);
 
       if (calendarJson && calendarJson.calendarEventsList && Array.isArray(calendarJson.calendarEventsList.items)) {
         rawEventsToday = calendarJson.calendarEventsList.items;
@@ -629,7 +629,7 @@ function attachEventTypeFilter(block, currentDateStr, visibilityLevel, visibilit
       date,
       block,
       null,
-      parseFloat(eventTypeId),
+      eventTypeId,
       null,
       visibilityLevel,
       visibilityApproved,
@@ -708,6 +708,7 @@ function getMetaContent(name) {
 
 function extractData() {
   const hostIds = getMetaContent('hostids');
+  const eventTypeIds = getMetaContent('eventtypeids');
   const location = getMetaContent('location');
 
   return {
@@ -718,9 +719,12 @@ function extractData() {
         .filter((n) => !Number.isNaN(n))
       : [],
 
-    initialEventTypeIds: parseFloat(
-      getMetaContent('eventtypeids'),
-    ),
+    initialEventTypeIds: eventTypeIds
+      ? eventTypeIds
+        .split(',')
+        .map((s) => parseFloat(s.trim()))
+        .filter((n) => !Number.isNaN(n))
+      : [],
 
     location,
 
