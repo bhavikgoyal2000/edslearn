@@ -750,22 +750,30 @@ function attachSelectorEvents(block, type, data = extractData()) {
   block.querySelectorAll('.selector-item').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
-      if (id === 'all') {
-        await loadSelectorList(block, type, { noEndDate: true });
-        return;
-      }
-
       const date = new Date().toISOString().split('T')[0];
 
       let groupId = null;
       let eventTypeId = null;
       let location = null;
 
-      if (type === 'host') groupId = id;
-      if (type === 'eventType') eventTypeId = id;
-      if (type === 'location') location = id;
+      const isAll = id === 'all';
+
+      if (!isAll) {
+        if (type === 'host') groupId = id;
+        if (type === 'eventType') eventTypeId = id;
+        if (type === 'location') location = id;
+      }
 
       await loadAnnouncementsForDate(date, block, groupId, eventTypeId, location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+
+      if (isAll) {
+        const selectorRoot = btn.closest('.au-selector');
+        const footer = selectorRoot?.querySelector('.au-selector-footer');
+
+        if (footer) {
+          footer.remove();
+        }
+      }
     });
   });
 }
