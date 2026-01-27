@@ -4,6 +4,10 @@
 import { SERVER_URL } from '../../scripts/constants.js';
 import { fetchCalendarData } from '../../scripts/graphql-api.js';
 
+// eslint-disable-next-line no-unused-vars
+let activeSelector = null;
+const cachedSelectorData = {};
+
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
   const prevDate = new Date(currentDate);
@@ -743,6 +747,117 @@ function extractData() {
   };
 }
 
+function attachSelectorEvents(block, type, data = extractData()) {
+  block.querySelectorAll('.selector-item').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const { id } = btn.dataset;
+      const date = new Date().toISOString().split('T')[0];
+
+      let groupId = null;
+      let eventTypeId = null;
+      let location = null;
+
+      if (id !== 'all') {
+        if (type === 'host') groupId = id;
+        if (type === 'eventType') eventTypeId = id;
+        if (type === 'location') location = id;
+      }
+
+      await loadAnnouncementsForDate(
+        date,
+        block,
+        groupId,
+        eventTypeId,
+        location,
+        data.visibilityLevel,
+        data.visibilityApproved,
+        data.visibleRequested,
+        data.visibleApproved,
+      );
+    });
+  });
+}
+
+function renderSelector(block, type, items) {
+  const titleMap = {
+    host: 'Browse by Host',
+    location: 'Browse by Location',
+    eventType: 'Browse by Event Type',
+    series: 'Browse by Series',
+  };
+
+  block.innerHTML = `
+    <div class="au-selector">
+      <h2>${titleMap[type]}</h2>
+
+      <ul class="selector-list">
+        <li>
+          <button class="selector-item" data-id="all">
+            All
+          </button>
+        </li>
+
+        ${items.map((item) => `
+          <li>
+            <button
+              class="selector-item"
+              data-id="${item.id}">
+              ${item.title}
+            </button>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `;
+
+  attachSelectorEvents(block, type);
+}
+
+async function fetchHostsForCurrentMonth() {
+  // const { start, end } = getCurrentMonthRange();
+  // const json = await fetchCalendarData(
+  //   'GetHostsForMonth',
+  //   start,
+  //   end,
+  // );
+
+  // return json?.hostList?.items || [];
+}
+
+async function loadSelectorList(block, type) {
+  // Optional cache
+  if (cachedSelectorData[type]) {
+    renderSelector(block, type, cachedSelectorData[type]);
+    return;
+  }
+
+  let items = [];
+
+  switch (type) {
+    case 'host':
+      items = await fetchHostsForCurrentMonth();
+      break;
+
+      // case 'location':
+      //   items = await fetchLocationsForCurrentMonth();
+      //   break;
+
+      // case 'eventType':
+      //   items = await fetchEventTypesForCurrentMonth();
+      //   break;
+
+      // case 'series':
+      //   items = await fetchSeriesForCurrentMonth();
+      //   break;
+
+    default:
+      return;
+  }
+
+  cachedSelectorData[type] = items;
+  renderSelector(block, type, items);
+}
+
 export default async function decorate(block) {
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
@@ -751,6 +866,26 @@ export default async function decorate(block) {
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
     loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  });
+
+  document.addEventListener('calendar:filterSelected', async (e) => {
+    const { filterType } = e.detail;
+
+    activeSelector = filterType;
+
+    switch (filterType) {
+      case 'host':
+      case 'location':
+      case 'eventType':
+      case 'series':
+        await loadSelectorList(block, filterType);
+        break;
+
+      case 'today':
+      default:
+        await loadAnnouncementsForDate(new Date().toISOString().split('T')[0], block, null, null, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+        break;
+    }
   });
 
   if (!document.querySelector('script[src*="ionicons"]')) {

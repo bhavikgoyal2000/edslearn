@@ -17,6 +17,7 @@ function loadSideNavMobileCSS() {
 
 function buildCalendarSideNav() {
   const fragment = document.createDocumentFragment();
+  const calendarName = document.querySelector('meta[name="calendarname"]')?.getAttribute('content');
 
   // ---------- TODAY (no submenu)
   const todayLi = document.createElement('li');
@@ -27,8 +28,11 @@ function buildCalendarSideNav() {
   todayBtn.className = 'calendar-filter';
   todayBtn.dataset.filterType = 'today';
   todayBtn.dataset.filterValue = 'today';
-  todayBtn.textContent = 'Today';
-
+  if (calendarName != null && calendarName !== '') {
+    todayBtn.textContent = `Today at ${calendarName}`;
+  } else {
+    todayBtn.textContent = 'Today';
+  }
   todayP.appendChild(todayBtn);
   todayLi.appendChild(todayP);
   fragment.appendChild(todayLi);
@@ -47,8 +51,12 @@ function buildCalendarSideNav() {
   browseLink.className = 'collapsed';
   browseLink.setAttribute('aria-expanded', 'false');
   browseLink.setAttribute('aria-controls', sectionId);
-  browseLink.textContent = 'Browse By';
 
+  if (calendarName != null && calendarName !== '') {
+    browseLink.textContent = `Browse ${calendarName} By`;
+  } else {
+    browseLink.textContent = 'Browse By';
+  }
   browseP.appendChild(browseLink);
   browseLi.appendChild(browseP);
 
