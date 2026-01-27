@@ -862,6 +862,64 @@ async function fetchHostsForCurrentMonth(data = extractData()) {
     .sort((a, b) => a.title.localeCompare(b.title));
 }
 
+async function fetchLocationsForCurrentMonth(data = extractData()) {
+  const { start, end } = getCurrentMonthRange();
+
+  const json = await fetchFilters(
+    'GetLocations',
+    start,
+    end,
+    data.visibilityLevel,
+    data.visibilityApproved,
+  );
+
+  const items = json?.calendarEventsList?.items || [];
+
+  const uniqueMap = new Map();
+
+  items.forEach((item) => {
+    const { roomId, roomDescription } = item;
+    if (roomId && !uniqueMap.has(roomId)) {
+      uniqueMap.set(roomId, {
+        id: String(roomId),
+        title: roomDescription,
+      });
+    }
+  });
+
+  return Array.from(uniqueMap.values())
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
+async function fetchEventTypesForCurrentMonth(data = extractData()) {
+  const { start, end } = getCurrentMonthRange();
+
+  const json = await fetchFilters(
+    'GetEventTypes',
+    start,
+    end,
+    data.visibilityLevel,
+    data.visibilityApproved,
+  );
+
+  const items = json?.calendarEventsList?.items || [];
+
+  const uniqueMap = new Map();
+
+  items.forEach((item) => {
+    const { roomId, roomDescription } = item;
+    if (roomId && !uniqueMap.has(roomId)) {
+      uniqueMap.set(roomId, {
+        id: String(roomId),
+        title: roomDescription,
+      });
+    }
+  });
+
+  return Array.from(uniqueMap.values())
+    .sort((a, b) => a.title.localeCompare(b.title));
+}
+
 async function loadSelectorList(block, type) {
   let items = [];
 
@@ -870,17 +928,13 @@ async function loadSelectorList(block, type) {
       items = await fetchHostsForCurrentMonth();
       break;
 
-      // case 'location':
-      //   items = await fetchLocationsForCurrentMonth();
-      //   break;
+    case 'location':
+      items = await fetchLocationsForCurrentMonth();
+      break;
 
-      // case 'eventType':
-      //   items = await fetchEventTypesForCurrentMonth();
-      //   break;
-
-      // case 'series':
-      //   items = await fetchSeriesForCurrentMonth();
-      //   break;
+    case 'eventType':
+      items = await fetchEventTypesForCurrentMonth();
+      break;
 
     default:
       return;
