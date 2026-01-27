@@ -2,11 +2,10 @@
 /* eslint-disable default-param-last */
 /* eslint-disable max-len */
 import { SERVER_URL } from '../../scripts/constants.js';
-import { fetchCalendarData } from '../../scripts/graphql-api.js';
+import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 
 // eslint-disable-next-line no-unused-vars
 let activeSelector = null;
-const cachedSelectorData = {};
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
@@ -813,24 +812,37 @@ function renderSelector(block, type, items) {
   attachSelectorEvents(block, type);
 }
 
-async function fetchHostsForCurrentMonth() {
-  // const { start, end } = getCurrentMonthRange();
-  // const json = await fetchCalendarData(
-  //   'GetHostsForMonth',
-  //   start,
-  //   end,
-  // );
+function getCurrentMonthRange(date = new Date()) {
+  const start = new Date(date.getFullYear(), date.getMonth(), 1);
+  const end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-  // return json?.hostList?.items || [];
+  const format = (d, isEnd = false) => {
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}T${isEnd ? '23:59:59.999' : '00:00:00.000'}-05:00`;
+  };
+
+  return {
+    start: format(start),
+    end: format(end, true),
+  };
+}
+
+async function fetchHostsForCurrentMonth(data = extractData()) {
+  const { start, end } = getCurrentMonthRange();
+  const json = await fetchFilters(
+    'GetHosts',
+    start,
+    end,
+    data.visibilityLevel,
+    data.visibilityApproved,
+  );
+
+  return json?.hostList?.items || [];
 }
 
 async function loadSelectorList(block, type) {
-  // Optional cache
-  if (cachedSelectorData[type]) {
-    renderSelector(block, type, cachedSelectorData[type]);
-    return;
-  }
-
   let items = [];
 
   switch (type) {
@@ -854,7 +866,6 @@ async function loadSelectorList(block, type) {
       return;
   }
 
-  cachedSelectorData[type] = items;
   renderSelector(block, type, items);
 }
 

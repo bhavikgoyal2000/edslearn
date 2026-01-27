@@ -158,6 +158,13 @@ export async function fetchCalendarData(name, eventStartDate, eventEndDate, visi
   return result;
 }
 
+export async function fetchFilters(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved) {
+  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved);
+  if (error) return { data: null };
+  const result = data.data || null;
+  return result;
+}
+
 // eslint-disable-next-line max-len
 async function fetchEventsGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved) {
   try {
