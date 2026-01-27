@@ -708,7 +708,6 @@ function getMetaContent(name) {
 
 function extractData() {
   const hostIds = getMetaContent('hostids');
-  const eventTypeIds = getMetaContent('eventtypeids');
   const location = getMetaContent('location');
 
   return {
@@ -719,12 +718,9 @@ function extractData() {
         .filter((n) => !Number.isNaN(n))
       : [],
 
-    initialEventTypeIds: eventTypeIds
-      ? eventTypeIds
-        .split(',')
-        .map((s) => parseFloat(s.trim()))
-        .filter((n) => !Number.isNaN(n))
-      : [],
+    initialEventTypeIds: parseFloat(
+      getMetaContent('eventtypeids'),
+    ),
 
     location,
 
