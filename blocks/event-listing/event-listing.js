@@ -887,13 +887,17 @@ async function fetchLocationsForCurrentMonth(data = extractData()) {
     }
   });
 
-  return items
-    .map((item) => ({
-      id: item.roomId,
-      title: item.roomDescription || '',
-    }))
-    .filter((item) => item.title)
-    .sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+  return [
+    ...new Map(
+      items
+        .map((item) => ({
+          id: item.roomId,
+          title: item.roomDescription || '',
+        }))
+        .filter((item) => item.id && item.title)
+        .map((item) => [item.id, item]),
+    ).values(),
+  ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
 async function fetchEventTypesForCurrentMonth(data = extractData()) {
@@ -921,13 +925,17 @@ async function fetchEventTypesForCurrentMonth(data = extractData()) {
     }
   });
 
-  return items
-    .map((item) => ({
-      id: item.eventTypeId,
-      title: item.eventTypeName || '',
-    }))
-    .filter((item) => item.title)
-    .sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+  return [
+    ...new Map(
+      items
+        .map((item) => ({
+          id: item.eventTypeId,
+          title: item.eventTypeName || '',
+        }))
+        .filter((item) => item.id && item.title)
+        .map((item) => [item.id, item]),
+    ).values(),
+  ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
 async function loadSelectorList(block, type) {
