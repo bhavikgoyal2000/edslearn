@@ -90,7 +90,7 @@ function attachCalendarSideNavEvents(container) {
 export default async function decorate(block) {
   const contentFragmentPath = block.querySelector('p')?.textContent.trim() || null;
   const contentFragmentJson = await fetchComponentData('SideNav-GraphQL-Query', contentFragmentPath);
-  const isCalendarPageString = document.querySelector('meta[name="isCalendarPage"]')?.getAttribute('content');
+  const isCalendarPageString = document.querySelector('meta[name="iscalendarpage"]')?.getAttribute('content');
   const isCalendarPage = typeof isCalendarPageString === 'string' ? isCalendarPageString.trim().toLowerCase() === 'true' : false;
 
   const sections = contentFragmentJson.sideNavFragmentByPath.item;
