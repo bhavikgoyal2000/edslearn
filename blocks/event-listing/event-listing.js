@@ -887,8 +887,13 @@ async function fetchLocationsForCurrentMonth(data = extractData()) {
     }
   });
 
-  return Array.from(uniqueMap.values())
-    .sort((a, b) => a.title.localeCompare(b.title));
+  return items
+    .map((item) => ({
+      id: item.roomId,
+      title: item.roomDescription || '',
+    }))
+    .filter((item) => item.title)
+    .sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
 async function fetchEventTypesForCurrentMonth(data = extractData()) {
@@ -916,8 +921,13 @@ async function fetchEventTypesForCurrentMonth(data = extractData()) {
     }
   });
 
-  return Array.from(uniqueMap.values())
-    .sort((a, b) => a.title.localeCompare(b.title));
+  return items
+    .map((item) => ({
+      id: item.eventTypeId,
+      title: item.eventTypeName || '',
+    }))
+    .filter((item) => item.title)
+    .sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
 async function loadSelectorList(block, type) {
