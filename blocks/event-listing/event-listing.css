@@ -539,7 +539,7 @@
   margin-bottom: 0.6rem;
 }
 
-.event-listing .selector-link {
+.event-listing .selector-item {
   background: none;
   border: none;
   padding: 0;
@@ -549,7 +549,7 @@
   text-align: left;
 }
 
-.event-listing .selector-link:hover {
+.event-listing .selector-item:hover {
   text-decoration: underline;
 }
 
@@ -557,7 +557,7 @@
   margin-top: 2rem;
 }
 
-.event-listing .selector-all {
+.event-listing .selector-item-all {
   background-color: #005eb8;
   color: #fff;
   border: none;
