@@ -750,29 +750,22 @@ function attachSelectorEvents(block, type, data = extractData()) {
   block.querySelectorAll('.selector-item').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
+      if (id === 'all') {
+        await loadSelectorList(block, type, { noEndDate: true });
+        return;
+      }
+
       const date = new Date().toISOString().split('T')[0];
 
       let groupId = null;
       let eventTypeId = null;
       let location = null;
 
-      if (id !== 'all') {
-        if (type === 'host') groupId = id;
-        if (type === 'eventType') eventTypeId = id;
-        if (type === 'location') location = id;
-      }
+      if (type === 'host') groupId = id;
+      if (type === 'eventType') eventTypeId = id;
+      if (type === 'location') location = id;
 
-      await loadAnnouncementsForDate(
-        date,
-        block,
-        groupId,
-        eventTypeId,
-        location,
-        data.visibilityLevel,
-        data.visibilityApproved,
-        data.visibleRequested,
-        data.visibleApproved,
-      );
+      await loadAnnouncementsForDate(date, block, groupId, eventTypeId, location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
     });
   });
 }
@@ -816,7 +809,7 @@ function renderSelector(block, type, items) {
   attachSelectorEvents(block, type);
 }
 
-function getCurrentMonthRange(date = new Date()) {
+function getCurrentMonthRange(date = new Date(), noEndDate = false) {
   const start = new Date(date.getFullYear(), date.getMonth(), 1);
   const end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
@@ -829,12 +822,12 @@ function getCurrentMonthRange(date = new Date()) {
 
   return {
     start: format(start),
-    end: format(end, true),
+    end: noEndDate ? null : format(end, true),
   };
 }
 
-async function fetchHostsForCurrentMonth(data = extractData()) {
-  const { start, end } = getCurrentMonthRange();
+async function fetchHostsForCurrentMonth(data = extractData(), noEndDate = false) {
+  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
 
   const json = await fetchFilters(
     'GetHosts',
@@ -862,8 +855,8 @@ async function fetchHostsForCurrentMonth(data = extractData()) {
     .sort((a, b) => a.title.localeCompare(b.title));
 }
 
-async function fetchLocationsForCurrentMonth(data = extractData()) {
-  const { start, end } = getCurrentMonthRange();
+async function fetchLocationsForCurrentMonth(data = extractData(), noEndDate = false) {
+  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
 
   const json = await fetchFilters(
     'GetLocations',
@@ -911,8 +904,8 @@ async function fetchLocationsForCurrentMonth(data = extractData()) {
   ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
-async function fetchEventTypesForCurrentMonth(data = extractData()) {
-  const { start, end } = getCurrentMonthRange();
+async function fetchEventTypesForCurrentMonth(data = extractData(), noEndDate = false) {
+  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
 
   const json = await fetchFilters(
     'GetEventTypes',
@@ -949,20 +942,21 @@ async function fetchEventTypesForCurrentMonth(data = extractData()) {
   ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
-async function loadSelectorList(block, type) {
+async function loadSelectorList(block, type, options = {}) {
+  const { noEndDate = false } = options;
   let items = [];
 
   switch (type) {
     case 'host':
-      items = await fetchHostsForCurrentMonth();
+      items = await fetchHostsForCurrentMonth(undefined, noEndDate);
       break;
 
     case 'location':
-      items = await fetchLocationsForCurrentMonth();
+      items = await fetchLocationsForCurrentMonth(undefined, noEndDate);
       break;
 
     case 'eventType':
-      items = await fetchEventTypesForCurrentMonth();
+      items = await fetchEventTypesForCurrentMonth(undefined, noEndDate);
       break;
 
     default:
