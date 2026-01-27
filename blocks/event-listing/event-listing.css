@@ -526,7 +526,7 @@
 .au-calendar .au-tag.navy { background: #036; }
 .au-calendar .au-tag.green { background: #060; }
 
-.au-calendar .au-selector-list {
+.event-listing .au-selector-list {
   column-count: 3;
   column-gap: 4rem;
   list-style: none;
@@ -534,12 +534,12 @@
   margin: 0;
 }
 
-.au-calendar .au-selector-list li {
+.event-listing .au-selector-list li {
   break-inside: avoid;
   margin-bottom: 0.6rem;
 }
 
-.au-calendar .selector-link {
+.event-listing .selector-link {
   background: none;
   border: none;
   padding: 0;
@@ -549,15 +549,15 @@
   text-align: left;
 }
 
-.au-calendar .selector-link:hover {
+.event-listing .selector-link:hover {
   text-decoration: underline;
 }
 
-.au-calendar .au-selector-footer {
+.event-listing .au-selector-footer {
   margin-top: 2rem;
 }
 
-.au-calendar .selector-all {
+.event-listing .selector-all {
   background-color: #005eb8;
   color: #fff;
   border: none;
