@@ -701,7 +701,6 @@ function getMetaContent(name) {
 
 function extractData() {
   const hostIds = getMetaContent('hostids');
-  const eventTypeIds = getMetaContent('eventtypeids');
   const location = getMetaContent('location');
 
   return {
@@ -712,12 +711,9 @@ function extractData() {
         .filter((n) => !Number.isNaN(n))
       : [],
 
-    initialEventTypeIds: eventTypeIds
-      ? eventTypeIds
-        .split(',')
-        .map((s) => parseFloat(s.trim()))
-        .filter((n) => !Number.isNaN(n))
-      : [],
+    eventTypeId: parseFloat(
+      getMetaContent('eventtypeids'),
+    ),
 
     location,
 
@@ -1134,11 +1130,11 @@ function getSearchResultsOnButtonClick(block) {
 export default async function decorate(block) {
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.initialEventTypeIds, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
   document.addEventListener('calendar:filterSelected', async (e) => {
