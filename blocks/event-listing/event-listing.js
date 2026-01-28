@@ -304,17 +304,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
   const html = `
     <div class="au-calendar">
-
-      <!-- Search -->
-      <div class="au-search">
-        <div class="au-input-wrapper">
-            <input type="text" id="searchInput" required>
-            <label for="searchInput">Search University Calendar</label>
-        </div>
-        <button type="button" aria-label="Search">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-      </div>
+    <div class="calendar-todays-event">
 
       <!-- Header -->
       ${buildHeader(data, currentDateStr)}
@@ -329,10 +319,13 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       ${buildPopup(data)}
 
       ${buildFooter(data, currentDateStr)}
+      </div>
+      <div class="calendar-coming-soon">
 
-      ${buildUpcomingHeading(currentDateStr)}
+        ${buildUpcomingHeading(currentDateStr)}
 
       ${buildEvents({ ...data, events: data.upcomingEvents, isUpcoming: true })}
+      </div>
 
     </div>
   `;
@@ -378,7 +371,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
     let rawItems = [];
 
     if (normalizedHostIds.length === 0) {
-      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved);
+      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, eventTypeId, location);
 
       if (calendarJson && calendarJson.calendarEventsList && Array.isArray(calendarJson.calendarEventsList.items)) {
         rawEventsToday = calendarJson.calendarEventsList.items;
@@ -966,6 +959,178 @@ async function loadSelectorList(block, type, options = {}) {
   renderSelector(block, type, items);
 }
 
+function formatEventDay(startDateStr) {
+  const date = new Date(startDateStr);
+  const weekday = date.toLocaleDateString('en-US', { weekday: 'short' });
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const year = date.getFullYear();
+  return `${weekday}, ${month}/${day}/${year}`;
+}
+
+function formatEventTimeSpan(start, end) {
+  // Use America/New_York for US Eastern Time
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  // Helper to get hour/minute/am-pm in US time zone
+  function getTimeParts(date) {
+    /* eslint-disable object-curly-newline */
+    const options = { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' };
+    const parts = new Intl.DateTimeFormat('en-US', options).formatToParts(date);
+    const hour = parts.find((p) => p.type === 'hour')?.value || '';
+    const minute = parts.find((p) => p.type === 'minute')?.value || '';
+    const dayPeriod = parts.find((p) => p.type === 'dayPeriod')?.value.toLowerCase() || '';
+    return { hour, minute, dayPeriod };
+  }
+
+  const s = getTimeParts(startDate);
+  const e = getTimeParts(endDate);
+
+  return `${s.hour}:${s.minute}&nbsp;<span class="am-pm">${s.dayPeriod}</span>&nbsp;–&nbsp;${e.hour}:${e.minute}&nbsp;<span class="am-pm">${e.dayPeriod}</span>`;
+}
+
+function getDatetimeStr(startDateStr) {
+  // Returns "YYYY-MM-DDTHH:mm"
+  const date = new Date(startDateStr);
+  const yyyy = date.getFullYear();
+  const mm = (date.getMonth() + 1).toString().padStart(2, '0');
+  const dd = date.getDate().toString().padStart(2, '0');
+  const hh = date.getHours().toString().padStart(2, '0');
+  const min = date.getMinutes().toString().padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
+}
+
+function escapeAttr(str) {
+  return (str || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function buildEventsDOM(events, wrapperClass = 'calendar-todays-event') {
+  return `
+${events.length > 0 ? `<h1>${wrapperClass === 'calendar-coming-soon' ? 'Coming Soon' : 'Today\'s Events'}</h1><div class="au-events">` : ''}
+  ${events.map((event) => `
+    <div class="au-event expandable"
+      data-title="${escapeAttr(event.eventName)}"
+      data-fullstart="${escapeAttr(event.eventStart)}"
+      data-fullend="${escapeAttr(event.eventEnd)}"
+      data-location="${escapeAttr(event.roomDescription || '')}"
+      data-description="${escapeAttr(event.eventDescription || '')}">
+      <div class="au-event-header">
+        <span class="au-arrow"><ion-icon name="chevron-down-outline" role="img" class="md flip-rtl hydrated"></ion-icon></span>
+        <time class="col-xs-12 col-sm-6 col-md-3 calendar-event-time" datetime="${getDatetimeStr(event.eventStart)}" itemprop="startDate">${formatEventDay(event.eventStart)} 
+        <br>${formatEventTimeSpan(event.eventStart, event.eventEnd)}
+        </time>
+        <div class="au-title">${event.eventName || ''}</div>
+        <div class="au-location">${event.roomDescription || ''}</div>
+      </div>
+      <div class="au-details" style="display: none;">
+        <div class="au-left-column">
+          <div class="au-metadata">
+            <div class="au-description"><p>${event.eventDescription || ''}</p></div>
+            <div class="meta-row">
+              <span class="meta-label"><p>Host</p></span>
+              <span class="meta-value"><a href="javascript:void(0);" target="_blank">${event.groupName || ''}</a></span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label"><p>Type</p></span>
+              <span class="meta-value">(none)</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-label"><p>More Info</p></span>
+              <span class="meta-value"><a href="javascript:void(0);" target="_blank">Event Page</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="au-right-column">
+          <div class="au-actions">
+            <a href="#" class="export-calendar"><span class="ion-android-calendar"></span> Export to Calendar</a>
+            <a href="#"><span class="ion-android-mail"></span> Email this item</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('')}
+</div>
+  `;
+}
+
+async function getCsrfToken() {
+  const response = await fetch('/libs/granite/csrf/token.json');
+  const json = await response.json();
+  return json.token;
+}
+
+function getSearchResultsOnButtonClick(block) {
+  const searchBtn = document.querySelector('.calendar-search-button');
+  if (searchBtn) {
+    searchBtn.addEventListener('click', async () => {
+      const searchInput = document.getElementById('searchInput');
+      const query = searchInput ? searchInput.value.trim() : '';
+      const comingSoonDiv = block.querySelector('.calendar-coming-soon');
+      if (comingSoonDiv) {
+        // Show loader
+        // Show loading spinner in the coming soon div
+        comingSoonDiv.innerHTML = '<div class="calendar-loader" style="text-align:center;padding:2em;"><span class="loader-spinner"></span> Loading...</div>';
+      }
+      try {
+        // Detect if running on author
+        const isAuthor = /^author-p\d+-e\d+\.adobeaemcloud\.com$/.test(window.location.hostname);
+        // Prepare headers
+        const headers = {};
+        let serverUrl = SERVER_URL;
+        // If author, add CSRF token
+        if (isAuthor) {
+          const csrfToken = await getCsrfToken();
+          headers['CSRF-Token'] = csrfToken;
+          serverUrl = window.location.origin;
+        }
+        // Replace this with your actual fetch call
+        const response = await fetch(`${serverUrl}/bin/calendar-search?q=${encodeURIComponent(query)}`, {
+          method: 'GET',
+          headers,
+        });
+
+        const data = await response.json();
+        const now = new Date();
+        const todayStr = now.toISOString().split('T')[0];
+
+        const todaysEvents = [];
+        const comingSoonEvents = [];
+
+        data.results.forEach((event) => {
+          if (!event.eventStart) return;
+          const eventDate = new Date(event.eventStart);
+          const eventDateStr = eventDate.toISOString().split('T')[0];
+          if (eventDateStr === todayStr) {
+            todaysEvents.push(event);
+          } else if (eventDate.getTime() > Date.now()) {
+            comingSoonEvents.push(event);
+          }
+        });
+
+        // Insert only coming soon events into the .calendar-coming-soon div
+        if (comingSoonDiv) {
+          comingSoonDiv.innerHTML = buildEventsDOM(comingSoonEvents, 'calendar-coming-soon');
+          attachAccordion(comingSoonDiv);
+          attachExport(comingSoonDiv);
+        }
+        // Optionally, you can also update today's events if needed:
+        // const todaysDiv = block.querySelector('.calendar-todays-event');
+        // if (todaysDiv) {
+        //   todaysDiv.innerHTML = buildEventsDOM(todaysEvents, 'calendar-todays-event');
+        //   attachAccordion(todaysDiv);
+        //   attachExport(todaysDiv);
+        // }
+      } catch (err) {
+        if (comingSoonDiv) {
+          comingSoonDiv.innerHTML = '<div style="color:red;text-align:center;">Failed to load events.</div>';
+        }
+        console.error('Error fetching search results:', err);
+      }
+    });
+  }
+}
+
 export default async function decorate(block) {
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
@@ -995,6 +1160,8 @@ export default async function decorate(block) {
         break;
     }
   });
+
+  getSearchResultsOnButtonClick(block);
 
   if (!document.querySelector('script[src*="ionicons"]')) {
     const ioniconsScript = document.createElement('script');

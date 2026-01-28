@@ -33,7 +33,7 @@ async function fetchGraphQLData(queryName, path) {
   }
 }
 
-async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
+async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, location) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
     const username = 'admin';
@@ -42,10 +42,14 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
     const paramParts = [];
 
+    const normalizeOptional = (value) => {
+      if (value === null || value === undefined || value === 'NaN') return '';
+      if (typeof value === 'number' && Number.isNaN(value)) return '';
+      return String(value);
+    };
+
     const addParam = (key, value) => {
-      if (value !== null && value !== undefined && value !== '') {
-        paramParts.push(`${key}%3D${encodeURIComponent(value)}`);
-      }
+      paramParts.push(`${key}%3D${encodeURIComponent(value)}`);
     };
 
     addParam('eventStart', eventStartDate);
@@ -55,6 +59,8 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     addParam('date', date);
     addParam('visbleRequested', visbleRequested);
     addParam('visibleApproved', visibleApproved);
+    addParam('eventTypeId', normalizeOptional(eventTypeId));
+    addParam('location', normalizeOptional(location));
 
     const paramString = paramParts.length ? `%3B${paramParts.join('%3B')}` : '';
 
@@ -159,8 +165,8 @@ export async function fetchComponentData(name, path) {
   return result;
 }
 
-export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved) {
-  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved);
+export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, location) {
+  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, location);
   if (error) return { data: null };
   const result = data.data || null;
   return result;
