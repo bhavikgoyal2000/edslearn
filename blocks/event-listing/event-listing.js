@@ -711,9 +711,7 @@ function extractData() {
         .filter((n) => !Number.isNaN(n))
       : [],
 
-    eventTypeId: parseFloat(
-      getMetaContent('eventtypeids'),
-    ),
+    eventTypeId: getMetaContent('eventtypeids'),
 
     location,
 
