@@ -42,14 +42,10 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     const authHeader = `Basic ${btoa(`${username}:${password}`)}`;
     const paramParts = [];
 
-    const normalizeOptional = (value) => {
-      if (value === null || value === undefined || value === 'NaN') return '';
-      if (typeof value === 'number' && Number.isNaN(value)) return '';
-      return String(value);
-    };
-
     const addParam = (key, value) => {
-      paramParts.push(`${key}%3D${encodeURIComponent(value)}`);
+      if (value !== null && value !== undefined && value !== '') {
+        paramParts.push(`${key}%3D${encodeURIComponent(value)}`);
+      }
     };
 
     addParam('eventStart', eventStartDate);
@@ -59,12 +55,12 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     addParam('date', date);
     addParam('visbleRequested', visbleRequested);
     addParam('visibleApproved', visibleApproved);
-    addParam('eventTypeId', normalizeOptional(eventTypeId));
-    addParam('location', normalizeOptional(location));
+    addParam('eventTypeId', eventTypeId);
+    addParam('location', location);
 
     const paramString = paramParts.length ? `%3B${paramParts.join('%3B')}` : '';
 
-    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}${paramString}?${cacheBuster}`;
+    const GRAPHQL_ENDPOINT_PATH = `${GRAPHQL_ENDPOINT}/${queryName}${paramString}%3B?${cacheBuster}`;
 
     const response = await fetch(GRAPHQL_ENDPOINT_PATH, {
       method: 'GET',
