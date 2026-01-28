@@ -346,9 +346,9 @@ function buildCalendarByHostIdsUrl(dateStr, hostIds, visibilityLevel, visibility
   return `${SERVER_URL}/content/apis/au/calenderByMultipleHostIds.${`${dateStr}.${hostIds.join('$')}.${visibilityLevel}.${visibilityApproved}.${visibleRequested}.${visibleApproved}`}.json`;
 }
 
-async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved, eventTypeId) {
   try {
-    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, visibilityLevel, visibilityApproved, null, visibleRequested, visibleApproved);
+    const json = await fetchCalendarData('GetUpcomingCalendarEvents', null, eventEndDateTime, visibilityLevel, visibilityApproved, null, visibleRequested, visibleApproved, eventTypeId);
     return json?.calendarEventsList?.items || [];
   } catch (e) {
     return [];
@@ -383,7 +383,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
 
       const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
 
-      upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+      upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved, eventTypeId);
     } else {
       const servletUrl = buildCalendarByHostIdsUrl(dateStr, normalizedHostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
       const username = 'admin';
