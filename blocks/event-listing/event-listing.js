@@ -952,27 +952,37 @@ function formatEventDay(startDateStr) {
 }
 
 function formatEventTimeSpan(start, end) {
-  // Use America/New_York for US Eastern Time
   const startDate = new Date(start);
   const endDate = new Date(end);
 
-  // Helper to get hour/minute/am-pm in US time zone
   function getTimeParts(date) {
-    /* eslint-disable object-curly-newline */
-    const options = { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/New_York' };
+    const options = {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'America/New_York',
+    };
+
     const parts = new Intl.DateTimeFormat('en-US', options).formatToParts(date);
     const hour = parts.find((p) => p.type === 'hour')?.value || '';
     const minute = parts.find((p) => p.type === 'minute')?.value || '';
     const dayPeriod = parts.find((p) => p.type === 'dayPeriod')?.value.toLowerCase() || '';
-    if (hour === '12' && minute === '00' && dayPeriod === 'pm') return 'noon';
-    if (hour === '12' && minute === '00' && dayPeriod === 'am') return 'midnight';
+
+    if (hour === '12' && minute === '00' && dayPeriod === 'pm') {
+      return { label: 'noon' };
+    }
+    if (hour === '12' && minute === '00' && dayPeriod === 'am') {
+      return { label: 'midnight' };
+    }
     return { hour, minute, dayPeriod };
   }
 
   const s = getTimeParts(startDate);
   const e = getTimeParts(endDate);
 
-  return `${s.hour}:${s.minute}&nbsp;<span class="am-pm">${s.dayPeriod}</span>&nbsp;–&nbsp;${e.hour}:${e.minute}&nbsp;<span class="am-pm">${e.dayPeriod}</span>`;
+  const startText = s.label ? s.label : `${s.hour}:${s.minute}&nbsp;<span class="am-pm">${s.dayPeriod}</span>`;
+  const endText = e.label ? e.label : `${e.hour}:${e.minute}&nbsp;<span class="am-pm">${e.dayPeriod}</span>`;
+  return `${startText}&nbsp;–&nbsp;${endText}`;
 }
 
 function getDatetimeStr(startDateStr) {
