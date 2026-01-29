@@ -1147,15 +1147,15 @@ export default async function decorate(block) {
 
   getSearchResultsOnButtonClick(block);
 
-  // if (!document.querySelector('script[src*="ionicons"]')) {
-  //   const ioniconsScript = document.createElement('script');
-  //   ioniconsScript.type = 'module';
-  //   ioniconsScript.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js';
-  //   document.head.appendChild(ioniconsScript);
+  if (!document.querySelector('script[src*="ionicons"]')) {
+    const ioniconsScript = document.createElement('script');
+    ioniconsScript.type = 'module';
+    ioniconsScript.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.esm.js';
+    document.head.appendChild(ioniconsScript);
 
-  //   const ioniconsNomodule = document.createElement('script');
-  //   ioniconsNomodule.noModule = true;
-  //   ioniconsNomodule.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js';
-  //   document.head.appendChild(ioniconsNomodule);
-  // }
+    const ioniconsNomodule = document.createElement('script');
+    ioniconsNomodule.noModule = true;
+    ioniconsNomodule.src = 'https://unpkg.com/ionicons@7.4.0/dist/ionicons/ionicons.js';
+    document.head.appendChild(ioniconsNomodule);
+  }
 }
