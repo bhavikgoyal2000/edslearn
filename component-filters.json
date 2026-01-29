@@ -86,6 +86,7 @@
       "table",
       "dropForm",
       "miniDropForm",
+      "nomination-form",
       "cediplomaValidationForm",
       "directory-form",
       "textSearchForm",
@@ -100,7 +101,9 @@
       "au-experts-search-results",
       "emergency-notification",
       "emergency-notification-details",
-      "service-now-article"
+      "service-now-article",
+      "student-checklist",
+      "profile-listing"
     ]
   },
   {
@@ -404,7 +407,9 @@
       "htmlEmbed",
       "description-list",
       "table",
-      "magazineIssue"
+      "magazineIssue",
+      "calendar-search",
+      "event-listing"
     ]
   },
   {
@@ -487,7 +492,15 @@
       "magazineHeader",
       "emergency-notification",
       "emergency-notification-details",
-      "service-now-article"
+      "service-now-article",
+      "calendar-search",
+      "student-checklist",
+      "dropForm",
+      "miniDropForm",
+      "nomination-form",
+      "cediplomaValidationForm",
+      "directory-form",
+      "textSearchForm"
     ]
   },
   {
@@ -570,7 +583,17 @@
       "magazineHeader",
       "emergency-notification",
       "emergency-notification-details",
-      "service-now-article"
+      "service-now-article",
+      "calendar-search",
+      "student-checklist",
+      "dropForm",
+      "miniDropForm",
+      "nomination-form",
+      "cediplomaValidationForm",
+      "directory-form",
+      "textSearchForm",
+      "calendar-search",
+      "calendar"
     ]
   },
   {
@@ -648,6 +671,7 @@
       "dropForm",
       "cediplomaValidationForm",
       "miniDropForm",
+      "nomination-form",
       "textSearchForm"
     ]
   },

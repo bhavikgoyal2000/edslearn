@@ -308,3 +308,9 @@ export async function fetchSpreadsheetData(dropdownListPath) {
     };
   }
 }
+
+export async function getCsrfToken() {
+  const response = await fetch('/libs/granite/csrf/token.json');
+  const json = await response.json();
+  return json.token;
+}

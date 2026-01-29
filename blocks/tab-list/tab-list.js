@@ -20,6 +20,48 @@ const cssEscape = (id) => (window.CSS && CSS.escape ? CSS.escape(id) : id.replac
 // Get only the original tab buttons (exclude any clones in the dropdown)
 const getOriginalTabButtons = (tabListUl) => Array.from(tabListUl.querySelectorAll('li > button[role="tab"]'));
 
+function handleTabKeydown(e) {
+  const tab = e.target.closest('button[role="tab"]');
+  if (!tab) return;
+
+  const tabList = tab.closest('ul[role="tablist"]');
+  if (!tabList) return;
+
+  const tabs = getOriginalTabButtons(tabList);
+  const currentIndex = tabs.indexOf(tab);
+  if (currentIndex === -1) return;
+
+  const moveFocus = (nextIndex) => {
+    const next = tabs[nextIndex];
+    if (next) next.focus();
+  };
+
+  if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    moveFocus((currentIndex + 1) % tabs.length);
+  }
+
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    moveFocus((currentIndex - 1 + tabs.length) % tabs.length);
+  }
+
+  if (e.key === 'Home') {
+    e.preventDefault();
+    moveFocus(0);
+  }
+
+  if (e.key === 'End') {
+    e.preventDefault();
+    moveFocus(tabs.length - 1);
+  }
+
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    tab.click();
+  }
+}
+
 /* ---------------- Tab switching ---------------- */
 
 export function changeTabs(e) {
@@ -225,6 +267,7 @@ export default async function decorate(block) {
     btn.textContent = tabLabel;
     btn.title = tabLabel;
     btn.addEventListener('click', changeTabs);
+    btn.addEventListener('keydown', handleTabKeydown);
 
     const li = document.createElement('li');
     li.appendChild(btn);

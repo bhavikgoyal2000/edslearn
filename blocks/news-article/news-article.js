@@ -91,7 +91,7 @@ function createNewsArticleBlock(cfData) {
                 <div>
                     <div class="topic">${data.topic}</div>
                     <h1>${data.news_title}</h1>
-                    ${data.showTeaser ? `<div class="teaser">${data.teaser}</div>` : ''}
+                    ${data.teaser ? `<div class="teaser">${data.teaser}</div>` : ''}
                 </div>
                 <div class="byline">
                     <p class="author">${data.author ? `By <span>${data.author}</span>&nbsp;<span class="grey">|</span>&nbsp;` : ''}

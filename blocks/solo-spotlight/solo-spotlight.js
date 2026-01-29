@@ -421,7 +421,7 @@ export default function decorate(block) {
   // Track all CTA buttons in the spotlight block
   const ctas = section.querySelectorAll('a[href]');
   ctas.forEach((cta) => {
-    createDataLayerEvent('click', 'Spotlight:CTA', () => ({
+    createDataLayerEvent('click', 'Spotlight', () => ({
       linkName: cta.textContent.trim(),
       linkType: 'cta',
       linkRegion: 'main',

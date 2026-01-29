@@ -72,7 +72,7 @@ function createSearchFindBlock(browseTitle, browseUrl) {
   toggleLink.dataset.toggle = 'collapse';
   toggleLink.dataset.target = '#new-search';
   toggleLink.href = '#new-search';
-  toggleLink.textContent = window.innerWidth < 768 ? 'Search' : '';
+  toggleLink.textContent = window.innerWidth < 991 ? 'Search' : '';
 
   const searchCollapse = document.createElement('div');
   searchCollapse.id = 'new-search';

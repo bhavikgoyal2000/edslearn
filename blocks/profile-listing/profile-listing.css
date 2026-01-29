@@ -1,0 +1,577 @@
+.profile-listing-wrapper {
+    .btn.btn-cta {
+        font-weight: 700;
+        color: #fff;
+        background: #0672b9
+    }
+
+    ul li {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        font-family: "GT Walsheim", Arial, sans-serif;
+        font-weight: 400;
+        color: #343434;
+        margin-bottom: 15px
+    }
+
+    .pagination {
+        padding-left: 0;
+        margin: 20px 0;
+        border-radius: 4px;
+    }
+
+    .pagination>li {
+        display: inline;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+    }
+
+    .pagination>li>a,
+    .pagination>li>span {
+        float: left;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        min-width: 33px;
+        line-height: 2.8rem;
+        margin-right: 5px;
+        padding: 0;
+        margin-left: 0;
+        text-align: center;
+        border-radius: 0;
+        border-color: #D2D2BC;
+        color: #005099;
+        transition: background-color .33s ease, color .33s ease, border-color .33s ease;
+    }
+
+    .with-alpha-bar nav .pagination {
+        margin: 0 30px;
+    }
+
+    .profile-listing-loader {
+        align-items: center;
+        color: #555;
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;
+        font-size: 16px;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .profile-listing-loader .spinner {
+        animation: spin 1s linear infinite;
+        border: 4px solid rgb(0 0 0 / 10%);
+        border-left-color: #333;
+        border-radius: 50%;
+        height: 40px;
+        margin-bottom: 10px;
+        width: 40px;
+    }
+
+    .pagination>.active>a {
+        z-index: 2;
+        color: #fff;
+        background-color: #005099;
+        border-color: #005099;
+        cursor: default
+    }
+    
+    .pagination>.active>span {
+        z-index: 2;
+        color: #fff;
+        background-color: #005099;
+        border-color: #005099;
+        cursor: default
+    }
+
+    .pagination>li:first-child>a,
+    .pagination>li:first-child>span {
+        margin-left: 0;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px
+    }
+
+    .pagination>li:last-child>a,
+    .pagination>li:last-child>span {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px
+    }
+
+    nav .pagination li a:focus,
+    nav .pagination li a:hover {
+        background: 0 0;
+        border-color: #0672b9;
+        color: #0672b9;
+        text-decoration: underline;
+    }
+        
+    nav.alpha-bar .pagination li>a,
+    nav.alpha-bar .pagination li>span,
+    nav.page-numbers .pagination li>a,
+    nav.page-numbers .pagination li>span {
+        min-width: 33px;
+        line-height: 2.8rem;
+        margin-right: 5px;
+        padding: 0;
+        margin-left: 0;
+        text-align: center;
+        border-radius: 0
+    }
+
+    .pagination>.active>a:focus,
+    .pagination>.active>a:hover,
+    .pagination>.active>span:focus,
+    .pagination>.active>span:hover {
+        z-index: 2;
+        color: #fff;
+        background-color: #005099;
+        border-color: #005099;
+        cursor: default
+    }
+    
+    .profile-listing.variation1 {
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block
+        }
+
+        h2 {
+            font-family: "GT Walsheim", Arial, sans-serif;
+            font-weight: 700;
+            color: var(--default-heading);
+            font-size: clamp(2.4rem, 1.6vw, 3rem);
+            line-height: 3.2rem;
+            letter-spacing: 0;
+            text-transform: none;
+            margin: 0 0 10px
+        }
+
+        .text-muted {
+            color: #777
+        }
+
+        address,
+        blockquote,
+        figcaption,
+        figure,
+        p,
+        q {
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            font-family: "GT Walsheim", Arial, sans-serif;
+            font-weight: 400;
+            color: #343434;
+            margin: 0;
+        }
+
+        a:visited {
+            color: #13477d
+        }
+
+        ul {
+            margin-bottom: 25px;
+            padding-left: 17px
+        }
+
+        ul li {
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            font-family: "GT Walsheim", Arial, sans-serif;
+            font-weight: 400;
+            color: #343434;
+            margin-bottom: 15px;
+        }
+        
+        img:last-child {
+            margin-bottom: 10px
+        }
+
+        .btn.btn-cta:visited {
+            color: #fff
+        }
+
+        .btn.btn-cta:focus,
+        .btn.btn-cta:hover,
+        .btn.btn-cta:active {
+            background: #0672b9;
+            background-image: linear-gradient(to bottom, #0672b9 0, #0672b9 90%, #f4c74b 90%, #f4c74b 100%);
+            text-decoration: none
+        }
+
+        .media {
+            margin-top: 15px
+        }
+        
+        .media,
+        .media-body {
+            zoom: 1;
+            overflow: hidden
+        }
+
+        .media:first-child {
+            margin-top: 0
+        }
+
+        .profile-block {
+            display: flex;
+            flex-direction: column;
+            padding: 0 25px;
+            margin-bottom: 30px
+        }
+
+        .profile-block .pull-left img {
+            border-radius: 50%;
+            min-width: 140px;
+            width: 140px;
+        }
+
+        .profile-block .media-body {
+            display: flex;
+            flex-direction: column;
+            width: 100%
+        }
+
+        .profile-block .media-body h2 {
+            color: #1a1c21;
+            font-family: "GT Walsheim", Arial, sans-serif;
+            font-size: 24px;
+            margin-bottom: 5px;
+            line-height: 3.5rem
+        }
+
+        .profile-block .media-body span a {
+            text-decoration: underline;
+            font-weight: 700;
+            line-height: 1
+        }
+
+        .profile-block .media-body address {
+            line-height: 1.4em;
+            font-size: .9em;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .profile-block .media-body address strong {
+            margin-bottom: 10px;
+            font-weight: 400
+        }
+
+        .profile-block .media-body .btn-cta {
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: none;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            line-height: 1em;
+            height: auto;
+            border-radius: 25px;
+            letter-spacing: 1px;
+            font-size: 12px;
+            background-color: #1a1c21;
+            margin-top: 10px;
+        }
+
+        .profile-block .media-body .content {
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .profile-block .media-body .contact {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .profile-block .media-body .contact a {
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .profile-block .media-body .contact i.fa-envelope,
+        .profile-block .media-body .contact i.fa-phone {
+            color: #005099;
+        }
+
+        .pull-left {
+            float: left;
+        }
+
+        .media-left,
+        .media>.pull-left {
+            padding-right: 10px
+        }
+
+        @media (width >= 992px) {
+            .profile-block {
+                flex-direction: initial
+            }
+
+            .profile-block .media-body {
+                flex-direction: initial;
+                padding-left: 12px
+            }
+
+            .profile-block .media-body h2 {
+                font-size: 42px
+            }
+
+            .profile-block .media-body span {
+                font-size: 16px
+            }
+
+            .profile-block .media-body address {
+                margin-bottom: 0
+            }
+
+            .profile-block .media-body .btn-cta {
+                font-size: 13px;
+                padding: 12px 24px
+            }
+
+            .profile-block .media-body .content {
+                width: 61%
+            }
+
+            .profile-block .media-body .contact {
+                width: 39%;
+                border-left: 1px solid #707070;
+                margin-left: 20px;
+                padding-left: 20px
+            }
+        }
+
+        @media (width >= 1200px) {
+            .visible-lg-inline {
+                display: inline;
+            }
+        }
+
+        .profile-list-loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: sans-serif;
+            font-size: 16px;
+            color: #555;
+            padding: 24px;
+        }
+
+        .profile-list-loader .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #0000001a;
+            border-left-color: #333;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    .profile-listing.variation2 {
+        .profile-listing {
+            margin-bottom: 50px;
+        }
+
+        p:last-child {
+            margin-bottom: 25px;
+        }
+
+        .profile-listing section .profile-item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: stretch;
+            flex-flow: row nowrap;
+        }
+
+        .profile-listing section .profile-item .flex-1 {
+            width: 25vw;
+            flex: 0 1 25vw;
+        }
+        
+        .profile-listing section .profile-item .flex-1 img {
+            padding-top: 7px;
+            border-radius: 50%;
+        }
+
+        .profile-listing section .profile-item .flex-3 {
+            width: 70vw;
+            padding-left: 5vw;
+            flex: 3 1 25vw;
+        }
+
+        .profile-listing section .profile-item .profile-office {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 60vw;
+            margin-top: 5px;
+        }
+
+        .profile-listing section .profile-item .profile-name {
+            font-family: "GT Walsheim", Arial, sans-serif;
+            font-weight: 700;
+            font-size: 2.6rem;
+            line-height: 3.2rem;
+            letter-spacing: 0;
+            margin: 0 0 10px;
+            text-transform: none;
+            margin-bottom: 5px;
+            color: #1a1c21;
+        }
+
+        .profile-listing section .profile-item [itemprop="jobTitle"] {
+            display: block;
+            font-size: 80%;
+            line-height: 1.2;
+            font-weight: normal;
+            color: #1a1c21;
+        }
+
+        .profile-listing section .profile-item [itemprop="worksFor"] {
+            display: block;
+            font-size: 80%;
+            line-height: 1.2;
+            font-weight: normal;
+            color: #1a1c21;
+        }
+
+        .profile-listing section .profile-item .profile-link,
+        .profile-listing section .profile-item .profile-email,
+        .profile-listing section .profile-item .profile-phone {
+            margin-top: 10px;
+        }
+
+        .profile-listing section .profile-item .profile-bio {
+            margin-top: 15px;
+        }
+
+        .profile-listing section .profile-item span[class^="ion"] {
+            font-size: 2.4rem;
+            display: inline-block;
+            vertical-align: middle;
+            color: #005099;
+        }
+        
+        .btn {
+            display: inline-block;
+            margin-bottom: 0;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            white-space: nowrap;
+            user-select: none;
+            font-size: 1.5rem;
+            font-family: "GT Walsheim", Arial, sans-serif;
+            line-height: 50px;
+            width: auto;
+            height: 50px;
+            padding: 0 20px;
+            margin-top: 25px;
+            border-radius: 0;
+            border: none;
+            text-decoration: none;
+            transition: background-color .5s ease, color .5s ease
+        }
+
+        .profile-listing section .profile-item .btn,
+        .profile-listing section .profile-item .btn-cta,
+        .profile-listing section .profile-item .btn-sm {
+            background-color: #1a1c21;
+            border-radius: 50px;
+        }
+
+        .profile-listing section .profile-item .btn:hover,
+        .profile-listing section .profile-item .btn-cta:hover,
+        .profile-listing section .profile-item .btn-sm:hover,
+        .profile-listing section .profile-item .btn:focus,
+        .profile-listing section .profile-item .btn-cta:focus,
+        .profile-listing section .profile-item .btn-sm:focus {
+            background: #1a1c21;
+            background-image: none;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn.btn-cta:visited {
+            color: #fff
+        }
+
+        .btn.btn-cta:focus,
+        .btn.btn-cta:hover,
+        .btn.btn-cta:active {
+            background: #0672b9;
+            background-image: linear-gradient(to bottom, #0672b9 0, #0672b9 90%, #f4c74b 90%, #f4c74b 100%);
+            text-decoration: none
+        }
+
+        .btn.btn-sm {
+            font-size: 12px;
+            font-size: 1.3rem;
+            margin-top: 10px;
+            height: 25px;
+            line-height: 25px;
+            padding: 0 10px;
+            border-radius: 0;
+        }
+
+        @media (width >= 768px) {
+            .profile-image-cv {
+                float: left;
+                text-align: center;
+            }
+        }
+
+        @media (width >= 992px) {
+            .profile-listing section .profile-item.col-md-5:nth-of-type(odd) {
+                clear: both;
+                margin-bottom: 20px;
+            }
+
+            .profile-listing section .profile-item .profile-office {
+                max-width: 90%;
+            }
+
+            .profile-listing section .profile-item.col-md-5 .profile-office {
+                max-width: 70%;
+            }
+
+            .profile-listing section .profile-item .flex-3 {
+                width: inherit;
+                padding-left: 15px;
+                flex: 3 1 25%;
+                padding-top: 10px;
+            }
+
+            .profile-listing section .profile-item.two-columns .flex-3 {
+                max-width: 312px;
+            }
+
+            .profile-listing section .profile-item .flex-1 {
+                width: 25%;
+                flex: 0 0 25%;
+            }
+
+            .profile-listing section .profile-item .btn {
+                margin-bottom: 15px;
+            }
+
+            .profile-listing section .profile-item .profile-email,
+            .profile-listing section .profile-item .profile-phone {
+                margin-top: 5px;
+            }
+        }
+    }
+}

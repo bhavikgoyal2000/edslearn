@@ -1,10 +1,8 @@
 main div.structure-wrapper div.section.content-section.collapsible-section {
-    padding: 0 25px;
-
     .collapsible-section-content {
         border: var(--bg-metro-silver-color) 1px solid;
         border-top: none;
-        max-height: 2000px; 
+        max-height: 9000px;
         transition: max-height 0.4s ease-in;
 
     }

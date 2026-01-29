@@ -34,9 +34,19 @@ function loadCSS(href) {
 
 // Function to determine file type
 function getFileType(url) {
-  const extension = url.split('.').pop().toLowerCase();
-  if (extension === 'csv') return 'csv';
-  if (['xlsx', 'xls'].includes(extension)) return 'excel';
+  // Check for .csv, .xlsx, .xls at the end of the path
+  const pathMatch = url.match(/\.([a-z0-9]+)(\?|$)/i);
+  if (pathMatch) {
+    const extension = pathMatch[1].toLowerCase();
+    if (extension === 'csv') return 'csv';
+    if (['xlsx', 'xls'].includes(extension)) return 'excel';
+  }
+  // Check for format=csv or format=xlsx in query string (for Google Sheets export)
+  const formatMatch = url.match(/[?&]format=(csv|xlsx|xls)/i);
+  if (formatMatch) {
+    if (formatMatch[1] === 'csv') return 'csv';
+    if (['xlsx', 'xls'].includes(formatMatch[1])) return 'excel';
+  }
   return 'unknown';
 }
 
@@ -69,7 +79,23 @@ async function parseExcel(arrayBuffer) {
 }
 
 // Function to fetch and parse file based on type
-async function fetchAndParseFile(url) {
+async function fetchAndParseFile(inputUrl) {
+  let url = inputUrl;
+  // Check for Google Sheets link and convert to CSV export
+  let sheetsMatch = inputUrl.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)\/.*[?&]gid=(\d+)/);
+  if (sheetsMatch) {
+    const fileId = sheetsMatch[1];
+    const gid = sheetsMatch[2];
+    url = `https://docs.google.com/spreadsheets/d/${fileId}/export?format=csv&id=${fileId}&gid=${gid}`;
+  } else {
+    // Check for Google Sheets link without gid (default to gid=0)
+    sheetsMatch = inputUrl.match(/https:\/\/docs\.google\.com\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+    if (sheetsMatch) {
+      const fileId = sheetsMatch[1];
+      url = `https://docs.google.com/spreadsheets/d/${fileId}/export?format=csv&id=${fileId}&gid=0`;
+    }
+  }
+
   const fileType = getFileType(url);
   if (fileType === 'csv') {
     const response = await fetch(url);

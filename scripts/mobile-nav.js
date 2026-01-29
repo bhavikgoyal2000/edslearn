@@ -1,5 +1,5 @@
 /* Shared mobile helpers used by Tier2/Tier3 headers */
-export const MOBILE_MAX = 600;
+export const MOBILE_MAX = 991;
 export const isMobile = () => window.matchMedia(`(max-width: ${MOBILE_MAX}px)`).matches;
 
 function loadCssOnce(href, dataAttr = 'data-breadcrumb-mobile') {
@@ -68,8 +68,8 @@ export function ensureMobileHeader({
   `).join('');
 
   const frag = document.createRange().createContextualFragment(`
-    <div id="row-mobile-header" class="row row-center visible-xs visible-sm has-crumb">
-      <div class="bg-school-primary col-xs-12">
+    <div id="row-mobile-header" class="row row-center visible-xs visible-sm has-crumb mobile-header bg-school-primary">
+      <div class="col-xs-12">
         <span itemscope itemtype="https://schema.org/BreadcrumbList" role="navigation" aria-labelledby="breadcrumb-label">
           <span class="sr-only" id="breadcrumb-label">You are here: </span>
           ${parentsMarkup}
@@ -81,7 +81,7 @@ export function ensureMobileHeader({
           </span>
         </span>
       </div>
-      <div class="navbar-mobile-full bg-school-primary visible-sm-flex visible-xs-flex col-xs-12 col-sm-12">
+      <div class="navbar-mobile-full visible-sm-flex visible-xs-flex col-xs-12 col-sm-12">
         <button class="navbar-toggle collapsed" type="button" aria-expanded="false" aria-controls="new-mobile-nav" data-target="#new-mobile-nav" data-toggle="collapse" data-placement="left" tabindex="-1" aria-hidden="false">
           <span class="sr-only"><span>Show</span> navigation</span>
           <span class="ion-chevron-down"></span>

@@ -125,51 +125,69 @@ function addBgColorInSection() {
 
 function addBackToTopBtn() {
   const backToTopBtn = document.querySelector('.default-content-wrapper .button-container > a.button[title="Back to top"]');
+  const footerBackToTopBtn = document.querySelector('.footer-container .back-to-top-footer');
 
-  if (!backToTopBtn) return;
+  if (!backToTopBtn || !footerBackToTopBtn) return;
 
-  if (backToTopBtn && !backToTopBtn.querySelector('.ion-chevron-up')) {
+  if (!backToTopBtn.querySelector('.ion-chevron-up')) {
     const icon = document.createElement('span');
     icon.className = 'ion-chevron-up';
     backToTopBtn.appendChild(icon);
   }
 
-  // Function to toggle button visibility
   const leftRail = document.querySelector('.left-rail');
+  const footer = document.querySelector('.footer-container');
+
+  let overlapState = 'default'; //  'default' | 'overlapping'
+
   const toggleBackToTop = () => {
     if (window.innerWidth <= 992) {
       backToTopBtn.style.display = 'none';
+      footerBackToTopBtn.style.display = 'none';
       return;
     }
-    let threshold = 200;
+
+    let threshold = 100;
     if (leftRail) {
-      const leftRailHeight = leftRail?.offsetHeight;
-      threshold = leftRail.getBoundingClientRect().bottom - leftRailHeight / 2;
+      const leftRailHeight = leftRail.offsetHeight - 150; // Remove sticky header height
+      threshold = leftRail.getBoundingClientRect().bottom - leftRailHeight;
     }
+
     if (window.scrollY > threshold) {
       backToTopBtn.style.display = 'block';
     } else {
       backToTopBtn.style.display = 'none';
     }
+
+    const btnRect = backToTopBtn.getBoundingClientRect();
+    const footerRect = footer.getBoundingClientRect();
+    const overlapThreshold = 25;
+    const isOverlapping = btnRect.bottom > (footerRect.top - overlapThreshold);
+
+    if (isOverlapping && overlapState !== 'overlapping') {
+      backToTopBtn.style.visibility = 'hidden';
+      footerBackToTopBtn.style.display = 'block';
+      overlapState = 'overlapping';
+    } else if (!isOverlapping && overlapState !== 'default') {
+      backToTopBtn.style.visibility = 'visible';
+      footerBackToTopBtn.style.display = 'none';
+      overlapState = 'default';
+    }
   };
 
-  // Initial check
-  toggleBackToTop();
-
-  // Listen to scroll events
-  window.addEventListener('scroll', toggleBackToTop);
-
-  // Recheck on window resize (e.g., switching between mobile & desktop)
-  window.addEventListener('resize', toggleBackToTop);
-
-  // Add smooth scroll-to-top behavior
-  backToTopBtn.addEventListener('click', (e) => {
+  // Scroll suave para ambos botones
+  const handleClick = (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  backToTopBtn.addEventListener('click', handleClick);
+  footerBackToTopBtn.addEventListener('click', handleClick);
+
+  // Inicial
+  toggleBackToTop();
+  window.addEventListener('scroll', toggleBackToTop);
+  window.addEventListener('resize', toggleBackToTop);
 }
 
 addBgColorInSection();

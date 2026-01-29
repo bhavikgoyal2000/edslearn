@@ -1,0 +1,117 @@
+{
+  "models": [
+    {
+      "id": "page-metadata",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "jcr:title",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "jcr:description",
+          "label": "Description"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "keywords",
+          "multi": true,
+          "label": "Keywords"
+        },
+        {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "isCalendar",
+        "label": "Is Calendar Page?"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "calendarName",
+        "label": "Calendar Name"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "hostIds",
+        "label": "Calendar Host IDs"
+      },
+      {
+        "component": "select",
+        "name": "visibilityLevel",
+        "label": "Calendar Event Listing Visibility Level",
+        "options": [
+          {
+            "name": "[0] Do Not Publish to Calendar",
+            "value": "0"
+          },
+          {
+            "name": "[1] Basic Calendar Record",
+            "value": "1"
+          },
+          {
+            "name": "[2] Publish to Main Calendar",
+            "value": "2"
+          },
+          {
+            "name": "[3] Visibility Level Three",
+            "value": "3"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "visibilityApproved",
+        "label": "Calendar Event Listing Visibility Approved",
+        "options": [
+          {
+            "name": "[0] Do Not Publish to Calendar",
+            "value": "0"
+          },
+          {
+            "name": "[1] Basic Calendar Record",
+            "value": "1"
+          },
+          {
+            "name": "[2] Publish to Main Calendar",
+            "value": "2"
+          },
+          {
+            "name": "[3] Visibility Aprroved Three",
+            "value": "3"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "visbleRequested",
+        "label": "Announcement Visibility Requested",
+        "options": [
+          {
+            "name": "[0] Do Not Publish to Calendar",
+            "value": "0"
+          },
+          {
+            "name": "[1] Basic Calendar Record",
+            "value": "1"
+          },
+          {
+            "name": "[2] Publish to Main Calendar",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "visibleApproved",
+        "label": "Announcement Listing Visibility Approved"
+      }
+      ]
+    }
+  ]
+}

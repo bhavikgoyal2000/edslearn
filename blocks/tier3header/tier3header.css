@@ -9,27 +9,6 @@ li {
     max-width: 100% !important;
   }
 
-  .tier3header.block {
-    --body-font-family: "GT Walsheim", arial, sans-serif;
-
-    transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .tier3header.block.has-emergency {
-    border-top: none !important;
-    min-height: 76px !important;
-  }
-
-  .tier3header.block.affix-top, .tier3header.block.affix {
-    min-height: 90px;
-    display: block;
-    height: 76px;
-    border-top: 15px solid;
-    border-image: linear-gradient(120deg, #e0263c 0%, #e0263c 11%, #3c208c 89%, #3c208c 100%);
-    border-bottom: 0;
-    z-index: 401;
-  }
-
   .bg-school-primary {
     background-color: #0672b9;
   }
@@ -37,49 +16,34 @@ li {
   .tier3header.block .tier-3-header-ombre {
     display: block;
     height: 8px;
-    position: relative;
-    top: -8px;
     background: linear-gradient(120deg, #e0263c 0, #e0263c 11%, #3c208c 89%, #3c208c 100%);
   }
 
-  .tier3header.block .sub-header {
-    position: relative;
-    top: -8px;
+  .tier3header.block.has-emergency .tier-3-header-ombre {
+    display: none;
   }
 
   /** Breadcrumb changes start */
 
   .tier3header.block .overlay {
-    background: 0 0;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    padding-left: 1.5rem;
   }
 
   .tier3header.block .overlay>.t3-page-header {
-    display: block !important;
-    flex: 0 1 auto;
-    font-family: "GT Walsheim", arial, sans-serif;
     font-size: 1.8rem;
     font-weight: 400;
     text-transform: none;
-    height: 75px;
-    color: #fff;
+    color: var(--white-color);
     margin: 0 !important;
     line-height: 7.5rem;
     padding: 0 15px 0 0;
   }
 
-  .tier3header.block .child.you-are-here {
-    font-weight: 700;
-    font-family: "GT Walsheim", Arial, sans-serif;
-    letter-spacing: -.04rem;
-  }
-
   .t3-page-header a.crumb.parent {
-    font-size: 1.8rem;
-    line-height: 7.5rem;
     color: rgb(255 255 255 / 96%);
     margin-right: 1em;
     position: relative;
@@ -107,9 +71,7 @@ li {
 
   .tier3header.block .you-are-here {
     font-weight: 700;
-    font-family: "GT Walsheim", arial, sans-serif;
     letter-spacing: -.04rem;
-    box-sizing: border-box;
   }
 
   .tier3header.block .overlay ul.tier-3-cta {
@@ -145,16 +107,16 @@ li {
     white-space: normal;
     margin: 0;
     font-weight: 700;
-    color: #fff;
-    background: #0672b9;
-    background-color: #0672b9;
+    color: var(--white-color);
+    background: var(--link-hover-color);
+    background-color: var(--link-hover-color);
   }
 
   .btn.btn-school {
     font-weight: 700;
-    color: #fff;
-    background: #0672b9;
-    background-color: #0672b9;
+    color: var(--white-color);
+    background: var(--link-hover-color);
+    background-color: var(--link-hover-color);
   }
 
   .affix-top.has-breadcrumb .row-center {
@@ -186,7 +148,9 @@ li {
   .tier3header.block.affix {
     width: 100%;
     position: fixed;
-  }
+    z-index: 100;
 
-  /** * Breadcrumb changes ends here */
+
+    /** * Breadcrumb changes ends here */
+  }
 }

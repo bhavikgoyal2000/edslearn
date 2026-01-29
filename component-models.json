@@ -4481,6 +4481,29 @@
       { "component": "text", "valueType": "string", "name": "value", "label": "Value", "value": "", "required": false }
     ]
   },
+    {
+    "id": "nomination-form",
+    "fields": [
+      { "component": "text", "name": "recipientEmail", "label": "Form Reciever's Email Address", "valueType": "string", "required": true },
+      { "component": "text", "name": "successMessage", "label": "Form Success Message", "valueType": "string", "required": false },
+      { "component": "text", "name": "failureMessage", "label": "Form Failure Message", "valueType": "string", "required": false },
+      { "component": "text", "name": "section1Label", "value": "Nomination Information", "label": "Section 1 Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominatorName", "label": "Nominator Name Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominatorEmail", "label": "Nominator Email Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominatorPhone", "label": "Nominator Phone Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "section2Label", "value": "Nominee's Information", "label": "Section 2 Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominateeName", "label": "Nominee's Name Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominateeEmail", "label": "Nominee's Email Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominateePhone", "label": "Nominee's Phone Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "nominateeAddress", "label": "Nominee's Address Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "class", "label": "Class Label", "valueType": "string", "required": false },
+      { "component": "text", "name": "awardCategory", "label": "Award Category Label", "valueType": "string", "required": false },
+      { "component": "aem-content", "name": "dropdownURL", "value": "", "label": "Dropdown Options", "description": "Select the Spreadsheet for the Dropdown Options.", "valueType": "string", "validation": { "rootPath": "/content/au/form" } },
+      { "component": "text", "name": "briefDescription", "label": "Brief Description Label", "value": "A 1-2 page brief description of nominee's public interest/public service work:", "valueType": "string", "required": false },
+      { "component": "text", "name": "resumeLabel", "label": "Resume Label", "value": "The Nominee's current resume:", "valueType": "string", "required": false },
+      { "component": "text", "name": "supportLetter", "label": "Support Letter Label", "value": "1-2 Letters of Support for the Nomination (Letters may be submitted by the nominator or others. No more than 2 letters of support will be considered for each Nominee):", "valueType": "string", "required": false }
+    ]
+  },
   {
     "id": "directory-form",
     "fields": [
@@ -4671,6 +4694,12 @@
     ]
   },
   {
+    "id": "calendar-search",
+    "fields": [
+      { "component": "text", "name": "auPlaceholder", "label": "Placeholder Text", "valueType": "string" }
+    ]
+  },
+  {
     "id": "programRankList",
     "fields": [
       {
@@ -4727,13 +4756,14 @@
   {
     "id": "event-listing",
     "fields": [
-      { "component": "text", "name": "groupId", "label": "Host Id", "valueType": "string"},
-      { "component": "text", "name": "eventTypeId", "label": "Event Type Id", "valueType": "string"},
-      { "component": "text", "name": "location", "label": "Location ", "valueType": "string"},
-      { "component": "text", "name": "visibilityLevel", "label": "Visibility Level (For Event Listing)", "valueType": "string"},
-      { "component": "text", "name": "visibilityApproved", "label": "Visibility Approved (For Event Listing)", "valueType": "string"},
-      { "component": "text", "name": "visbleRequested", "label": "Visibility Requested (For Announcement Listing)", "valueType": "string"},
-      { "component": "boolean", "name": "visibleApproved", "label": "Visibility Approved (For Announcement Listing)", "valueType": "boolean"}
+      { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true },
+      { "component": "number", "name": "groupId", "label": "Host ID (h_ems)", "valueType": "number"},
+      { "component": "number", "name": "eventTypeId", "label": "Event Type ID (t_ems)", "valueType": "number"},
+      { "component": "text", "name": "location", "label": "Location (l)", "valueType": "string"},
+      { "component": "text", "name": "visibilityLevel", "label": "Calendar Visibility Level", "valueType": "string"},
+      { "component": "text", "name": "visibilityApproved", "label": "Calendar Visibility Approved", "valueType": "string"},
+      { "component": "text", "name": "visbleRequested", "label": "Announcement Visibility Requested", "valueType": "string"},
+      { "component": "boolean", "name": "visibleApproved", "label": "Announcement Visibility Approved", "valueType": "boolean"}
     ]
   },
   {
@@ -4844,7 +4874,6 @@
   {
   "id": "service-now-article",
   "fields": [
-    { "component": "text", "name": "title", "label": "Title", "valueType": "string", "hidden": true },
     { "component": "text", "name": "serviceNowArticleNumber", "label": "ServiceNow Article Number", "valueType": "string", "required": true },
     { "component": "richtext", "name": "apiResponse", "label": "API Response", "valueType": "string", "hidden": true },
     {
@@ -4881,6 +4910,71 @@
           { "name": "Metro Silver", "value": "bg-metro-silver-light-color" },
           { "name": "Tenleytown Red", "value": "bg-tenleytown-red-light-color" }
         ]
+      }
+    ]
+  },
+  {
+    "id": "profile-listing",
+    "fields": [
+      {
+        "component": "text",
+        "name": "isGlobal",
+        "label": "Global Flag",
+        "valueType": "string",
+        "hidden": true
+      },
+      {
+        "component": "select",
+        "name": "profileVariation",
+        "label": "Variation",
+        "valueType": "string",
+        "required": true,
+        "defaultValue": "variation1",
+        "options": [
+          { "name": "Variation 1", "value": "variation1" },
+          { "name": "Variation 2", "value": "variation2" }
+        ]
+      },
+      {
+        "component": "container",
+        "valueType": "string",
+        "collapsible": false,
+        "label": "Variation 2",
+        "name": "profileVariation2",
+        "condition": { "===": [{ "var": "profileVariation" }, "variation2"] },
+        "fields": [
+          {
+            "component": "select",
+            "name": "layoutVariation",
+            "label": "Layout",
+            "valueType": "string",
+            "required": true,
+            "defaultValue": "column1",
+            "options": [
+              { "name": "One Column", "value": "column1" },
+              { "name": "Two Column", "value": "column2" }
+            ]
+          },
+          { "component": "boolean", "label": "Check to Show the Alpha Bar. Note: Enter greater value in resultsPerPage than Total results.", "name": "isAlphaBarEnabled", "valueType": "boolean" }
+        ]
+      },
+      {
+        "component": "profilecustommultifield",
+        "label": "Custom Multifield",
+        "name": "profile_filterData",
+        "valueType": "string"
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "resultPerPage",
+        "label": "Results per page:",
+        "value": 10,
+        "validation": {
+        "numberMin": 10,
+        "numberMax": 500,
+        "customErrorMsg": "Please provide the value between 10 and 50."
+        }
       }
     ]
   }

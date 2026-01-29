@@ -19,50 +19,10 @@ a.button.primary {
     margin-bottom: 0;
 }
 
+a.button.primary:focus,
 a.button.primary:hover {
     background-image: linear-gradient(to bottom, #005099 0, #005099 90%, #f4c74b 90%, #f4c74b 100%);
     text-decoration: none;
-}
-
-.default-content-wrapper .button-container >a.button[title="Back to top"] {
-    position: fixed;
-    z-index: 1;
-    bottom: 25px;
-    margin: 0;
-    left: auto;
-    color: #0672b9;
-    font-weight: 700;
-    background: #fff;
-    border: 1px solid #0672b9;
-    text-decoration: none;
-    display: none;
-    margin-bottom: 0;
-    touch-action: manipulation;
-    cursor: pointer;
-    white-space: nowrap;
-    user-select: none;
-    font-size: 1.5rem;
-    font-family: "GT Walsheim", Arial, sans-serif;
-    line-height: 50px;
-    width: auto;
-    height: 50px;
-    padding: 0 20px;
-    margin-top: 25px;
-    border-radius: 0;
-    transition: background-color .5s ease, color .5s ease;
-}
-
-.default-content-wrapper .button-container >a.button[title="Back to top"] .ion-chevron-up {
-    margin-left: 3px;
-}
-
-.default-content-wrapper .button-container >a.button[title="Back to top"]:focus, 
-.default-content-wrapper .button-container >a.button[title="Back to top"]:hover {
-    color: #0672b9;
-    background-color: #fff;
-    background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
-    border-color: #0672b9;
-    border-bottom-color: #f4c74b;
 }
 
 .button-container > a.button {
@@ -87,6 +47,58 @@ a.button.primary:hover {
     border-radius: 0;
     text-decoration: none;
     box-sizing: border-box;
+}
+
+a.button[title="Back to top"] {
+    position: fixed;
+    z-index: 11;
+    bottom: 25px;
+    margin: 0;
+    left: auto;
+    color: #0672b9 !important;
+    font-weight: 700 !important;
+    background: #fff;
+    border: 1px solid #0672b9;
+    text-decoration: none;
+    display: none;
+    margin-bottom: 0;
+    touch-action: manipulation;
+    cursor: pointer;
+    white-space: nowrap;
+    user-select: none;
+    font-size: 1.5rem !important;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    line-height: 50px !important;
+    width: auto;
+    height: 50px;
+    padding: 0 20px;
+    margin-top: 25px;
+    border-radius: 0;
+    transition: background-color .5s ease, color .5s ease;
+}
+
+a.button[title="Back to top"] .ion-chevron-up {
+    margin-left: 5px;
+}
+
+a.button[title="Back to top"]:focus, 
+a.button[title="Back to top"]:hover {
+    color: #0672b9;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
+    border-color: #0672b9;
+    border-bottom-color: #f4c74b;
+}
+
+a.button.back-to-top-footer[title="Back to top"] {
+    position: absolute;
+    top: -10rem;
+}
+
+@media (width >= 1325px) {
+    a.button.back-to-top-footer[title="Back to top"] {
+        margin-left: .5rem;
+    }
 }
 
 .button-container > a.button:focus,

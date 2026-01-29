@@ -20,12 +20,12 @@ article.news-success-story .byline {
 
 .news-article-wrapper h1 {
   font-family: "GT Walsheim", Arial, sans-serif !important;
-  font-weight: 700;
+  font-weight: 400;
   color: #4d4037;
-  font-size: clamp(3rem, 2.1vw, 4rem);
+  font-size: 3.85rem;
   line-height: 1.2;
   letter-spacing: .005em;
-  text-transform: none;
+  text-transform: capitalize;
   margin: 0 0 2.5rem;
 }
 

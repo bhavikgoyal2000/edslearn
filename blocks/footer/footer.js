@@ -127,9 +127,8 @@ function appendSocialLinks(socialLinks) {
     i.className = className;
     i.setAttribute('aria-hidden', 'true');
     s.textContent = name;
-
-    i.appendChild(s);
     socialLink.appendChild(i);
+    socialLink.appendChild(s);
     socialList.appendChild(socialLink);
     ulTag.appendChild(socialList);
   });
@@ -153,7 +152,7 @@ function appendLogo(pictureTag) {
 
 function buildGlobalFooter(data, pictureTag, bgColor, isHomePage) {
   const footer = document.createElement('footer');
-  footer.className = 'footer-continer';
+  footer.className = 'footer-container';
   footer.id = 'site-footer';
   footer.setAttribute('role', 'contentinfo');
   if (bgColor.bgColorClass === 'bg-custom-color' && bgColor.customColorCode) {
@@ -211,6 +210,19 @@ function buildGlobalFooter(data, pictureTag, bgColor, isHomePage) {
   row.appendChild(col1);
   row.appendChild(col2);
   row.appendChild(col3);
+  // Add footer-based back-to-top button
+  const backToTopAlt = document.createElement('a');
+  backToTopAlt.href = '#main-container';
+  backToTopAlt.title = 'Back to top';
+  backToTopAlt.className = 'button back-to-top-footer';
+
+  backToTopAlt.innerText = 'Back to top';
+
+  const icon = document.createElement('span');
+  icon.className = 'ion-chevron-up';
+  backToTopAlt.appendChild(icon);
+
+  row.appendChild(backToTopAlt);
   footer.appendChild(row);
   return footer;
 }

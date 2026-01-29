@@ -57,6 +57,20 @@ export default async function decorate(block) {
 
   calendar.render();
 
+  // Add classes to left rail and content wrapper for styling when calendar is present
+  const leftRailWrapper = calendarEl.closest('.left-rail-sections-wrapper');
+  const contentWrapper = leftRailWrapper
+    ? leftRailWrapper.parentElement?.querySelector('.content-sections-wrapper-with-left-rail')
+    : null;
+
+  if (leftRailWrapper) {
+    leftRailWrapper.classList.add('calendar-left-rail');
+  }
+
+  if (contentWrapper) {
+    contentWrapper.classList.add('calendar-left-rail');
+  }
+
   let currentSelectedDate = null;
 
   function highlightDateInFullCalendar(dateStr) {

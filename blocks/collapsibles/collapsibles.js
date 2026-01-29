@@ -62,6 +62,7 @@ export default function decorate(block) {
     const collapseId = generateCollapseId();
     const collapseLink = document.createElement('a');
     collapseLink.href = collapseId;
+    collapseLink.tabIndex = -1;
     collapseLink.classList.add('collapse-link');
 
     const collapseBlockdiv = document.createElement('div');
@@ -74,6 +75,7 @@ export default function decorate(block) {
 
     const header = document.createElement('div');
     header.classList.add('collapsible-header', collapseBlockData.displayStyle);
+    header.tabIndex = 0;
     header.append(collapseLink);
     const gradientDiv = document.createElement('div');
     if (collapseBlockData.displayStyle === 'bg-default-ombre-color') {
@@ -88,7 +90,7 @@ export default function decorate(block) {
       toggleCollapse(this);
     });
 
-    collapseLink.addEventListener('keydown', (e) => {
+    header.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
         toggleCollapse(collapseDiv);

@@ -24,24 +24,22 @@
 }
 
 .block.calendar .fc .fc-toolbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: .5rem 0;
+	margin-bottom: 0;
+	height: 50px;
 }
 
 .block.calendar .fc-toolbar-title {
-	font-weight: 600 !important;
-	font-size: 1.15rem !important;
-	color: #222 !important;
+	font-weight: 700;
+	font-size: var(--heading-font-size-xs);
+	color: var(--default-heading-font-color); ;
 }
 
 .block.calendar .fc-prev-button,
 .block.calendar .fc-next-button {
-	background: transparent !important;
-	border: none !important;
-	color: #555 !important;
-	font-size: 1.2rem !important;
+	background: transparent;
+	border: none;
+	color: #555;
+	font-size: 1.5rem;
 	width: 28px;
 	height: 28px;
 	display: flex;
@@ -52,7 +50,7 @@
 
 .block.calendar .fc-prev-button:hover,
 .block.calendar .fc-next-button:hover {
-	background: #e6e6e6 !important;
+	background: #e6e6e6;
 	border-radius: 50%;
 }
 
@@ -70,6 +68,7 @@
 .block.calendar .fc-col-header-cell a {
   color: #4d4037 !important;
   text-decoration: none !important;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .block.calendar .fc-col-header-cell a:hover {
@@ -86,8 +85,8 @@
 }
 
 .block.calendar .fc-daygrid-day {
-	border: 1px solid #d0c4b6 !important;
-	background: #fff !important;
+	border: 1px solid #d0c4b6;
+	cursor: pointer;
 }
 
 .block.calendar .fc-day-today {
@@ -96,9 +95,10 @@
 
 .block.calendar .fc-daygrid-day-number {
 	color: #333 !important;
-	font-weight: 500 !important;
-	font-size: .95rem;
-  text-decoration: none !important;
+	font-size: 1.2rem;
+	font-family: var(--body-font-family);
+  text-decoration: none;
+	padding: 0;
 }
 
 .block.calendar .fc-day-today .fc-daygrid-day-number {
@@ -107,19 +107,33 @@
 }
 
 .fc table {
-	border-collapse: separate !important;
-	border-spacing: 1px;
+	border-collapse: separate;
+}
+
+.fc table.fc-scrollgrid-sync-table {
+	border-spacing: 4px;
+}
+
+.fc .fc-daygrid-day-frame {
+	display: flex;
+	height: 30px;
+	align-items: center;
+  justify-content: center;
+}
+
+.fc-daygrid-day-frame::after,
+.fc-daygrid-day-frame::before {
+	content:none;
 }
 
 .block.calendar .fc .fc-highlight {
 	background: #7e6d5f !important;
 }
 
-.block.calendar .fc-daygrid-day-top {
-	display: flex;
+.block.calendar .fc .fc-daygrid-day-top {
 	justify-content: center;
 	padding: 4px 0;
-  text-decoration: none !important;
+	margin: 0 auto;
 }
 
 .block.calendar .fc-scrollgrid-sync-inner:hover {

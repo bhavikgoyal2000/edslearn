@@ -1179,6 +1179,22 @@
           }
         },
         {
+          "title": "Calendar Search",
+          "id": "calendar-search",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Calendar Search",
+                  "filter": "calendar-search",
+                  "model": "calendar-search"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Program Finder Rank List",
           "id": "programRankList",
           "plugins": {
@@ -1297,6 +1313,21 @@
                   "name": "Emergency Notification Details",
                   "model": "emergency-notification-details",
                   "filter": "emergency-notification-details"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Student Checklist",
+          "id": "student-checklist",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Student Checklist",
+                  "filter": "student-checklist"
                 }
               }
             }
@@ -1694,7 +1725,8 @@
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Profile Listing"
+                  "name": "Profile Listing",
+                  "model": "profile-listing"
                 }
               }
             }
@@ -1771,6 +1803,22 @@
                   "name": "Mini Drop Form",
                   "model": "miniDropForm",
                   "filter": "miniDropForm"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Nomination Form",
+          "id": "nomination-form",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Nomination Form",
+                  "model": "nomination-form",
+                  "filter": "nomination-form"
                 }
               }
             }

@@ -26,7 +26,7 @@ const BLOCK_ORDERED_ATTRIBUTES = [
 ];
 
 const BREAKPOINTS = {
-  mobile: '(max-width: 767px)',
+  mobile: '(max-width: 991px)',
 };
 
 function isMobileView() {

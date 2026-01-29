@@ -501,8 +501,10 @@ const createEditProfileLink = () => {
     });
     return link;
   } else {
-    const link = createElement('a', { classes: ['edit-profile-link', 'disabled'] });
+    const link = createElement('a', { classes: ['edit-profile-link'] });
     link.textContent = 'Login to Edit Your Profile';
+    const currentUrl = encodeURIComponent(window.location.pathname + window.location.search + window.location.hash);
+    link.href = `/login/?backURL=${currentUrl}&hidePendingActions=1`;
     return link;
   }
 };

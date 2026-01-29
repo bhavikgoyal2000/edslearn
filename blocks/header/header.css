@@ -16,8 +16,9 @@
   flex-wrap: nowrap;
   position: fixed;
   z-index: 1000;
-  height: 70.8px;
   width: 100%;
+  height: inherit;
+  padding: 0 0 0 1rem;
 }
 
 .header-wrapper .header.program-finder-header {
@@ -27,10 +28,7 @@
 /* Logo - Move less specific selector first */
 .header-wrapper .header h1 {
   margin: 0;
-  height: inherit;
   align-items: center;
-  padding-top: 10.4px;
-  padding-left: 10px;
 }
 
 .header-wrapper .header.program-finder-header h1 {
@@ -48,9 +46,7 @@
 
 .header-wrapper .logo img {
   height: auto;
-  width: 336px !important;
-  max-width: 336px;
-  vertical-align: unset;
+  width: 336px;
 }
 
 .header-wrapper .header.program-finder-header .logo img {
@@ -63,6 +59,10 @@
     max-width: unset;
     margin: 0 auto;
   }
+
+  .header-main.header {
+    padding: 0 0 0 1.8rem;
+  }
 }
 
 /* Row Layout */
@@ -72,7 +72,6 @@
   justify-content: space-between;
   width: 100%;
   flex-wrap: nowrap;
-  height: inherit;
 }
 
 .global-homepage #row-all-logo {
@@ -166,10 +165,10 @@
   font-family: var(--font-primary);
   font-weight: 700;
   border: none;
-  height: 4.1rem;
+  height: 3.2rem;
   position: relative;
-  margin: 0 10px;
-  width: 8rem;
+  margin: 0;
+  width: 10rem;
   padding: 0 30px 0 10px;
   border-radius: 0;
 }
@@ -202,28 +201,24 @@
   text-transform: uppercase;
 }
 
-.header-main .hamburger-icon::before {
-  content: "\f394";
+.header-main .hamburger-icon::before,
+.header-main .hamburger-icon-close::before {
   /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
   font-family: Ionicons;
   line-height: 3.2rem;
   font-size: 2rem;
-  right: 0;
-  top: 4px;
   position: absolute;
+  top: 0;
+  right: 0;
   font-weight: 400;
+}
+
+.header-main .hamburger-icon::before {
+  content: "\f394";
 }
 
 .header-main .hamburger-icon-close::before {
   content: "\f2d7";
-  /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
-  font-family: Ionicons;
-  line-height: 3.2rem;
-  font-size: 2rem;
-  position: absolute;
-  top: 4px;
-  right: 0;
-  font-weight: 400;
 }
 
 /* Main Nav Menu */
@@ -242,7 +237,7 @@
 
 .header-main.head-sub #new-nav.navmenu {
   color: black;
-  top: 60px;
+  top: var(--nav-height);
   height: 600px;
 }
 
@@ -571,10 +566,10 @@
 }
 
 /* Responsive Styles */
-@media screen and (width <=768px) {
+@media screen and (width <=991px) {
   .header-main .logo img {
-    width: auto !important;
-    height: 55px;
+    width: 250px;
+    height: 40px;
   }
 
   .header-main .home-links,
@@ -602,20 +597,19 @@
     height: 75.8px;
   }
 
-  .header-main .navbar-toggle-button {
-    position: absolute;
-    right: 0;
-  }
-
   .header-main #new-search-toggle {
-    color: #fff;
+    color: var(--black-color);
     padding: 8px 24px 7px 12px;
     display: block;
     position: relative;
     background: transparent;
-    font-weight: 700;
-    font-size: 1.4rem;
+    font-weight: 400;
+    font-size: 1.6rem;
     margin: 5px 0;
+  }
+
+  .header-main .navbar-toggle-button {
+    height: 4rem;
   }
 
   .header-main form#new-search-form {
@@ -656,12 +650,6 @@
 }
 
 @media screen and (width > 420px) and (width <=500px) {
-  .header-main .logo img {
-    height: 55px;
-    width: 240px !important;
-    vertical-align: unset;
-  }
-
   .header-main li.menu-item {
     width: calc(100vw - 10vw);
   }
@@ -672,12 +660,6 @@
 }
 
 @media screen and (width <=420px) {
-  .header-main .logo img {
-    height: 55px;
-    width: 240px !important;
-    vertical-align: unset;
-  }
-
   .header-main li.menu-item {
     width: calc(100vw - 13vw);
   }
@@ -694,7 +676,7 @@ header.header-wrapper.affix-top {
   z-index: 9999;
   width: 100%;
   height: auto;
-  
+
 
   @media screen and (width >=1023px) {
     position: static;
@@ -1150,6 +1132,7 @@ header.header-wrapper.affix .header-magazine .magazine-menu-container {
   }
 
   .header-magazine .nav-item.dropdown:hover .nav-link,
+  .header-magazine nav.navbar-expand-md ul.navbar-nav li a:focus,
   .header-magazine nav.navbar-expand-md ul.navbar-nav li a:hover {
     color: #fff;
     background-color: #09001e;
@@ -1324,8 +1307,11 @@ header.header-wrapper.affix .header-magazine .magazine-menu-container {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-.header-magazine a:focus {
+.header-magazine a:focus h1,
+/* stylelint-disable-next-line no-descending-specificity */
+.header-magazine a h1:focus {
   outline: 1px dotted #c4122f !important;
+  outline-offset: -1px !important;
 }
 
 .header-magazine a.decor {

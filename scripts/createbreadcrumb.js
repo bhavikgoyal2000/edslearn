@@ -47,14 +47,18 @@ export function buildBreadcrumbs(pathTitleMap) {
   const currentUrl = window.location.pathname;
   const breadcrumbs = [];
   const ancestorPages = getAncestorPages(currentUrl);
+
+  const cleanTitle = (t) => String(t).split('|')[0].trim();
+
   for (let i = 0; i < ancestorPages.length; i += 1) {
     let pageTitle = pathTitleMap.get(ancestorPages[i]);
+
     if (pageTitle) {
-      breadcrumbs.push({ pageTitle, url: ancestorPages[i] });
+      breadcrumbs.push({ pageTitle: cleanTitle(pageTitle), url: ancestorPages[i] });
     } else {
       pageTitle = pathTitleMap.get(`${ancestorPages[i]}/`);
       if (pageTitle) {
-        breadcrumbs.push({ pageTitle, url: `${ancestorPages[i]}/` });
+        breadcrumbs.push({ pageTitle: cleanTitle(pageTitle), url: `${ancestorPages[i]}/` });
       }
     }
   }
