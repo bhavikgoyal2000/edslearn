@@ -109,7 +109,7 @@ function buildEvents(data) {
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               ${isUpcoming ? `<div class="au-date"> ${eventDateLabel}</div>` : ''}
-              <time class="col-xs-12 col-sm-6 col-md-3 calendar-event-time" datetime="${getDatetimeStr(event.fullStart)}" itemprop="startDate">${formatEventDay(event.eventStart)} 
+              <time class="col-xs-12 col-sm-6 col-md-3 calendar-event-time" datetime="${getDatetimeStr(event.fullStart)}" itemprop="startDate">${formatEventDay(event.fullStart)} 
               <br>${formatEventTimeSpan(event.fullStart, event.fullEnd)}
               </time>
               <div class="au-title">${event.title || ''}</div>
