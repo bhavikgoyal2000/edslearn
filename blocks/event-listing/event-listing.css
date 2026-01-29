@@ -558,44 +558,64 @@
 }
 
 .au-calendar .alert {
-  position: relative;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1rem;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #fff;
+  border-color: #fff;
+  border-radius: 0;
 }
 
-.au-calendar .alert-info {
-  color: #0c5460;
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
+.au-calendar .alert .alert-info {
+  border-color: #0672b9;
 }
 
 .au-calendar .alert.single {
-  max-width: 100%;
-  margin: 2rem auto;
+  padding: 0;
 }
 
-.au-calendar .alert.alert-info.single {
+.alert.single p {
+  margin: 0 !important;
+  color: #343434;
+  line-height: 2.4rem;
+  font-size: 1.6rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  height: auto;
+  min-height: 50px;
   position: relative;
-  padding-left: 3rem;
+  padding-left: 60px;
+  padding-right: 15px;
 }
 
-.au-calendar .alert.alert-info.single::before {
-  content: "\f14a";
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #0c5460;
+@media (width >= 992px) {
+    .alert.single p.vertical-center {
+        line-height: 5rem;
+        height: 5rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 }
 
-.au-calendar .alert .vertical-center p {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #0c5460;
-  line-height: 1.5;
+.alert.single p::before {
+    background-color: #fff;
+    color: #fff;
+    line-height: 5rem;
+    font-size: 2.7rem;
+    /* stylelint-disable-next-line font-family-no-missing-generic-family-keyword */
+    font-family: Ionicons;
+    font-weight: 700;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    display: block;
+    content: "\f401";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.alert.single.alert-info p::before {
+    background-color: #0672b9;
+    content: "\f14a";
 }
