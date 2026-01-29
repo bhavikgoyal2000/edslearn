@@ -313,19 +313,14 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       ${buildAnnouncements(data)}
 
       <!-- Events -->
-      ${buildEventsDOM({ events: data.events, containerClass: 'calendar-todays-event' })}
+      ${buildEventsDOM(data.events, 'calendar-todays-event')}
 
       <!-- Popup -->
       ${buildPopup(data)}
 
       ${buildFooter(data, currentDateStr)}
       </div>
-      <div class="calendar-coming-soon">
-
-        ${buildUpcomingHeading(currentDateStr)}
-
-      ${buildEvents({ ...data, events: data.upcomingEvents, isUpcoming: true })}
-      </div>
+      ${buildEventsDOM(data.upcomingEvents, 'calendar-coming-soon')}
 
     </div>
   `;
