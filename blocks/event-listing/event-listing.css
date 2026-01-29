@@ -282,7 +282,7 @@
 
 .au-calendar .au-left-column {
   flex: 1;
-  padding-left: 28%;
+  padding: 10px 0 10px 28%;
   min-width: 0;
 }
 
