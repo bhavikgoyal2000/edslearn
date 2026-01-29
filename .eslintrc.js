@@ -1,10 +1,6 @@
 module.exports = {
   root: true,
-  extends: [
-    'airbnb-base',
-    'plugin:json/recommended',
-    'plugin:xwalk/recommended',
-  ],
+  extends: 'airbnb-base',
   env: {
     browser: true,
   },
@@ -18,46 +14,5 @@ module.exports = {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
-    'xwalk/no-duplicate-fields': 'off', // disable duplicate fields check
-    'xwalk/max-cells': ['error', {
-      section: 8,
-      'social-links': 13,
-      flexcontainerItem: 10,
-      flexPromoImageItem: 10,
-      'alive-chat': 6,
-      datatable: 15,
-      flexPromoTextItem: 6,
-      inlineVideo: 12,
-      inlineVideoPlaylist: 7,
-      policyDetail: 15,
-      policyList: 7,
-      tier2header: 11,
-      tier3header: 7,
-      soloSpotlightItem: 10,
-      duoSpotlightItem: 20,
-      wclList: 8,
-      office: 15,
-      callout: 6,
-      'salesforce-rfi-form': 5,
-      hero: 5,
-      blockquote: 5,
-      'single-image-quote': 5,
-      customTextBlock: 5,
-      iframe: 5,
-      table: 7,
-      'table-col-5': 5,
-      'au-main-content-section-w-right-rail': 5,
-      wclCourse: 6,
-      wclStory: 9,
-      wclWidget: 11,
-      programFinderSearch: 11,
-      textSearchForm: 9,
-      'nomination-form': 18,
-      cediplomaValidationForm: 9,
-      magazineIssue: 6,
-      'service-now-article': 6,
-      'event-listing': 8,
-      'profile-listing': 6,
-    }],
   },
 };
