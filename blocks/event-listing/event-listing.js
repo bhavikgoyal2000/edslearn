@@ -969,9 +969,6 @@ function formatEventTimeSpan(start, end) {
     return { hour, minute, dayPeriod };
   }
 
-  if (hour === '12' && minute === '00' && dayPeriod === 'PM') return 'noon';
-  if (hour === '12' && minute === '00' && dayPeriod === 'AM') return 'midnight';
-
   const s = getTimeParts(startDate);
   const e = getTimeParts(endDate);
 
