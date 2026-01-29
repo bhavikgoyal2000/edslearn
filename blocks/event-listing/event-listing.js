@@ -313,8 +313,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       ${buildAnnouncements(data)}
 
       <!-- Events -->
-      ${buildEvents({ ...data, events: data.events })}
-      ${buildEventsDOM({ events: data.events, 'calendar-todays-event'  })}
+      ${buildEventsDOM({ events: data.events, containerClass: 'calendar-todays-event' })}
 
       <!-- Popup -->
       ${buildPopup(data)}
