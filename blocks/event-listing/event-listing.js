@@ -982,7 +982,7 @@ function formatEventTimeSpan(start, end) {
 
   const startText = s.label ? s.label : `${s.hour}:${s.minute}&nbsp;<span class="am-pm">${s.dayPeriod}</span>`;
   const endText = e.label ? e.label : `${e.hour}:${e.minute}&nbsp;<span class="am-pm">${e.dayPeriod}</span>`;
-  return `${startText}&nbsp;–&nbsp;${endText}`;
+  return `${startText} - ${endText}`;
 }
 
 function getDatetimeStr(startDateStr) {

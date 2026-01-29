@@ -263,16 +263,20 @@
 
 .au-calendar .au-location {
   color: #343434;
-  font-size: 0.95rem;
-  flex-shrink: 0;
-  white-space: nowrap;
-  text-align: left;
-  width: 300px;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 400;
+  width: 33%;
 }
 
 .calendar-coming-soon .au-location {
+  color: #343434;
   font-size: 1.6rem;
   line-height: 2.6rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 400;
+  width: 33%;
 }
 
 .au-calendar .au-left-column {
