@@ -46,7 +46,7 @@ function buildCalendarSideNav() {
   const sectionId = 'calendar-browse-by';
   const browseLink = document.createElement('a');
 
-  browseLink.href = `#${sectionId}`;
+  browseLink.href = `javascript:void(0)`;
   browseLink.id = `ctl-${sectionId}`;
   browseLink.className = 'collapsed';
   browseLink.setAttribute('aria-expanded', 'false');
