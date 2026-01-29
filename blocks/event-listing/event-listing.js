@@ -964,8 +964,8 @@ function formatEventTimeSpan(start, end) {
     const hour = parts.find((p) => p.type === 'hour')?.value || '';
     const minute = parts.find((p) => p.type === 'minute')?.value || '';
     const dayPeriod = parts.find((p) => p.type === 'dayPeriod')?.value.toLowerCase() || '';
-    if (hour === '12' && minute === '00' && dayPeriod === 'PM') return 'noon';
-    if (hour === '12' && minute === '00' && dayPeriod === 'AM') return 'midnight';
+    if (hour === '12' && minute === '00' && dayPeriod === 'pm') return 'noon';
+    if (hour === '12' && minute === '00' && dayPeriod === 'am') return 'midnight';
     return { hour, minute, dayPeriod };
   }
 
