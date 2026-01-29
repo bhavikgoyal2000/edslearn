@@ -536,16 +536,6 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
   const formattedDate = formatEventDate(eventData.fullStart);
   block.innerHTML = `
     <div class="au-calendar">
-      <!-- Search -->
-      <div class="au-search">
-        <div class="au-input-wrapper">
-            <input type="text" id="searchInput" required>
-            <label for="searchInput">Search University Calendar</label>
-        </div>
-        <button type="button" aria-label="Search">
-          <ion-icon name="search-outline"></ion-icon>
-        </button>
-      </div>
       <section class="au-event-detail">
         <div class="event-content">
           <h1 class="event-date">${formattedDate}</h1>
