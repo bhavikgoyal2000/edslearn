@@ -93,11 +93,11 @@ function buildEvents(data) {
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
-            data-title="${safeTitle}"
-            data-fullstart="${event.fullStart}"
-            data-fullend="${event.fullEnd}"
-            data-location="${safeLocation}"
-            data-description="${safeDescription}"
+            data-title="${escapeAttr(event.title)}"
+            data-fullstart="${escapeAttr(event.fullStart)}"
+            data-fullend="${escapeAttr(event.fullEnd)}"
+            data-location="${escapeAttr(event.location|| '')}"
+            data-description="${escapeAttr(event.eventDescription || '')}"
             data-eventtypeid="${event.eventTypeId || ''}"
             data-type="${event.type || ''}"
             data-groupid="${event.groupId || ''}"
@@ -109,12 +109,14 @@ function buildEvents(data) {
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               ${isUpcoming ? `<div class="au-date"> ${eventDateLabel}</div>` : ''}
-              <div class="au-time">${event.time || ''}</div>
-              <div class="au-title">${event.title}</div>
+              <time class="col-xs-12 col-sm-6 col-md-3 calendar-event-time" datetime="${getDatetimeStr(event.fullStart)}" itemprop="startDate">${formatEventDay(event.eventStart)} 
+              <br>${formatEventTimeSpan(event.fullStart, event.fullEnd)}
+              </time>
+              <div class="au-title">${event.title || ''}</div>
               <div class="au-location">${event.location || ''}</div>
             </div>
             ${expandable ? `
-              <div class="au-details">
+              <div class="au-details" style="display: none;">
                 <div class="au-left-column">
                   <div class="au-metadata">
                     ${event.eventDescription ? `<div class="au-description"><p>${event.eventDescription}</p></div>` : ''}
@@ -313,14 +315,19 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
       ${buildAnnouncements(data)}
 
       <!-- Events -->
-      ${buildEventsDOM(data.events, 'calendar-todays-event')}
+      ${buildEvents({ ...data, events: data.events })}
 
       <!-- Popup -->
       ${buildPopup(data)}
 
       ${buildFooter(data, currentDateStr)}
       </div>
-      ${buildEventsDOM(data.upcomingEvents, 'calendar-coming-soon')}
+      <div class="calendar-coming-soon">
+
+        ${buildUpcomingHeading(currentDateStr)}
+
+      ${buildEvents({ ...data, events: data.upcomingEvents, isUpcoming: true })}
+      </div>
 
     </div>
   `;
