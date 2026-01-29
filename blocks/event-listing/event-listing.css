@@ -565,7 +565,7 @@
   border-radius: 0;
 }
 
-.au-calendar .alert .alert-info {
+.au-calendar .alert.alert-info {
   border-color: #0672b9;
 }
 
