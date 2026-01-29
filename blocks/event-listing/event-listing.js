@@ -73,7 +73,7 @@ function buildAnnouncements(data) {
 function buildEvents(data) {
   const isUpcoming = data.isUpcoming === true;
   if (!data.events || data.events.length === 0) {
-    return '<p class="no-events">No events scheduled for this day.</p>';
+    return '<div class="alert alert-info single"><p class="vertical-center">No events for this day.</p></div>';
   }
 
   return `

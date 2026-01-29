@@ -556,3 +556,46 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.au-calendar .alert {
+  position: relative;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.au-calendar .alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.au-calendar .alert.single {
+  max-width: 100%;
+  margin: 2rem auto;
+}
+
+.au-calendar .alert.alert-info.single {
+  position: relative;
+  padding-left: 3rem;
+}
+
+.au-calendar .alert.alert-info.single::before {
+  content: "\f14a";
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #0c5460;
+}
+
+.au-calendar .alert .vertical-center p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #0c5460;
+  line-height: 1.5;
+}
