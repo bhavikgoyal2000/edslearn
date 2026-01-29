@@ -80,16 +80,6 @@ function buildEvents(data) {
     <div class="au-events">
       ${data.events.map((event) => {
     const expandable = true;
-    const safeTitle = event.title.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    const safeLocation = (event.location || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    const safeDescription = (event.eventDescription || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    const eventDateLabel = isUpcoming ? new Date(event.fullStart).toLocaleDateString('en-US', {
-      weekday: 'short',
-      month: '2-digit',
-      day: '2-digit',
-      year: 'numeric',
-    })
-      : '';
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
@@ -108,9 +98,16 @@ function buildEvents(data) {
             data-contactphone="${event.contactPhone || ''}">
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
-              ${isUpcoming ? `<div class="au-date"> ${eventDateLabel}</div>` : ''}
-              <time class="col-xs-12 col-sm-6 col-md-3 calendar-event-time" datetime="${getDatetimeStr(event.fullStart)}" itemprop="startDate">${formatEventDay(event.fullStart)} 
-              <br>${formatEventTimeSpan(event.fullStart, event.fullEnd)}
+              <time
+                class="col-xs-12 col-sm-6 col-md-3 calendar-event-time"
+                datetime="${getDatetimeStr(event.fullStart)}"
+                itemprop="startDate"
+              >
+                ${
+                  !isUpcoming
+                    ? formatEventTimeSpan(event.fullStart, event.fullEnd)
+                    : `${formatEventDay(event.fullStart)}<br>${formatEventTimeSpan(event.fullStart, event.fullEnd)}`
+                }
               </time>
               <div class="au-title">${event.title || ''}</div>
               <div class="au-location">${event.location || ''}</div>
@@ -967,8 +964,13 @@ function formatEventTimeSpan(start, end) {
     const hour = parts.find((p) => p.type === 'hour')?.value || '';
     const minute = parts.find((p) => p.type === 'minute')?.value || '';
     const dayPeriod = parts.find((p) => p.type === 'dayPeriod')?.value.toLowerCase() || '';
+    if (hour === '12' && minute === '00' && dayPeriod === 'PM') return 'noon';
+    if (hour === '12' && minute === '00' && dayPeriod === 'AM') return 'midnight';
     return { hour, minute, dayPeriod };
   }
+
+  if (hour === '12' && minute === '00' && dayPeriod === 'PM') return 'noon';
+  if (hour === '12' && minute === '00' && dayPeriod === 'AM') return 'midnight';
 
   const s = getTimeParts(startDate);
   const e = getTimeParts(endDate);
