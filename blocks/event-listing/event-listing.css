@@ -282,7 +282,7 @@
 
 .au-calendar .au-left-column {
   flex: 1;
-  padding-left: 280px;
+  padding-left: 28%;
   min-width: 0;
 }
 
@@ -291,9 +291,12 @@
 }
 
 .au-calendar .au-description p {
-  margin: 0;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 400;
   color: #343434;
-  line-height: 1.5;
+  margin: 0;
 }
 
 .au-calendar .au-metadata {
@@ -381,7 +384,7 @@
 
 .au-calendar .au-right-column {
   flex-shrink: 0;
-  width: 300px;
+  width: 33%;
   text-align: right;
   padding-top: 0.5rem;
 }
