@@ -118,6 +118,7 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
+  color: var(--default-body-font-color,#343434);
 }
 
 .au-calendar .link-button:hover {
