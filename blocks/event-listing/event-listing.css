@@ -314,6 +314,10 @@
   border-bottom: none;
 }
 
+.au-calendar .meta-label {
+  width: 12.5%;
+}
+
 .au-calendar .meta-label p {
   float: left;
   color: #343434;
