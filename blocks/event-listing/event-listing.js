@@ -295,6 +295,16 @@ END:VCALENDAR`;
 }
 
 function buildUpcomingHeading(currentDateStr) {
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  if (currentDateStr === todayStr) {
+    return `
+      <h2 class="au-upcoming-heading">
+        Coming Soon
+      </h2>
+    `;
+  }
+
   const date = new Date(currentDateStr).toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric',
