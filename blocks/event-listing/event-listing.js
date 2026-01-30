@@ -554,7 +554,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             <time datetime="${eventData.fullStart}">${formatEventTimeSpan(eventData.fullStart, eventData.fullEnd)}</time>,
             <span itemprop="name">${eventData.location}</span>
           </p>
-          <p>Updated 1/9</p>
+          <p class="updated">Updated 1/9</p>
         </footer>
         <div class="event-content">
           <div class="event-description">
