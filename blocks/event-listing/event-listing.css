@@ -57,13 +57,17 @@
 }
 
 .au-calendar .au-event-detail footer {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.au-calendar .updated {
+  margin-top: 5px;
 }
 
 .au-calendar p.lede {
-    font-size: 1.8rem;
-    font-family: "GT Walsheim", Arial, sans-serif;
-    font-weight: 600;
+  font-size: 1.8rem;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 600;
 }
 
 .au-calendar .au-nav.day-by-day-navigation {
