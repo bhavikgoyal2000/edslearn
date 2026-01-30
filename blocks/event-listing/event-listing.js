@@ -836,7 +836,7 @@ function renderSelector(block, type, items) {
 
   block.innerHTML = `
     <div class="au-selector au-selector--${type}">
-      <h2 class="au-selector-title">${titleMap[type]}</h2>
+      <h1 class="au-selector-title">${titleMap[type]}</h1>
 
       <ul class="au-selector-list">
         ${items.map((item) => `
