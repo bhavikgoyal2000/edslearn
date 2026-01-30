@@ -146,7 +146,7 @@
   font-weight: 400;
 }
 
-.au-calendar .p+p {
+.au-calendar p+p {
   margin-top: 0;
 }
 
