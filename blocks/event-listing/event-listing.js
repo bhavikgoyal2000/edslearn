@@ -522,6 +522,14 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
   }
 }
 
+function formatUpdatedDate(dateStr) {
+  if (!dateStr) return '';
+
+  const [, month, day] = dateStr.split('T')[0].split('-');
+
+  return `${Number(month)}/${Number(day)}`;
+}
+
 function formatEventDate(dateStr) {
   if (!dateStr) return '';
 
@@ -556,7 +564,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             <time datetime="${eventData.fullStart}">${formatEventTimeSpan(eventData.fullStart, eventData.fullEnd)}</time>,
             <span itemprop="name">${eventData.location}</span>
           </p>
-          <p class="updated">Updated ${eventData.lastSynced}</p>
+          <p class="updated">Updated ${formatUpdatedDate(eventData.lastSynced)}</p>
         </footer>
         <div class="event-content">
           <div class="event-description">
