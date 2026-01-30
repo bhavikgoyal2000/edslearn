@@ -318,9 +318,20 @@ function buildUpcomingHeading(currentDateStr) {
   `;
 }
 
+function isDateBeforeToday(dateStr) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const selected = new Date(dateStr);
+  selected.setHours(0, 0, 0, 0);
+
+  return selected < today;
+}
+
 // eslint-disable-next-line default-param-last
 export function renderCalendarFromApi(block, data, currentDateStr = new Date().toISOString().split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   block.textContent = '';
+  const showUpcoming = !isDateBeforeToday(currentDateStr);
 
   const html = `
     <div class="au-calendar">
@@ -340,13 +351,13 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
       ${buildFooter(data, currentDateStr)}
       </div>
-      <div class="calendar-coming-soon">
-
-        ${buildUpcomingHeading(currentDateStr)}
-
-      ${buildEvents({ ...data, events: data.upcomingEvents, isUpcoming: true })}
-      </div>
-
+      ${showUpcoming ? `
+            <div class="calendar-coming-soon">
+              ${buildUpcomingHeading(currentDateStr)}
+              ${buildEvents({ ...data, events: data.upcomingEvents, isUpcoming: true })}
+            </div>`
+    : ''
+}
     </div>
   `;
 
