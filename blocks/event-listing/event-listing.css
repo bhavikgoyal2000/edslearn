@@ -358,9 +358,14 @@
 }
 
 .au-calendar .meta-value a {
-  color: #005099;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  color: #13477d;
   text-decoration: none;
-  font-weight: 500;
+  cursor: pointer;
 }
 
 .au-calendar .au-actions a {
