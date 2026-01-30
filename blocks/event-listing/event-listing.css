@@ -145,8 +145,11 @@
   margin-top: 0;
 }
 
-.au-calendar .meta-value p{
+.au-calendar .meta-value p {
   margin-bottom: 15px !important;
+}
+
+.au-calendar .meta-value .contact-email, .au-calendar .meta-value .contact-phone {
   font-weight: 400;
 }
 
