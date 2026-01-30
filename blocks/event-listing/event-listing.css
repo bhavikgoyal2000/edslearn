@@ -358,7 +358,7 @@
 }
 
 .au-calendar .meta-label {
-  width: 12.5%;
+  width: 20%;
 }
 
 .au-calendar .meta-label p {
@@ -369,7 +369,6 @@
   margin: 0 1% 10px 0;
   padding: 0;
   border: none;
-  width: 12.5%;
   font-weight: 700 !important;
 }
 
