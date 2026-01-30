@@ -335,6 +335,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
 
   const html = `
     <div class="au-calendar">
+    <div class="calendar-selector-wrapper"></div>
     <div class="calendar-todays-event">
 
       <!-- Header -->
@@ -828,7 +829,10 @@ function renderSelector(block, type, items) {
     series: 'Browse by Series',
   };
 
-  block.innerHTML = `
+  const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
+  if (!selectorWrapper) return;
+
+  selectorWrapper.innerHTML = `
     <div class="au-selector au-selector--${type}">
       <h2 class="au-selector-title">${titleMap[type]}</h2>
 
