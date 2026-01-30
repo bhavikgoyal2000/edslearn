@@ -96,7 +96,9 @@ function buildEvents(data) {
             data-contactname="${event.contactName || ''}"
             data-contactemail="${event.contactEmail || ''}"
             data-contactphone="${event.contactPhone || ''}"
-            data-lastsynced="${event.lastSynced || ''}">
+            data-lastsynced="${event.lastSynced || ''}"
+            data-eventwebsite="${event.eventWebsite || ''}"
+            data-rsvplink="${event.rsvpLink || ''}">
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               <time
@@ -135,6 +137,14 @@ function buildEvents(data) {
                       <div class="meta-row">
                         <span class="meta-label"><p>Type</p></span>
                         <span class="meta-value no-link">${event.type}</span>
+                      </div>
+                    ` : ''}
+                    ${event.rsvpLink ? `
+                      <div class="meta-row">
+                        <span class="meta-label"><p>RSVP</p></span>
+                        <span class="meta-value">
+                          <a href="${event.rsvpLink}" target="_blank">${event.rsvpLink}</a>
+                        </span>
                       </div>
                     ` : ''}
                     ${`
@@ -478,6 +488,8 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         contactEmail: item.calendarContactEmail || '',
         contactPhone: item.calendarContactPhone || '',
         lastSynced: item.lastSynced || '',
+        eventWebsite: item.eventWebsite || '',
+        rsvpLink: item.rsvpLink || '',
         type: item.eventTypeName || '',
         fullStart: item.eventStart,
         fullEnd: item.eventEnd,
@@ -596,6 +608,14 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
               </span>
             </div>
           ` : ''}
+          ${eventData.rsvpLink ? `
+            <div class="meta-row">
+              <span class="meta-label"><p>RSVP:</p></span>
+              <span class="meta-value">
+                <a href="${eventData.rsvpLink}" target="_blank">${eventData.rsvpLink}</a>
+              </span>
+            </div>
+          ` : ''}
           <div class="meta-row">
             <span class="meta-label"><p>Contact:</p></span>
             <span class="meta-value">
@@ -604,6 +624,14 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
               <p>${eventData.contactPhone ? `<a class="contact-phone" href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</p>
             </span>
           </div>
+          ${eventData.eventWebsite ? `
+            <div class="meta-row">
+              <span class="meta-label"><p>Event Website:</p></span>
+              <span class="meta-value">
+                <a href="${eventData.eventWebsite}" target="_blank">${eventData.eventWebsite}</a>
+              </span>
+            </div>
+          ` : ''}
           <p><a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a></p>
         </div>
 
@@ -691,6 +719,8 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
         contactName: eventDiv.dataset.contactname,
         contactPhone: eventDiv.dataset.contactphone,
         lastSynced: eventDiv.dataset.lastsynced || '',
+        eventWebsite: eventDiv.dataset.eventwebsite || '',
+        rsvpLink: eventDiv.dataset.rsvplink || '',
       }, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
     });
   });
