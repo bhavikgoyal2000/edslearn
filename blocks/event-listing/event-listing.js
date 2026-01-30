@@ -529,7 +529,6 @@ function formatEventDate(dateStr) {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
-    year: 'numeric',
     timeZone: 'America/New_York',
   });
 
@@ -541,10 +540,16 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
   block.innerHTML = `
     <div class="au-calendar">
       <section class="au-event-detail">
+        <header>
+          <h1>
+            <small>
+              <time datetime="${eventData.fullStart}" itemprop="startDate">${formattedDate}</time>
+              <time datetime="${eventData.fullEnd}" itemprop="endDate" class="hidden">${formattedDate}</time>
+            </small>
+            <span itemprop="name">${eventData.title}</span>
+          </h1>
+        </header>
         <div class="event-content">
-          <h1 class="event-date">${formattedDate}</h1>
-          <h1>${eventData.title}</h1>
-
           <p class="event-time-location">
             ${new Date(eventData.fullStart).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
             -
