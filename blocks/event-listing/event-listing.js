@@ -604,7 +604,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
               <p>${eventData.contactPhone ? `<a class="contact-phone" href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</p>
             </span>
           </div>
-          <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
+          <p><a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a></p>
         </div>
 
       </section>
