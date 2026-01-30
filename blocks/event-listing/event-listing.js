@@ -524,12 +524,16 @@ function formatEventDate(dateStr) {
   if (!dateStr) return '';
 
   const date = new Date(dateStr);
-  return date.toLocaleDateString('en-US', {
+
+  const formatter = new Intl.DateTimeFormat('en-US', {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
+    year: 'numeric',
     timeZone: 'America/New_York',
   });
+
+  return formatter.format(date);
 }
 
 function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
