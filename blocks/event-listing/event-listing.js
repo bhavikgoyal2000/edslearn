@@ -566,9 +566,9 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
           </p>
           <p class="updated">Updated ${formatUpdatedDate(eventData.lastSynced)}</p>
         </footer>
-        <div class="event-content">
+        <div class="event-details">
           <div class="event-description">
-            <p>${eventData.description}</p>
+            ${eventData.description}
           </div>
           ${eventData.type ? `
             <div class="meta-row">
