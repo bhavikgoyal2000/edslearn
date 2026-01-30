@@ -572,11 +572,11 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
           </div>
           ${eventData.type ? `
             <div class="meta-row">
-              <span class="meta-label">Type</span>
+              <span class="meta-label"><p>Type</p></span>
               <span class="meta-value">
                 <button
                   type="button"
-                  class="event-type-filter-link link-button"
+                  class="event-type-filter-link"
                   data-eventtypeid="${eventData.eventTypeId}">
                   ${eventData.type}
                 </button>
@@ -597,7 +597,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             </div>
           ` : ''}
           <div class="meta-row">
-            <span class="meta-label">Contact</span>
+            <span class="meta-label"><p>Contact</p></span>
             <span class="meta-value">
               <div class="contact-name">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
               <div class="contact-email">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</div>
