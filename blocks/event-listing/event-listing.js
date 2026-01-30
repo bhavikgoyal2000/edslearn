@@ -86,7 +86,7 @@ function buildEvents(data) {
             data-title="${escapeAttr(event.title)}"
             data-fullstart="${escapeAttr(event.fullStart)}"
             data-fullend="${escapeAttr(event.fullEnd)}"
-            data-location="${escapeAttr(event.location|| '')}"
+            data-location="${escapeAttr(event.location || '')}"
             data-description="${escapeAttr(event.eventDescription || '')}"
             data-eventtypeid="${event.eventTypeId || ''}"
             data-type="${event.type || ''}"
@@ -104,10 +104,10 @@ function buildEvents(data) {
                 itemprop="startDate"
               >
                 ${
-                  !isUpcoming
-                    ? formatEventTimeSpan(event.fullStart, event.fullEnd)
-                    : `${formatEventDay(event.fullStart)}<br>${formatEventTimeSpan(event.fullStart, event.fullEnd)}`
-                }
+  !isUpcoming
+    ? formatEventTimeSpan(event.fullStart, event.fullEnd)
+    : `${formatEventDay(event.fullStart)}<br>${formatEventTimeSpan(event.fullStart, event.fullEnd)}`
+}
               </time>
               <div class="au-title">${event.title || ''}</div>
               <div class="au-location">${event.location || ''}</div>

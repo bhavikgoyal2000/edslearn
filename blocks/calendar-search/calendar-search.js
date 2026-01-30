@@ -1,6 +1,9 @@
 export default function decorate(block) {
   const [placeHolderObj] = block.children;
-  const placeholderText = placeHolderObj ? placeHolderObj.textContent.trim() : 'Search University Calendar';
+  const fallbackPlaceholder = placeHolderObj ? placeHolderObj.textContent.trim() : 'Search University Calendar';
+  const calendarName = document.querySelector('meta[name="calendarname"]')?.getAttribute('content');
+
+  const placeholderText = calendarName ? `Search ${calendarName} Calendar` : fallbackPlaceholder;
 
   block.textContent = '';
 
