@@ -95,7 +95,8 @@ function buildEvents(data) {
             data-groupdisplayonweb="${event.groupDisplayOnWeb}"
             data-contactname="${event.contactName || ''}"
             data-contactemail="${event.contactEmail || ''}"
-            data-contactphone="${event.contactPhone || ''}">
+            data-contactphone="${event.contactPhone || ''}"
+            data-lastsynced="${event.lastSynced || ''}">
             <div class="au-event-header">
               ${expandable ? '<span class="au-arrow"><ion-icon name="chevron-down-outline"></ion-icon></span>' : ''}
               <time
@@ -476,6 +477,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         contactName: item.calendarContactName || '',
         contactEmail: item.calendarContactEmail || '',
         contactPhone: item.calendarContactPhone || '',
+        lastSynced: item.lastSynced || '',
         type: item.eventTypeName || '',
         fullStart: item.eventStart,
         fullEnd: item.eventEnd,
@@ -554,7 +556,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             <time datetime="${eventData.fullStart}">${formatEventTimeSpan(eventData.fullStart, eventData.fullEnd)}</time>,
             <span itemprop="name">${eventData.location}</span>
           </p>
-          <p class="updated">Updated 1/9</p>
+          <p class="updated">Updated ${eventData.lastSynced}</p>
         </footer>
         <div class="event-content">
           <div class="event-description">
@@ -680,6 +682,7 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
         contactEmail: eventDiv.dataset.contactemail,
         contactName: eventDiv.dataset.contactname,
         contactPhone: eventDiv.dataset.contactphone,
+        lastSynced: eventDiv.dataset.lastsynced || '',
       }, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
     });
   });
