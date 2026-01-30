@@ -314,18 +314,16 @@
   border-bottom: none;
 }
 
-.au-calendar .meta-label {
-  font-weight: 700;
-  color: #343434;
-  text-align: left;
-  flex-shrink: 0;
-  width: 70px;
-  font-size: 0.9rem;
-  padding-top: 0.25rem;
-}
-
 .au-calendar .meta-label p {
-  margin: 0;
+  float: left;
+  color: #343434;
+  background: 0 0;
+  clear: left;
+  margin: 0 1% 10px 0;
+  padding: 0;
+  border: none;
+  width: 12.5%;
+  font-weight: 700 !important;
 }
 
 .au-calendar .meta-value {
