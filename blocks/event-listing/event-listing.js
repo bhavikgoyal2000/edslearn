@@ -528,6 +528,7 @@ function formatEventDate(dateStr) {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
+    timeZone: 'America/New_York',
   });
 }
 
