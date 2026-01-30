@@ -606,17 +606,25 @@
 }
 
 .event-listing .au-selector-footer {
-  margin-top: 2rem;
+  margin-bottom: 25px;
 }
 
 .event-listing .selector-item-all {
-  background-color: #005eb8;
+  background-color: #005099;
   color: #fff;
   border: none;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 0 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
   cursor: pointer;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  line-height: 50px;
+  margin-top: 25px;
+}
+
+.event-listing .selector-item-all:hover {
+  background-image: linear-gradient(to bottom, #005099 0, #005099 90%, #f4c74b 90%, #f4c74b 100%);
+  text-decoration: none;
 }
 
 .au-calendar .alert {

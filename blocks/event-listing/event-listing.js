@@ -851,14 +851,14 @@ function renderSelector(block, type, items) {
         `).join('')}
       </ul>
 
-      <div class="au-selector-footer">
+      <p class="au-selector-footer">
         <button
           type="button"
-          class="selector-item selector-item--all"
+          class="selector-item selector-item-all"
           data-id="all">
           All ${titleMap[type].replace('Browse by ', '')}
         </button>
-      </div>
+      </p>
     </div>
   `;
 
