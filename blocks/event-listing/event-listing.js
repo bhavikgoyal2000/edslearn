@@ -592,6 +592,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
 
   // eslint-disable-next-line no-use-before-define
   attachEventTypeFilter(block, eventData.fullStart?.split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+  attachHostFilter()(block, eventData.fullStart?.split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   attachExport(block);
 }
 
