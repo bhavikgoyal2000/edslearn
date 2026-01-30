@@ -377,9 +377,13 @@
   flex: 1;
   font-size: 1.6rem;
   padding-top: 0.25rem;
+  min-width: 0;
+  overflow-wrap: anywhere; 
 }
 
 .au-calendar .meta-value a {
+  display: inline-block;
+  white-space: normal;
   background: none;
   border: 0;
   padding: 0;
