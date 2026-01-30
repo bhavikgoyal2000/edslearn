@@ -816,6 +816,12 @@ function attachSelectorEvents(block, type, data = extractData()) {
       if (type === 'location') location = id;
 
       await loadAnnouncementsForDate(date, block, groupId, eventTypeId, location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+
+      const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
+      if (selectorWrapper) {
+        selectorWrapper.innerHTML = '';
+      }
+      activeSelector = null;
     });
   });
 }
