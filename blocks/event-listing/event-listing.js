@@ -600,8 +600,8 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             <span class="meta-label"><p>Contact:</p></span>
             <span class="meta-value">
               <div class="contact-name meta-value no-link">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
-              <p class="contact-email meta-value">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</p>
-              <p class="contact-phone meta-value">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</p>
+              <p class="contact-email">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</p>
+              <p class="contact-phone">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</p>
             </span>
           </div>
           <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>

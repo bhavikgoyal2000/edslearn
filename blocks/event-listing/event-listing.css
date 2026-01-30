@@ -141,10 +141,14 @@
   color: var(--default-body-font-color,#343434);
 }
 
+.au-calendar .meta-value .contact-email, .contact-phone {
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
 .au-calendar .link-button:hover {
   text-decoration: underline;
 }
-
 
 .au-calendar .au-nav.day-by-day-navigation .previous::after {
   content: '';
