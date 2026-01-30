@@ -133,7 +133,7 @@ function buildEvents(data) {
                     ${event.type ? `
                       <div class="meta-row">
                         <span class="meta-label"><p>Type</p></span>
-                        <span class="meta-value">${event.type}</span>
+                        <span class="meta-value no-link">${event.type}</span>
                       </div>
                     ` : ''}
                     ${`
