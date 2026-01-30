@@ -572,7 +572,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
           </div>
           ${eventData.type ? `
             <div class="meta-row">
-              <span class="meta-label"><p>Type</p></span>
+              <span class="meta-label"><p>Type:</p></span>
               <span class="meta-value">
                 <button
                   type="button"
@@ -585,7 +585,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
           ` : ''}
           ${eventData.groupName && eventData.groupDisplayOnWeb ? `
             <div class="meta-row">
-              <span class="meta-label"><p>Host</p></span>
+              <span class="meta-label"><p>Host:</p></span>
               <span class="meta-value">
                 <button
                   type="button"
@@ -597,11 +597,11 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             </div>
           ` : ''}
           <div class="meta-row">
-            <span class="meta-label"><p>Contact</p></span>
+            <span class="meta-label"><p>Contact:</p></span>
             <span class="meta-value">
-              <div class="contact-name">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
-              <div class="contact-email">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</div>
-              <div class="contact-phone">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</div>
+              <div class="contact-name meta-value no-link">${eventData.contactName ? `${eventData.contactName}` : ''}</div>
+              <div class="contact-email meta-value">${eventData.contactEmail ? `<a href="mailto:${eventData.contactEmail}">${eventData.contactEmail}</a>` : ''}</div>
+              <div class="contact-phone meta-value">${eventData.contactPhone ? `<a href="tel:${eventData.contactPhone}">${eventData.contactPhone}</a>` : ''}</div>
             </span>
           </div>
           <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
