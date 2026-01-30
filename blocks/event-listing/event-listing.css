@@ -141,9 +141,15 @@
   color: var(--default-body-font-color,#343434);
 }
 
-.au-calendar .meta-value .contact-email, .contact-phone {
+.au-calendar .meta-value .contact-email {
   margin-bottom: 15px;
   font-weight: 400;
+}
+
+.au-calendar .meta-value .contact-phone {
+  margin-bottom: 15px;
+  font-weight: 400;
+  margin-top: 5px;
 }
 
 .au-calendar .link-button:hover {
