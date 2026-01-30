@@ -549,13 +549,14 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             <span itemprop="name">${eventData.title}</span>
           </h1>
         </header>
-        <div class="event-content">
-          <p class="event-time-location">
-            ${new Date(eventData.fullStart).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}
-            -
-            ${new Date(eventData.fullEnd).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })}, ${eventData.location}
+        <footer class="cal-time-loc-upd-ser">
+          <p class="lede">
+            <time datetime="${eventData.fullStart}">${formatEventTimeSpan(eventData.fullStart, eventData.fullEnd)}</time>,
+            <span itemprop="name">${eventData.location}</span>
           </p>
-
+          <p>Updated 1/9</p>
+        </footer>
+        <div class="event-content">
           <div class="event-description">
             <p>${eventData.description}</p>
           </div>
