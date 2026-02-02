@@ -1260,20 +1260,34 @@ function getSearchResultsOnButtonClick(block) {
     });
   }
 }
+
 function showEmailModal() {
   const modal = document.getElementById('emailEventModal');
 
   modal.style.display = 'block';
   modal.classList.add('in');
   modal.setAttribute('aria-hidden', 'false');
+
+  if (!document.querySelector('[data-email-backdrop]')) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop fade in';
+    backdrop.dataset.emailBackdrop = 'true';
+    document.body.appendChild(backdrop);
+  }
+
+  document.body.classList.add('modal-open');
 }
 
 function closeEmailModal() {
   const modal = document.getElementById('emailEventModal');
+  const backdrop = document.querySelector('[data-email-backdrop]');
 
   modal.style.display = 'none';
   modal.classList.remove('in');
   modal.setAttribute('aria-hidden', 'true');
+
+  if (backdrop) backdrop.remove();
+  document.body.classList.remove('modal-open');
 }
 
 function ensureEmailModal() {
@@ -1361,7 +1375,10 @@ function attachEmailEventHandler(block) {
 }
 
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains('email-modal-close')) {
+  if (
+    e.target.classList.contains('email-modal-close')
+    || e.target.dataset.emailBackdrop === 'true'
+  ) {
     closeEmailModal();
   }
 });
