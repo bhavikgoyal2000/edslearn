@@ -1270,6 +1270,7 @@ export default async function decorate(block) {
   });
 
   document.addEventListener('calendar:filterSelected', async (e) => {
+    hideAllSelector = false;
     const { filterType } = e.detail;
 
     activeSelector = filterType;
