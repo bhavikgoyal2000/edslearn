@@ -1266,14 +1266,16 @@ function ensureEmailModal() {
 
   const modal = document.createElement('div');
   modal.id = 'emailEventModal';
-  modal.className = 'email-modal';
-  modal.style.display = 'none';
+  modal.className = 'modal fade';
+  modal.setAttribute('tabindex', '-1');
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-hidden', 'true');
 
   modal.innerHTML = `
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close email-modal-close">×</button>
+          <button type="button" class="close" data-dismiss="modal">×</button>
           <p class="modal-title" id="emailModalTitle"></p>
         </div>
 
@@ -1306,7 +1308,7 @@ function ensureEmailModal() {
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default email-modal-close">Clos</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -1318,8 +1320,6 @@ function ensureEmailModal() {
 function openEmailModal(eventDiv) {
   ensureEmailModal();
 
-  const modal = document.getElementById('emailEventModal');
-
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
 
@@ -1328,7 +1328,7 @@ function openEmailModal(eventDiv) {
   document.getElementById('emailEventTitle').value = title;
   document.getElementById('emailEventUrl').value = url;
 
-  modal.style.display = 'block';
+  window.jQuery('#emailEventModal').modal('show');
 }
 
 function attachEmailEventHandler(block) {
@@ -1344,16 +1344,6 @@ function attachEmailEventHandler(block) {
     openEmailModal(eventDiv);
   });
 }
-
-document.addEventListener('click', (e) => {
-  if (
-    e.target.classList.contains('email-modal-close')
-    || e.target.id === 'emailEventModal'
-  ) {
-    const modal = document.getElementById('emailEventModal');
-    if (modal) modal.style.display = 'none';
-  }
-});
 
 export default async function decorate(block) {
   const data = extractData(block);
