@@ -89,6 +89,8 @@ function buildEvents(data) {
             data-location="${escapeAttr(event.location || '')}"
             data-description="${escapeAttr(event.eventDescription || '')}"
             data-eventtypeid="${event.eventTypeId || ''}"
+            data-eventseriesid="${event.eventSeriesId || ''}"
+            data-eventseriesname="${escapeAttr(event.eventSeriesName || '')}"
             data-type="${event.type || ''}"
             data-groupid="${event.groupId || ''}"
             data-groupname="${event.groupName || ''}"
@@ -386,7 +388,7 @@ async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityA
   }
 }
 
-async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, seriesId, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   let normalizedHostIds = [];
   if (Array.isArray(groupId)) {
     normalizedHostIds = groupId.filter(Boolean);
@@ -402,7 +404,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
     let rawItems = [];
 
     if (normalizedHostIds.length === 0) {
-      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, eventTypeId, location);
+      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, eventTypeId, location, seriesId);
 
       if (calendarJson && calendarJson.calendarEventsList && Array.isArray(calendarJson.calendarEventsList.items)) {
         rawEventsToday = calendarJson.calendarEventsList.items;
@@ -414,7 +416,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
 
       const lastEventEnd = rawEventsToday.length > 0 ? rawEventsToday[rawEventsToday.length - 1].eventEnd : `${dateStr}T23:59:59.999-05:00`;
 
-      upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved, eventTypeId);
+      upcomingRawEvents = await loadUpcomingEvents(lastEventEnd, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved, eventTypeId, seriesId);
     } else {
       const servletUrl = buildCalendarByHostIdsUrl(dateStr, normalizedHostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
       const username = 'admin';
@@ -503,6 +505,8 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         eventDescription,
         groupId: item.groupId || '',
         eventTypeId: item.eventTypeId || '',
+        eventSeriesId: item.eventSeriesId || '',
+        eventSeriesName: item.eventSeriesName || '',
         groupName: item.groupName || '',
         groupDisplayOnWeb: item.groupDisplayOnWeb || false,
         contactName: item.calendarContactName || '',
@@ -684,6 +688,7 @@ function attachEventTypeFilter(block, currentDateStr, visibilityLevel, visibilit
       null,
       eventTypeId,
       null,
+      null,
       visibilityLevel,
       visibilityApproved,
       visibleRequested,
@@ -707,6 +712,7 @@ function attachHostFilter(block, currentDateStr, visibilityLevel, visibilityAppr
         date,
         block,
         groupId,
+        null,
         null,
         null,
         visibilityLevel,
@@ -735,6 +741,8 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
         groupName: eventDiv.dataset.groupname,
         groupId: eventDiv.dataset.groupid,
         eventTypeId: eventDiv.dataset.eventtypeid,
+        eventSeriesId: eventDiv.dataset.eventseriesid,
+        eventSeriesName: eventDiv.dataset.eventseriesname,
         groupDisplayOnWeb: eventDiv.dataset.groupdisplayonweb === 'true',
         contactEmail: eventDiv.dataset.contactemail,
         contactName: eventDiv.dataset.contactname,
@@ -810,12 +818,14 @@ function attachSelectorEvents(block, type, data = extractData()) {
       let groupId = null;
       let eventTypeId = null;
       let location = null;
+      let seriesId = null;
 
       if (type === 'host') groupId = id;
       if (type === 'eventType') eventTypeId = id;
       if (type === 'location') location = id;
+      if (type === 'series') seriesId = id;
 
-      await loadAnnouncementsForDate(date, block, groupId, eventTypeId, location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+      await loadAnnouncementsForDate(date, block, groupId, eventTypeId, location, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
       const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
       if (selectorWrapper) {
@@ -998,6 +1008,44 @@ async function fetchEventTypesForCurrentMonth(data = extractData(), noEndDate = 
   ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
 
+async function fetchSeriesForCurrentMonth(data = extractData(), noEndDate = false) {
+  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
+
+  const json = await fetchFilters(
+    'GetSeries',
+    start,
+    end,
+    data.visibilityLevel,
+    data.visibilityApproved,
+  );
+
+  const items = json?.calendarEventsList?.items || [];
+
+  const uniqueMap = new Map();
+
+  items.forEach((item) => {
+    const { eventSeriesId, eventSeriesName } = item;
+    if (eventSeriesId && !uniqueMap.has(eventSeriesId)) {
+      uniqueMap.set(eventSeriesId, {
+        id: String(eventSeriesId),
+        title: eventSeriesName,
+      });
+    }
+  });
+
+  return [
+    ...new Map(
+      items
+        .map((item) => ({
+          id: item.eventSeriesId,
+          title: item.eventSeriesName || '',
+        }))
+        .filter((item) => item.id && item.title)
+        .map((item) => [item.id, item]),
+    ).values(),
+  ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+}
+
 async function loadSelectorList(block, type, options = {}) {
   const { noEndDate = false } = options;
   let items = [];
@@ -1013,6 +1061,10 @@ async function loadSelectorList(block, type, options = {}) {
 
     case 'eventType':
       items = await fetchEventTypesForCurrentMonth(undefined, noEndDate);
+      break;
+
+    case 'series':
+      items = await fetchSeriesForCurrentMonth(undefined, noEndDate);
       break;
 
     default:
@@ -1209,11 +1261,11 @@ function getSearchResultsOnButtonClick(block) {
 export default async function decorate(block) {
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.eventTypeId, data.location, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.location, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.location, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
   document.addEventListener('calendar:filterSelected', async (e) => {
