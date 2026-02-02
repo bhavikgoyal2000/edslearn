@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
 /* eslint-disable default-param-last */
 /* eslint-disable max-len */
@@ -1262,10 +1261,33 @@ function getSearchResultsOnButtonClick(block) {
   }
 }
 
+function showEmailModal() {
+  const modal = document.getElementById('emailEventModal');
+
+  modal.style.display = 'block';
+  modal.classList.add('in');
+  modal.setAttribute('aria-hidden', 'false');
+
+  if (!document.querySelector('[data-email-backdrop]')) {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop fade in';
+    backdrop.dataset.emailBackdrop = 'true';
+    document.body.appendChild(backdrop);
+  }
+
+  document.body.classList.add('modal-open');
+}
+
 function closeEmailModal() {
-  $('#emailEventModal').removeClass('in').hide();
-  $('.modal-backdrop').remove();
-  $('body').removeClass('modal-open');
+  const modal = document.getElementById('emailEventModal');
+  const backdrop = document.querySelector('[data-email-backdrop]');
+
+  modal.style.display = 'none';
+  modal.classList.remove('in');
+  modal.setAttribute('aria-hidden', 'true');
+
+  if (backdrop) backdrop.remove();
+  document.body.classList.remove('modal-open');
 }
 
 function ensureEmailModal() {
@@ -1282,7 +1304,7 @@ function ensureEmailModal() {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">×</button>
+          <button type="button" class="close email-modal-close">×</button>
           <p class="modal-title" id="emailModalTitle"></p>
         </div>
 
@@ -1315,7 +1337,7 @@ function ensureEmailModal() {
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default email-modal-close">Clos</button>
         </div>
       </div>
     </div>
@@ -1330,17 +1352,12 @@ function openEmailModal(eventDiv) {
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
 
-  $('#emailModalTitle').text(`Email "${title}" to a friend`);
-  $('#emailEventTitle').val(title);
-  $('#emailEventUrl').val(url);
+  document.getElementById('emailModalTitle').textContent = `Email "${title}" to a friend`;
 
-  const $modal = $('#emailEventModal');
+  document.getElementById('emailEventTitle').value = title;
+  document.getElementById('emailEventUrl').value = url;
 
-  $modal.show();
-  $modal.addClass('in');
-  $('body').addClass('modal-open');
-
-  $('<div class="modal-backdrop fade in"></div>').appendTo(document.body);
+  showEmailModal();
 }
 
 function attachEmailEventHandler(block) {
@@ -1357,8 +1374,13 @@ function attachEmailEventHandler(block) {
   });
 }
 
-$(document).on('click', '[data-dismiss="modal"], .modal-backdrop', () => {
-  closeEmailModal();
+document.addEventListener('click', (e) => {
+  if (
+    e.target.classList.contains('email-modal-close')
+    || e.target.dataset.emailBackdrop === 'true'
+  ) {
+    closeEmailModal();
+  }
 });
 
 export default async function decorate(block) {
