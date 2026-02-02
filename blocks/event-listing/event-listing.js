@@ -1261,6 +1261,12 @@ function getSearchResultsOnButtonClick(block) {
   }
 }
 
+function closeEmailModal() {
+  window.$('#emailEventModal').removeClass('in').hide();
+  window.$('.modal-backdrop').remove();
+  window.$('body').removeClass('modal-open');
+}
+
 function ensureEmailModal() {
   if (document.getElementById('emailEventModal')) return;
 
@@ -1323,12 +1329,17 @@ function openEmailModal(eventDiv) {
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
 
-  document.getElementById('emailModalTitle').textContent = `Email "${title}" to a friend`;
+  window.$('#emailModalTitle').text(`Email "${title}" to a friend`);
+  window.$('#emailEventTitle').val(title);
+  window.$('#emailEventUrl').val(url);
 
-  document.getElementById('emailEventTitle').value = title;
-  document.getElementById('emailEventUrl').value = url;
+  const $modal = window.$('#emailEventModal');
 
-  window.jQuery('#emailEventModal').modal('show');
+  $modal.show();
+  $modal.addClass('in');
+  window.$('body').addClass('modal-open');
+
+  window.$('<div class="modal-backdrop fade in"></div>').appendTo(document.body);
 }
 
 function attachEmailEventHandler(block) {
@@ -1344,6 +1355,10 @@ function attachEmailEventHandler(block) {
     openEmailModal(eventDiv);
   });
 }
+
+window.$(document).on('click', '[data-dismiss="modal"], .modal-backdrop', () => {
+  closeEmailModal();
+});
 
 export default async function decorate(block) {
   const data = extractData(block);
