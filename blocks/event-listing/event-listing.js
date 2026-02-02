@@ -87,7 +87,7 @@ function buildEvents(data) {
             data-fullstart="${escapeAttr(event.fullStart)}"
             data-fullend="${escapeAttr(event.fullEnd)}"
             data-location="${escapeAttr(event.location || '')}"
-            data-roomid="${escapeAttr(event.roomId || '')}"
+            data-roomid="${event.roomId || ''}"
             data-description="${escapeAttr(event.eventDescription || '')}"
             data-eventtypeid="${event.eventTypeId || ''}"
             data-eventseriesid="${event.eventSeriesId || ''}"
