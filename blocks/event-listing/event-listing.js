@@ -1304,9 +1304,7 @@ function ensureEmailModal() {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close email-modal-close" aria-label="Close">
-            <span aria-hidden="true">x</span>
-          </button>
+          <button type="button" class="close email-modal-close" aria-label="Close">x</button>
           <p class="modal-title" id="emailModalTitle"></p>
         </div>
 
