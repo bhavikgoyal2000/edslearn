@@ -164,7 +164,7 @@ function buildEvents(data) {
                 <div class="au-right-column">
                   <div class="au-actions">
                     <a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a>
-                    <a href="#"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
+                    <a href="javascript:void(0);" class="email-event-link"><ion-icon name="mail-outline"></ion-icon> Email this item</a>
                   </div>
                 </div>
               </div>
@@ -375,6 +375,7 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   // eslint-disable-next-line no-use-before-define
   attachHostFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+  attachEmailEventHandler(block);
 }
 
 function buildCalendarByHostIdsUrl(dateStr, hostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
@@ -671,6 +672,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
   attachEventTypeFilter(block, eventData.fullStart?.split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   attachHostFilter(block, eventData.fullStart?.split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   attachExport(block);
+  attachEmailEventHandler(block);
 }
 
 function attachEventTypeFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
@@ -1258,6 +1260,100 @@ function getSearchResultsOnButtonClick(block) {
     });
   }
 }
+
+function ensureEmailModal() {
+  if (document.getElementById('emailEventModal')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'emailEventModal';
+  modal.className = 'email-modal';
+  modal.style.display = 'none';
+
+  modal.innerHTML = `
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close email-modal-close">×</button>
+          <p class="modal-title" id="emailModalTitle"></p>
+        </div>
+
+        <div class="modal-body">
+          <form id="emailFormFragment">
+            <input type="hidden" name="title" id="emailEventTitle">
+            <input type="hidden" name="eURL" id="emailEventUrl">
+
+            <div class="form-group">
+              <label>Your email:</label>
+              <input type="email" id="fromEmail" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label>Recipient's email:</label>
+              <input type="email" id="toEmail" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label>Comments:</label>
+              <textarea id="emailComments" class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default email-modal-close">Close</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+}
+
+function openEmailModal(eventDiv) {
+  ensureEmailModal();
+
+  const modal = document.getElementById('emailEventModal');
+
+  const title = eventDiv.dataset.title || 'Event';
+  const url = window.location.href;
+
+  document.getElementById('emailModalTitle').textContent = `Email "${title}" to a friend`;
+
+  document.getElementById('emailEventTitle').value = title;
+  document.getElementById('emailEventUrl').value = url;
+
+  modal.style.display = 'block';
+}
+
+function attachEmailEventHandler(block) {
+  block.addEventListener('click', (e) => {
+    const link = e.target.closest('.email-event-link');
+    if (!link) return;
+
+    e.preventDefault();
+
+    const eventDiv = link.closest('.au-event');
+    if (!eventDiv) return;
+
+    openEmailModal(eventDiv);
+  });
+}
+
+document.addEventListener('click', (e) => {
+  if (
+    e.target.classList.contains('email-modal-close')
+    || e.target.id === 'emailEventModal'
+  ) {
+    const modal = document.getElementById('emailEventModal');
+    if (modal) modal.style.display = 'none';
+  }
+});
 
 export default async function decorate(block) {
   const data = extractData(block);
