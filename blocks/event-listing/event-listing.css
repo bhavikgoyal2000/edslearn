@@ -715,7 +715,7 @@
   transition: opacity .15s linear;
 }
 
-.fade.in {
+.fade .in {
   opacity: 1;
 }
 
