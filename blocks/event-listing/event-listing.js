@@ -812,8 +812,8 @@ function attachSelectorEvents(block, type, data = extractData()) {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
       if (id === 'all') {
-        btn.style.display = 'none';
         await loadSelectorList(block, type, { noEndDate: true });
+        btn.style.display = 'none';
         return;
       }
 
