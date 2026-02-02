@@ -361,6 +361,10 @@
   width: 20%;
 }
 
+.au-calendar .calendar-event-time {
+  color: #343434;
+}
+
 .au-calendar .meta-label p {
   float: left;
   color: #343434;
@@ -569,6 +573,10 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+.event-listing .au-selector-title{
+  color: #4d4037;
 }
 
 .event-listing .au-selector-list {
