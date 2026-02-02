@@ -1352,7 +1352,7 @@ function openEmailModal(eventDiv) {
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
 
-  document.getElementById('emailModalTitle').textContent = `Email "${title}" to a friend`;
+  document.getElementById('emailModalTitle').textContent = `Email ${title} to a friend`;
 
   document.getElementById('emailEventTitle').value = title;
   document.getElementById('emailEventUrl').value = url;
