@@ -719,8 +719,6 @@
 
 .modal-dialog {
     position: relative;
-    width: auto;
-    margin: 10px;
 }
 
 .modal.fade .modal-dialog {
