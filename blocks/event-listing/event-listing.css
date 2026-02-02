@@ -699,15 +699,13 @@
 
 .modal {
   display: none;
-  overflow: hidden;
   position: fixed;
   z-index: 1050;
-  -webkit-overflow-scrolling: touch;
-  outline: 0;
+  overflow-y: auto;
 }
 
-.modal-open .modal {
-  overflow: hidden auto;
+.modal-open {
+  overflow: hidden;
 }
 
 .fade {
@@ -715,7 +713,7 @@
   transition: opacity .15s linear;
 }
 
-.fade .in {
+.fade.in {
   opacity: 1;
 }
 
