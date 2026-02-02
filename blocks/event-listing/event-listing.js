@@ -6,6 +6,7 @@ import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 
 // eslint-disable-next-line no-unused-vars
 let activeSelector = null;
+let hideAllSelector = false;
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
@@ -812,8 +813,8 @@ function attachSelectorEvents(block, type, data = extractData()) {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
       if (id === 'all') {
+        hideAllSelector = true;
         await loadSelectorList(block, type, { noEndDate: true });
-        btn.style.display = 'none';
         return;
       }
 
@@ -875,6 +876,13 @@ function renderSelector(block, type, items) {
       </p>
     </div>
   `;
+
+  if (hideAllSelector) {
+    const allBtn = block.querySelector('.selector-item-all');
+    if (allBtn) {
+      allBtn.style.display = 'none';
+    }
+  }
 
   attachSelectorEvents(block, type);
 }
