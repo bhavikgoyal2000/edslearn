@@ -87,6 +87,7 @@ function buildEvents(data) {
             data-fullstart="${escapeAttr(event.fullStart)}"
             data-fullend="${escapeAttr(event.fullEnd)}"
             data-location="${escapeAttr(event.location || '')}"
+            data-roomid="${escapeAttr(event.roomId || '')}"
             data-description="${escapeAttr(event.eventDescription || '')}"
             data-eventtypeid="${event.eventTypeId || ''}"
             data-eventseriesid="${event.eventSeriesId || ''}"
@@ -388,7 +389,7 @@ async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityA
   }
 }
 
-async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, location, seriesId, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, locationId, seriesId, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   let normalizedHostIds = [];
   if (Array.isArray(groupId)) {
     normalizedHostIds = groupId.filter(Boolean);
@@ -404,7 +405,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
     let rawItems = [];
 
     if (normalizedHostIds.length === 0) {
-      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, eventTypeId, location, seriesId);
+      calendarJson = await fetchCalendarData('GetCalendarData', `${dateStr}T00:00:00.000-05:00`, `${dateStr}T23:59:59.999-05:00`, visibilityLevel, visibilityApproved, dateStr, visibleRequested, visibleApproved, eventTypeId, locationId, seriesId);
 
       if (calendarJson && calendarJson.calendarEventsList && Array.isArray(calendarJson.calendarEventsList.items)) {
         rawEventsToday = calendarJson.calendarEventsList.items;
@@ -502,6 +503,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         time: `${startTime} – ${endTime}`,
         title: item.eventName || 'Untitled Event',
         location: locationDesc,
+        roomId: item.roomId || '',
         eventDescription,
         groupId: item.groupId || '',
         eventTypeId: item.eventTypeId || '',
@@ -736,6 +738,7 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
         fullStart: eventDiv.dataset.fullstart,
         fullEnd: eventDiv.dataset.fullend,
         location: eventDiv.dataset.location,
+        roomId: eventDiv.dataset.roomid,
         description: eventDiv.dataset.description,
         type: eventDiv.dataset.type,
         groupName: eventDiv.dataset.groupname,
@@ -772,7 +775,7 @@ function getMetaContent(name) {
 
 function extractData() {
   const hostIds = getMetaContent('hostids');
-  const location = getMetaContent('location');
+  const roomId = getMetaContent('location');
 
   return {
     initialGroupIds: hostIds
@@ -784,7 +787,7 @@ function extractData() {
 
     eventTypeId: getMetaContent('eventtypeids'),
 
-    location,
+    roomId,
 
     visibilityLevel: parseDefaultValues(
       getMetaContent('eventlistingvisibilitylevel'),
@@ -817,15 +820,15 @@ function attachSelectorEvents(block, type, data = extractData()) {
 
       let groupId = null;
       let eventTypeId = null;
-      let location = null;
+      let roomId = null;
       let seriesId = null;
 
       if (type === 'host') groupId = id;
       if (type === 'eventType') eventTypeId = id;
-      if (type === 'location') location = id;
+      if (type === 'location') roomId = id;
       if (type === 'series') seriesId = id;
 
-      await loadAnnouncementsForDate(date, block, groupId, eventTypeId, location, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+      await loadAnnouncementsForDate(date, block, groupId, eventTypeId, roomId, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
       const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
       if (selectorWrapper) {
@@ -949,23 +952,12 @@ async function fetchLocationsForCurrentMonth(data = extractData(), noEndDate = f
   return [
     ...new Map(
       items
-        .map((item) => {
-          const title = typeof item.roomDescription === 'string'
-            ? item.roomDescription
-            : item.roomDescription?.markdown || '';
-
-          return {
-            id: title,
-            title,
-          };
-        })
-        .filter(
-          (item) => typeof item.title === 'string' && item.title.trim().length > 0,
-        )
-        .map((item) => [
-          item.title.trim().toLowerCase(),
-          item,
-        ]),
+        .map((item) => ({
+          id: item.roomId,
+          title: item.roomDescription.markdown || '',
+        }))
+        .filter((item) => item.id && item.title)
+        .map((item) => [item.id, item]),
     ).values(),
   ].sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
 }
@@ -1261,11 +1253,11 @@ function getSearchResultsOnButtonClick(block) {
 export default async function decorate(block) {
   const data = extractData(block);
   const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.eventTypeId, data.location, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.location, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
   document.addEventListener('calendar:filterSelected', async (e) => {
