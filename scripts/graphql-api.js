@@ -57,7 +57,7 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     addParam('visibleApproved', visibleApproved);
     addParam('eventTypeId', eventTypeId);
     addParam('roomId', locationId);
-    addParam('seriesId', seriesId);
+    addParam('eventSeriesId', seriesId);
 
     const paramString = paramParts.length ? `%3B${paramParts.join('%3B')}` : '';
 
