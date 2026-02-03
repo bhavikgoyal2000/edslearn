@@ -841,6 +841,7 @@ form textarea.form-control {
 .btn.btn-primary:disabled{
   background: #8a95a5 !important;
   color: #fff;
+  border-color: #ccc !important;
 }
 
 .modal-body {
