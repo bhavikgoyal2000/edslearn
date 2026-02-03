@@ -838,6 +838,11 @@ form textarea.form-control {
   line-height: 2rem;
 }
 
+.btn.btn-primary:disabled{
+  background: #8a95a5 !important;
+  color: #fff;
+}
+
 .modal-body {
   position: relative;
   padding: 15px;
