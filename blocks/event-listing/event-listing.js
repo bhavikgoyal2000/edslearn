@@ -1332,7 +1332,7 @@ function ensureEmailModal() {
               </div>
 
               <div class="form-group">
-                <button type="submit" id="class-submit-button g-recaptcha" class="btn btn-primary">
+                <button type="submit" id="class-submit-button g-recaptcha" class="btn btn-primary" disabled>
                   Send Message
                 </button>
               </div>

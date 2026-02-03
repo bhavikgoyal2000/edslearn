@@ -795,6 +795,10 @@ form {
   font-family: "GT Walsheim", Arial, sans-serif;
 }
 
+.form-group {
+    margin-bottom: 15px;
+}
+
 form label, form legend {
   display: inline-block;
   max-width: 100%;
