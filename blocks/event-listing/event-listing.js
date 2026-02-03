@@ -5,7 +5,9 @@
 /* eslint-disable max-len */
 import { SERVER_URL, CAPTCHA_SITE_KEY } from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
-import { resolveInitialDate } from '../../scripts/util.js';
+import {
+  resolveInitialDate, persistSelectedDate, updateUrlWithDate, getDateFromUrl,
+} from '../../scripts/util.js';
 
 // eslint-disable-next-line no-unused-vars
 let activeSelector = null;
