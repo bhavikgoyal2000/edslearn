@@ -10,8 +10,40 @@ let activeSelector = null;
 let hideAllSelector = false;
 let captchaRendered = false;
 
+function loadRecaptchaScript() {
+  if (window.recaptchaLoading || window.grecaptcha) return;
+
+  window.recaptchaLoading = true;
+
+  window.onRecaptchaReady = function () {
+    window.recaptchaReady = true;
+  };
+
+  const script = document.createElement('script');
+  script.src = 'https://www.google.com/recaptcha/api.js?onload=onRecaptchaReady&render=explicit';
+  script.async = true;
+  script.defer = true;
+
+  document.head.appendChild(script);
+}
+
+function waitForRecaptchaAndRender() {
+  const interval = setInterval(() => {
+    if (
+      window.recaptchaReady && window.grecaptcha && document.getElementById('captcha')
+    ) {
+      clearInterval(interval);
+      fireCaptcha();
+    }
+  }, 100);
+}
+
 function fireCaptcha() {
-  if (captchaRendered || !window.grecaptcha) return;
+  if (
+    captchaRendered || !window.recaptchaReady || !document.getElementById('captcha')
+  ) {
+    return;
+  }
 
   grecaptcha.render('captcha', {
     sitekey: '6LfdPSgUAAAAAKUbTSQX3u3EUMcwhisBS05rZ74u',
@@ -1329,7 +1361,6 @@ function ensureEmailModal() {
   modal.setAttribute('aria-hidden', 'true');
 
   modal.innerHTML = `
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -1362,7 +1393,7 @@ function ensureEmailModal() {
               <div id="captcha" class="g-recaptcha clearfix">
               </div>
               <div class="form-group">
-                <button type="submit" id="class-submit-button " class="btn btn-primary" disabled>
+                <button type="submit" id="class-submit-button" class="btn btn-primary" disabled>
                   Send Message
                 </button>
               </div>
@@ -1383,6 +1414,8 @@ function ensureEmailModal() {
 function openEmailModal(eventDiv) {
   ensureEmailModal();
 
+  loadRecaptchaScript();
+
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
 
@@ -1393,6 +1426,7 @@ function openEmailModal(eventDiv) {
 
   showEmailModal();
   setTimeout(fireCaptcha, 0);
+  waitForRecaptchaAndRender();
 }
 
 function attachEmailEventHandler(block) {
