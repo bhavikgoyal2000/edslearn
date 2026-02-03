@@ -1454,6 +1454,16 @@ document.addEventListener('click', (e) => {
   }
 });
 
+window.addEventListener('popstate', () => {
+  const date = getDateFromUrl() || resolveInitialDate();
+
+  persistSelectedDate(date);
+
+  document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
+    detail: { date },
+  }));
+});
+
 export default async function decorate(block) {
   const data = extractData(block);
   const initialDate = resolveInitialDate();
@@ -1461,6 +1471,8 @@ export default async function decorate(block) {
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
+    persistSelectedDate(selectedDate);
+    updateUrlWithDate(selectedDate);
     loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
