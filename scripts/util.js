@@ -342,10 +342,5 @@ export function resolveInitialDate() {
     return urlDate;
   }
 
-  const storedDate = sessionStorage.getItem('selectedCalendarDate');
-  if (storedDate && /^\d{4}-\d{2}-\d{2}$/.test(storedDate)) {
-    return storedDate;
-  }
-
   return new Date().toISOString().split('T')[0];
 }

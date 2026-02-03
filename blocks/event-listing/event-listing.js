@@ -9,8 +9,6 @@ import {
   resolveInitialDate, persistSelectedDate, updateUrlWithDate, getDateFromUrl,
 } from '../../scripts/util.js';
 
-// eslint-disable-next-line no-unused-vars
-let activeSelector = null;
 let hideAllSelector = false;
 let captchaRendered = false;
 
@@ -1457,9 +1455,9 @@ document.addEventListener('click', (e) => {
 });
 
 window.addEventListener('popstate', () => {
-  const date = getDateFromUrl() || resolveInitialDate();
+  const dateFromUrl = getDateFromUrl();
 
-  persistSelectedDate(date);
+  const date = dateFromUrl || new Date().toISOString().split('T')[0];
 
   document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
     detail: { date },
