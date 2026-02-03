@@ -1,9 +1,11 @@
+/* eslint-disable func-names */
 /* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
 /* eslint-disable default-param-last */
 /* eslint-disable max-len */
-import { SERVER_URL } from '../../scripts/constants.js';
+import { SERVER_URL, CAPTCHA_SITE_KEY } from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
+import { resolveInitialDate } from '../../scripts/util.js';
 
 // eslint-disable-next-line no-unused-vars
 let activeSelector = null;
@@ -46,7 +48,7 @@ function fireCaptcha() {
   }
 
   grecaptcha.render('captcha', {
-    sitekey: '6LfdPSgUAAAAAKUbTSQX3u3EUMcwhisBS05rZ74u',
+    sitekey: CAPTCHA_SITE_KEY,
     callback: enableEmailSubmit,
     theme: 'light',
   });
