@@ -1318,12 +1318,12 @@ function ensureEmailModal() {
             <fieldset>
               <div class="form-group">
                 <label>Your email:</label>
-                <input type="email" id="fromEmail" class="form-control" required>
+                <input id="fromEmail" name="fromEmail" type="email" class="form-control" maxlength="255" value="" required="" placeholder="Please enter your email...">
               </div>
 
               <div class="form-group">
                 <label>Recipient's email:</label>
-                <input type="email" id="toEmail" class="form-control" required>
+                <input id="toEmail" name="toEmail" type="email" class="form-control" maxlength="255" required="" placeholder="Please enter recipient's email...">
               </div>
 
               <div class="form-group">
