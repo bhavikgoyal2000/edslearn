@@ -1309,30 +1309,34 @@ function ensureEmailModal() {
         </div>
 
         <div class="modal-body">
-          <form id="emailFormFragment">
+          <form id="emailFormFragment" action="/customcf/email-a-friend-2017.cfm" method="post">
+            <input type="hidden" name="fuseaction" value="SendEmail">
+            <input type="hidden" name="submitted" value="1">
             <input type="hidden" name="title" id="emailEventTitle">
             <input type="hidden" name="eURL" id="emailEventUrl">
+            <input type="hidden" name="eInfo" value="02/03/2026#event-5424397">
+            <fieldset>
+              <div class="form-group">
+                <label>Your email:</label>
+                <input type="email" id="fromEmail" class="form-control" required>
+              </div>
 
-            <div class="form-group">
-              <label>Your email:</label>
-              <input type="email" id="fromEmail" class="form-control" required>
-            </div>
+              <div class="form-group">
+                <label>Recipient's email:</label>
+                <input type="email" id="toEmail" class="form-control" required>
+              </div>
 
-            <div class="form-group">
-              <label>Recipient's email:</label>
-              <input type="email" id="toEmail" class="form-control" required>
-            </div>
+              <div class="form-group">
+                <label>Comments:</label>
+                <textarea id="emailComments" name="emailComments" cols="40" rows="4" class="form-control"></textarea>
+              </div>
 
-            <div class="form-group">
-              <label>Comments:</label>
-              <textarea id="emailComments" class="form-control"></textarea>
-            </div>
-
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">
-                Send Message
-              </button>
-            </div>
+              <div class="form-group">
+                <button type="submit" id="class-submit-button g-recaptcha" class="btn btn-primary">
+                  Send Message
+                </button>
+              </div>
+            </fieldset>
           </form>
         </div>
 
@@ -1352,7 +1356,7 @@ function openEmailModal(eventDiv) {
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
 
-  document.getElementById('emailModalTitle').textContent = `Email ${title} to a friend`;
+  document.getElementById('emailModalTitle').textContent = `Email ${title} event to a friend`;
 
   document.getElementById('emailEventTitle').value = title;
   document.getElementById('emailEventUrl').value = url;
