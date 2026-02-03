@@ -1341,7 +1341,7 @@ function ensureEmailModal() {
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default email-modal-close">Clos</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
