@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
 /* eslint-disable default-param-last */
 /* eslint-disable max-len */
@@ -7,6 +8,24 @@ import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 // eslint-disable-next-line no-unused-vars
 let activeSelector = null;
 let hideAllSelector = false;
+let captchaRendered = false;
+
+function fireCaptcha() {
+  if (captchaRendered || !window.grecaptcha) return;
+
+  grecaptcha.render('captcha', {
+    sitekey: '6LfdPSgUAAAAAKUbTSQX3u3EUMcwhisBS05rZ74u',
+    callback: enableEmailSubmit,
+    theme: 'light',
+  });
+
+  captchaRendered = true;
+}
+
+function enableEmailSubmit() {
+  const btn = document.getElementById('emailSubmitBtn');
+  if (btn) btn.disabled = false;
+}
 
 function buildHeader(data, currentDateStr) {
   const currentDate = new Date(currentDateStr);
@@ -1288,6 +1307,15 @@ function closeEmailModal() {
 
   if (backdrop) backdrop.remove();
   document.body.classList.remove('modal-open');
+
+  if (window.grecaptcha) {
+    grecaptcha.reset();
+  }
+
+  captchaRendered = false;
+
+  const btn = document.getElementById('emailSubmitBtn');
+  if (btn) btn.disabled = true;
 }
 
 function ensureEmailModal() {
@@ -1301,6 +1329,7 @@ function ensureEmailModal() {
   modal.setAttribute('aria-hidden', 'true');
 
   modal.innerHTML = `
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -1330,9 +1359,10 @@ function ensureEmailModal() {
                 <label>Comments:</label>
                 <textarea id="emailComments" name="emailComments" cols="40" rows="4" class="form-control"></textarea>
               </div>
-
+              <div id="captcha" class="g-recaptcha clearfix">
+              </div>
               <div class="form-group">
-                <button type="submit" id="class-submit-button g-recaptcha" class="btn btn-primary" disabled>
+                <button type="submit" id="class-submit-button " class="btn btn-primary" disabled>
                   Send Message
                 </button>
               </div>
@@ -1362,6 +1392,7 @@ function openEmailModal(eventDiv) {
   document.getElementById('emailEventUrl').value = url;
 
   showEmailModal();
+  setTimeout(fireCaptcha, 0);
 }
 
 function attachEmailEventHandler(block) {
