@@ -887,11 +887,11 @@ form textarea.form-control {
 }
 
 .btn.btn-default:hover {
-    color: #0672b9;
-    background-color: #fff;
-    background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
-    border-color: #0672b9;
-    border-bottom-color: #f4c74b;
+  color: #0672b9;
+  background-color: #fff;
+  background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
+  border-color: #0672b9;
+  border-bottom-color: #f4c74b;
 }
 
 .modal-backdrop {
