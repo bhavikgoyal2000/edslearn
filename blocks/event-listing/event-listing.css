@@ -865,7 +865,7 @@ form textarea.form-control {
   background-image: none;
   border: 1px solid transparent;
   white-space: nowrap;
-  border-radius: 4px;
+  border-radius: 0;
   user-select: none;
   font-size: 1.5rem;
   font-family: "GT Walsheim", Arial, sans-serif;
@@ -884,6 +884,14 @@ form textarea.form-control {
   color: #0672b9;
   border: 1px solid #0672b9;
   border-color: #0672b9;
+}
+
+.btn.btn-default:hover {
+    color: #0672b9;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
+    border-color: #0672b9;
+    border-bottom-color: #f4c74b;
 }
 
 .modal-backdrop {
