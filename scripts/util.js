@@ -314,3 +314,30 @@ export async function getCsrfToken() {
   const json = await response.json();
   return json.token;
 }
+
+export async function getDateFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('d');
+}
+
+export async function updateUrlWithDate(dateStr) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('d', dateStr);
+  window.history.pushState({}, '', url.toString());
+}
+
+export async function persistSelectedDate(dateStr) {
+  sessionStorage.setItem('selectedCalendarDate', dateStr);
+}
+
+export async function getPersistedDate() {
+  return sessionStorage.getItem('selectedCalendarDate');
+}
+
+export async function resolveInitialDate() {
+  return (
+    getDateFromUrl()
+    || getPersistedDate()
+    || new Date().toISOString().split('T')[0]
+  );
+}

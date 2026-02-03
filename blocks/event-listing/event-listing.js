@@ -1454,8 +1454,8 @@ document.addEventListener('click', (e) => {
 
 export default async function decorate(block) {
   const data = extractData(block);
-  const today = new Date().toISOString().split('T')[0];
-  await loadAnnouncementsForDate(today, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  const initialDate = resolveInitialDate();
+  await loadAnnouncementsForDate(initialDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
