@@ -27,7 +27,7 @@ async function loadFullCalendar() {
 
 export default async function decorate(block) {
   await loadFullCalendar();
-  const initialDate = resolveInitialDate();
+  const initialDate = resolveInitialDate() || new Date().toISOString().split('T')[0];
 
   const calendarEl = document.createElement('div');
   calendarEl.classList.add('calendar-full');

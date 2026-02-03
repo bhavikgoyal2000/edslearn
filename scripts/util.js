@@ -334,10 +334,18 @@ export async function getPersistedDate() {
   return sessionStorage.getItem('selectedCalendarDate');
 }
 
-export async function resolveInitialDate() {
-  return (
-    getDateFromUrl()
-    || getPersistedDate()
-    || new Date().toISOString().split('T')[0]
-  );
+export function resolveInitialDate() {
+  const params = new URLSearchParams(window.location.search);
+  const urlDate = params.get('d');
+
+  if (urlDate && /^\d{4}-\d{2}-\d{2}$/.test(urlDate)) {
+    return urlDate;
+  }
+
+  const storedDate = sessionStorage.getItem('selectedCalendarDate');
+  if (storedDate && /^\d{4}-\d{2}-\d{2}$/.test(storedDate)) {
+    return storedDate;
+  }
+
+  return new Date().toISOString().split('T')[0];
 }
