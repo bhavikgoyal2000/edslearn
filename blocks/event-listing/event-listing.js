@@ -11,6 +11,7 @@ import {
 
 let hideAllSelector = false;
 let captchaRendered = false;
+let isAllViewActive = false;
 
 function loadRecaptchaScript() {
   if (window.recaptchaLoading || window.grecaptcha) return;
@@ -869,6 +870,7 @@ function attachSelectorEvents(block, type, data = extractData()) {
       const { id } = btn.dataset;
       if (id === 'all') {
         hideAllSelector = true;
+        isAllViewActive = true;
         await loadSelectorList(block, type, { noEndDate: true });
         return;
       }
@@ -896,6 +898,19 @@ function attachSelectorEvents(block, type, data = extractData()) {
   });
 }
 
+function attachRestoreMonthView(block) {
+  const restoreBtn = block.querySelector('.restore-month-view');
+  if (!restoreBtn) return;
+
+  restoreBtn.addEventListener('click', async () => {
+    isAllViewActive = false;
+    hideAllSelector = false;
+
+    const { type } = restoreBtn.dataset;
+    await loadSelectorList(block, type);
+  });
+}
+
 function renderSelector(block, type, items) {
   const titleMap = {
     host: 'Browse by Host',
@@ -904,10 +919,28 @@ function renderSelector(block, type, items) {
     series: 'Browse by Series',
   };
 
+  const subtitle = isAllViewActive
+    ? `
+      <h2 class="au-selector-subtitle">
+        <span class="current-view">All Event Types</span>
+        <span class="divider"> | </span>
+        <button type="button"
+                class="restore-month-view"
+                data-type="${type}">
+          Event Types for the next month
+        </button>
+      </h2>
+    `
+    : `
+      <h2 class="au-selector-subtitle">
+        Event Types with events in the next month
+      </h2>
+    `;
+
   block.innerHTML = `
     <div class="au-selector au-selector--${type}">
       <h1 class="au-selector-title">${titleMap[type]}</h1>
-
+      ${subtitle}
       <ul class="au-selector-list">
         ${items.map((item) => `
           <li class="au-selector-item">
@@ -940,6 +973,7 @@ function renderSelector(block, type, items) {
   }
 
   attachSelectorEvents(block, type);
+  attachRestoreMonthView(block);
 }
 
 function getCurrentMonthRange(date = new Date(), noEndDate = false) {
