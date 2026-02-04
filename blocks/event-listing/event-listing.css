@@ -894,12 +894,12 @@
   border-bottom-color: #f4c74b;
 }
 
-.au-calendar-backdrop {
+.modal-backdrop {
   position: fixed;
   z-index: 1040;
   background-color: #000;
 }
 
-.au-calendar-backdrop.in {
+.modal-backdrop.in {
   opacity: .5;
 }
