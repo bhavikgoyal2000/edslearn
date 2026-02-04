@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable func-names */
 /* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
@@ -893,7 +894,6 @@ function attachSelectorEvents(block, type, data = extractData()) {
       if (selectorWrapper) {
         selectorWrapper.innerHTML = '';
       }
-      activeSelector = null;
     });
   });
 }
@@ -1497,10 +1497,66 @@ window.addEventListener('popstate', () => {
   }));
 });
 
+const BROWSE_MAP = {
+  host: 'h',
+  eventType: 't',
+  location: 'l',
+  series: 's',
+};
+
+const BROWSE_REVERSE_MAP = {
+  h: 'host',
+  t: 'eventType',
+  l: 'location',
+  s: 'series',
+};
+
+function updateUrlWithBrowse(type) {
+  const url = new URL(window.location.href);
+
+  url.searchParams.delete('browse');
+
+  if (type && BROWSE_MAP[type]) {
+    url.searchParams.set('browse', BROWSE_MAP[type]);
+  }
+
+  history.pushState({}, '', url);
+}
+
+function getBrowseFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const browse = params.get('browse');
+  return BROWSE_REVERSE_MAP[browse] || null;
+}
+
+async function handleUrlState(block) {
+  const browseType = getBrowseFromUrl();
+  const date = resolveInitialDate();
+
+  if (browseType) {
+    hideAllSelector = false;
+    await loadSelectorList(block, browseType);
+    return;
+  }
+
+  const data = extractData();
+  await loadAnnouncementsForDate(
+    date,
+    block,
+    data.initialGroupIds,
+    data.eventTypeId,
+    data.roomId,
+    null,
+    data.visibilityLevel,
+    data.visibilityApproved,
+    data.visibleRequested,
+    data.visibleApproved,
+  );
+}
+
 export default async function decorate(block) {
   const data = extractData(block);
-  const initialDate = resolveInitialDate();
-  await loadAnnouncementsForDate(initialDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+  await handleUrlState(block);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
@@ -1509,22 +1565,13 @@ export default async function decorate(block) {
     loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
   });
 
-  document.addEventListener('calendar:filterSelected', async (e) => {
-    hideAllSelector = false;
+  document.addEventListener('calendar:filterSelected', (e) => {
     const { filterType } = e.detail;
 
-    switch (filterType) {
-      case 'host':
-      case 'location':
-      case 'eventType':
-      case 'series':
-        await loadSelectorList(block, filterType);
-        break;
+    if (['host', 'eventType', 'location', 'series'].includes(filterType)) {
+      updateUrlWithBrowse(filterType);
 
-      case 'today':
-      default:
-        await loadAnnouncementsForDate(new Date().toISOString().split('T')[0], block, null, null, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
-        break;
+      handleUrlState(block);
     }
   });
 
