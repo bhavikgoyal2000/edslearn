@@ -1323,8 +1323,7 @@ function showEmailModal() {
 
   if (!document.querySelector('[data-email-backdrop]')) {
     const backdrop = document.createElement('div');
-    backdrop.className = 'modal-backdrop fade in';
-    backdrop.classList.add('au-calendar-backdrop');
+    backdrop.className = 'modal-backdrop fade in au-calendar-backdrop';
     backdrop.dataset.emailBackdrop = 'true';
     document.body.appendChild(backdrop);
   }
