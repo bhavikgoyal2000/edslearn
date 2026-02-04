@@ -700,7 +700,6 @@
 .au-calendar-modal.modal {
   display: none;
   position: fixed;
-  z-index: 1050;
   overflow-y: auto;
 }
 
@@ -895,12 +894,12 @@
   border-bottom-color: #f4c74b;
 }
 
-.au-calendar-modal .modal-backdrop {
+.au-calendar-backdrop {
   position: fixed;
   z-index: 1040;
   background-color: #000;
 }
 
-.au-calendar-modal .modal-backdrop.in {
+.au-calendar-backdrop.in {
   opacity: .5;
 }
