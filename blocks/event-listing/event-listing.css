@@ -917,13 +917,13 @@
 }
 
 .event-listing .au-selector-subtitle {
-    font-family: "GT Walsheim", Arial, sans-serif;
-    font-weight: 700;
-    color: #4d4037;
-    font-size: clamp(2.4rem, 1.6vw, 3rem);
-    line-height: 3.2rem;
-    letter-spacing: 0;
-    text-transform: none;
+  font-family: "GT Walsheim", Arial, sans-serif;
+  font-weight: 700;
+  color: #4d4037;
+  font-size: clamp(2.4rem, 1.6vw, 3rem);
+  line-height: 3.2rem;
+  letter-spacing: 0;
+  text-transform: none;
   margin-bottom: 10px;
 }
 
