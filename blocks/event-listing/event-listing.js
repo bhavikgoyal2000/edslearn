@@ -1358,7 +1358,7 @@ function ensureEmailModal() {
 
   const modal = document.createElement('div');
   modal.id = 'emailEventModal';
-  modal.className = 'au-calendar modal fade';
+  modal.className = 'au-calendar-modal modal fade';
   modal.setAttribute('tabindex', '-1');
   modal.setAttribute('role', 'dialog');
   modal.setAttribute('aria-hidden', 'true');
