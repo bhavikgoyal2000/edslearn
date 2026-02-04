@@ -917,25 +917,27 @@
 }
 
 .event-listing .au-selector-subtitle {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
+    font-family: "GT Walsheim", Arial, sans-serif;
+    font-weight: 700;
+    color: #4d4037;
+    font-size: clamp(2.4rem, 1.6vw, 3rem);
+    line-height: 3.2rem;
+    letter-spacing: 0;
+    text-transform: none;
+  margin-bottom: 10px;
 }
 
 .event-listing .au-selector-subtitle .restore-month-view {
   background: none;
   border: none;
-  color: #005ea2;
+  color: #13477d;;
   cursor: pointer;
   padding: 0;
   font: inherit;
-  text-decoration: underline;
-}
-
-.event-listing .au-selector-subtitle .restore-month-view:hover {
   text-decoration: none;
 }
 
-.event-listing .au-selector-subtitle .divider {
-  margin: 0 0.5rem;
-  color: #666;
+.event-listing .au-selector-subtitle .restore-month-view:hover {
+  text-decoration: underline;
+  color: #0672b9;
 }
