@@ -923,7 +923,6 @@ function renderSelector(block, type, items) {
     ? `
       <h2 class="au-selector-subtitle">
         <span class="current-view">All Event Types</span>
-        <span class="divider"> | </span>
         <button type="button"
                 class="restore-month-view"
                 data-type="${type}">
