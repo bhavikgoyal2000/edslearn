@@ -1481,8 +1481,6 @@ export default async function decorate(block) {
     hideAllSelector = false;
     const { filterType } = e.detail;
 
-    activeSelector = filterType;
-
     switch (filterType) {
       case 'host':
       case 'location':
