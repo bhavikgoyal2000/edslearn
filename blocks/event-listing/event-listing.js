@@ -1324,6 +1324,7 @@ function showEmailModal() {
   if (!document.querySelector('[data-email-backdrop]')) {
     const backdrop = document.createElement('div');
     backdrop.className = 'modal-backdrop fade in';
+    backdrop.classList.add('au-calendar-backdrop');
     backdrop.dataset.emailBackdrop = 'true';
     document.body.appendChild(backdrop);
   }
@@ -1357,7 +1358,7 @@ function ensureEmailModal() {
 
   const modal = document.createElement('div');
   modal.id = 'emailEventModal';
-  modal.className = 'modal fade';
+  modal.className = 'au-calendar modal fade';
   modal.setAttribute('tabindex', '-1');
   modal.setAttribute('role', 'dialog');
   modal.setAttribute('aria-hidden', 'true');

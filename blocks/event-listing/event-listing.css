@@ -697,40 +697,40 @@
   content: "\f14a";
 }
 
-.modal {
+.au-calendar.modal {
   display: none;
   position: fixed;
   z-index: 1050;
   overflow-y: auto;
 }
 
-.modal-open {
+.au-calendar.modal-open {
   overflow: hidden;
 }
 
-.fade {
+.au-calendar.fade {
   opacity: 0;
   transition: opacity .15s linear;
 }
 
-.fade.in {
+.au-calendar.fade.in {
   opacity: 1;
 }
 
-.modal-dialog {
+.au-calendar .modal-dialog {
   position: relative;
 }
 
-.modal.fade .modal-dialog {
+.au-calendar.modal.fade .modal-dialog {
   transform: translate(0, -25%);
   transition: transform .3s ease-out;
 }
 
-.modal.in .modal-dialog {
+.au-calendar.modal.in .modal-dialog {
   transform: translate(0, 0);
 }
 
-.modal-content {
+.au-calendar .modal-content {
   position: relative;
   background-color: #fff;
   border: 1px solid #999;
@@ -741,28 +741,28 @@
   outline: 0;
 }
 
-.modal .modal-content {
+.au-calendar.modal .modal-content {
   border-radius: 0;
 }
 
-.modal-header {
+ .au-calendar .modal-header {
   position: relative;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
 }
 
-.modal .modal-content .modal-header {
+.au-calendar.modal .modal-content .modal-header {
   background: #d9dce3;
 }
 
-.modal-header .close {
+.au-calendar .modal-header .close {
   position: absolute;
   top: -6px;
   right: 6px;
   float: none;
 }
 
-button.close {
+.au-calendar.modal button.close {
   padding: 0;
   cursor: pointer;
   background: 0 0;
@@ -770,7 +770,7 @@ button.close {
   appearance: none;
 }
 
-.modal .modal-content .modal-header button.close {
+.au-calendar.modal .modal-content .modal-header button.close {
   color: #343434;
   font-size: 4rem;
   opacity: 1;
@@ -778,7 +778,7 @@ button.close {
   margin-top: -12px;
 }
 
-.modal .modal-content .modal-header .modal-title {
+.au-calendar.modal .modal-content .modal-header .modal-title {
   font-family: "GT Walsheim", Arial, sans-serif;
   font-weight: 700;
   color: #4d4037;
@@ -789,17 +789,17 @@ button.close {
   margin-bottom: 0;
 }
 
-form {
+.au-calendar form {
   margin: 25px 0;
   padding: 0;
   font-family: "GT Walsheim", Arial, sans-serif;
 }
 
-.form-group {
+.au-calendar .form-group {
     margin-bottom: 15px;
 }
 
-form label, form legend {
+.au-calendar form label, form legend {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
@@ -808,7 +808,7 @@ form label, form legend {
   font-weight: 700;
 }
 
-.form-control {
+.au-calendar .form-control {
   display: block;
   width: 100%;
   height: 34px;
@@ -823,7 +823,7 @@ form label, form legend {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-form .form-control {
+.au-calendar form .form-control {
   height: 50px;
   font-size: 1.6rem;
   line-height: 3.8rem;
@@ -833,29 +833,29 @@ form .form-control {
   border-radius: 0;
 }
 
-form textarea.form-control {
+.au-calendar form textarea.form-control {
   height: auto;
   line-height: 2rem;
 }
 
-.btn.btn-primary:disabled{
+.au-calendar .btn.btn-primary:disabled{
   background: #8a95a5 !important;
   color: #fff;
   border-color: #ccc !important;
 }
 
-.modal-body {
+.au-calendar .modal-body {
   position: relative;
   padding: 15px;
 }
 
-.modal-footer {
+.au-calendar.modal-footer {
   padding: 15px;
   text-align: right;
   border-top: 1px solid #e5e5e5;
 }
 
-.btn {
+.au-calendar.modal .btn {
   display: inline-block;
   margin-bottom: 0;
   font-weight: 400;
@@ -879,7 +879,7 @@ form textarea.form-control {
   transition: background-color .5s ease, color .5s ease;
 }
 
-.btn.btn-default {
+.au-calendar.modal .btn.btn-default {
   background-color: #fff;
   font-weight: 700;
   color: #0672b9;
@@ -887,7 +887,7 @@ form textarea.form-control {
   border-color: #0672b9;
 }
 
-.btn.btn-default:hover {
+.au-calendar.modal .btn.btn-default:hover {
   color: #0672b9;
   background-color: #fff;
   background-image: linear-gradient(to bottom, #fff 0, #fff 90%, #f4c74b 90%, #f4c74b 100%);
@@ -895,12 +895,12 @@ form textarea.form-control {
   border-bottom-color: #f4c74b;
 }
 
-.modal-backdrop {
+.au-calendar .au-calendar-backdrop {
   position: fixed;
   z-index: 1040;
   background-color: #000;
 }
 
-.modal-backdrop.in {
+.au-calendar .au-calendar-backdrop.in {
   opacity: .5;
 }
