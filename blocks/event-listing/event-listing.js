@@ -871,9 +871,9 @@ function attachSelectorEvents(block, type, data = extractData()) {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
       if (id === 'all') {
-        hideAllSelector = true;
-        isAllViewActive = true;
-        await loadSelectorList(block, type, { noEndDate: true });
+        updateUrlWithBrowseOnly(type, true);
+        handleUrlState(block);
+        return;
       }
 
       const date = new Date().toISOString().split('T')[0];
@@ -976,12 +976,12 @@ function renderSelector(block, type, items) {
     </div>
   `;
 
-  if (hideAllSelector) {
-    const allBtn = block.querySelector('.selector-item-all');
-    if (allBtn) {
-      allBtn.style.display = 'none';
-    }
-  }
+  // if (hideAllSelector) {
+  //   const allBtn = block.querySelector('.selector-item-all');
+  //   if (allBtn) {
+  //     allBtn.style.display = 'none';
+  //   }
+  // }
 
   attachSelectorEvents(block, type);
   attachRestoreMonthView(block);
@@ -1512,17 +1512,17 @@ function getBrowseFromUrl() {
 
 async function handleUrlState(block) {
   const browseType = getBrowseFromUrl();
-  const showAll = getShowAllFromUrl();
+  const showAll = getShowAllFromUrl() === true;
   const date = resolveInitialDate();
 
   if (browseType) {
-    hideAllSelector = showAll === true;
-    isAllViewActive = showAll === true;
+    hideAllSelector = showAll;
+    isAllViewActive = showAll;
 
     await loadSelectorList(
       block,
       browseType,
-      { noEndDate: showAll === true },
+      { noEndDate: showAll },
     );
     return;
   }
