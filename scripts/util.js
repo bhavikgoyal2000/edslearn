@@ -345,6 +345,7 @@ export function updateUrlWithBrowseOnly(type, showAll = false) {
 
   url.searchParams.delete('browse');
   url.searchParams.delete('show');
+  ['h', 't', 'l', 's'].forEach((p) => url.searchParams.delete(p));
 
   if (type && BROWSE_MAP[type]) {
     url.searchParams.set('browse', BROWSE_MAP[type]);
