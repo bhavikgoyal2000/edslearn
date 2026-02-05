@@ -1403,11 +1403,12 @@ function ensureEmailModal() {
         </div>
 
         <div class="modal-body">
-          <form id="emailFormFragment" action="/customcf/email-a-friend-2017.cfm" method="post">
+          <form id="emailFormFragment" action='${SERVER_URL}/content/apis/au/calenderEmailServlet.json' method="post">
             <input type="hidden" name="fuseaction" value="SendEmail">
             <input type="hidden" name="submitted" value="1">
             <input type="hidden" name="title" id="emailEventTitle">
             <input type="hidden" name="eURL" id="emailEventUrl">
+            <input type="hidden" name="eventDate" id="emailEventDate">
             <input type="hidden" name="eInfo" value="02/03/2026#event-5424397">
             <fieldset>
               <div class="form-group">
@@ -1436,7 +1437,7 @@ function ensureEmailModal() {
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default email-modal-close" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -1452,11 +1453,13 @@ function openEmailModal(eventDiv) {
 
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
+  const startDate = eventDiv.dataset.fullstart;
 
   document.getElementById('emailModalTitle').textContent = `Email ${title} event to a friend`;
 
   document.getElementById('emailEventTitle').value = title;
   document.getElementById('emailEventUrl').value = url;
+  document.getElementById('emailEventDate').value = startDate;
 
   showEmailModal();
   setTimeout(fireCaptcha, 0);
