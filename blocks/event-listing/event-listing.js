@@ -1519,7 +1519,7 @@ async function handleUrlState(block) {
   const date = resolveInitialDate();
 
   if (browseType) {
-    hideAllSelector = false;
+    hideAllSelector = showAll;
     isAllViewActive = showAll;
 
     await loadSelectorList(
