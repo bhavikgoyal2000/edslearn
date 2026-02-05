@@ -7,7 +7,7 @@ import {
 } from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 import {
-  resolveInitialDate, persistSelectedDate, updateUrlWithDateOnly, updateUrlWithBrowseOnly, getShowAllFromUrl,
+  resolveInitialDate, persistSelectedDate, updateUrlWithDateOnly, updateUrlWithBrowseOnly, getShowAllFromUrl, updateUrlWithSelectedId,
 } from '../../scripts/util.js';
 
 let hideAllSelector = false;
@@ -895,11 +895,7 @@ function attachSelectorEvents(block, type) {
       //   selectorWrapper.innerHTML = '';
       // }
 
-      updateUrlWithBrowseOnly(type, false);
-
-      // optionally store selection if needed later
-      // but DO NOT render here
-
+      updateUrlWithSelectedId(type, id);
       handleUrlState(block);
     });
   });
@@ -1518,37 +1514,43 @@ function getBrowseFromUrl() {
 }
 
 async function handleUrlState(block) {
-  console.log('URL STATE', window.location.search, {
-    browse: getBrowseFromUrl(),
-    showAll: getShowAllFromUrl(),
-  });
+  const params = new URLSearchParams(window.location.search);
+
+  const selectedHostId = params.get('h');
+  const selectedEventTypeId = params.get('t');
+  const selectedLocationId = params.get('l');
+  const selectedSeriesId = params.get('s');
+
   const browseType = getBrowseFromUrl();
-  const showAll = getShowAllFromUrl();
   const date = resolveInitialDate();
+  const data = extractData();
 
   if (browseType) {
+    const showAll = getShowAllFromUrl();
     hideAllSelector = showAll;
     isAllViewActive = showAll;
 
-    await loadSelectorList(
-      block,
-      browseType,
-      { noEndDate: showAll },
-    );
+    await loadSelectorList(block, browseType, { noEndDate: showAll });
     return;
   }
 
   hideAllSelector = false;
   isAllViewActive = false;
+  const groupId = selectedHostId !== null ? selectedHostId : data.initialGroupIds;
 
-  const data = extractData();
+  const eventTypeId = selectedEventTypeId !== null ? selectedEventTypeId : data.eventTypeId;
+
+  const roomId = selectedLocationId !== null ? selectedLocationId : data.roomId;
+
+  const seriesId = selectedSeriesId !== null ? selectedSeriesId : null;
+
   await loadAnnouncementsForDate(
     date,
     block,
-    data.initialGroupIds,
-    data.eventTypeId,
-    data.roomId,
-    null,
+    groupId,
+    eventTypeId,
+    roomId,
+    seriesId,
     data.visibilityLevel,
     data.visibilityApproved,
     data.visibleRequested,

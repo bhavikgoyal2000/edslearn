@@ -380,3 +380,20 @@ export function resolveInitialDate() {
 
   return new Date().toISOString().split('T')[0];
 }
+
+export function updateUrlWithSelectedId(type, id) {
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  params.delete('browse');
+  params.delete('show');
+
+  ['h', 't', 'l', 's'].forEach((p) => params.delete(p));
+
+  if (type === 'host') params.set('h', id);
+  if (type === 'eventType') params.set('t', id);
+  if (type === 'location') params.set('l', id);
+  if (type === 'series') params.set('s', id);
+
+  history.pushState({}, '', url);
+}
