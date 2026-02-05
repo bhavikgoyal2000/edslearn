@@ -866,7 +866,7 @@ function extractData() {
   };
 }
 
-function attachSelectorEvents(block, type, data = extractData()) {
+function attachSelectorEvents(block, type) {
   block.querySelectorAll('.selector-item').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
@@ -876,17 +876,17 @@ function attachSelectorEvents(block, type, data = extractData()) {
         return;
       }
 
-      const date = new Date().toISOString().split('T')[0];
+      // const date = new Date().toISOString().split('T')[0];
 
-      let groupId = null;
-      let eventTypeId = null;
-      let roomId = null;
-      let seriesId = null;
+      // let groupId = null;
+      // let eventTypeId = null;
+      // let roomId = null;
+      // let seriesId = null;
 
-      if (type === 'host') groupId = id;
-      if (type === 'eventType') eventTypeId = id;
-      if (type === 'location') roomId = id;
-      if (type === 'series') seriesId = id;
+      // // if (type === 'host') groupId = id;
+      // // if (type === 'eventType') eventTypeId = id;
+      // // if (type === 'location') roomId = id;
+      // // if (type === 'series') seriesId = id;
 
       // await loadAnnouncementsForDate(date, block, groupId, eventTypeId, roomId, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 

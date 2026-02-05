@@ -338,7 +338,7 @@ export async function updateUrlWithDateOnly(date) {
   history.pushState({}, '', url);
 }
 
-export async function updateUrlWithBrowseOnly(type, showAll = false) {
+export function updateUrlWithBrowseOnly(type, showAll = false) {
   const url = new URL(window.location.href);
 
   url.searchParams.delete('d');
@@ -357,7 +357,7 @@ export async function updateUrlWithBrowseOnly(type, showAll = false) {
   history.pushState({}, '', url);
 }
 
-export async function getShowAllFromUrl() {
+export function getShowAllFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get('show') === 'all';
 }
