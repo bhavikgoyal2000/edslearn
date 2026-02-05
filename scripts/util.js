@@ -1,4 +1,6 @@
+/* eslint-disable no-restricted-globals */
 import { moveInstrumentation } from './scripts.js';
+import { BROWSE_MAP } from './constants.js';
 /* eslint-disable max-len */
 /**
  * Creates DOM element using provided params and returns the created element.
@@ -324,6 +326,39 @@ export async function updateUrlWithDate(dateStr) {
   const url = new URL(window.location.href);
   url.searchParams.set('d', dateStr);
   window.history.pushState({}, '', url.toString());
+}
+
+export async function updateUrlWithDateOnly(date) {
+  const url = new URL(window.location.href);
+
+  url.searchParams.set('d', date);
+  url.searchParams.delete('browse');
+  url.searchParams.delete('show');
+
+  history.pushState({}, '', url);
+}
+
+export async function updateUrlWithBrowseOnly(type, showAll = false) {
+  const url = new URL(window.location.href);
+
+  url.searchParams.delete('d');
+
+  if (type && BROWSE_MAP[type]) {
+    url.searchParams.set('browse', BROWSE_MAP[type]);
+  }
+
+  if (showAll) {
+    url.searchParams.set('show', 'all');
+  } else {
+    url.searchParams.delete('show');
+  }
+
+  history.pushState({}, '', url);
+}
+
+export async function getShowAllFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('show') === 'all';
 }
 
 export async function persistSelectedDate(dateStr) {

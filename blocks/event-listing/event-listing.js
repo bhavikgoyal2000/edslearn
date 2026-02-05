@@ -1,13 +1,13 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable func-names */
-/* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
-/* eslint-disable default-param-last */
 /* eslint-disable max-len */
-import { SERVER_URL, CAPTCHA_SITE_KEY } from '../../scripts/constants.js';
+import {
+  SERVER_URL, CAPTCHA_SITE_KEY, BROWSE_REVERSE_MAP,
+} from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 import {
-  resolveInitialDate, persistSelectedDate, updateUrlWithDate, getDateFromUrl,
+  resolveInitialDate, persistSelectedDate, updateUrlWithDate, getDateFromUrl, updateUrlWithBrowseOnly, getShowAllFromUrl,
 } from '../../scripts/util.js';
 
 let hideAllSelector = false;
@@ -49,6 +49,7 @@ function fireCaptcha() {
     return;
   }
 
+  // eslint-disable-next-line no-undef
   grecaptcha.render('captcha', {
     sitekey: CAPTCHA_SITE_KEY,
     callback: enableEmailSubmit,
@@ -872,7 +873,8 @@ function attachSelectorEvents(block, type, data = extractData()) {
       if (id === 'all') {
         hideAllSelector = true;
         isAllViewActive = true;
-        await loadSelectorList(block, type, { noEndDate: true });
+        updateUrlWithBrowseOnly(type, true);
+        handleUrlState(block);
         return;
       }
 
@@ -1376,6 +1378,7 @@ function closeEmailModal() {
   document.body.classList.remove('modal-open');
 
   if (window.grecaptcha) {
+    // eslint-disable-next-line no-undef
     grecaptcha.reset();
   }
 
@@ -1497,32 +1500,6 @@ window.addEventListener('popstate', () => {
   }));
 });
 
-const BROWSE_MAP = {
-  host: 'h',
-  eventType: 't',
-  location: 'l',
-  series: 's',
-};
-
-const BROWSE_REVERSE_MAP = {
-  h: 'host',
-  t: 'eventType',
-  l: 'location',
-  s: 'series',
-};
-
-function updateUrlWithBrowse(type) {
-  const url = new URL(window.location.href);
-
-  url.searchParams.delete('browse');
-
-  if (type && BROWSE_MAP[type]) {
-    url.searchParams.set('browse', BROWSE_MAP[type]);
-  }
-
-  history.pushState({}, '', url);
-}
-
 function getBrowseFromUrl() {
   const params = new URLSearchParams(window.location.search);
   const browse = params.get('browse');
@@ -1531,11 +1508,18 @@ function getBrowseFromUrl() {
 
 async function handleUrlState(block) {
   const browseType = getBrowseFromUrl();
+  const showAll = getShowAllFromUrl();
   const date = resolveInitialDate();
 
   if (browseType) {
     hideAllSelector = false;
-    await loadSelectorList(block, browseType);
+    isAllViewActive = showAll;
+
+    await loadSelectorList(
+      block,
+      browseType,
+      { noEndDate: showAll },
+    );
     return;
   }
 
@@ -1569,7 +1553,7 @@ export default async function decorate(block) {
     const { filterType } = e.detail;
 
     if (['host', 'eventType', 'location', 'series'].includes(filterType)) {
-      updateUrlWithBrowse(filterType);
+      updateUrlWithBrowseOnly(filterType, false);
 
       handleUrlState(block);
     }
