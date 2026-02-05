@@ -742,6 +742,7 @@ function attachEventTypeFilter(block, currentDateStr, visibilityLevel, visibilit
     if (!eventTypeId) return;
 
     const date = currentDateStr || new Date().toISOString().split('T')[0];
+    updateUrlWithSelectedId('eventType', eventTypeId);
 
     await loadAnnouncementsForDate(
       date,
@@ -768,6 +769,7 @@ function attachHostFilter(block, currentDateStr, visibilityLevel, visibilityAppr
       if (!groupId) return;
 
       const date = currentDateStr || new Date().toISOString().split('T')[0];
+      updateUrlWithSelectedId('host', groupId);
 
       await loadAnnouncementsForDate(
         date,
@@ -875,25 +877,6 @@ function attachSelectorEvents(block, type) {
         handleUrlState(block);
         return;
       }
-
-      // const date = new Date().toISOString().split('T')[0];
-
-      // let groupId = null;
-      // let eventTypeId = null;
-      // let roomId = null;
-      // let seriesId = null;
-
-      // // if (type === 'host') groupId = id;
-      // // if (type === 'eventType') eventTypeId = id;
-      // // if (type === 'location') roomId = id;
-      // // if (type === 'series') seriesId = id;
-
-      // await loadAnnouncementsForDate(date, block, groupId, eventTypeId, roomId, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
-
-      // const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
-      // if (selectorWrapper) {
-      //   selectorWrapper.innerHTML = '';
-      // }
 
       updateUrlWithSelectedId(type, id);
       handleUrlState(block);
