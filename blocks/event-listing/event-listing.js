@@ -888,12 +888,19 @@ function attachSelectorEvents(block, type, data = extractData()) {
       if (type === 'location') roomId = id;
       if (type === 'series') seriesId = id;
 
-      await loadAnnouncementsForDate(date, block, groupId, eventTypeId, roomId, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+      // await loadAnnouncementsForDate(date, block, groupId, eventTypeId, roomId, seriesId, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
 
-      const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
-      if (selectorWrapper) {
-        selectorWrapper.innerHTML = '';
-      }
+      // const selectorWrapper = block.querySelector('.calendar-selector-wrapper');
+      // if (selectorWrapper) {
+      //   selectorWrapper.innerHTML = '';
+      // }
+
+      updateUrlWithBrowseOnly(type, false);
+
+      // optionally store selection if needed later
+      // but DO NOT render here
+
+      handleUrlState(block);
     });
   });
 }
