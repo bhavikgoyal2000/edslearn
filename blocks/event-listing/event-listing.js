@@ -7,7 +7,7 @@ import {
 } from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 import {
-  resolveInitialDate, persistSelectedDate, updateUrlWithDate, updateUrlWithBrowseOnly, getShowAllFromUrl,
+  resolveInitialDate, persistSelectedDate, updateUrlWithDateOnly, updateUrlWithBrowseOnly, getShowAllFromUrl,
 } from '../../scripts/util.js';
 
 let hideAllSelector = false;
@@ -871,8 +871,6 @@ function attachSelectorEvents(block, type, data = extractData()) {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
       if (id === 'all') {
-        hideAllSelector = true;
-        isAllViewActive = true;
         updateUrlWithBrowseOnly(type, true);
         handleUrlState(block);
         return;
@@ -905,11 +903,14 @@ function attachRestoreMonthView(block) {
   if (!restoreBtn) return;
 
   restoreBtn.addEventListener('click', async () => {
-    isAllViewActive = false;
-    hideAllSelector = false;
-
     const { type } = restoreBtn.dataset;
-    await loadSelectorList(block, type);
+    updateUrlWithBrowseOnly(type, false);
+    handleUrlState(block);
+
+    // isAllViewActive = false;
+    // hideAllSelector = false;
+
+    // await loadSelectorList(block, type);
   });
 }
 
@@ -962,14 +963,16 @@ function renderSelector(block, type, items) {
         `).join('')}
       </ul>
 
-      <p class="au-selector-footer">
-        <button
-          type="button"
-          class="selector-item selector-item-all"
-          data-id="all">
-          All ${titleMap[type].replace('Browse by ', '')}
-        </button>
-      </p>
+      ${!hideAllSelector ? `
+        <p class="au-selector-footer">
+          <button
+            type="button"
+            class="selector-item selector-item-all"
+            data-id="all">
+            All ${titleMap[type].replace('Browse by ', '')}
+          </button>
+        </p>
+      ` : ''}
     </div>
   `;
 
@@ -1543,14 +1546,17 @@ async function handleUrlState(block) {
 }
 
 export default async function decorate(block) {
-  const data = extractData(block);
+  // const data = extractData(block);
   await handleUrlState(block);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
+    // persistSelectedDate(selectedDate);
+    // updateUrlWithDate(selectedDate);
+    // loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
     persistSelectedDate(selectedDate);
-    updateUrlWithDate(selectedDate);
-    loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
+    updateUrlWithDateOnly(selectedDate);
+    handleUrlState(block);
   });
 
   document.addEventListener('calendar:filterSelected', (e) => {
