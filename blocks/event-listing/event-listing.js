@@ -1511,8 +1511,12 @@ function getBrowseFromUrl() {
 }
 
 async function handleUrlState(block) {
+  console.log('URL STATE', window.location.search, {
+    browse: getBrowseFromUrl(),
+    showAll: getShowAllFromUrl(),
+  });
   const browseType = getBrowseFromUrl();
-  const showAll = getShowAllFromUrl() === true;
+  const showAll = getShowAllFromUrl();
   const date = resolveInitialDate();
 
   if (browseType) {
