@@ -921,20 +921,27 @@ function renderSelector(block, type, items) {
     series: 'Browse by Series',
   };
 
+  const simpleTitleMap = {
+    host: 'Hosts',
+    location: 'Locations',
+    eventType: 'Event Types',
+    series: 'Series',
+  };
+
   const subtitle = isAllViewActive
     ? `
       <h2 class="au-selector-subtitle">
-        <span class="current-view">All Event Types</span>
+        <span class="current-view">All ${simpleTitleMap[type]}</span>
         <button type="button"
                 class="restore-month-view"
                 data-type="${type}">
-          Event Types for the next month
+          ${simpleTitleMap[type]} for the next month
         </button>
       </h2>
     `
     : `
       <h2 class="au-selector-subtitle">
-        Event Types with events in the next month
+        ${simpleTitleMap[type]} with events in the next month
       </h2>
     `;
 
