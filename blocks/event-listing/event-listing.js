@@ -871,9 +871,9 @@ function attachSelectorEvents(block, type, data = extractData()) {
     btn.addEventListener('click', async () => {
       const { id } = btn.dataset;
       if (id === 'all') {
-        updateUrlWithBrowseOnly(type, true);
-        handleUrlState(block);
-        return;
+        hideAllSelector = true;
+        isAllViewActive = true;
+        await loadSelectorList(block, type, { noEndDate: true });
       }
 
       const date = new Date().toISOString().split('T')[0];
