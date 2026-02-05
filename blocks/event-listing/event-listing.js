@@ -7,7 +7,7 @@ import {
 } from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 import {
-  resolveInitialDate, persistSelectedDate, updateUrlWithDate, getDateFromUrl, updateUrlWithBrowseOnly, getShowAllFromUrl,
+  resolveInitialDate, persistSelectedDate, updateUrlWithDate, updateUrlWithBrowseOnly, getShowAllFromUrl,
 } from '../../scripts/util.js';
 
 let hideAllSelector = false;
@@ -1498,13 +1498,7 @@ document.addEventListener('click', (e) => {
 });
 
 window.addEventListener('popstate', () => {
-  const dateFromUrl = getDateFromUrl();
-
-  const date = dateFromUrl || new Date().toISOString().split('T')[0];
-
-  document.dispatchEvent(new CustomEvent('calendar:dateSelected', {
-    detail: { date },
-  }));
+  handleUrlState(document.querySelector('.block') || document.querySelector('.au-calendar'));
 });
 
 function getBrowseFromUrl() {
@@ -1519,16 +1513,19 @@ async function handleUrlState(block) {
   const date = resolveInitialDate();
 
   if (browseType) {
-    hideAllSelector = showAll;
-    isAllViewActive = showAll;
+    hideAllSelector = showAll === true;
+    isAllViewActive = showAll === true;
 
     await loadSelectorList(
       block,
       browseType,
-      { noEndDate: showAll },
+      { noEndDate: showAll === true },
     );
     return;
   }
+
+  hideAllSelector = false;
+  isAllViewActive = false;
 
   const data = extractData();
   await loadAnnouncementsForDate(

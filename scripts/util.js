@@ -343,14 +343,15 @@ export async function updateUrlWithBrowseOnly(type, showAll = false) {
 
   url.searchParams.delete('d');
 
+  url.searchParams.delete('browse');
+  url.searchParams.delete('show');
+
   if (type && BROWSE_MAP[type]) {
     url.searchParams.set('browse', BROWSE_MAP[type]);
   }
 
   if (showAll) {
     url.searchParams.set('show', 'all');
-  } else {
-    url.searchParams.delete('show');
   }
 
   history.pushState({}, '', url);
