@@ -1269,7 +1269,7 @@ ${events.length > 0 ? `<h1>${wrapperClass === 'calendar-coming-soon' ? 'Coming S
 }
 
 async function getCsrfToken() {
-  const response = await fetch('/libs/granite/csrf/token.json');
+  const response = await fetch(`${SERVER_URL}/libs/granite/csrf/token.json`);
   const json = await response.json();
   return json.token;
 }
