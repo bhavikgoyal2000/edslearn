@@ -1458,12 +1458,10 @@ function attachEmailFormSubmit() {
 }
 
 function isAuthorEnv() {
-  const host = window.location.hostname;
-
   return (
-    host === 'localhost'
-    || host === '127.0.0.1'
-    || (host.endsWith('.adobeaemcloud.com') && host.includes('author'))
+    SERVER_URL === 'localhost'
+    || SERVER_URL === '127.0.0.1'
+    || (SERVER_URL.endsWith('.adobeaemcloud.com') && SERVER_URL.includes('author'))
   );
 }
 
