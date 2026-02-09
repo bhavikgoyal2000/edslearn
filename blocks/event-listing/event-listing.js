@@ -60,7 +60,7 @@ function fireCaptcha() {
 }
 
 function enableEmailSubmit() {
-  const btn = document.getElementById('emailSubmitBtn');
+  const btn = document.getElementById('class-submit-button');
   if (btn) btn.disabled = false;
 }
 
@@ -1444,6 +1444,51 @@ function ensureEmailModal() {
   `;
 
   document.body.appendChild(modal);
+  attachEmailFormSubmit();
+}
+
+function attachEmailFormSubmit() {
+  const form = document.getElementById('emailFormFragment');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    await submitEmailForm(form);
+  });
+}
+
+async function submitEmailForm(form) {
+  try {
+    const isAuthor = /^author-p\d+-e\d+\.adobeaemcloud\.com$/.test(window.location.hostname);
+
+    const headers = {};
+    if (isAuthor) {
+      const csrfToken = await getCsrfToken();
+      headers['CSRF-Token'] = csrfToken;
+    }
+
+    const formData = new FormData(form);
+
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers,
+      credentials: 'same-origin',
+    });
+
+    if (!response.ok) {
+      throw new Error(`Email servlet failed: ${response.status}`);
+    }
+
+    const json = await response.json();
+    console.log('Email response:', json);
+
+    closeEmailModal();
+    alert('Email sent successfully');
+  } catch (err) {
+    console.error('Email send failed', err);
+    alert('Failed to send email. Please try again.');
+  }
 }
 
 function openEmailModal(eventDiv) {
