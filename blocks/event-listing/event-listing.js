@@ -1459,7 +1459,7 @@ function attachEmailFormSubmit() {
 
 function isAuthorEnv() {
   return (
-    SERVER_URL === 'localhost'
+    SERVER_URL.includes('localhost:4502')
     || SERVER_URL === '127.0.0.1'
     || (SERVER_URL.endsWith('.adobeaemcloud.com') && SERVER_URL.includes('author'))
   );
