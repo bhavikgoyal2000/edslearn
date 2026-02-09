@@ -973,9 +973,8 @@ function renderSelector(block, type, items) {
   attachRestoreMonthView(block);
 }
 
-function getCurrentMonthRange(date = new Date(), noEndDate = false) {
-  const start = new Date(date.getFullYear(), date.getMonth(), 1);
-  const end = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+function getDateRange({ mode = 'MONTH' } = {}) {
+  const now = new Date();
 
   const format = (d, isEnd = false) => {
     const yyyy = d.getFullYear();
@@ -984,14 +983,31 @@ function getCurrentMonthRange(date = new Date(), noEndDate = false) {
     return `${yyyy}-${mm}-${dd}T${isEnd ? '23:59:59.999' : '00:00:00.000'}-05:00`;
   };
 
-  return {
-    start: format(start),
-    end: noEndDate ? null : format(end, true),
-  };
+  if (mode === 'MONTH') {
+    const start = new Date(now.getFullYear(), now.getMonth(), 1);
+    const end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+    return {
+      start: format(start),
+      end: format(end, true),
+    };
+  }
+
+  if (mode === 'ALL') {
+    const start = new Date(now);
+    start.setFullYear(start.getFullYear() - 2);
+
+    return {
+      start: format(start),
+      end: null,
+    };
+  }
+
+  return {};
 }
 
 async function fetchHostsForCurrentMonth(data = extractData(), noEndDate = false) {
-  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
+  const { start, end } = getDateRange({ mode: noEndDate ? 'ALL' : 'MONTH' });
 
   const json = await fetchFilters(
     'GetHosts',
@@ -1020,7 +1036,7 @@ async function fetchHostsForCurrentMonth(data = extractData(), noEndDate = false
 }
 
 async function fetchLocationsForCurrentMonth(data = extractData(), noEndDate = false) {
-  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
+  const { start, end } = getDateRange({ mode: noEndDate ? 'ALL' : 'MONTH' });
 
   const json = await fetchFilters(
     'GetLocations',
@@ -1058,7 +1074,7 @@ async function fetchLocationsForCurrentMonth(data = extractData(), noEndDate = f
 }
 
 async function fetchEventTypesForCurrentMonth(data = extractData(), noEndDate = false) {
-  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
+  const { start, end } = getDateRange({ mode: noEndDate ? 'ALL' : 'MONTH' });
 
   const json = await fetchFilters(
     'GetEventTypes',
@@ -1096,7 +1112,7 @@ async function fetchEventTypesForCurrentMonth(data = extractData(), noEndDate = 
 }
 
 async function fetchSeriesForCurrentMonth(data = extractData(), noEndDate = false) {
-  const { start, end } = getCurrentMonthRange(new Date(), noEndDate);
+  const { start, end } = getDateRange({ mode: noEndDate ? 'ALL' : 'MONTH' });
 
   const json = await fetchFilters(
     'GetSeries',
@@ -1409,7 +1425,6 @@ function ensureEmailModal() {
             <input type="hidden" name="title" id="emailEventTitle">
             <input type="hidden" name="eURL" id="emailEventUrl">
             <input type="hidden" name="eventDate" id="emailEventDate">
-            <input type="hidden" name="eInfo" value="02/03/2026#event-5424397">
             <fieldset>
               <div class="form-group">
                 <label>Your email:</label>
