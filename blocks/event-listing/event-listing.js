@@ -1457,9 +1457,19 @@ function attachEmailFormSubmit() {
   });
 }
 
+function isAuthorEnv() {
+  const host = window.location.hostname;
+
+  return (
+    host === 'localhost'
+    || host === '127.0.0.1'
+    || (host.endsWith('.adobeaemcloud.com') && host.includes('author'))
+  );
+}
+
 async function submitEmailForm(form) {
   try {
-    const isAuthor = /^author-p\d+-e\d+\.adobeaemcloud\.com$/.test(window.location.hostname);
+    const isAuthor = isAuthorEnv();
 
     const headers = {};
     if (isAuthor) {
