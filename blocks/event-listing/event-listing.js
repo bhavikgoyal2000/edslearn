@@ -1459,58 +1459,6 @@ function ensureEmailModal() {
   `;
 
   document.body.appendChild(modal);
-  attachEmailFormSubmit();
-}
-
-function attachEmailFormSubmit() {
-  const form = document.getElementById('emailFormFragment');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    await submitEmailForm(form);
-  });
-}
-
-function isAuthorEnv() {
-  return (
-    SERVER_URL.includes('localhost:4502')
-    || SERVER_URL === '127.0.0.1'
-    || (SERVER_URL.endsWith('.adobeaemcloud.com') && SERVER_URL.includes('author'))
-  );
-}
-
-async function submitEmailForm(form) {
-  try {
-    const isAuthor = isAuthorEnv();
-
-    const headers = {};
-    if (isAuthor) {
-      const csrfToken = await getCsrfToken();
-      headers['CSRF-Token'] = csrfToken;
-    }
-
-    const formData = new FormData(form);
-
-    const response = await fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers,
-    });
-
-    if (!response.ok) {
-      throw new Error(`Email servlet failed: ${response.status}`);
-    }
-
-    const json = await response.json();
-    console.log('Email response:', json);
-
-    closeEmailModal();
-    alert('Email sent successfully');
-  } catch (err) {
-    console.error('Email send failed', err);
-    alert('Failed to send email. Please try again.');
-  }
 }
 
 function openEmailModal(eventDiv) {
