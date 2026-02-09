@@ -1473,7 +1473,6 @@ async function submitEmailForm(form) {
       method: 'POST',
       body: formData,
       headers,
-      credentials: 'same-origin',
     });
 
     if (!response.ok) {
