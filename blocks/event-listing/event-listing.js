@@ -140,7 +140,7 @@ function buildEvents(data) {
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
-            data-target="#event-${event.id}"
+            data-target="#event-${event.bookingId}"
             data-reservationid="${event.reservationId || ''}"
             data-bookingid="${event.bookingId || ''}"
             data-title="${escapeAttr(event.title)}"
