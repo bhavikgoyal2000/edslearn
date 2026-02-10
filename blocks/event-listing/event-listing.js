@@ -1721,7 +1721,7 @@ function attachAlsoOnLinks(block, visibilityLevel, visibilityApproved, visibleRe
 
 async function loadEventByBookingId(bookingId, visibilityLevel, visibilityApproved) {
   const json = await fetchCalendarData(
-    'GetEventByBookingId',
+    'GetBookingDetail',
     null,
     null,
     visibilityLevel,
