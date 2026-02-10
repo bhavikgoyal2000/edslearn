@@ -1608,7 +1608,7 @@ function buildAlsoOnHtml(events) {
     <nav aria-label="Other dates and times this event occurs on">
       <ol class="nobullet nopadding">
         ${events.map((e) => `
-          <li class="row">
+          <li>
             <a href="?id=${e.bookingId}" class="also-on-link" data-bookingid="${e.bookingId}">
               <span class="also-on-date">
                 <span class="hidden-xs">
