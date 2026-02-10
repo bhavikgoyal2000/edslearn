@@ -1610,7 +1610,7 @@ function buildAlsoOnHtml(events) {
         ${events.map((e) => `
           <li class="row">
             <a href="?id=${e.bookingId}" class="also-on-link" data-bookingid="${e.bookingId}">
-              <span>
+              <span class="also-on-date">
                 <span class="hidden-xs">
                   ${formatEventDate(e.fullStart)}
                 </span>

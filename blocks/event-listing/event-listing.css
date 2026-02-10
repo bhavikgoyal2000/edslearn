@@ -970,3 +970,7 @@
   color: #343434;
   margin-bottom: 15px;
 }
+
+.au-calendar .event-details .also-on-date {
+  width: calc(100% / 3);
+}
