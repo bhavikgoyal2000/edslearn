@@ -662,7 +662,7 @@ async function renderEventDetail(block, eventData, visibilityLevel, visibilityAp
       .map(mapAlsoOnEvent);
 
     alsoOnHtml = alsoOnEvents.length
-      ? `<h2>Also on…</h2>${buildAlsoOnHtml(alsoOnEvents)}`
+      ? `<h2 class="also-on-header">Also on…</h2>${buildAlsoOnHtml(alsoOnEvents)}`
       : '';
   }
 
@@ -1614,10 +1614,6 @@ function buildAlsoOnHtml(events) {
                 <span class="hidden-xs">
                   ${formatEventDate(e.fullStart)},
                 </span>
-                ${new Date(e.fullStart).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-  })}
               </span>
               <span class="col-xs-6 col-md-4 no-bs-padding">
                 ${formatEventTimeSpan(e.fullStart, e.fullEnd)}
@@ -1668,14 +1664,7 @@ async function loadAlsoOnEventsByReservation(
   }
 }
 
-async function renderEventDetailByBookingId(
-  block,
-  bookingId,
-  visibilityLevel,
-  visibilityApproved,
-  visibleRequested,
-  visibleApproved,
-) {
+async function renderEventDetailByBookingId(block, bookingId, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   const item = await loadEventByBookingId(
     bookingId,
     visibilityLevel,
