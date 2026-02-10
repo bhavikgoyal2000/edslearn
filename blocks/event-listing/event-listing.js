@@ -1456,8 +1456,8 @@ function ensureEmailModal() {
             <input type="hidden" name="eventDate" id="emailEventDate">
             <fieldset>
               <div class="form-group">
-                <label>Your email:</label>
-                <input id="fromEmail" name="fromEmail" type="email" class="form-control" maxlength="255" value="" required="" placeholder="Please enter your email...">
+                <label>Your Name:</label>
+                <input id="fromName" name="fromName" type="text" class="form-control" maxlength="255" value="" required="" placeholder="Please enter your name...">
               </div>
 
               <div class="form-group">
@@ -1488,6 +1488,38 @@ function ensureEmailModal() {
   `;
 
   document.body.appendChild(modal);
+  attachEmailFormHandler();
+}
+
+function attachEmailFormHandler() {
+  const form = document.getElementById('emailFormFragment');
+  if (!form || form.dataset.bound === 'true') return;
+
+  form.dataset.bound = 'true';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Email submission failed');
+      }
+
+      closeEmailModal();
+      alert('Email sent successfully!');
+    } catch (err) {
+      console.error(err);
+      alert('Failed to send email. Please try again.');
+    }
+  });
 }
 
 function openEmailModal(eventDiv) {
