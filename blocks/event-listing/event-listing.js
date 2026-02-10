@@ -140,6 +140,7 @@ function buildEvents(data) {
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
+            data-target="#event-${event.id}"
             data-reservationid="${event.reservationId || ''}"
             data-bookingid="${event.bookingId || ''}"
             data-title="${escapeAttr(event.title)}"
@@ -1535,7 +1536,8 @@ function openEmailModal(eventDiv) {
 
   document.getElementById('emailEventTitle').value = title;
   document.getElementById('emailEventUrl').value = url;
-  document.getElementById('emailEventDate').value = startDate;
+  const [dateOnly] = startDate.split('T');
+  document.getElementById('emailEventDate').value = dateOnly;
 
   showEmailModal();
   setTimeout(fireCaptcha, 0);
