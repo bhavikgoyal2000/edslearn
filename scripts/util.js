@@ -334,7 +334,7 @@ export async function updateUrlWithDateOnly(date) {
   url.searchParams.set('d', date);
   url.searchParams.delete('browse');
   url.searchParams.delete('show');
-
+  url.searchParams.delete('id');
   history.pushState({}, '', url);
 }
 
@@ -388,6 +388,7 @@ export function updateUrlWithSelectedId(type, id) {
 
   params.delete('browse');
   params.delete('show');
+  params.delete('id');
 
   ['h', 't', 'l', 's'].forEach((p) => params.delete(p));
 
