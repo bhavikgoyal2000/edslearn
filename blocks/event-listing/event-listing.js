@@ -1013,9 +1013,9 @@ function getDateRange({ mode = 'MONTH' } = {}) {
   };
 
   if (mode === 'MONTH') {
-    const start = new Date(now.getFullYear(), now.getMonth(), 1);
-    const end = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-
+    const start = new Date(now);
+    const end = new Date(now);
+    end.setMonth(end.getMonth() + 1);
     return {
       start: format(start),
       end: format(end, true),
