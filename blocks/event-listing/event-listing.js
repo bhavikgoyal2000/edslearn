@@ -7,7 +7,7 @@ import {
 } from '../../scripts/constants.js';
 import { fetchCalendarData, fetchFilters } from '../../scripts/graphql-api.js';
 import {
-  resolveInitialDate, persistSelectedDate, updateUrlWithDateOnly, updateUrlWithBrowseOnly, getShowAllFromUrl, updateUrlWithSelectedId,
+  resolveInitialDate, persistSelectedDate, updateUrlWithDateOnly, updateUrlWithBrowseOnly, getShowAllFromUrl, updateUrlWithSelectedId, updateUrlWithBookingId, getBookingIdFromUrl,
 } from '../../scripts/util.js';
 
 let hideAllSelector = false;
@@ -140,6 +140,8 @@ function buildEvents(data) {
 
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
+            data-reservationid="${event.reservationId || ''}"
+            data-bookingid="${event.bookingId || ''}"
             data-title="${escapeAttr(event.title)}"
             data-fullstart="${escapeAttr(event.fullStart)}"
             data-fullend="${escapeAttr(event.fullEnd)}"
@@ -561,6 +563,8 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         time: `${startTime} – ${endTime}`,
         title: item.eventName || 'Untitled Event',
         location: locationDesc,
+        reservationId: item.reservationId || '',
+        bookingId: item.bookingId || '',
         roomId: item.roomId || '',
         eventDescription,
         groupId: item.groupId || '',
@@ -642,8 +646,26 @@ function formatEventDate(dateStr) {
   return formatter.format(date);
 }
 
-function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+async function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   const formattedDate = formatEventDate(eventData.fullStart);
+  let alsoOnHtml = '';
+
+  if (eventData.reservationId) {
+    const alsoOnRaw = await loadAlsoOnEventsByReservation(
+      eventData.reservationId,
+      visibilityLevel,
+      visibilityApproved,
+    );
+
+    const alsoOnEvents = alsoOnRaw
+      .filter((e) => e.eventStart !== eventData.fullStart)
+      .map(mapAlsoOnEvent);
+
+    alsoOnHtml = alsoOnEvents.length
+      ? `<h2>Also on…</h2>${buildAlsoOnHtml(alsoOnEvents)}`
+      : '';
+  }
+
   block.innerHTML = `
     <div class="au-calendar">
       <section class="au-event-detail">
@@ -718,6 +740,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
             </div>
           ` : ''}
           <p><a href="#" class="export-calendar"><ion-icon name="calendar-outline"></ion-icon> Export to Calendar</a></p>
+          ${alsoOnHtml}
         </div>
 
       </section>
@@ -729,6 +752,7 @@ function renderEventDetail(block, eventData, visibilityLevel, visibilityApproved
   attachHostFilter(block, eventData.fullStart?.split('T')[0], visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   attachExport(block);
   attachEmailEventHandler(block);
+  attachAlsoOnLinks(block, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
 }
 
 function attachEventTypeFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
@@ -789,12 +813,17 @@ function attachHostFilter(block, currentDateStr, visibilityLevel, visibilityAppr
 
 function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   block.querySelectorAll('.event-page-link').forEach((link) => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', async (e) => {
       e.preventDefault();
+
+      const bookingId = eventDiv.dataset.bookingid;
+      if (!bookingId) return;
+
+      updateUrlWithBookingId(bookingId);
 
       const eventDiv = link.closest('.au-event');
 
-      renderEventDetail(block, {
+      await renderEventDetail(block, {
         title: eventDiv.dataset.title,
         fullStart: eventDiv.dataset.fullstart,
         fullEnd: eventDiv.dataset.fullend,
@@ -814,6 +843,8 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
         lastSynced: eventDiv.dataset.lastsynced || '',
         eventWebsite: eventDiv.dataset.eventwebsite || '',
         rsvpLink: eventDiv.dataset.rsvplink || '',
+        reservationId: eventDiv.dataset.reservationid,
+        bookingId,
       }, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
     });
   });
@@ -1521,6 +1552,7 @@ async function handleUrlState(block) {
   const selectedEventTypeId = params.get('t');
   const selectedLocationId = params.get('l');
   const selectedSeriesId = params.get('s');
+  const bookingId = getBookingIdFromUrl();
 
   const browseType = getBrowseFromUrl();
   const date = resolveInitialDate();
@@ -1532,6 +1564,18 @@ async function handleUrlState(block) {
     isAllViewActive = showAll;
 
     await loadSelectorList(block, browseType, { noEndDate: showAll });
+    return;
+  }
+
+  if (bookingId) {
+    await renderEventDetailByBookingId(
+      block,
+      bookingId,
+      data.visibilityLevel,
+      data.visibilityApproved,
+      data.visibleRequested,
+      data.visibleApproved,
+    );
     return;
   }
 
@@ -1557,6 +1601,155 @@ async function handleUrlState(block) {
     data.visibleRequested,
     data.visibleApproved,
   );
+}
+
+function buildAlsoOnHtml(events) {
+  if (!events.length) return '';
+
+  return `
+    <nav aria-label="Other dates and times this event occurs on">
+      <ol class="nobullet nopadding">
+        ${events.map((e) => `
+          <li class="row">
+            <a href="?id=${e.bookingId}" class="also-on-link" data-bookingid="${e.bookingId}">
+              <span class="col-xs-6 col-md-4">
+                <span class="hidden-xs">
+                  ${formatEventDate(e.fullStart)},
+                </span>
+                ${new Date(e.fullStart).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+  })}
+              </span>
+              <span class="col-xs-6 col-md-4 no-bs-padding">
+                ${formatEventTimeSpan(e.fullStart, e.fullEnd)}
+              </span>
+            </a>
+          </li>
+        `).join('')}
+      </ol>
+    </nav>
+  `;
+}
+
+function mapAlsoOnEvent(item) {
+  return {
+    fullStart: item.eventStart,
+    fullEnd: item.eventEnd,
+    bookingId: item.bookingId,
+  };
+}
+
+async function loadAlsoOnEventsByReservation(
+  reservationId,
+  visibilityLevel,
+  visibilityApproved,
+) {
+  if (!reservationId) return [];
+
+  try {
+    const json = await fetchCalendarData(
+      'GetAlsoOnData',
+      null,
+      null,
+      visibilityLevel,
+      visibilityApproved,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      reservationId,
+    );
+
+    return json?.calendarEventsList?.items || [];
+  } catch (e) {
+    console.error('Failed to load Also On events', e);
+    return [];
+  }
+}
+
+async function renderEventDetailByBookingId(
+  block,
+  bookingId,
+  visibilityLevel,
+  visibilityApproved,
+  visibleRequested,
+  visibleApproved,
+) {
+  const item = await loadEventByBookingId(
+    bookingId,
+    visibilityLevel,
+    visibilityApproved,
+  );
+
+  if (!item) {
+    block.innerHTML = '<p>Event not found.</p>';
+    return;
+  }
+
+  await renderEventDetail(block, {
+    title: item.eventName,
+    fullStart: item.eventStart,
+    fullEnd: item.eventEnd,
+    location: item.roomDescription?.markdown || '',
+    description: item.eventDescription?.markdown || '',
+    bookingId: item.bookingId,
+    reservationId: item.reservationId,
+    groupId: item.groupId,
+    groupName: item.groupName,
+    groupDisplayOnWeb: item.groupDisplayOnWeb,
+    eventTypeId: item.eventTypeId,
+    type: item.eventTypeName,
+    contactName: item.calendarContactName,
+    contactEmail: item.calendarContactEmail,
+    contactPhone: item.calendarContactPhone,
+    lastSynced: item.lastSynced,
+    eventWebsite: item.eventWebsite,
+    rsvpLink: item.rsvpLink,
+  }, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
+}
+
+function attachAlsoOnLinks(block, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
+  block.querySelectorAll('.also-on-link').forEach((link) => {
+    link.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      const bookingId = link.dataset.bookingid;
+      if (!bookingId) return;
+
+      updateUrlWithBookingId(bookingId);
+      await renderEventDetailByBookingId(
+        block,
+        bookingId,
+        visibilityLevel,
+        visibilityApproved,
+        visibleRequested,
+        visibleApproved,
+      );
+    });
+  });
+}
+
+async function loadEventByBookingId(bookingId, visibilityLevel, visibilityApproved) {
+  const json = await fetchCalendarData(
+    'GetEventByBookingId',
+    null,
+    null,
+    visibilityLevel,
+    visibilityApproved,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    bookingId,
+  );
+
+  return json?.calendarEventsList?.items?.[0] || null;
 }
 
 export default async function decorate(block) {

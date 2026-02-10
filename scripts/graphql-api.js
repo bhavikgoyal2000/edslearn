@@ -33,7 +33,7 @@ async function fetchGraphQLData(queryName, path) {
   }
 }
 
-async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, locationId, seriesId) {
+async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, locationId, seriesId, reservationId) {
   try {
     const cacheBuster = `_cb=${Date.now()}`;
     const username = 'admin';
@@ -58,6 +58,7 @@ async function fetchCalendarGQL(queryName, eventStartDate, eventEndDate, visibil
     addParam('eventTypeId', eventTypeId);
     addParam('roomId', locationId);
     addParam('eventSeriesId', seriesId);
+    addParam('reservationId', reservationId);
 
     const paramString = paramParts.length ? `%3B${paramParts.join('%3B')}` : '';
 
@@ -162,8 +163,8 @@ export async function fetchComponentData(name, path) {
   return result;
 }
 
-export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, locationId, seriesId) {
-  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, locationId, seriesId);
+export async function fetchCalendarData(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, locationId, seriesId, reservationId) {
+  const { data, error } = await fetchCalendarGQL(name, eventStartDate, eventEndDate, visibilityLevel, visibilityApproved, date, visbleRequested, visibleApproved, eventTypeId, locationId, seriesId, reservationId);
   if (error) return { data: null };
   const result = data.data || null;
   return result;

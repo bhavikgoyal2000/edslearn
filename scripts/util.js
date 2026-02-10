@@ -398,3 +398,15 @@ export function updateUrlWithSelectedId(type, id) {
 
   history.pushState({}, '', url);
 }
+
+export function getBookingIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get('id');
+}
+
+export function updateUrlWithBookingId(bookingId) {
+  const url = new URL(window.location.href);
+  url.search = '';
+  url.searchParams.set('id', bookingId);
+  window.history.pushState({}, '', url.toString());
+}
