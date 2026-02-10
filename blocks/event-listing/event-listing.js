@@ -815,13 +815,11 @@ function attachEventPageLinks(block, visibilityLevel, visibilityApproved, visibl
   block.querySelectorAll('.event-page-link').forEach((link) => {
     link.addEventListener('click', async (e) => {
       e.preventDefault();
-
+      const eventDiv = link.closest('.au-event');
       const bookingId = eventDiv.dataset.bookingid;
       if (!bookingId) return;
 
       updateUrlWithBookingId(bookingId);
-
-      const eventDiv = link.closest('.au-event');
 
       await renderEventDetail(block, {
         title: eventDiv.dataset.title,
