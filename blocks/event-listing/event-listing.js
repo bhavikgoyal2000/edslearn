@@ -1462,6 +1462,7 @@ function ensureEmailModal() {
             <input type="hidden" name="title" id="emailEventTitle">
             <input type="hidden" name="eURL" id="emailEventUrl">
             <input type="hidden" name="eventDate" id="emailEventDate">
+            <input type="hidden" name="eventId" id="eventId">
             <fieldset>
               <div class="form-group">
                 <label>Your Name:</label>
@@ -1538,6 +1539,7 @@ function openEmailModal(eventDiv) {
   const title = eventDiv.dataset.title || 'Event';
   const url = window.location.href;
   const startDate = eventDiv.dataset.fullstart;
+  const eventId = eventDiv.dataset.bookingid;
 
   document.getElementById('emailModalTitle').textContent = `Email ${title} event to a friend`;
 
@@ -1545,6 +1547,7 @@ function openEmailModal(eventDiv) {
   document.getElementById('emailEventUrl').value = url;
   const [dateOnly] = startDate.split('T');
   document.getElementById('emailEventDate').value = dateOnly;
+  document.getElementById('eventId').value = eventId;
 
   showEmailModal();
   setTimeout(fireCaptcha, 0);
