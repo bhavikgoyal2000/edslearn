@@ -141,6 +141,7 @@ function buildEvents(data) {
     return `
           <div class="au-event ${expandable ? 'expandable' : ''}"
             data-target="#event-${event.bookingId}"
+            id="event-${event.bookingId}"
             data-reservationid="${event.reservationId || ''}"
             data-bookingid="${event.bookingId || ''}"
             data-title="${escapeAttr(event.title)}"
@@ -435,7 +436,13 @@ export function renderCalendarFromApi(block, data, currentDateStr = new Date().t
   // eslint-disable-next-line no-use-before-define
   attachHostFilter(block, currentDateStr, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved);
   attachEmailEventHandler(block);
+  expandEventFromHash(block);
 }
+
+window.addEventListener('hashchange', () => {
+  const block = document.querySelector('.au-calendar');
+  if (block) expandEventFromHash(block);
+});
 
 function buildCalendarByHostIdsUrl(dateStr, hostIds, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   return `${SERVER_URL}/content/apis/au/calenderByMultipleHostIds.${`${dateStr}.${hostIds.join('$')}.${visibilityLevel}.${visibilityApproved}.${visibleRequested}.${visibleApproved}`}.json`;
@@ -1771,6 +1778,24 @@ async function loadEventByBookingId(bookingId, visibilityLevel, visibilityApprov
   );
 
   return json?.calendarEventsList?.items?.[0] || null;
+}
+
+function expandEventFromHash(block) {
+  const { hash } = window.location;
+  if (!hash || !hash.startsWith('#event-')) return;
+
+  const eventEl = block.querySelector(hash);
+  if (!eventEl) return;
+
+  const details = eventEl.querySelector('.au-details');
+  const arrow = eventEl.querySelector('.au-arrow ion-icon');
+
+  eventEl.classList.add('open');
+  if (details) details.style.display = 'flex';
+  if (arrow) arrow.name = 'chevron-up-outline';
+
+  // Optional but UX-friendly
+  eventEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 export default async function decorate(block) {
