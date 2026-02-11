@@ -977,3 +977,38 @@
   width: calc(100% / 3);
   display: inline-block;
 }
+
+.au-calendar-modal.modal .au-alert {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  border: 2px solid;
+  background: #f5f5f5;
+  font-size: 16px;
+}
+
+.au-calendar-modal.modal .au-alert-icon {
+  margin-right: 15px;
+  font-family: Ionicons;
+  font-size: 24px;
+}
+
+.au-calendar-modal.modal .au-alert-success {
+  border-color: #526a3e;
+  color: #333;
+}
+
+.au-calendar-modal.modal .au-alert-success .au-alert-icon::before {
+  content: "\f122";
+  color: #526a3e;
+}
+
+.au-calendar-modal.modal .au-alert-error {
+  border-color: #b00020;
+  color: #333;
+}
+
+.au-calendar-modal.modal .au-alert-error .au-alert-icon::before {
+  content: "\f128";
+  color: #b00020;
+}

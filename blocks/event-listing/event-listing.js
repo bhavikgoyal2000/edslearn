@@ -1518,15 +1518,33 @@ function attachEmailFormHandler() {
         credentials: 'include',
       });
 
-      if (!response.ok) {
+      const recipientEmail = formData.get('toEmail');
+      const modalBody = document.querySelector('#emailEventModal .modal-body');
+
+      if (response.ok) {
+        modalBody.innerHTML = `
+        <div class="au-alert au-alert-success" role="alert">
+          <span class="au-alert-icon"></span>
+          <div class="au-alert-message">
+            Your message has been sent to 
+            <strong>${recipientEmail}</strong>. Thank You!
+          </div>
+        </div>
+      `;
+      } else {
         throw new Error('Email submission failed');
       }
-
-      closeEmailModal();
-      alert('Email sent successfully!');
     } catch (err) {
       console.error(err);
-      alert('Failed to send email. Please try again.');
+      const modalBody = document.querySelector('#emailEventModal .modal-body');
+      modalBody.innerHTML = `
+        <div class="au-alert au-alert-error" role="alert">
+          <span class="au-alert-icon"></span>
+          <div class="au-alert-message">
+            Something went wrong. Please try again.
+          </div>
+        </div>
+      `;
     }
   });
 }
