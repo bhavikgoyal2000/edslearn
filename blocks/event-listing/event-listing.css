@@ -1000,20 +1000,7 @@
 
 .au-calendar-modal.modal .au-alert-success .au-alert-icon::before {
   content: "\f122";
-  color: #fff;
-  background-color: #526a3e;
-  line-height: 3rem;
-  font-size: 2rem;
-  font-family: Ionicons;
-  font-weight: 700;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  color: #526a3e;
 }
 
 .au-calendar-modal.modal .au-alert-error {
@@ -1023,18 +1010,5 @@
 
 .au-calendar-modal.modal .au-alert-error .au-alert-icon::before {
   content: "\f128";
-  color: #fff;
-  background-color: #b00020;
-  line-height: 3rem;
-  font-size: 2rem;
-  font-family: Ionicons;
-  font-weight: 700;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  color: #b00020;
 }
