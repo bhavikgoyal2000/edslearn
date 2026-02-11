@@ -1532,7 +1532,14 @@ function attachEmailFormHandler() {
         </div>
       `;
       } else {
-        throw new Error('Email submission failed');
+        modalBody.innerHTML = `
+          <div class="au-alert au-alert-error" role="alert">
+            <span class="au-alert-icon"></span>
+            <div class="au-alert-message">
+              We're unable to send your message at this time. Please try again later.
+            </div>
+          </div>
+        `;
       }
     } catch (err) {
       console.error(err);
@@ -1541,7 +1548,7 @@ function attachEmailFormHandler() {
         <div class="au-alert au-alert-error" role="alert">
           <span class="au-alert-icon"></span>
           <div class="au-alert-message">
-            Something went wrong. Please try again.
+            We're unable to send your message at this time. Please try again later.
           </div>
         </div>
       `;
