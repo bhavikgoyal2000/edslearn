@@ -665,9 +665,7 @@ async function renderEventDetail(block, eventData, visibilityLevel, visibilityAp
       visibilityApproved,
     );
 
-    const alsoOnEvents = alsoOnRaw
-      .filter((e) => e.eventStart !== eventData.fullStart)
-      .map(mapAlsoOnEvent);
+    const alsoOnEvents = alsoOnRaw.map(mapAlsoOnEvent);
 
     alsoOnHtml = alsoOnEvents.length
       ? `<h2 class="also-on-header">Also on…</h2>${buildAlsoOnHtml(alsoOnEvents)}`
@@ -1644,29 +1642,51 @@ async function handleUrlState(block) {
   );
 }
 
-function buildAlsoOnHtml(events) {
+function buildAlsoOnHtml(events, currentFullStart) {
   if (!events.length) return '';
 
   return `
     <nav aria-label="Other dates and times this event occurs on">
       <ol class="nobullet nopadding">
-        ${events.map((e) => `
-          <li>
-            <a href="?id=${e.bookingId}" class="also-on-link" data-bookingid="${e.bookingId}">
-              <span class="also-on-date">
-                <span class="hidden-xs">
-                  ${formatEventDate(e.fullStart)}
-                </span>
-              </span>
-              <span class="no-bs-padding">
-                ${formatEventTimeSpan(e.fullStart, e.fullEnd)}
-              </span>
-              <span class="no-bs-padding">
-                ${e.location}
-              </span>
-            </a>
-          </li>
-        `).join('')}
+        ${events.map((e) => {
+    const isCurrent = e.fullStart === currentFullStart;
+
+    return `
+            <li>
+              ${isCurrent ? `
+                    <span class="also-on-link is-current data-bookingid="${e.bookingId}">
+                      <span class="also-on-date">
+                        <span class="hidden-xs">
+                          ${formatEventDate(e.fullStart)}
+                        </span>
+                      </span>
+                      <span class="no-bs-padding">
+                        ${formatEventTimeSpan(e.fullStart, e.fullEnd)}
+                      </span>
+                      <span class="no-bs-padding">
+                        ${e.location}
+                      </span>
+                    </span>
+                  `
+    : `
+                    <a href="?id=${e.bookingId}" class="also-on-link" data-bookingid="${e.bookingId}">
+                      <span class="also-on-date">
+                        <span class="hidden-xs">
+                          ${formatEventDate(e.fullStart)}
+                        </span>
+                      </span>
+                      <span class="no-bs-padding">
+                        ${formatEventTimeSpan(e.fullStart, e.fullEnd)}
+                      </span>
+                      <span class="no-bs-padding">
+                        ${e.location}
+                      </span>
+                    </a>
+                  `
+}
+            </li>
+          `;
+  }).join('')}
       </ol>
     </nav>
   `;
@@ -1677,6 +1697,7 @@ function mapAlsoOnEvent(item) {
     fullStart: item.eventStart,
     fullEnd: item.eventEnd,
     bookingId: item.bookingId,
+    location: item.roomDescription?.markdown || '',
   };
 }
 
