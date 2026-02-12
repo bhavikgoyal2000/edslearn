@@ -13,6 +13,7 @@ import {
 let hideAllSelector = false;
 let captchaRendered = false;
 let isAllViewActive = false;
+let hostBasedApiCache = null;
 
 function loadRecaptchaScript() {
   if (window.recaptchaLoading || window.grecaptcha) return;
@@ -503,6 +504,7 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
       }
 
       calendarJson = await response.json();
+      hostBasedApiCache = calendarJson;
 
       if (calendarJson && Array.isArray(calendarJson.calendarEventsList)) {
         rawEventsToday = calendarJson.calendarEventsList;
@@ -1175,6 +1177,27 @@ async function fetchSeriesForCurrentMonth(data = extractData(), noEndDate = fals
 async function loadSelectorList(block, type, options = {}) {
   const { noEndDate = false } = options;
   let items = [];
+
+  const data = extractData();
+
+  if (data.initialGroupIds?.length > 0 && hostBasedApiCache) {
+    const keyMap = {
+      host: noEndDate ? 'hostsForAllButton' : 'hostsFornextMonths',
+      location: noEndDate ? 'locationsForAllButton' : 'locationsFornextMonths',
+      eventType: noEndDate ? 'eventTypesForAllButton' : 'eventTypesFornextMonths',
+      series: noEndDate ? 'seriesForAllButton' : 'seriesFornextMonths',
+    };
+
+    const key = keyMap[type];
+
+    items = (hostBasedApiCache[key] || []).map((item) => ({
+      id: item.id,
+      title: item.title,
+    }));
+
+    renderSelector(block, type, items);
+    return;
+  }
 
   switch (type) {
     case 'host':
