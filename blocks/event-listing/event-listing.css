@@ -978,6 +978,11 @@ main div.structure-wrapper div.section.content-section.event-listing-container {
   display: inline-block;
 }
 
+.au-calendar .event-details .no-bs-padding {
+  width: calc(100% / 3);
+  display: inline-block;
+}
+
 .au-calendar-modal.modal .au-alert {
   display: flex;
   align-items: center;

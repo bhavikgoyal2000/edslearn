@@ -668,7 +668,7 @@ async function renderEventDetail(block, eventData, visibilityLevel, visibilityAp
     const alsoOnEvents = alsoOnRaw.map(mapAlsoOnEvent);
 
     alsoOnHtml = alsoOnEvents.length
-      ? `<h2 class="also-on-header">Also on…</h2>${buildAlsoOnHtml(alsoOnEvents)}`
+      ? `<h2 class="also-on-header">Also on…</h2>${buildAlsoOnHtml(alsoOnEvents, eventData.fullStart)}`
       : '';
   }
 
