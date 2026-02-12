@@ -1620,6 +1620,23 @@ async function handleUrlState(block) {
   const date = resolveInitialDate();
   const data = extractData();
 
+  const hasConfiguredHostIds = data.initialGroupIds?.length > 0;
+
+  if (hasConfiguredHostIds && !hostBasedApiCache) {
+    await loadAnnouncementsForDate(
+      date,
+      block,
+      data.initialGroupIds,
+      data.eventTypeId,
+      data.roomId,
+      null,
+      data.visibilityLevel,
+      data.visibilityApproved,
+      data.visibleRequested,
+      data.visibleApproved,
+    );
+  }
+
   if (browseType) {
     const showAll = getShowAllFromUrl();
     hideAllSelector = showAll;
