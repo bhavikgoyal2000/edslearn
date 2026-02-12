@@ -929,11 +929,6 @@ function attachRestoreMonthView(block) {
     const { type } = restoreBtn.dataset;
     updateUrlWithBrowseOnly(type, false);
     handleUrlState(block);
-
-    // isAllViewActive = false;
-    // hideAllSelector = false;
-
-    // await loadSelectorList(block, type);
   });
 }
 
@@ -998,13 +993,6 @@ function renderSelector(block, type, items) {
       ` : ''}
     </div>
   `;
-
-  // if (hideAllSelector) {
-  //   const allBtn = block.querySelector('.selector-item-all');
-  //   if (allBtn) {
-  //     allBtn.style.display = 'none';
-  //   }
-  // }
 
   attachSelectorEvents(block, type);
   attachRestoreMonthView(block);
@@ -1335,23 +1323,17 @@ function getSearchResultsOnButtonClick(block) {
       const query = searchInput ? searchInput.value.trim() : '';
       const comingSoonDiv = block.querySelector('.calendar-coming-soon');
       if (comingSoonDiv) {
-        // Show loader
-        // Show loading spinner in the coming soon div
         comingSoonDiv.innerHTML = '<div class="calendar-loader" style="text-align:center;padding:2em;"><span class="loader-spinner"></span> Loading...</div>';
       }
       try {
-        // Detect if running on author
         const isAuthor = /^author-p\d+-e\d+\.adobeaemcloud\.com$/.test(window.location.hostname);
-        // Prepare headers
         const headers = {};
         let serverUrl = SERVER_URL;
-        // If author, add CSRF token
         if (isAuthor) {
           const csrfToken = await getCsrfToken();
           headers['CSRF-Token'] = csrfToken;
           serverUrl = window.location.origin;
         }
-        // Replace this with your actual fetch call
         const response = await fetch(`${serverUrl}/bin/calendar-search?q=${encodeURIComponent(query)}`, {
           method: 'GET',
           headers,
@@ -1375,19 +1357,11 @@ function getSearchResultsOnButtonClick(block) {
           }
         });
 
-        // Insert only coming soon events into the .calendar-coming-soon div
         if (comingSoonDiv) {
           comingSoonDiv.innerHTML = buildEventsDOM(comingSoonEvents, 'calendar-coming-soon');
           attachAccordion(comingSoonDiv);
           attachExport(comingSoonDiv);
         }
-        // Optionally, you can also update today's events if needed:
-        // const todaysDiv = block.querySelector('.calendar-todays-event');
-        // if (todaysDiv) {
-        //   todaysDiv.innerHTML = buildEventsDOM(todaysEvents, 'calendar-todays-event');
-        //   attachAccordion(todaysDiv);
-        //   attachExport(todaysDiv);
-        // }
       } catch (err) {
         if (comingSoonDiv) {
           comingSoonDiv.innerHTML = '<div style="color:red;text-align:center;">Failed to load events.</div>';
@@ -1562,7 +1536,7 @@ function openEmailModal(eventDiv) {
   loadRecaptchaScript();
 
   const title = eventDiv.dataset.title || 'Event';
-  const url = window.location.href;
+  const url = window.location.href.split('?')[0];
   const startDate = eventDiv.dataset.fullstart;
   const eventId = eventDiv.dataset.bookingid;
 
@@ -1686,6 +1660,9 @@ function buildAlsoOnHtml(events) {
               </span>
               <span class="no-bs-padding">
                 ${formatEventTimeSpan(e.fullStart, e.fullEnd)}
+              </span>
+              <span class="no-bs-padding">
+                ${e.location}
               </span>
             </a>
           </li>
@@ -1822,19 +1799,14 @@ function expandEventFromHash(block) {
   if (details) details.style.display = 'flex';
   if (arrow) arrow.name = 'chevron-up-outline';
 
-  // Optional but UX-friendly
   eventEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 export default async function decorate(block) {
-  // const data = extractData(block);
   await handleUrlState(block);
 
   document.addEventListener('calendar:dateSelected', (e) => {
     const selectedDate = e.detail.date;
-    // persistSelectedDate(selectedDate);
-    // updateUrlWithDate(selectedDate);
-    // loadAnnouncementsForDate(selectedDate, block, data.initialGroupIds, data.eventTypeId, data.roomId, null, data.visibilityLevel, data.visibilityApproved, data.visibleRequested, data.visibleApproved);
     persistSelectedDate(selectedDate);
     updateUrlWithDateOnly(selectedDate);
     handleUrlState(block);

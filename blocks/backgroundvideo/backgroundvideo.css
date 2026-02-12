@@ -1,0 +1,192 @@
+/* Scope all styles to .backgroundvideo.block */
+.backgroundvideo.block .video-background-content {
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  justify-content: end;
+  color: #333;
+}
+
+.backgroundvideo.block .video-background-content::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: #0009;
+  z-index: 1;
+}
+
+.backgroundvideo.block .video-background-content img {
+  max-width: 300px !important;
+  max-height: 200px;
+  object-fit: cover;
+  margin-left: -16px;
+}
+
+.backgroundvideo.block .video-background-content h1 {
+  /* stylelint-disable-next-line */
+  text-shadow: 0px 4px 4px #0009;
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: .15px;
+  margin-top: 10px;
+}
+
+.backgroundvideo.block .video-background-content .cta {
+  background: transparent linear-gradient(90deg, #E41748 0%, #4918CD 80%, #4918CD 100%) 0 0 no-repeat padding-box;
+  color: #fff !important;
+  display: inline-block;
+  font-family: 'GT Walsheim', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  line-height: 22px;
+  padding: 16px 37px;
+  text-decoration-color: #fff;
+}
+
+.backgroundvideo.block .video-background-content .content {
+  z-index: 99;
+}
+
+.backgroundvideo.block .container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.backgroundvideo.block .video-container img {
+  width: 100%;
+  height: auto;
+}
+
+.backgroundvideo.block .visible-lg,
+.backgroundvideo.block .visible-md,
+.backgroundvideo.block .visible-sm,
+.backgroundvideo.block .visible-xs {
+  display: none !important;
+}
+
+.backgroundvideo.block #homepage-video {
+  pointer-events: none;
+  width: 100%;
+}
+
+/* Media Queries */
+@media (width >= 992px) {
+  .backgroundvideo.block .video-container {
+    position: relative;
+  }
+
+  .backgroundvideo.block .video-background-content img {
+    max-width: 720px !important;
+  }
+
+  .backgroundvideo.block .video-background-content h1 {
+    margin-top: 10px;
+    font-size: 40px;
+    margin-bottom: 25px;
+  }
+}
+
+@media (width <= 767px) {
+  .backgroundvideo.block .visible-xs {
+    display: block !important;
+  }
+
+  .backgroundvideo.block .video-background-content {
+    position: inherit;
+    height: auto;
+  }
+}
+
+@media (width >= 1200px) {
+  .backgroundvideo.block .visible-lg {
+    display: block !important;
+  }
+}
+
+@media (width >= 768px) {
+  .backgroundvideo.block .video-background-content {
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+  }
+}
+
+.backgroundvideo.block .hero-btns {
+  display: none;
+}
+
+.backgroundvideo.block #play-btn {
+  display: none;
+  padding-left: 50px;
+}
+
+@media (width >= 992px) {
+    .backgroundvideo.block .hero-btns {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        width: 100%;
+        left: 0;
+        height: 100%;
+        display: flex;
+        align-items: end;
+        text-align: right;
+        padding: 70px 0;
+    }
+}
+
+@media (width >= 1200px) {
+    .backgroundvideo.block .container {
+        width: 1170px;
+    }
+}
+
+@media (width >= 992px) {
+    .backgroundvideo.block #play-btn {
+        display: block;
+        position: relative;
+    }
+}
+
+.backgroundvideo.block #txt508 {
+    color: #fff;
+}
+
+.backgroundvideo.block .whole-vid {
+    color: #fff;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px #222;
+    box-shadow: 1px 1px 2px #222;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    display: inline-block;
+    padding: 4px 7px;
+    line-height: 20px;
+    /* stylelint-disable-next-line */
+    background: rgba(22, 34, 73, 75%);
+}
+
+.backgroundvideo.block .whole-vid:hover {
+    /* stylelint-disable-next-line */
+    background: rgba(22, 34, 73, 1);
+    font-weight: bold;
+}
+
+.backgroundvideo.block #pop {
+  cursor: pointer;
+  display: inline-block;
+}

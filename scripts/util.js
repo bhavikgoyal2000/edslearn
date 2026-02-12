@@ -335,6 +335,7 @@ export async function updateUrlWithDateOnly(date) {
   url.searchParams.delete('browse');
   url.searchParams.delete('show');
   url.searchParams.delete('id');
+  url.hash = '';
   history.pushState({}, '', url);
 }
 

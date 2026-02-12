@@ -1,0 +1,190 @@
+.animatedscrollbar.block {
+  #washspotlight {
+    font-family: 'GT Walsheim', Arial, sans-serif;
+    max-width: 1920px;
+    width: clamp(320px, 100vw, 1920px);
+    padding-top: 33.125%;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+
+  img {
+    display: block;
+    max-width: 100% !important;
+  }
+
+  img:last-child {
+    margin-bottom: 10px;
+  }
+
+  #washspotlight #fader,
+  #washspotlight #slides img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  #washspotlight #fader {
+    z-index: 21;
+    background: #000;
+  }
+
+  #washspotlight .scrollinganim {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    z-index: 30;
+    /* stylelint-disable-next-line */
+    background-color: rgba(0, 0, 0, 50%);
+    color: white;
+    font-size: 2.5vw;
+    line-height: 6.625vw;
+  }
+
+  #washspotlight .stationary {
+    height: 100%;
+    display: flex; /* removed -ms-flexbox */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* removed -ms-flex-direction */
+  }
+
+  .col-xs-6 {
+    width: 50%;
+    float: left;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  #washspotlight .stationary > div {
+    font-weight: bold;
+    text-align: right;
+    width: 100%;
+  }
+
+  #washspotlight .spotlight-accent {
+    position: absolute;
+    top: calc(50% + 2vw);
+    left: calc(50% + 0.75vw);
+  }
+
+  #washspotlight .spotlight-accent::before { /* fixed double colon */
+    content: '';
+    width: clamp(160px, 14.5vw, 380px);
+    border-radius: 0;
+    border-style: solid;
+    border-width: 5px 0 0; /* fixed redundant values */
+    border-image-slice: 1;
+    border-image-source: linear-gradient(120deg, #e41748 0%, #e41748 11%, #4918cd 89%, #4918cd 100%);
+    display: block;
+    margin-bottom: clamp(1rem, 0.75vw, 1.5rem);
+  }
+
+  #washspotlight #scrollbox {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #washspotlight #scrollbox ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+  }
+
+  #washspotlight #scrollbox li {
+    margin: 0;
+    font-family: 'GT Walsheim', Arial, sans-serif; /* fixed missing generic family */
+    font-size: 2.5vw;
+    line-height: clamp(21.2px, 6.625vw, 127.2px);
+    color: white;
+  }
+
+  #washspotlight #scrollbox li:nth-child(1),
+  #washspotlight #scrollbox li:nth-child(5) {
+    opacity: 0.35; /* fixed alpha-value-notation, removed duplicate selector */
+  }
+
+  #washspotlight #scrollbox li a {
+    color: #fff !important;
+    text-decoration: none !important;
+  }
+
+  a[href] {
+    font-family: Arial, sans-serif;
+  }
+
+  @media (width <= 768px) {
+  #washspotlight {
+    padding-top: 347px;
+    padding-top: clamp(347px, 72.3vw, 556px);
+  }
+
+  #washspotlight .col-xs-6 {
+    width: 100%;
+  }
+
+  #washspotlight .scrollinganim,
+  #washspotlight #scrollbox li {
+    font-size: 45px;
+    font-size: 6vw;
+    line-height: 77px;
+    line-height: 10.5vw;
+  }
+
+  #washspotlight .stationary {
+    height: auto;
+  }
+
+  #washspotlight .stationary > div {
+    margin: 37px 0 18px;
+    margin: 5vw 0 2.5vw;
+    text-align: center;
+  }
+
+  #washspotlight #scrollbox li {
+    text-align: center;
+  }
+
+  #washspotlight .spotlight-accent {
+    left: 55%;
+    left: calc(50% - 125px);
+    top: 55%;
+    top: calc(50% + 12.25vw);
+  }
+
+  #washspotlight .spotlight-accent::before {
+    width: clamp(250px, 14.5vw, 380px);
+  }
+
+}
+
+@media (width <= 480px) {
+  #washspotlight .scrollinganim,
+  #washspotlight #scrollbox li {
+    font-size: 7vw;
+    line-height: 13.25vw;
+  }
+
+  #washspotlight .stationary > div {
+    margin: 6.625vw 0 3.3125vw;
+    text-align: center;
+  }
+
+  #washspotlight .spotlight-accent {
+    left: calc(50% - 75px);
+    top: calc(50% + 21.25vw);
+  }
+
+  #washspotlight .spotlight-accent::before {
+    border-width: 3px 0 0;
+    width: clamp(160px, 14.5vw, 380px);
+  } 
+}
+}

@@ -904,7 +904,7 @@
   opacity: .5;
 }
 
-.event-listing-container {
+main div.structure-wrapper div.section.content-section.event-listing-container {
   display: flex;
   flex-flow: row wrap;
   container-type: inline-size;

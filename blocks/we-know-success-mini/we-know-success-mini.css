@@ -1,0 +1,213 @@
+.we-know-success {
+  display: flex;
+  flex-direction: column;
+  background: repeating-linear-gradient(20deg, var(--white-color), var(--white-color) 8px, #eaecf0 9px, #eaecf0 10px);
+  padding: 2.5rem 2rem;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 12px 0 0;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(45deg, #e0263c 0%, #e0263c 11%, #3c208c 89%, #3c208c 100%);
+  margin-bottom: 2rem;
+
+  @media (width >=991px) {
+    flex-flow: row wrap;
+    gap: 2.5rem;
+
+    .we-know-success-filters,
+    .we-know-success-names {
+      flex: 1 1 0;
+    }
+
+    .we-know-success-doctoral-info {
+      flex: 3 1 0;
+    }
+
+    .we-know-success-names-list {
+      column-count: 1;
+      column-gap: 2rem;
+    }
+
+    .we-know-success-names.is-two-columns {
+      flex: 2 1 0;
+    }
+
+    .we-know-success-names.is-two-columns .we-know-success-names-list {
+      column-count: 2;
+    }
+
+    .we-know-success-names-list li {
+      break-inside: avoid;
+    }
+  }
+
+  select.filter {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+  }
+
+  h2 {
+    color: var(--bg-talon-grey-color);
+    font-size: 3.6rem;
+    line-height: 3.8rem;
+    flex: 0 0 100%;
+    margin: 0 0 2.5rem;
+
+    @media (width >=991px) {
+      margin: 0;
+    }
+  }
+
+  h3,
+  .we-know-success-label {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 700;
+    margin: 1rem auto 1.5rem;
+    color: var(--bg-intern-blue-color);
+  }
+
+  .we-know-success-names-title {
+    margin: 0 auto 1.5rem;
+  }
+
+  figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 170px;
+    text-align: center;
+    margin: 0 0 2rem;
+    height: 100%;
+  }
+
+  ul {
+    font-size: 1.6rem;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 25px;
+
+    li {
+      line-height: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--bg-talon-grey-color);
+    }
+  }
+
+  .select-proxy-list li {
+    margin: 0;
+  }
+}
+
+.we-know-success-figures {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  flex-direction: column;
+
+  @media (width >=991px) {
+    flex: 1 1 0;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2.5rem;
+  }
+}
+
+.we-know-success-figures.is-two-figures {
+  @media (width >=991px) {
+    flex: 2 1 0;
+  }
+}
+
+/* Select Proxy Styles */
+
+.select-proxy {
+  position: relative;
+  width: 100%;
+  margin-bottom: 3.6rem;
+
+  @media (width >=991px) {
+    max-width: 250px;
+  }
+}
+
+.select-proxy-trigger {
+  position: relative;
+  width: 100%;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--bg-intern-blue-color);
+  background: var(--white-color);
+  border: 1px solid var(--bg-indigo-purple-color);
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 3rem;
+}
+
+.select-proxy-trigger::after {
+  content: '\f123';
+  font-family: Ionicons, sans-serif;
+  font-size: 1.8rem;
+  position: absolute;
+  width: 24px;
+  height: calc(100% + 2px);
+  right: -1px;
+  top: -1px;
+  color: var(--white-color);
+  background-color: var(--bg-indigo-purple-color);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.select-proxy.open .select-proxy-trigger::after {
+  content: '\f126';
+}
+
+.select-proxy-list {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  background: var(--white-color);
+  border: 2px solid var(--bg-indigo-purple-color);
+  border-top: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+  display: none;
+  z-index: 1000;
+}
+
+.select-proxy.open .select-proxy-list {
+  display: block;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.select-proxy-list li {
+  font-size: 1.6rem;
+  padding: 7px 10px;
+  cursor: pointer;
+  margin: 0;
+  border-bottom: 1px dotted var(--bg-intern-blue-color);
+}
+
+.select-proxy-list li:hover,
+.select-proxy-list li:focus {
+  background: var(--bg-indigo-purple-color);
+  color: var(--white-color);
+  outline: none;
+}
+
+.select-proxy-list li.is-selected {
+  background: var(--bg-indigo-purple-color);
+  color: var(--white-color);
+}

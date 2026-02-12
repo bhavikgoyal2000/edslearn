@@ -1,0 +1,45 @@
+.au-styles-text {
+  &.subhead {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      line-height: 1.2;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: calc(var(--heading-font-size-xxl) * .8);
+    }
+
+    h2 {
+      font-size: calc(var(--heading-font-size-xl) * .8);
+    }
+    
+    h3 {
+      font-size: calc(var(--heading-font-size-l) * .8);
+    }
+
+    h4 {
+      font-size: calc(var(--heading-font-size-m) * .9);
+    }
+  }
+
+  &.lede {
+    p {
+      font-size: var(--lede-font-size);
+      font-weight: 600;
+    }
+  }
+
+  &.lede-extra {
+    p {
+      font-size: calc(var(--lede-font-size) * 1.6);
+      line-height: 140%;
+    }
+  }
+}
+
+
