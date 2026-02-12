@@ -964,6 +964,10 @@ main div.structure-wrapper div.section.content-section.event-listing-container {
   margin: 0;
 }
 
+.au-calendar .event-details{
+  width: calc(100% * 2 / 3);
+}
+
 .au-calendar .event-details ol li{
   line-height: 2.6rem;
   font-family: "GT Walsheim", Arial, sans-serif;
