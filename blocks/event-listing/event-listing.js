@@ -1622,14 +1622,19 @@ async function handleUrlState(block) {
 
   const hasConfiguredHostIds = data.initialGroupIds?.length > 0;
 
+  const groupId = selectedHostId !== null ? selectedHostId : data.initialGroupIds;
+  const eventTypeId = selectedEventTypeId !== null ? selectedEventTypeId : data.eventTypeId;
+  const roomId = selectedLocationId !== null ? selectedLocationId : data.roomId;
+  const seriesId = selectedSeriesId !== null ? selectedSeriesId : null;
+
   if (hasConfiguredHostIds && !hostBasedApiCache) {
     await loadAnnouncementsForDate(
       date,
       block,
-      data.initialGroupIds,
-      data.eventTypeId,
-      data.roomId,
-      null,
+      groupId,
+      eventTypeId,
+      roomId,
+      seriesId,
       data.visibilityLevel,
       data.visibilityApproved,
       data.visibleRequested,
@@ -1660,13 +1665,6 @@ async function handleUrlState(block) {
 
   hideAllSelector = false;
   isAllViewActive = false;
-  const groupId = selectedHostId !== null ? selectedHostId : data.initialGroupIds;
-
-  const eventTypeId = selectedEventTypeId !== null ? selectedEventTypeId : data.eventTypeId;
-
-  const roomId = selectedLocationId !== null ? selectedLocationId : data.roomId;
-
-  const seriesId = selectedSeriesId !== null ? selectedSeriesId : null;
 
   await loadAnnouncementsForDate(
     date,
