@@ -1642,7 +1642,16 @@ async function handleUrlState(block) {
 
   const hasConfiguredHostIds = data.initialGroupIds?.length > 0;
 
-  const groupId = selectedHostId !== null ? selectedHostId : data.initialGroupIds;
+  let groupId;
+
+  if (browseType === 'h') {
+    groupId = data.initialGroupIds;
+  } else {
+    groupId = selectedHostId !== null
+      ? selectedHostId
+      : data.initialGroupIds;
+  }
+
   const eventTypeId = selectedEventTypeId !== null ? selectedEventTypeId : data.eventTypeId;
   const roomId = selectedLocationId !== null ? selectedLocationId : data.roomId;
   const seriesId = selectedSeriesId !== null ? selectedSeriesId : null;
