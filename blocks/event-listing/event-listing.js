@@ -534,9 +534,9 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
         rawItems = calendarJson.announcementList;
       }
 
-      rawEventsToday = rawEventsToday.filter((event) => matchesFilter(event, { locationId, eventTypeId, seriesId }));
+      rawEventsToday = rawEventsToday.filter((event) => matchesFilter(event, { roomId: locationId, eventTypeId, seriesId }));
 
-      upcomingRawEvents = upcomingRawEvents.filter((event) => matchesFilter(event, { locationId, eventTypeId, seriesId }));
+      upcomingRawEvents = upcomingRawEvents.filter((event) => matchesFilter(event, { roomId: locationId, eventTypeId, seriesId }));
     }
 
     const collectionMap = {
