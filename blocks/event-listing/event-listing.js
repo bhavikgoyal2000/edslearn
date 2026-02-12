@@ -458,6 +458,22 @@ async function loadUpcomingEvents(eventEndDateTime, visibilityLevel, visibilityA
   }
 }
 
+function matchesFilter(event, { roomId, eventTypeId, seriesId }) {
+  if (roomId && Number(event.roomId) !== Number(roomId)) {
+    return false;
+  }
+
+  if (eventTypeId && Number(event.eventTypeId) !== Number(eventTypeId)) {
+    return false;
+  }
+
+  if (seriesId && Number(event.seriesId) !== Number(seriesId)) {
+    return false;
+  }
+
+  return true;
+}
+
 async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, locationId, seriesId, visibilityLevel, visibilityApproved, visibleRequested, visibleApproved) {
   let normalizedHostIds = [];
   if (Array.isArray(groupId)) {
@@ -517,6 +533,10 @@ async function loadAnnouncementsForDate(dateStr, block, groupId, eventTypeId, lo
       if (calendarJson && Array.isArray(calendarJson.announcementList)) {
         rawItems = calendarJson.announcementList;
       }
+
+      rawEventsToday = rawEventsToday.filter((event) => matchesFilter(event, { locationId, eventTypeId, seriesId }));
+
+      upcomingRawEvents = upcomingRawEvents.filter((event) => matchesFilter(event, { locationId, eventTypeId, seriesId }));
     }
 
     const collectionMap = {
