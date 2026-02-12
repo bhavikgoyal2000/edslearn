@@ -978,7 +978,7 @@ main div.structure-wrapper div.section.content-section.event-listing-container {
 }
 
 .au-calendar .event-details .also-on-date {
-  width: calc(100% / 3);
+  width: 30%;
   display: inline-block;
 }
 
