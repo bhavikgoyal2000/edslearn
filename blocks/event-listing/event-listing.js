@@ -1191,7 +1191,7 @@ async function loadSelectorList(block, type, options = {}) {
     const key = keyMap[type];
 
     items = (hostBasedApiCache[key] || []).map((item) => ({
-      id: item.id,
+      id: String(item.id).replace(/\.0$/, ''),
       title: item.title,
     }));
 
